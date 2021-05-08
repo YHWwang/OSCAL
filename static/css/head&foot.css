@@ -212,8 +212,8 @@ a {
     content: '';
     position: absolute;
     height: 2px;
-    width: 0;
-    background: #000;
+    width: 0px;
+    background-color: transparent;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -250,7 +250,7 @@ a {
     width: 100%;
     bottom: 0;
     text-align: left;
-    background-color: #f7f7f7;
+    background-color: #FFFFFF;
     transition: all 1s;
     opacity: 0;
     transform: translateY(100px);
@@ -382,7 +382,7 @@ a {
 .nav-content .content .show-box .rg-content .img-box {
     position: relative;
     margin-bottom: 16px;
-    background-color: #e6e6e6;
+    background-color: #F5F5F5;
     overflow: hidden;
 }
 
@@ -526,7 +526,9 @@ a {
     line-height: 27px;
     height: 27px;
 }
-
+.global span {
+    vertical-align: middle;
+}
 .global svg {
     color: gray;
     vertical-align: middle;

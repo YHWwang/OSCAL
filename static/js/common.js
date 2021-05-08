@@ -1,7 +1,7 @@
 $(function () {
     var ImgWidth = document.body.clientWidth //获取默认宽度
-    var height = window.innerHeight //获取可用高度
-    let top_height = height / 2
+    var height = ImgWidth * .45
+    let top_height = ImgWidth * .4
     var flag = true
     var scroll_2, scroll_3, scroll_4 = false
     var pro_scroll_1, pro_scroll_2, pro_scroll_3 = false
@@ -60,17 +60,28 @@ $(function () {
         dom.find('.buy_href').addClass('show')
     }
 
-    var timer = true
+    // let debounce_timer = null
+    // function debounce(fun, delay) {
+    //     return function () {
+    //         var self = this, arg = arguments
+    //         clearTimeout(debounce_timer)
+    //         debounce_timer = setTimeout(() => {
+    //             fun.apply(self, arg)
+    //         }, delay)
+    //     }
+    // }
+
+    var throttle_flag = true //由于有参数，匿名函数进行传值避免定义多次
     function throttle(fun, delay) {
         let self = this, arg = arguments
         return function () {
-            if (!timer) {
+            if (!throttle_flag) {
                 return false
             }
-            timer = false
+            throttle_flag = false
             setTimeout(() => {
                 fun.apply(self, arg)
-                timer = true
+                throttle_flag = true
             }, delay)
         }
     }
@@ -83,17 +94,16 @@ $(function () {
         }
     }
 
-    $('.go-top .top-icon').click(() => {//置顶
+    $('.go-top .top-icon').click(() => { //置顶
         $('body,html').animate({
             scrollTop: 0
         }, 500);
     })
 
-    // 获取屏幕可用高度的百分数 
-    var vh = height * 0.01
+    var vh = ImgWidth * 0.01
     document.documentElement.style.setProperty('--vh', `${vh}px`)
     window.addEventListener('resize', () => {
-        var vh = window.innerHeight * 0.01
+        var vh = document.body.clientWidth * 0.01
         document.documentElement.style.setProperty('--vh', `${vh}px`)
     })
 
