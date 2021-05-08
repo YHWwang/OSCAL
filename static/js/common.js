@@ -1,9 +1,21 @@
 $(function () {
     var ImgWidth = document.body.clientWidth //获取默认宽度
     var height = ImgWidth * .45
-    let top_height = ImgWidth * .4
+    if(ImgWidth>1200){
+        height = ImgWidth * .4
+    }else{
+        height = ImgWidth * .8
+    }
+    if(ImgWidth<800){
+        $('.pho_image').each(function(){
+            var _this = $(this)
+            var src = $(this).attr('data-phone')
+            _this.attr('data-src', src);
+        })
+    }
+    var top_height = ImgWidth * .4
     var flag = true
-    var scroll_2, scroll_3, scroll_4 = false
+    var scroll_1, scroll_2, scroll_3 = false
     var pro_scroll_1, pro_scroll_2, pro_scroll_3 = false
 
     $('.watch_video .tit').addClass('show')
@@ -13,43 +25,46 @@ $(function () {
         var winp = $(document).scrollTop();
         window.onscroll = throttle(() => top_scroll(winp), 100)
         if (flag && winp > $('.mainContent').offset().top - height / 2) {
-            scroll_2 = $('.mainContent .content-item-1').offset().top - height / 2
+            scroll_1 = $('.mainContent .content-item-1').offset().top - height / 2
             flag = false
         }
-        if (scroll_2 && winp > scroll_2) {
+        if (scroll_1 && winp > scroll_1) {
             dom_fun($('.mainContent .content-item-1 .product_word'))
-            pro_scroll_1 = $('.mainContent .content-item-1 .product_img').offset().top - height * .7
-            scroll_3 = $('.content-item-2').offset().top - height / 2
-            scroll_2 = false
+            scroll_2 = $('.mainContent .content-item-2').offset().top - height / 2
+            if ($('.mainContent .content-item-1 .product_img img').hasClass('lazyloaded')) {
+                pro_scroll_1 = $('.mainContent .content-item-1 .product_img').offset().top - height * .7
+                scroll_1 = false
+            }
+        }
+        if (scroll_2 && winp > scroll_2) {
+            dom_fun($('.mainContent .content-item-2 .product_word'))
+            scroll_3 = $('.mainContent .content-item-3').offset().top - height / 2
+            if ($('.mainContent .content-item-2 .product_img img').hasClass('lazyloaded')) {
+                scroll_2 = false
+                pro_scroll_2 = $('.mainContent .content-item-2 .product_img').offset().top - height * .7
+            }
         }
         if (scroll_3 && winp > scroll_3) {
-            dom_fun($('.mainContent .content-item-2 .product_word'))
-            pro_scroll_2 = $('.mainContent .content-item-2 .product_img').offset().top - height * .7
-            scroll_4 = $('.content-item-3').offset().top - height / 2
-            scroll_3 = false
-        }
-        if (scroll_4 && winp > scroll_4) {
             dom_fun($('.mainContent .content-item-3 .product_word'))
-            pro_scroll_3 = $('.mainContent .content-item-3 .product_img').offset().top - height * .7
-            scroll_4 = $('.content-item-3').offset().top - height / 2
-            scroll_4 = false
+            if ($('.mainContent .content-item-3 .product_img img').hasClass('lazyloaded')) {
+                scroll_3 = false
+                pro_scroll_3 = $('.mainContent .content-item-3 .product_img').offset().top - height * .7
+            }
         }
 
-        if (winp > pro_scroll_1 && winp < pro_scroll_1 + 50) {
+        if (winp > pro_scroll_1 && winp < pro_scroll_1 + 100){
             $('.mainContent .content-item-1 .product_img img').addClass('product_show')
-        } else if (winp < pro_scroll_1 && winp > pro_scroll_1 - 50) {
+        } else if (winp < pro_scroll_1 && winp > pro_scroll_1 - 100) {
             $('.mainContent .content-item-1 .product_img img').removeClass('product_show')
         }
-
-        if (winp > pro_scroll_2 && winp < pro_scroll_2 + 50) {
+        if (winp > pro_scroll_2 && winp < pro_scroll_2 + 100) {
             $('.mainContent .content-item-2 .product_img img').addClass('product_show')
-        } else if (winp < pro_scroll_2 && winp > pro_scroll_2 - 50) {
+        } else if (winp < pro_scroll_2 && winp > pro_scroll_2 - 100) {
             $('.mainContent .content-item-2 .product_img img').removeClass('product_show')
         }
-
-        if (pro_scroll_3 && winp > pro_scroll_3 && winp < pro_scroll_3 + 50) {
+        if (pro_scroll_3 && winp > pro_scroll_3 && winp < pro_scroll_3 + 100) {
             $('.mainContent .content-item-3 .product_img img').addClass('product_show')
-        } else if (winp < pro_scroll_3 && winp > pro_scroll_3 - 50) {
+        } else if (winp < pro_scroll_3 && winp > pro_scroll_3 - 100) {
             $('.mainContent .content-item-3 .product_img img').removeClass('product_show')
         }
     })
