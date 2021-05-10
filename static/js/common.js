@@ -1,8 +1,8 @@
 $(function () {
     var ImgWidth = document.body.clientWidth //获取默认宽度
-    var height = ImgWidth * .45
-    if(ImgWidth>1200){
-        height = ImgWidth * .4
+    var height = null
+    if(ImgWidth>1200){ 
+        height = ImgWidth * .45
     }else{
         height = ImgWidth * .8
     }
@@ -24,7 +24,7 @@ $(function () {
     $(window).scroll(function () {
         var winp = $(document).scrollTop();
         window.onscroll = throttle(() => top_scroll(winp), 100)
-        if (flag && winp > $('.mainContent').offset().top - height / 2) {
+        if (flag && winp > $('.mainContent').offset().top - height / 2) { // 滚动大于产品盒子高度时开始执行移动效果
             scroll_1 = $('.mainContent .content-item-1').offset().top - height / 2
             flag = false
         }
@@ -86,7 +86,7 @@ $(function () {
     //     }
     // }
 
-    var throttle_flag = true //由于有参数，匿名函数进行传值避免定义多次
+    var throttle_flag = true // 由于有参数，不可在匿名函数进行传值
     function throttle(fun, delay) {
         let self = this, arg = arguments
         return function () {
