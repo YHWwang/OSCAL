@@ -143,6 +143,36 @@ a {
     display: none;
 }
 
+
+.go-top {
+    position: fixed;
+    display: none;
+    top: calc(95vh - 50px);
+    bottom: 38px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 111;
+}
+
+.go-top .top-icon {
+    display: inline-block;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    color: #000;
+    text-align: center;
+    box-shadow: 0 5px 5px 0 rgb(0 0 0 / 23%);
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.go-top .top-icon svg {
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
+}
  @media screen and (max-width: 800px) {
     .head_svg{
         display: inherit;

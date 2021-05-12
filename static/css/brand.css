@@ -1,0 +1,443 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: MyriadPro;
+    src: url('../font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: MyriadPro Bold;
+    src: url('../font/MyriadPro-Bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: GoogleSans;
+    src: url('../font/GoogleSans-Medium.ttf');
+    font-weight: bold;
+    font-style: normal;
+} */
+
+/* -- reset -- */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a,
+button {
+    color: #000;
+    cursor: pointer;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* -- reset end -- */
+
+
+
+html {
+    font-family: MyriadPro;
+    font-size: 1rem;
+}
+
+#AMain {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color: transparent;
+    margin-top: 60px;
+}
+
+.big-img {
+    width: 100%;
+}
+
+img {
+    -webkit-user-drag: none;
+}
+
+.watch_video {
+    background-color: #f0f0f0;
+    position: relative;
+    height: 100vh;
+    height: calc(var(--vh, 1vh)* 30);
+}
+
+.watch_video .box1 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 30%;
+}
+
+.watch_video img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.watch_video .tit {
+    color: white;
+    font-size: 60px;
+    font-family: MyriadPro;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+
+.watch_video .box1 .watch_vid {
+    display: inline-block;
+}
+
+.watch_video .watch {
+    background-color: white;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1.5;
+    transition: all 1s;
+    padding: 10px 25px;
+    border-radius: 25px;
+}
+
+.mainContent {
+    background-color: #F2F2F2;
+}
+
+.mainContent .introduction {
+    text-align: center;
+}
+
+.mainContent .introduction .word {
+    padding: 5vh 0;
+    width: 70%;
+    min-width: 1000px;
+    margin: 0 auto;
+}
+
+.mainContent .introduction .word .title,
+.mainContent .introduction .news_line .title {
+    padding: 10vh 0 12vh 0;
+    font-size: 36px;
+    font-family: MyriadPro Bold;
+    line-height: 1.3;
+    position: relative;
+}
+
+.mainContent .introduction .word .title::before,
+.mainContent .introduction .news_line .title::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 70%;
+    background-color: black;
+}
+
+.mainContent .introduction .word .msg {
+    font-size: 24px;
+    line-height: 1.3;
+    padding: 20px 0;
+}
+
+.mainContent .introduction .word ul {
+    position: relative;
+    font-size: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.mainContent .introduction .word ul li {
+    width: 33.33%;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.mainContent .introduction .word ul li .p1 {
+    font-size: 32px;
+    font-family: MyriadPro Bold;
+}
+
+.mainContent .introduction .word ul li .p2 {
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+.mainContent .introduction .line-year {
+    position: relative;
+    width: 80%;
+    height: 2.5vw;
+    margin: 2vw auto 1.96vw;
+    border-bottom: 1px #d0d0d0 solid;
+}
+
+.mainContent .introduction .line-year li {
+    width: auto;
+    display: inline-block;
+    margin: 0 5%;
+    font-size: 20px;
+    color: #686868;
+    height: 100%;
+    margin-top: 1px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: font-size 0.2s;
+}
+
+.mainContent .introduction .line-year li p {
+    height: 100%;
+}
+
+.mainContent .introduction li.line-year-active {
+    font-family: 'Avenir Next Demi Bold';
+    font-weight: 600;
+    color: #000;
+    font-size: 24px;
+}
+
+.mainContent .introduction .line-year li:after {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    width: 97%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mainContent .introduction li.line-year-active:after {
+    background-color: #000;
+    animation: yearActive 0.4s forwards;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.news_line .swiper-container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+
+}
+.swiper_box{
+    padding-bottom: 8vw;
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide {
+    font-size: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    opacity: .0;
+    transition: all 1s;
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide-active{
+    opacity: 1;
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .left,
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right {
+    width: 50%;
+    height: 33vw;
+}
+
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .left img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right {
+    padding: 0 5vw;
+    position: relative;
+}
+
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right .messages {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right .time {
+    margin-top:3vw;
+}
+
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right p {
+    font-size: 20px;
+    width: 90%;
+    line-height: 1.3;
+    text-align: left;
+    color: gray;
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle p {
+    font-size: 20px;
+    width: 100%;
+    line-height: 1.3;
+    text-align: center;
+    color: gray;
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle {
+    width: 90%;
+    margin: 0 auto;
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle{
+   position: absolute;
+   margin-top: 50%;
+   transform: translateY(-50%);
+}
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle .time p{
+    font-size: 36px;
+    padding-bottom: 20px;
+}
+.swiper-button-disabled{
+    display:none;
+  }
+.swiper-container .swiper-middle-prev {
+    left: 10px !important;
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+    left: 45% !important;
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next{
+    background-image: url('../img/brand-swiper-prev.svg') !important;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    background-image: url('../img/brand-swiper-next.svg') !important;
+}
+.swiper-button-next, .swiper-button-prev {
+    background-size: 20px 40px !important;
+}
+.swiper-pagination{
+    left: 50% !important;
+    width: 50% !important;
+    font-size: 1.5rem;
+    text-align: left !important;
+    bottom: 3vw !important;
+}
+.swiper-pagination-total{
+    color: gray !important;
+}
+
+
+@media screen and (max-width: 1200px) and (min-width:800px) {
+    .watch_video .tit {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .watch_video {
+        height: calc(var(--vh, 1vh)* 100);
+    }
+
+}
+
+@media screen and (max-width:1200px)and (min-width:1000px) {}
+
+@media screen and (max-width:1000px)and (min-width:800px) {}

@@ -7,169 +7,188 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="Description" content="Wireless Headphones Without Compromise For Better Workouts">
     <title>OSCAL</title>
-    <link rel="icon" href="../img/favicon.ico" mce_href="../img/favicon.ico" type="image/x-icon">
-    <script type="text/javascript">
-        document.write("<link rel='stylesheet' type='text/css' href='../css/news.css?random=" + Math.random() + "' />");
-    </script>
-    <link rel='stylesheet' type='text/css' href="../css/bootstrap-4.6.0-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/public.css">
+    <link rel='stylesheet' type='text/css' href='../static/css/news.css'>
+    <link rel='stylesheet' type='text/css' href='../static/css/public.css'>
+    <link rel='stylesheet' type='text/css' href="../static/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <script src="../static/lib/js/jquery-3.3.1.min.js"></script>
+    <script async
+        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
 </head>
 
 <body class="en">
-    <div id="header">
-        <iframe title="header" class="head_iframe"
-            style="position: fixed; z-index: 1111;top: 0%;background-color: #ffffff;" src="../header.html"
-            frameborder="no" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+    <div id="header" th:include="header :: myHeader">
+        <!-- <div class="head_svg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-menu-button-wide" viewBox="0 0 16 16">
+                <path
+                    d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5v-2zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-13z" />
+                <path
+                    d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </div> -->
+
     </div>
     <div id="AMain" class="main">
-        <div class="news">
-            <div class="breadcrumb_box">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-                    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
-                  </svg>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="../index.html" target="_parent">Home</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">News Center</li>
-                    </ol>
-                  </nav>
-            </div>
-            <div class="news_list">
-                <p class="tit">News Center</p>
-                <ul>
-                    <li>
-                        lnformation recommendation
-                    </li>
-                    <li>
-                        News report
-                    </li>
-                    <li>
-                        Special report
-
-                    </li>
-                </ul>
-            </div>
-            <div class="news_content">
-                <ul class="news_ul">
-                    <li>
-                       <a href="./newsContent.html" target="_parent">
-                        <div class="img_box">
-                            <img class="big-img lazyload" data-src="../img/news_img.webp" alt="oscal">
-                        </div>
-                        <div class="time">
-                            <p><span>News</span>10th july 2020</p>
-                        </div>
-                        <div class="message">
-                            <p class="tit">4K-capable rugged smartphone withthermal imaging technology</p>
-                            <p class="msg">
-                                ln today's high definition world,expectations of using yoursmartphone...
-                            </p>
-                        </div>
-                       </a>
-                    </li>
-                    <li>
-                        <div class="img_box">
-                            <img class="big-img lazyload" data-src="../img/news_img.webp" alt="oscal">
-                        </div>
-                        <div class="time">
-                            <p><span>News</span>10th july 2020</p>
-                        </div>
-                        <div class="message">
-                            <p class="tit">dasdsadsad</p>
-                            <p class="msg">adsadasdasdsad</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img_box">
-                            <img class="big-img lazyload" data-src="../img/news_img.webp" alt="oscal">
-                        </div>
-                        <div class="time">
-                            <p><span>News</span>10th july 2020</p>
-                        </div>
-                        <div class="message">
-                            <p class="tit">dasdsadsad</p>
-                            <p class="msg">adsadasdasdsad</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img_box">
-                            <img class="big-img lazyload" data-src="../img/news_img.webp" alt="oscal">
-                        </div>
-                        <div class="time">
-                            <p><span>News</span>10th july 2020</p>
-                        </div>
-                        <div class="message">
-                            <p class="tit">4K-capable rugged smartphone withthermal imaging technology</p>
-                            <p class="msg">
-                                ln today's high definition world,expectations of using yoursmartphone...
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img_box">
-                            <img class="big-img lazyload" data-src="../img/news_img.webp" alt="oscal">
-                        </div>
-                        <div class="time">
-                            <p><span>News</span>10th july 2020</p>
-                        </div>
-                        <div class="message">
-                            <p class="tit">4K-capable rugged smartphone withthermal imaging technology</p>
-                            <p class="msg">
-                                ln today's high definition world,expectations of using yoursmartphone...
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="img_box">
-                            <img class="big-img lazyload" data-src="../img/news_img.webp" alt="oscal">
-                        </div>
-                        <div class="time">
-                            <p><span>News</span>10th july 2020</p>
-                        </div>
-                        <div class="message">
-                            <p class="tit">4K-capable rugged smartphone withthermal imaging technology</p>
-                            <p class="msg">
-                                ln today's high definition world,expectations of using yoursmartphone...
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="news_pagination">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center pagination-lg ">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
+        <div class="mainContent">
+            <div class="newsBox">
+                <div class="newsCon">
+                    <p class="time_line">
+                        APRIL 2021
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="./newsContent.html" target="_blank">
+                                <div class="content">
+                                    <div class="left">
+                                        <img class="big-img lazyload" data-src="../static/img/OSCAL-NEWs_img.jpg"
+                                            alt="oscal">
+                                    </div>
+                                    <div class="right">
+                                        <div class="other">
+                                            <p>News</p>
+                                        </div>
+                                        <p class="time">
+                                            April 13,2021
+                                        </p>
+                                        <p class="tit">
+                                            OSCAL unveils its new brand strategy at facebook launch
+                                        </p>
+                                        <p class="msg">
+                                            Global technology brand OSCAL today launched the facebook and outlined its
+                                            new
+                                            brand
+                                            strategy as it kicks off the year as a fully independent company.
+                                        </p>
+                                        <div class="more">
+                                            <p>Read More</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item"><a class="page-link" href="#">4</a></li>
-                          <li class="page-item"><a class="page-link" href="#">5</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
+                        </li>
+                        <li>
+                            <a href="./newsContent.html" target="_blank">
+                                <div class="content">
+                                    <div class="left">
+                                        <img class="big-img lazyload" data-src="../static/img/OSCAL-NEWs_img.jpg"
+                                            alt="oscal">
+                                    </div>
+                                    <div class="right">
+                                        <div class="other">
+                                            <p>News</p>
+                                        </div>
+                                        <p class="time">
+                                            April 13,2021
+                                        </p>
+                                        <p class="tit">
+                                            OSCAL unveils its new brand strategy at facebook launch
+                                        </p>
+                                        <p class="msg">
+                                            Global technology brand OSCAL today launched the facebook and outlined its
+                                            new
+                                            brand
+                                            strategy as it kicks off the year as a fully independent company.
+                                        </p>
+                                        <div class="more">
+                                            <p>Read More</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
-                          </li>
-                        </ul>
-                      </nav>
+                        </li>
+                    </ul>
+                </div>
+                <div class="newsCon">
+                    <p class="time_line">
+                        MARCH 2021
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="#" target="_blank">
+                                <div class="content">
+                                    <div class="left">
+                                        <img class="big-img lazyload" data-src="../static/img/OSCAL-NEWs_img.jpg"
+                                            alt="oscal">
+                                    </div>
+                                    <div class="right">
+                                        <div class="other">
+                                            <p>News</p>
+                                        </div>
+                                        <p class="time">
+                                            April 13,2021
+                                        </p>
+                                        <p class="tit">
+                                            OSCAL unveils its new brand strategy at facebook launch
+                                        </p>
+                                        <p class="msg">
+                                            Global technology brand OSCAL today launched the facebook and outlined its
+                                            new
+                                            brand
+                                            strategy as it kicks off the year as a fully independent company.
+                                        </p>
+                                        <div class="more">
+                                            <p>Read More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+            <div class="newsPagination">
+                <!-- <span class="honorFont-arr-left icon-arr prev-page disabled"> </i> </span>
+                <ul class="brand-page">
+                    <li class="active" data-num="1"><span>1</span></li>
+                    <li class="" data-num="2"><span>2</span></li>
+                   <li class="more-next" data-num="6"><span>...</span></li>
+                    <li data-num="31"><span>31</span></li>
+                </ul>
+                <span class="honorFont-arr-right icon-arr next-page"></span> -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item page-item-current">
+                            <a class="page-link" tabindex="-1" aria-disabled="true"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                                </svg></i></a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item page-item-current">
+                            <a class="page-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                </svg></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+        </div>
+
+        <div class="go-top">
+            <span class="top-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+                </svg>
+            </span>
         </div>
     </div>
-    <div id="footer">
-        <iframe title="footer" width="100%" height="650" src="../footer.html" frameborder="no" marginwidth="0"
-            marginheight="0" scrolling="no"></iframe>
+    <div id="footer" th:include="footer :: myFooter">
     </div>
 </body>
 
 </html>
-<script src="../js/jquery-3.3.1.min.js"></script>
-<script async src="../css/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
-<script async
-    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
-<script async src="../js/news.js"></script>
+<script async src="../static/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="../static/js/news.js"></script>
+<script src="../static/js/public.js"></script>

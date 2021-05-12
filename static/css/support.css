@@ -1,5 +1,27 @@
 @charset "utf-8";
 
+@font-face {
+    font-family: MyriadPro;
+    src: url('../font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: MyriadPro Bold;
+    src: url('../font/MyriadPro-Bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: GoogleSans;
+    src: url('../font/GoogleSans-Medium.ttf');
+    font-weight: bold;
+    font-style: normal;
+} */
+
 /* -- reset -- */
 html,
 body,
@@ -16,7 +38,7 @@ dd,
 ul,
 ol,
 li,
-p,
+.main p,
 blockquote,
 pre,
 hr,
@@ -69,13 +91,14 @@ li {
     list-style: none;
 }
 
-a,
-a:hover {
+.main a,
+.main a:hover {
     text-decoration: none;
 }
 
 a,
 button {
+    color: #000;
     cursor: pointer;
 }
 
@@ -114,21 +137,7 @@ h6 {
 
 /* -- reset end -- */
 
-@font-face {
-    font-family: MyriadPro;
-    src: url('../font/MyriadPro-Regular.otf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: MyriadPro Bold;
-    src: url('../font/MyriadPro-Bold.otf');
-    font-weight: bold;
-    font-style: normal;
-}
-
-html {
+.main {
     font-family: MyriadPro;
     font-size: 1rem;
 }
@@ -136,262 +145,97 @@ html {
 #AMain {
     width: 100%;
     margin: 0 auto;
-    background-color: #F3F3F3;
-    padding-top: 60px;
+    position: relative;
+    background-color: transparent;
+    margin-top: 60px;
+    background-color: #F5F5F5;
+}
+
+.big-img {
+    width: 100%;
 }
 
 img {
     -webkit-user-drag: none;
 }
-
-/* start */
-.main {
+.supportBox .bannerTop{
     position: relative;
 }
-.big-img {
+.supportBox .bannerTop .word{
+    position: absolute;
+    text-align: center;
     width: 100%;
+    top: 8vw;
 }
-
-.sect1{
-    position: relative;
-}
-.sect1 .search{
-    text-align: center;
-    position: absolute;
-    width: 40%;
-    max-width: 500px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-}
-.sect1 .search p{
-    color: #ffffff;
-    font-size: 36px;
-    font-family: MyriadPro;
-    margin-bottom: 0px;
-}
- .input-group-text {
-    background-color: #ffffff !important;
-}
-.support_num{
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    color: #F3F3F3;
-    line-height: .8;
-    font-size: 100px;
-    font-weight: bold;
-}
-.sect2{
-    font-family: MyriadPro;
-    padding-bottom: 50px;
-}
-.sect2 .tit p{
-    font-size: 36px;
-    text-align: center;
-    color: rgba(0, 0, 0, .8);
-    padding-top: 50px;
-}
-
-
-.sect2 .faq_content ul li{
-    position: relative;
-    vertical-align: top;
-    width: 24%;
-    margin: 1% .5%;
-    display: inline-block;
-    text-align: center;
-    padding: 3% .5% 1% .5%;
-    background-color: white;
-}
-.sect2 .faq_content ul li .title{
-    line-height: 1;
-    font-size: 24px;
-    margin-bottom: 0rem;
-    font-family: MyriadPro;
-}
-.sect2 .faq_content ul li .msg{
-    font-size: 16px;
-    height: 50px;
+.supportBox .bannerTop .word .tit{
+    font-size: 40px;
+    font-family: MyriadPro Bold;
     line-height: 1.3;
-    margin-bottom: 0rem;
-    opacity: .8;
-    padding-top: 5px;
 }
-.sect2 .faq_content ul{
-    min-width: 800px;
+.supportBox .bannerTop .word .msg{
+    font-size: 30px;
+    line-height: 1.3;
+}
+.supportBox .productBox{
+    position: relative;
     text-align: center;
-    font-size: 0px;
+    padding: 5vw 0;
     width: 80%;
     margin: 0 auto;
+    min-width: 1000px;
 }
-
-
-.sect2 .content ul{
-    text-align: center;
-    font-size: 0px;
-    width: 70%;
-    margin: 0 auto;
-}
-.sect2 .content ul li{
-    vertical-align: top;
-    width: 31%;
-    margin: 2% 1%;
-    display: inline-block;
-    text-align: center;
-    background-color: white;
-    padding: 2%;
-}
-
-.sect2 .content ul li .top img{
-    width: 70%;
-}
-.sect2 .content ul li .bottom{
-    padding-top: 30px;
-}
-.sect2 .content ul li .title{
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 0rem;
-}
-.sect2 .content ul li .msg{
-    font-size: 20px;
-    height: 50px;
+.supportBox .productBox .tit{
+    font-size: 32px;
+    font-family: MyriadPro Bold;
     line-height: 1.3;
-    margin-bottom: 0rem;
 }
-
-.sect3 .tit p{
-    font-size: 36px;
-    text-align: center;
-    color: rgba(0, 0, 0, .8);
-}
-
-.sect2 .suooprt_contact{
-    font-family: MyriadPro;
-}
-.sect2 .suooprt_contact ul{
-    min-width: 800px;
-    font-size: 0px;
-    width: 50%;
-    margin: 0 auto;
-    padding: 3% 0;
-}
-.sect2 .suooprt_contact ul li{
-    position: relative;
-    vertical-align: top;
-    width: 31%;
-    margin:0 1%;
-    display: inline-block;
-    text-align: center;
-    background-color: white;
-    padding: 8% 0 4% 0;
-}
-.sect2 .suooprt_contact ul li a{
-    color: unset;
-    text-decoration: none;
-}
-.sect2 .suooprt_contact ul li .bottom .title{
-    font-size: 30px;
-    margin-bottom: 0rem;
-    line-height: 1;
-}
-.sect2 .suooprt_contact ul li .bottom .msg{
-    font-size: 16px;
-    margin-bottom: 0rem;
-    opacity: .8;
-}
-.sect3 .suooprt_contact{
-    background-color: white;
-    font-family: MyriadPro;
-}
-.sect3 .suooprt_contact ul{
-    min-width: 800px;
-    font-size: 0px;
-    width: 50%;
-    margin: 0 auto;
-    padding: 3% 0;
-}
-.sect3 .suooprt_contact ul li{
-    vertical-align: top;
-    width: 48%;
-    margin:0 1%;
-    display: inline-block;
-    text-align: center;
-    background-color: #F3F3F3;
-    padding: 5% 0;
-}
-.sect3 .suooprt_contact ul li .bottom .title{
-    font-size: 30px;
-    margin-bottom: 0rem;
-    line-height: 1;
-}
-.sect3 .suooprt_contact ul li .bottom .msg{
+.supportBox .productBox .msg{
     font-size: 20px;
-    margin-bottom: 0rem;
+    padding-top: 1vw;
+    line-height: 1.3;
 }
+.supportBox .productBox ul{
+    font-size: 0;
+    padding-top: 4vw;
+    position: relative;
+}
+.supportBox .productBox ul li{
+    width: 187px;
+    height: 189px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin: 0 30px;
+}
+.supportBox .productBox ul li p{
+    font-size: 18px;
+    margin-top: 10px;
+}
+.supportBox .productBox  ul li img{
+    transition: all .5s;
+}
+.supportBox .productBox  ul li:hover img{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.supportBox .productBox  ul li:hover p {
+    color: #d0021b;
+}
+
+
+
+
+
+
+
+
+
 /* end */
 
-@media screen and (max-width: 800px) {
-   
-}
+@media screen and (max-width: 800px) {}
 
-@media screen and (max-width:1500px)and (min-width:1200px) {
-    .sect1 .search p {
-        font-size: 34px;
-    }
-    .sect2 .faq_content .support_num {
-        font-size: 90px;
-    }
-    
-    .sect2 .faq_content ul {
-        width: 98%;
-    }
-    .sect2 .content ul{
-        width: 80%;
-    }
-}
-@media screen and (max-width:1200px)and (min-width:1000px) {
-    .sect2 .faq_content .support_num {
-        font-size: 80px;
-    }
-    .sect2 .faq_content ul {
-        width: 100%;
-    }
-    .sect1 .search p {
-        font-size: 32px;
-    }
-    .sect2 .faq_content ul li .title {
-        font-size: 20px;
-    }
-    .sect2 .content ul li .msg {
-        font-size: 17px;
-    }
-    .sect2 .content ul{
-        width: 85%;
-    }
-}
-@media screen and (max-width:1000px)and (min-width:800px) {
-    .sect2 .faq_content .support_num {
-        font-size: 70px;
-    }
-    .sect1 .search p {
-        font-size: 26px;
-    }
-    .sect2 .faq_content ul li .msg {
-        font-size: 14px;
-    }
-    .sect2 .faq_content ul li .title {
-        font-size: 17px;
-    }
-    .sect2 .faq_content ul {
-        min-width: 800px;
-        width: 100%;
+@media screen and (max-width:1500px)and (min-width:1000px) {}
 
-    }
-    .sect2 .content ul{
-        width: 100%;
-    }
-}
+@media screen and (max-width:1200px)and (min-width:1000px) {}
 
-
+@media screen and (max-width:1000px)and (min-width:800px) {}

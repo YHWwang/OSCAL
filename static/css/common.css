@@ -152,39 +152,14 @@ html {
     margin-top: 60px;
 }
 
+.big-img {
+    width: 100%;
+}
+
 img {
     -webkit-user-drag: none;
 }
 
-.go-top {
-    position: fixed;
-    display: none;
-    top: calc(95vh - 50px);
-    bottom: 38px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 111;
-}
-
-.go-top .top-icon {
-    display: inline-block;
-    position: relative;
-    width: 44px;
-    height: 44px;
-    color: #000;
-    text-align: center;
-    box-shadow: 0 5px 5px 0 rgb(0 0 0 / 23%);
-    background-color: #fff;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.go-top .top-icon svg {
-    position: relative;
-    top: 45%;
-    transform: translateY(-50%);
-}
 
 .watch_video .box1 .tit,
 .watch_video .box1 .watch_vid,
@@ -196,11 +171,15 @@ img {
     transition: all 1s ease;
 }
 
-.mainContent .content .product_img img {
+.mainContent .content .product_img img{
     transform: translateY(5vw);
     transition: all 2s ease;
 }
-
+.mainContent .two_Column .product_img img {
+    transform: translateY(30px);
+    transition: all 2s ease;
+    width: 80%;
+}
 .show {
     opacity: 1 !important;
     transform: translateY(0) !important;
@@ -297,7 +276,9 @@ img {
 .mainContent .content .big_product_img {
     width: 70%;
 }
-
+.mainContent .four-content .product_img{
+    width: 100%;
+}
 .mainContent .content .product_img img {
     object-fit: cover;
     height: 100%;
@@ -398,11 +379,6 @@ img {
     position: relative;
 }
 
-.mainContent .two_Column .product_img img {
-    width: 300px;
-    height: 380px;
-}
-
 .mainContent .swiper-container .swiper-wrapper .swiper-slide {
     position: relative;
 }
@@ -450,17 +426,6 @@ img {
     padding: 5px 30px;
     border-radius: 25px;
 }
-
-/* start */
-.main {
-    position: relative;
-}
-
-.big-img {
-    width: 100%;
-}
-
-/* end */
 
 @media screen and (max-width: 1200px) and (min-width:800px) {
     .watch_video .tit {

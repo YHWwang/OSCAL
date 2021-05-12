@@ -7,139 +7,88 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="Description" content="Wireless Headphones Without Compromise For Better Workouts">
     <title>OSCAL</title>
-    <link rel="icon" href="../img/favicon.ico" mce_href="../img/favicon.ico" type="image/x-icon">
-    <script type="text/javascript">
-        document.write("<link rel='stylesheet' type='text/css' href='../css/support.css?random=" + Math.random() + "' />");
-    </script>
-    <link rel='stylesheet' type='text/css' href="../css/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' href='../static/css/support.css'>
+    <link rel='stylesheet' type='text/css' href='../static/css/public.css'>
+    <link rel='stylesheet' type='text/css' href="../static/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <script src="../static/lib/js/jquery-3.3.1.min.js"></script>
+    <script async
+        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
 </head>
 
 <body class="en">
-    <div id="header">
+    <div id="header" th:include="header :: myHeader">
+        <!-- <div class="head_svg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                class="bi bi-menu-button-wide" viewBox="0 0 16 16">
+                <path
+                    d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5v-2zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-13z" />
+                <path
+                    d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </div> -->
+
     </div>
     <div id="AMain" class="main">
-        <div class="sect1">
-            <div class="search">
-                <p>Welcome to Oscal Support</p>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text " id="basic-addon1">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                        </span>
+        <div class="mainContent">
+            <div class="supportBox">
+                <div class="bannerTop">
+                    <div class="word">
+                        <p class="tit">
+                            Welcome to OSCAL support
+                        </p>
+                        <p class="msg">
+                            How can we hepl?
+                        </p>
                     </div>
-                    <input type="text" class="form-control form-control-lg" placeholder="Enter your question"
-                        aria-label="Enter your question" aria-describedby="basic-addon1">
+                    <img class="big-img lazyload" src="../static/img/OSCAL-support_banner.jpg" alt="oscal">
                 </div>
-            </div>
-            <img class="big-img lazyload" data-src="../img/ce.webp">
-        </div>
-        <div class="sect2">
-            <div class="tit">
-                <p>Online Help</p>
-            </div>
-            <div class="suooprt_contact">
-                <div>
+                <div class="productBox">
+                    <p class="tit">Select Your Product</p>
+                    <p class="msg">
+                        Search through Honor products to find out more about them, including user tips, manuals,FAQs,
+                        updates, and more.
+                    </p>
                     <ul>
                         <li>
-                            <a href="./faq.html" target="_parent">
-                                <div class="top">
-                                    <img class="lazyload" data-src="../img/icon_1.webp">
-                                </div>
-                                <div class="bottom">
-                                    <p class="title">
-                                        FAQ
-                                    </p>
-                                    <p class="msg">
-                                        Technical problem finding
-                                    </p>
-                                </div>
-                            </a>
+                            <img class="big-img lazyload" src="../static/img/OSCAL-support_1.png"  alt="Smart phone">
+                            <p>Smart phone</p>
                         </li>
                         <li>
-                            <a href="./user.html" target="_parent">
-                                <div class="top">
-                                    <img class="lazyload" data-src="../img/icon_1.webp">
-                                </div>
-                                <div class="bottom">
-                                    <p class="title">
-                                        User Manual
-                                    </p>
-                                    <p class="msg">
-                                        Return and exchange policy
-                                    </p>
-                                </div>
-                            </a>
+                            <img class="big-img lazyload" src="../static/img/OSCAL-support_2.png"  alt="Laptops">
+                            <p>Laptops</p>
                         </li>
                         <li>
-                            <a href="./ce.html" target="_parent">
-                                <div class="top">
-                                    <img class="lazyload" data-src="../img/icon_1.webp">
-                                </div>
-                                <div class="bottom">
-                                    <p class="title">
-                                        CE Certification
-                                    </p>
-                                    <p class="msg">
-                                        CE Certification inquiry
-                                    </p>
-                                </div>
-                            </a>
+                            <img class="big-img lazyload" src="../static/img/OSCAL-support_3.png"  alt="Pad">
+                            <p>Pad</p>
+                        </li>
+                        <li>
+                            <img class="big-img lazyload" src="../static/img/OSCAL-support_4.png"  alt="Accessories">
+                            <p>Accessories</p>
                         </li>
                     </ul>
                 </div>
             </div>
+
         </div>
-        <div class="sect3">
-            <div class="tit">
-                <p>Contact Us</p>
-            </div>
-            <div class="suooprt_contact">
-                <ul>
-                    <li>
-                        <div class="top">
-                            <img class="lazyload" data-src="../img/icon_1.webp">
-                        </div>
-                        <div class="bottom">
-                            <p class="title">
-                                CHAT SUPPORT
-                            </p>
-                            <p class="msg">
-                                &nbsp;
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="top">
-                            <img class="lazyload" data-src="../img/icon_1.webp">
-                        </div>
-                        <div class="bottom">
-                            <p class="title">
-                                EMAIL US
-                            </p>
-                            <p class="msg">
-                                support@Oscal.com
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+
+        <div class="go-top">
+            <span class="top-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+                </svg>
+            </span>
         </div>
     </div>
-    <div id="footer">
-        <iframe title="footer" width="100%" height="650" src="../footer.html" frameborder="no" marginwidth="0"
-            marginheight="0" scrolling="no"></iframe>
+    <div id="footer" th:include="footer :: myFooter">
     </div>
 </body>
 
 </html>
-<script src="../js/jquery-3.3.1.min.js"></script>
-<script async src="../css/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
-<script async
-    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
-<script async src="../js/support.js"></script>
+<script async src="../static/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="../static/js/support.js"></script>
+<script src="../static/js/public.js"></script>
