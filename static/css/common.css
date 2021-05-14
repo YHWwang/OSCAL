@@ -489,7 +489,14 @@ img {
 
 @media screen and (max-width:1200px)and (min-width:1000px) {}
 
-@media screen and (max-width:1000px)and (min-width:800px) {}
+@media screen and (max-width:1000px)and (min-width:800px) {
+    .mainContent .two_Column ul li .four-content .product_word .tit p {
+        font-size: 34px;
+    }
+    .mainContent .two_Column ul li .four-content .product_word p.msg {
+        font-size: 24px;
+    }
+}
 
 /* swiper */
 .swiper-container {

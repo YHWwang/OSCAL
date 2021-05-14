@@ -8,37 +8,164 @@
     <meta name="keywords" content="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    
+
 </head>
 
 <body class="en">
     <div id="Header" th:fragment="myHeader">
         <link rel='stylesheet' type='text/css' href='../static/css/head&foot.css'>
-        <link rel="icon" href="../static/public/favicon.ico" mce_href="../static/public/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../static/public/favicon.ico" mce_href="../static/public/favicon.ico"
+            type="image/x-icon">
         <div class="header_main">
             <div class="menu_box">
-                <div class="logo">
-                    <a href="./index.html" target="_parent">
-                        <img src="../static/img/logo.png" alt="logo">
-                    </a>
+                <div class="pc-header">
+                    <div class="logo">
+                        <a href="./index.html" target="_parent">
+                            <img src="../static/img/logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <div class="menu">
+                        <ul>
+                            <li><a id="menu_href" href="#">Products</a></li>
+                            <li><a href="./brand.html">Brand</a></li>
+                            <li><a href="./news.html">News</a></li>
+                            <li><a href="./support.html">Support</a></li>
+                            <li><a href="./community.html">Community</a></li>
+                            <li><a href="#">OSCAL Store</a></li>
+                            <li><a href="./contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="menu">
-                    <ul>
-                        <li><a id="menu_href" href="#">Products</a></li>
-                        <li><a href="./brand.html">Brand</a></li>
-                        <li><a href="./news.html">News</a></li>
-                        <li><a href="./support.html">Support</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">OSCAL Store</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
+                <div class="app-header">
+                    <div class="logo">
+                        <a href="./index.html" target="_parent">
+                            <img src="../static/img/logo.png" alt="logo">
+                        </a>
+                    </div>
+                    <div class="menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="menu">
+                        <ul>
+                            <li class="has-child">
+                                <a id="menu_href" href="#">Products</a>
+                                <div class="plus-icon">
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="app-nav-content">
+                                    <div class="show-box">
+                                        <div class="rg-content">
+                                            <div class="content-box">
+                                                <ul class="rg-box area-box">
+                                                    <li class="box-lv1 item-box">
+                                                        <div class="img-box">
+                                                            <a href="#" target="_self">
+                                                                <img class="item-img lazyload"
+                                                                    data-src="../static/img/menu_main.jpg" alt="Oscal">
+                                                        </div>
+                                                        <p class="item-title">OSCAL C80</p>
+                                                        </a>
+                                                    </li>
+                                                    <li class="box-lv3 item-box">
+                                                        <a href="#" target="_self">
+                                                            <div class="img-box">
+                                                                <img class="item-img lazyload"
+                                                                    data-src="../static/img/menu_other.jpg"
+                                                                    alt="HONOR 20e">
+                                                            </div>
+                                                            <p class="item-title">OSCAL C80</p>
+                                                        </a>
+                                                    </li>
+                                                    <li class="box-lv3 item-box">
+                                                        <a href="#" target="_self">
+                                                            <div class="img-box">
+                                                                <img class="item-img lazyload"
+                                                                    data-src="../static/img/menu_other.jpg"
+                                                                    alt="HONOR 9S">
+                                                            </div>
+                                                            <p class="item-title">OSCAL C80</p>
+                                                        </a>
+                                                    </li>
+                                                    <li class="box-lv3 item-box">
+                                                        <a href="#" target="_self">
+                                                            <div class="img-box">
+                                                                <img class="item-img lazyload"
+                                                                    data-src="../static/img/menu_other.jpg"
+                                                                    alt="HONOR 9A">
+                                                            </div>
+                                                            <p class="item-title">OSCAL C80</p>
+                                                        </a>
+                                                    </li>
+                                                    <li class="box-lv3 item-box">
+                                                        <a href="#" target="_self">
+                                                            <div class="img-box">
+                                                                <img class="item-img lazyload"
+                                                                    data-src="../static/img/menu_other.jpg"
+                                                                    alt="HONOR 9C">
+                                                            </div>
+                                                            <p class="item-title">OSCAL C80</p>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="lf-menu">
+                                            <ul class="main-menu">
+                                                <li><a href="#" target="_self">All Phones</a></li>
+                                            </ul>
+                                            <ul class="sub-menu">
+                                                <li><a href="#" target="_self">News</a></li>
+                                                <li><a href="#" target="_self">Blog</a></li>
+                                                <li><a href="#" target="_self">Album</a></li>
+                                            </ul>
+                                            <span class="bar"></span>
+                                            <ul class="other-menu">
+                                                <li><a href="#" target="_self">Service Center</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="./brand.html">Brand</a></li>
+                            <li><a href="./news.html">News</a></li>
+                            <li><a href="./support.html">Support</a></li>
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">OSCAL Store</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="nav-content">
+            <div class="menu_lab">
+                <div onclick="switchProduct('Smartphones')">
+                    <span>
+                        Smartphones
+                    </span>
+                </div>
+                <div onclick="switchProduct('Tablet')">
+                    <span>
+                        Tablet
+                    </span>
+                </div>
+                <div onclick="switchProduct('Laptops')">
+                    <span>
+                        Laptops
+                    </span>
+                </div>
+                <div onclick="switchProduct('Wearables')">
+                    <span>
+                        Wearables
+                    </span>
+                </div>
+            </div>
             <div class="content">
                 <div class="close-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                         class="bi bi-x-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                         <path
@@ -48,17 +175,10 @@
                 <div class="show-box">
                     <div class="lf-menu">
                         <ul class="main-menu">
-                            <li><a href="#" target="_self">All Phones</a></li>
-                        </ul>
-                        <ul class="sub-menu">
-                            <li><a href="#" target="_self">News</a></li>
-                            <li><a href="#" target="_self">Blog</a></li>
-                            <li><a href="#" target="_self">Album</a></li>
-                        </ul>
-                        <span class="bar"></span>
-                        <ul class="other-menu">
-                            <li><a href="#" target="_self">Service Center</a></li>
-                        </ul>
+                            <li><a href="./products.html" target="_self">All Phones</a></li>
+                            <li class="child-menu"><a href="#" target="_self">S Series</a></li>
+                            <li class="child-menu"><a href="#" target="_self">C Series</a></li>
+                        </ul>       
                     </div>
                     <div class="rg-content">
                         <div class="content-box">

@@ -10,6 +10,23 @@ $(function () {
             });
         };
     }
+    switchProduct =  function(proName){
+        menuHide()
+        setTimeout(() => {
+            menuShow()
+        }, 500);
+    }
+    $('.app-header .menu-icon').click(function () {
+        $(this).toggleClass('clicked')
+        $('.app-header .menu').toggleClass('active')
+    })
+    $('.menu_box .app-header .menu ul li.has-child').click(function () {
+        $('.app-header .plus-icon').toggleClass('clicked')
+        $('.app-header .menu .app-nav-content').toggleClass('active')
+    })
+    $('.nav-content .menu_lab div').click(function(){
+        $(this).addClass('active').siblings().removeClass('active')
+    })
     // $(".head_svg").click(function () {
     //     if ($('.head_iframe').height() == 60) {
     //         $('.head_iframe').css('height', '300px')
