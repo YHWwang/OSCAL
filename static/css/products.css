@@ -169,7 +169,8 @@ img {
 }
 
 .productsBox .products-sort {
-    width: 1200px;
+    width: 80%;
+    min-width: 1000px;
     margin: 80px auto 35px auto;
     overflow: hidden;
     position: relative;
@@ -306,6 +307,7 @@ img {
     width: 96%;
     margin: 0 auto;
     background-color: white;
+    overflow: hidden;
 }
 
 #collapseExample h2 {
@@ -337,7 +339,8 @@ img {
 #collapseExample .filters-cate {
     margin: 54px auto 0 auto;
     font-size: 0;
-    width: 1200px;
+    width: 80%;
+    max-width: 1200px;
     overflow: hidden;
 }
 
@@ -488,8 +491,50 @@ img {
 
 @media screen and (max-width: 800px) {}
 
-@media screen and (max-width:1500px)and (min-width:1000px) {}
+@media screen and (max-width:1500px)and (min-width:1000px) {
+    .products-lists ul li {
+        width: 24%;
+        margin: .5vw .5%;
+    }
+    .products-lists ul li .buy button {
+        font-size: 16px;
+    }
+}
 
-@media screen and (max-width:1200px)and (min-width:1000px) {}
+@media screen and (max-width:1200px)and (min-width:800px) {
+    .products-lists ul li .products-name {
+        font-size: 3vw;
+    }
+    .products-lists ul li a img.on {
+      height: 100%;
+      object-fit: contain;
+    }
+    .products-lists ul li {
+        vertical-align: top;
+        width: 31.33%;
+        margin: 1.5vw 1%;
+    }
+    .productsBox .products-sort .products-tabs a {
+        margin-right: 0px;
+    }
+    .productsBox .products-sort .products-tabs a.active span {
+        padding: 0px 20px;
+    }
+    .productsBox .products-sort .products-tabs span {
+        font-size: 2vw;
+    }
+    .productsBox .products-sort {
+        width: 96%;
+        min-width: 768px;
+        margin: 80px auto 35px auto;
+    }
+    #collapseExample .filters-cate {
+        width: 96%;
+    }
+}
 
-@media screen and (max-width:1000px)and (min-width:800px) {}
+@media screen and (max-width:1000px)and (min-width:800px) {
+    .products-lists ul li .buy button {
+        font-size: 14px;
+    }
+}

@@ -163,13 +163,13 @@ img {
 .mainContent{
     position: relative;
     height: auto;
-    overflow: hidden;
     margin: 0 auto;
 }
 .communityBox {
     position: relative;
     width: 1200px;
     height: auto;
+    background-color: #F5F5F5;
     overflow: hidden;
     margin: 0 auto;
     padding:3vw 0;
@@ -458,7 +458,8 @@ img {
     letter-spacing: 0;
     display: block;
     margin-top: 10px;
-    width: 100%;
+    width:90%;
+    margin: 0 auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

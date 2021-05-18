@@ -220,10 +220,14 @@ img {
 }
 
 .mainContent .newsCon .content .msg {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     font-size: 18px;
     color: gray;
-    height: 80px;
-    padding: 0 0 2vw 0;
+    margin: 0 0 2vw 0;
     line-height: 1.3;
 }
 
@@ -245,9 +249,14 @@ img {
     text-align: center;
 }
 
-.newsPagination .page-item.disabled .page-link,
+.newsPagination .page-item.disabled .page-link
 .newsPagination .page-item:last-child .page-link {
     background-color: transparent;
+}
+.newsPagination .page-link:hover {
+    text-decoration: none;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .newsPagination .page-link {
@@ -321,7 +330,7 @@ img {
 .newsContentBox {
     background-color: white;
     width: 70%;
-    min-width: 1000px;
+    min-width: 980px;
     margin: 0 auto;
     position: relative;
     margin-top: -19vw;
@@ -355,7 +364,7 @@ img {
 }
 .relatedNews{
     width: 70%;
-    min-width: 1000px;
+    min-width: 980px;
     margin: 0 auto;
     background-color: white;
     margin-top: 4vw;
@@ -381,12 +390,22 @@ img {
 .relatedNews .msg{
     max-height: 92px;
     overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .relatedNews .tit{
     font-size: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     color: #000;
     line-height: 1.2;
-    padding: .5vw 0 1vw 0;
+    margin: .5vw 0 1vw 0;
     font-family: MyriadPro Bold;
 }
 .relatedNews p{
@@ -420,4 +439,13 @@ img {
 
 @media screen and (max-width:1200px)and (min-width:1000px) {}
 
-@media screen and (max-width:1000px)and (min-width:800px) {}
+@media screen and (max-width:1000px)and (min-width:800px) {
+    .mainContent .newsBox, .mainContent .newsPagination {
+        width: 96%;
+    }
+    .newsContentBox,.relatedNews{
+        width: 98%;
+        min-width: auto;
+    }
+    
+}

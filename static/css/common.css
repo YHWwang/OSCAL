@@ -434,6 +434,16 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+    
+    .mainContent .content .product_word .tit img{
+        width: 30%;
+    }
+    .mainContent .content .product_word .tit p {
+        font-size: 8vw;
+    }
+    .mainContent .content .product_word .msg {
+        font-size:5vw;
+    }
     .mainContent .content {
         height: 100vw;
         padding: 7vw 0 3vw;

@@ -230,13 +230,14 @@ a {
 /* footer */
 .footer_main {
     text-align: center;
+    overflow: hidden;
+    position: relative;
 }
 
 
 .foot-list {
     width: 100%;
-    min-width: 1200px;
-    position: relative;
+    min-width: 980px;
     height: 237px;
     padding: 0 80px;
 }
@@ -600,7 +601,12 @@ a {
 }
 
 @media screen and (max-width:1000px)and (min-width:800px) {
-
+    .foot-list {
+        width: 100%;
+        min-width: auto;
+        height: 237px;
+        padding: 0 80px;
+    }
     .foot-list .ul_1 .li_1 {
         width: 23%;
     }
@@ -693,10 +699,19 @@ a {
         width: 12px;
         height: 12px;
         right: 8px;
+        top: 30px;
+        margin-top: auto;
     }
 
     .app-header .plus-icon span {
+        -webkit-transition: -webkit-transform .4s ease;
+        transition: -webkit-transform .4s ease;
+        transition: transform .4s ease;
+        transition: transform .4s ease, -webkit-transform .4s ease;
+        position: absolute;
+        display: block;
         width: 12px;
+        height: 2px;
         background-color: #000;
     }
 
