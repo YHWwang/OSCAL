@@ -608,6 +608,14 @@ a {
 }
 
 @media screen and (max-width:1000px)and (min-width:800px) {
+    .nav-content .content .close-icon {
+        right: 14px;
+        width: 30px;
+        height: 30px;
+    }
+    .nav-content .content {
+        padding: 0 20px 50px 20px;
+    }
     .foot-list {
         width: 100%;
         min-width: auto;

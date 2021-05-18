@@ -212,7 +212,7 @@ img {
 .mainContent .introduction .word {
     padding: 5vh 0;
     width: 70%;
-    min-width: 1000px;
+    min-width: 980px;
     margin: 0 auto;
 }
 
@@ -269,7 +269,7 @@ img {
 .mainContent .introduction .line-year {
     position: relative;
     width: 80%;
-    height: 2.5vw;
+    height: 50px;
     margin: 2vw auto 1.96vw;
     border-bottom: 1px #d0d0d0 solid;
 }
@@ -440,4 +440,18 @@ img {
 
 @media screen and (max-width:1200px)and (min-width:1000px) {}
 
-@media screen and (max-width:1000px)and (min-width:800px) {}
+@media screen and (max-width:1000px)and (min-width:800px) {
+    .mainContent .introduction .word {
+        width: 96%;
+        min-width: auto;
+    }
+    .news_line .swiper-container {
+        width: 96%;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right p {
+        font-size: 16px;
+    }
+    .mainContent .introduction .word .msg {
+        font-size: 20px;
+    }
+}
