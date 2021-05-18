@@ -12,6 +12,7 @@ $(function () {
     }
     switchProduct =  function(proName){
         menuHide()
+        console.log(proName)
         setTimeout(() => {
             menuShow()
         }, 500);

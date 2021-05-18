@@ -3,7 +3,9 @@ $(function () {
   $('.productsBox .products-sort .products-tabs a').click(function () {
     $(this).addClass('active').siblings().removeClass('active')
   })
-
+  $('.productsBox .products-sort .products-filters .reset').click(function () {
+    $('.filters-cate li .cate-box span').removeClass('on')
+  })
   var ImgWidth = document.body.clientWidth
   var product_img_height = $('.product-img')
   if (ImgWidth < 800) {
@@ -21,12 +23,12 @@ $(function () {
     }
   });
   var flag_sort = true
-  $('.productsBox .products-sort .products-filters .filter-btn').click(function() {
+  $('.productsBox .products-sort .products-filters .filter-btn').click(function () {
     console.log($(this).find('.text').text())
-    if(flag_sort){
+    if (flag_sort) {
       $(this).find('.text').text('Colse')
       flag_sort = false
-    }else{
+    } else {
       $(this).find('.text').text('Filters')
       flag_sort = true
     }

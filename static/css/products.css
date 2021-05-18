@@ -184,7 +184,8 @@ img {
 
 .productsBox .products-sort .products-filters {
     float: right;
-    display: flex;
+    display: none;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
 }

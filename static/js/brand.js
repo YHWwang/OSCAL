@@ -2,33 +2,18 @@ $(function () {
     var brandList = {
         '2021': [{
             'img': '../static/img/brand_swiper.jpg',
-            'time': '10th April 2021',
-            'messages': ' OSCAL announced today that thermal rugged phone, Blackview Tab10 (Android 11 version) <br> will hit the market around the end of July or early August.For Tab10 old users, they can update <br> to the Android 11 OS by contacting Blackview official then.'
-        }, {
-            'img': '',
-            'time': '9th April 2021',
-            'messages': 'OSCAL announced today that thermal ruggeCAL announced today that thermal rugged phone, Bced today that thermal'
-        }, {
-            'img': '../static/img/brand_swiper.jpg',
-            'time': '8th April 2021',
-            'messages': 'OSCAL announced today that thermal rugged phone, Bced today that thermal'
+            'time': '10th May 2021',
+            'messages': 'OSCAL launched Tab 9, packing incredible features. OSCAL launched the Tab 9, a budget tablet packing with a range of great features and exceptional quality to push the boundaries of affordable smart devices.'
         }],
         '2020': [{
-            'img': '../static/img/brand_swiper.jpg',
+            'img': '../static/img/brand_swiper3.jpg',
             'time': '10th April 2020',
-            'messages': ' OSCAL announced today that thermal rugged phone, Blackview Tab10 (Android 11 version) <br> will hit the market around the end of July or early August.For Tab10 old users, they can update <br> to the Android 11 OS by contacting Blackview official then.'
-        }, {
-            'img': '',
-            'time': '9th April 2020',
-            'messages': 'OSCAL announced today that thermal ruggeCAL announced today that thermal rugged phone, Bced today that thermal'
-        }, {
-            'img': '../static/img/brand_swiper.jpg',
-            'time': '8th April 2020',
-            'messages': 'OSCAL announced today that thermal rugged phone, Bced today that thermal'
-        }, {
-            'img': '',
-            'time': '9th April 2020',
-            'messages': 'OSCAL announced today that thermal ruggeCAL announced today that thermal rugged phone, Bced today that thermal'
+            'messages': 'OSCAL was born with the mission of letting more people enjoy the smart life brought by the beauty of technology at a very friendly price.'
+        }],
+        '2018': [{
+            'img': '../static/img/brand_swiper2.jpg',
+            'time': '10th May 2018',
+            'messages': 'The R&D team was established. A new brand began to take shape.'
         }],
     }
     function AddYearList() {
