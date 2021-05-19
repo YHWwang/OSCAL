@@ -188,8 +188,25 @@ img {
     width: 100%;
     height: 100%;
 }
-.content-right .top_image img{
+.content-right .top_image div{
     margin-bottom: 16px;
+    position: relative;
+}
+.content-right .top_image span{
+    font-size: 18px;
+    color: #fff;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    background: rgba(0,0,0,0.22);
+    position: absolute;
+    bottom: 0;
+    padding: 0 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 .post-list{
     margin-top: 16px;

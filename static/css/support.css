@@ -391,6 +391,7 @@ img {
 .newsPagination .page-item.disabled .page-link,
 .newsPagination .page-item:last-child .page-link {
     background-color: transparent;
+    color: #000;
 }
 
 .newsPagination .page-link {

@@ -207,14 +207,13 @@ a {
 
 .menu_box .pc-header .menu ul li a {
     position: relative;
-
 }
 
 .menu_box .pc-header .menu ul li a::after {
     content: '';
     position: absolute;
     height: 2px;
-    width: 0px;
+    width: 0;
     background-color: transparent;
     bottom: -10px;
     left: 50%;
@@ -243,11 +242,6 @@ a {
     display: inline-block;
     /* min-width: 980px; */
     height: 237px;
-}
-
-.menu_box .menu ul li a:hover::after {
-    width: 100%;
-    background-color: white;
 }
 
 .nav-content {
@@ -375,7 +369,7 @@ a {
     padding-left: 20px;
 }
 
-.nav-content .content .show-box .lf-menu .main-menu li a:hover::after {
+.nav-content .content .show-box .lf-menu .main-menu li a:hover::after ,.menu_box .pc-header .menu ul li a:hover::after{
     width: 100%;
     background-color: black;
 }
