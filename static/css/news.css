@@ -166,7 +166,7 @@ img {
     font-family: MyriadPro Bold;
     text-align: center;
     padding-top: 5vw;
-    padding-bottom: 3vw;
+    padding-bottom: 1vw;
 }
 
 .mainContent .newsBox,
@@ -174,10 +174,11 @@ img {
     width: 80%;
     margin: 0 auto;
 }
-
+.mainContent .newsCon ul li{
+    padding: 3vw 0;
+}
 .mainContent .newsCon .content {
     font-size: 0;
-    margin-top: 2vw;
     position: relative;
     height: 350px;
     display: flex;
@@ -213,10 +214,12 @@ img {
     color: #000;
     font-size: 30px;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     line-height: 1.3;
-    padding: 1vw 0;
+    padding: 1vw 0 0 0;
 }
 
 .mainContent .newsCon .content .msg {
@@ -227,7 +230,7 @@ img {
     -webkit-box-orient: vertical;
     font-size: 18px;
     color: gray;
-    margin: 0 0 2vw 0;
+    margin: 1vw 0 2vw 0;
     line-height: 1.3;
 }
 
@@ -258,7 +261,10 @@ img {
     background-color: transparent;
     border-color: transparent;
 }
-
+.newsPagination .page-item.disabled .page-link{
+background: transparent;
+color: #000;
+}
 .newsPagination .page-link {
     background-color: transparent;
     border: none;
@@ -276,10 +282,6 @@ img {
 
 .newsPagination li:last-child {
     margin-left: 3vw;
-}
-
-.newsPagination svg {
-    vertical-align: auto;
 }
 
 .newsPagination li {
@@ -352,15 +354,21 @@ img {
     line-height: 1.3;
 
 }
+.newsContentBox .word .msg {
+    color: #000;
+}
 .newsContentBox .word .msg{
     text-align: left;
     margin: 1vw;
 }
 .newsContentBox .word .title ,.relatedNews .title{
     font-size: 48px;
-    line-height: 1;
+    line-height: 1.3;
     margin: 1vw 0 2vw;
     font-family: MyriadPro Bold;
+}
+.newsContentBox .word .title{
+    font-size: 38px;
 }
 .relatedNews{
     width: 70%;

@@ -252,7 +252,7 @@ img {
     margin-bottom: 10px;
     overflow: hidden;
     position: relative;
-    padding: 7vw 0 3vw;
+    padding: 3vw 0 7vw;
 }
 
 .mainContent .content .product_word ,.mainContent .four-content .product_word{
@@ -268,7 +268,7 @@ img {
 .mainContent .content .product_img ,.mainContent .four-content .product_img{
     position: relative;
     padding-top: 2vw;
-    width: 45%;
+    width: 40%;
     margin: 0 auto;
     text-align: center;
 }
@@ -293,16 +293,6 @@ img {
     font-family: GoogleSans;
 }
 
-.mainContent .content .product_word .tit p.lab_5g::after {
-    position: absolute;
-    content: '5G';
-    margin-left: 10px;
-    font-size: 20px;
-    border: 2px solid;
-    border-radius: 7px;
-    padding: 0 5px;
-}
-
 .mainContent .content .product_word .tit,.mainContent .four-content .product_word .tit {
     display: flex;
     align-items: center;
@@ -310,7 +300,7 @@ img {
 }
 
 .mainContent .content .product_word .msg {
-    font-size: 36px;
+    font-size: 32px;
     font-family: MyriadPro;
     margin-top: 15px;
     color: gray;
@@ -359,8 +349,8 @@ img {
 }
 
 .mainContent .two_Column ul li .four-content .product_word p.msg {
-    font-size: 26px;
-    margin-top: 18px;
+    font-size: 22px;
+    margin-top: 10px;
     font-family: MyriadPro;
     color: gray;
 }

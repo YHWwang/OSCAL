@@ -232,19 +232,22 @@ a {
     text-align: center;
     overflow: hidden;
     position: relative;
+    background-color: #242933;
+    font-size: 0;
+    padding-top: 70px;
 }
 
 
 .foot-list {
-    width: 100%;
-    min-width: 980px;
+    width: 70%;
+    display: inline-block;
+    /* min-width: 980px; */
     height: 237px;
-    padding: 0 80px;
 }
 
 .menu_box .menu ul li a:hover::after {
     width: 100%;
-    background-color: black;
+    background-color: white;
 }
 
 .nav-content {
@@ -277,25 +280,30 @@ a {
 .app-header {
     display: none;
 }
-.nav-content .menu_lab{
+
+.nav-content .menu_lab {
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
-.nav-content .menu_lab div{
-   margin: 0 1vw;
-   font-size: 16px;
-   cursor: pointer;
-   color: rgb(134, 134, 134);
+
+.nav-content .menu_lab div {
+    margin: 0 1vw;
+    font-size: 16px;
+    cursor: pointer;
+    color: rgb(134, 134, 134);
 }
-.nav-content .menu_lab div:hover{
+
+.nav-content .menu_lab div:hover {
     color: black;
 }
-.nav-content .menu_lab div.active{
+
+.nav-content .menu_lab div.active {
     color: black;
 }
+
 .nav-content .content .close-icon {
     position: absolute;
     right: 64px;
@@ -334,9 +342,11 @@ a {
     position: relative;
     transition: all 1s;
 }
-.nav-content .content .show-box .lf-menu .main-menu .child-menu a{
+
+.nav-content .content .show-box .lf-menu .main-menu .child-menu a {
     font-size: 26px;
 }
+
 .nav-content .content .show-box .lf-menu .main-menu li a::after {
     content: '';
     display: block;
@@ -351,10 +361,12 @@ a {
 .nav-content .content .show-box .lf-menu .main-menu li {
     margin-bottom: 80px;
 }
-.nav-content .content .show-box .lf-menu .main-menu .child-menu{
+
+.nav-content .content .show-box .lf-menu .main-menu .child-menu {
     margin-bottom: 30px;
     margin-top: 10px;
 }
+
 .nav-content .content .show-box .lf-menu li a:hover {
     color: #000;
 }
@@ -432,13 +444,15 @@ a {
     /* padding-bottom: 1%; */
     background-color: #F4F4F4;
 }
-.nav-content .content .show-box .rg-content .right_img{
+
+.nav-content .content .show-box .rg-content .right_img {
     position: absolute;
     width: 35%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
+
 .nav-content .content .show-box img {
     transition: all .8s;
 }
@@ -479,10 +493,12 @@ a {
 .nav-content .rg-content .item-title:hover {
     text-decoration: underline;
 }
-.nav-content .rg-content  .img-box .item-title{
+
+.nav-content .rg-content .img-box .item-title {
     text-align: center;
     margin-top: 20px;
 }
+
 .nav-content .rg-content .item-title {
     margin: 0;
     font-size: 16px;
@@ -493,28 +509,26 @@ a {
 }
 
 .foot-icon {
-    vertical-align: middle;
-    padding-top: 150px;
-    padding-bottom: 20px;
-    min-width: 200px;
-    width: 95%;
-    margin: 0 auto;
+    display: inline-block;
+    width: 30%;
+    height: 237px;
     position: relative;
-    border-bottom: 1px solid rgb(212, 212, 212);
 }
 
 .foot-list .ul_1 {
     font-size: 0px;
     text-align: left;
-    padding-top: 70px;
+    padding-left: 20%;
 }
 
 .foot-list .ul_1 .li_1 {
     display: inline-block;
     text-align: left;
-    width: 23%;
+    width: 33%;
+    max-width: 300px;
     vertical-align: top;
     font-family: MyriadPro Bold;
+    color: white;
 }
 
 .foot-list .ul_1 .li_1 .title {
@@ -527,17 +541,14 @@ a {
     font-size: 18px;
     padding-top: 10px;
     opacity: .8;
-    color: #333333;
 }
 
 .foot-list .ul_1 .li_1 ul li a {
-    opacity: .8;
-    color: #333333;
+    color: rgb(228, 228, 228);
 }
 
 .foot-list .ul_1 .li_1 ul li a:hover {
-    opacity: 1;
-    color: #000;
+    color: #fff;
 }
 
 .foot-icon ul li {
@@ -549,10 +560,11 @@ a {
 
 .global {
     position: absolute;
-    right: 3%;
-    color: rgba(0, 0, 0, 0.8);
+    right: 30%;
+    bottom: 35%;
+    color: rgb(228, 228, 228);
     margin: 0 auto;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 27px;
     height: 27px;
 }
@@ -570,7 +582,8 @@ a {
 .foot-container {
     text-align: center;
     font-size: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: white;
+    background-image: linear-gradient(to right, #9E3FDD,#9A41DE,#715CEB,#0CC1F4,#0BC2F4);
     padding: 38px 0 38px 0;
 }
 
@@ -591,14 +604,14 @@ a {
     top: 50%;
     transform: translateY(-50%);
     position: absolute;
-    background-color: gray;
+    background-color:white;
     width: 5px;
     height: 5px;
     border-radius: 50%;
 }
 
 .foot-container ul li a {
-    color: rgba(0, 0, 0, 0.8);
+    color: white;
 }
 
 .foot-container p {
@@ -613,24 +626,19 @@ a {
         width: 30px;
         height: 30px;
     }
+    .foot-list .ul_1 {
+        padding-left: 5%;
+    }
     .nav-content .content {
         padding: 0 20px 50px 20px;
-    }
-    .foot-list {
-        width: 100%;
-        min-width: auto;
-        height: 237px;
-        padding: 0 80px;
-    }
-    .foot-list .ul_1 .li_1 {
-        width: 23%;
     }
 }
 
 @media screen and (max-width: 800px) {
-    .nav-content{
+    .nav-content {
         display: none;
     }
+
     .pc-header {
         display: none;
     }
@@ -656,7 +664,7 @@ a {
         cursor: pointer;
     }
 
-    .app-header .menu-icon span{
+    .app-header .menu-icon span {
         display: block;
         position: absolute;
         content: '';
@@ -671,6 +679,7 @@ a {
         left: 0;
         background-color: #000;
     }
+
     .app-header .plus-icon {
         width: 20px;
         height: 20px;
@@ -681,6 +690,7 @@ a {
         right: 20px;
         cursor: pointer;
     }
+
     .app-header .menu-icon span:nth-child(2) {
         top: 6px;
     }
@@ -743,12 +753,16 @@ a {
         width: 100%;
         display: none;
     }
-    .app-header .menu .app-nav-content{
+
+    .app-header .menu .app-nav-content {
         display: none;
     }
-    .app-header .menu.active, .app-header .menu .app-nav-content.active{
+
+    .app-header .menu.active,
+    .app-header .menu .app-nav-content.active {
         display: block;
     }
+
     .menu_box .app-header .logo {
         position: absolute;
         top: 50%;
@@ -763,7 +777,7 @@ a {
         margin-left: 0;
     }
 
-    .menu_box .app-header .menu ul li:not(.item-box){
+    .menu_box .app-header .menu ul li:not(.item-box) {
         display: block;
         text-align: left;
         width: 100%;
@@ -773,20 +787,24 @@ a {
         line-height: 50px;
         border-bottom: 1px solid #ddd;
     }
+
     .menu_box .app-header .app-nav-content .rg-content {
         margin-top: -10px;
         overflow-y: hidden;
     }
-    .menu_box .app-header .app-nav-content .rg-content .item-box img{
+
+    .menu_box .app-header .app-nav-content .rg-content .item-box img {
         width: 100%;
     }
-    .menu_box .app-header .app-nav-content ul{
+
+    .menu_box .app-header .app-nav-content ul {
         display: flex;
         justify-content: center;
         align-items: center;
     }
+
     .menu_box .app-header .app-nav-content .item-box {
-    
+
         width: 200px;
         height: 200px;
 
