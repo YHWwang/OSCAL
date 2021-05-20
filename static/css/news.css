@@ -355,7 +355,7 @@ color: #000;
 
 }
 .newsContentBox .word .msg {
-    color: #000;
+    color: rgb(85, 85, 85);
 }
 .newsContentBox .word .msg{
     text-align: left;
@@ -429,6 +429,11 @@ color: #000;
     padding-bottom: 3vw;
     margin-top: -1vw;
     background-color: white;
+    transition: all .8s;
+}
+.relatedNews .box .bottom:hover{
+    box-shadow:5px 5px 5px 5px #dddddd;
+    margin-top: -10px;
 }
 .relatedNews .box .bottom .relatedNews_tit .other_news{
     float: right;

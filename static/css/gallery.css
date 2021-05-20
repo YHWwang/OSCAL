@@ -161,6 +161,7 @@ img {
 
 .galleryContent {
     position: relative;
+    background-color: black;
     padding-bottom: 4vw;
 }
 
