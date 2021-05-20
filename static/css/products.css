@@ -396,15 +396,18 @@ img {
 }
 
 .products-lists ul li {
-    width: 23%;
+    width: 24%;
     background-color: white;
     display: inline-block;
-    margin: 1vw 1%;
+    margin: 1vw .5%;
     height: auto;
     overflow: hidden;
     padding: 2vw 0;
 }
-
+.products-lists ul li .product-img{
+    width: 80%;
+    margin: 0 auto;
+}
 .products-lists ul li a img {
     display: none;
 }
@@ -457,6 +460,11 @@ img {
     font-size: 30px;
     height: auto;
     margin-top: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 1;
 }
 
 .products-lists ul li .buy {
@@ -503,6 +511,9 @@ img {
 }
 
 @media screen and (max-width:1200px)and (min-width:800px) {
+    .products-lists ul li .product-img{
+        width: 100%;
+    }
     .products-lists ul li .products-name {
         font-size: 3vw;
     }

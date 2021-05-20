@@ -11,7 +11,7 @@ $(function () {
   if (ImgWidth < 800) {
     // product_img_height.css('height',ImgWidth / .6)
   } else {
-    product_img_height.css('height', ImgWidth / 4.53)
+    product_img_height.css('height', ImgWidth / 5.5)
   }
 
   $(window).resize(function () {
@@ -19,7 +19,7 @@ $(function () {
     if (ImgWidth < 800) {
       // product_img_height.css('height',ImgWidth / .6)
     } else {
-      product_img_height.css('height', ImgWidth / 4.53)
+      product_img_height.css('height', ImgWidth / 5.5)
     }
   });
   var flag_sort = true
