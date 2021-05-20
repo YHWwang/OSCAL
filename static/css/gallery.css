@@ -164,6 +164,21 @@ img {
     padding-bottom: 4vw;
 }
 
+.galleryContent .topBanner {
+    position: relative;
+}
+
+.galleryContent .topBanner .tit {
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    font-family: MyriadPro Bold;
+    font-size: 48px;
+    color: #fff;
+    text-align: center;
+}
+
 .galleryContent .bottomGallery {
     font-size: 0;
     position: relative;
