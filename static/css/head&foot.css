@@ -634,7 +634,11 @@ a {
         padding: 0 20px 50px 20px;
     }
 }
-
+@media screen and (max-width:1000px){
+    .header_main{
+        width: 1000px;
+    }
+}
 @media screen and (max-width: 800px) {
     .nav-content {
         display: none;

@@ -1,17 +1,17 @@
 $(function () {
     var brandList = {
         '2021': [{
-            'img': '../static/img/brand_swiper.jpg',
+            'img': '/img/brand_swiper.jpg',
             'time': '10th May 2021',
             'messages': 'OSCAL launched Tab 9, packing incredible features. OSCAL launched the Tab 9, a budget tablet packing with a range of great features and exceptional quality to push the boundaries of affordable smart devices.'
         }],
         '2020': [{
-            'img': '../static/img/brand_swiper3.jpg',
+            'img': '/img/brand_swiper3.jpg',
             'time': '10th April 2020',
             'messages': 'OSCAL was born with the mission of letting more people enjoy the smart life brought by the beauty of technology at a very friendly price.'
         }],
         '2018': [{
-            'img': '../static/img/brand_swiper2.jpg',
+            'img': '/img/brand_swiper2.jpg',
             'time': '10th May 2018',
             'messages': 'The R&D team was established. A new brand began to take shape.'
         }],

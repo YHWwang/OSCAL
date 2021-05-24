@@ -1,25 +1,25 @@
 $(function () {
     var html = ''
     var data = [
-        {//Phones 手机
+        {//Phones �ֻ�
             name: 'OSCAL C20',
             url: '#',
-            img: ['../static/img/menu_pho1.jpg', '../static/img/menu_pho2.png']
+            img: ['/img/menu_pho1.jpg', '/img/menu_pho2.png']
         },
-        {//Laptops平板
+        {//Laptopsƽ��
             name: 'OSCAL Tab 9',
             url: '#',
-            img: ['../static/img/menu_Laptop1.jpg', '../static/img/menu_Laptop2.png'],
+            img: ['/img/menu_Laptop1.jpg', '/img/menu_Laptop2.png'],
         },
-        {//Tablets电脑
+        {//Tablets����
             name: 'OSCAL Acebook 1',
             url: '#',
-            img: ['../static/img/menu_Tablet1.jpg', '../static/img/menu_Tablet2.png']
+            img: ['/img/menu_Tablet1.jpg', '/img/menu_Tablet2.png']
         },
-          {//Accessories 配件
+          {//Accessories ���
             name: 'OSCAL Airbuds 3',
             url: '#',
-            img: ['../static/img/menu_air1.jpg', '../static/img/menu_air2.png']
+            img: ['/img/menu_air1.jpg', '/img/menu_air2.png']
         },
     ]
     function fillHtml(proName, index) {
@@ -27,7 +27,7 @@ $(function () {
             `
 <div class="lf-menu">
 <ul class="main-menu">
-<li><a href="./products.html?id=`+ proName + `" target="_self">All ` + proName + `</a></li>
+<li><a href="/products/`+ proName + `" target="_self">All ` + proName + `</a></li>
 <!-- <li class="child-menu"><a href="#" target="_self">S Series</a></li>
  <li class="child-menu"><a href="#" target="_self">C Series</a></li>
  -->

@@ -189,3 +189,9 @@
     }
 
 }
+
+@media screen and (max-width:1000px) {
+    .contact-us-box{
+        width: 1000px;
+    }
+}

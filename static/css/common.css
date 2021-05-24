@@ -270,7 +270,7 @@ img {
     align-items: center;
 }
 .mainContent .content .product_img.bigImg2{
-    width: 29%;
+    width: 35%;
 }
 .mainContent .content .pho_product_img {
     width: 22%;
@@ -432,9 +432,12 @@ img {
         font-size: 50px;
     }
 }
-
+@media screen and (max-width: 1000px) {
+    #AMain{
+        width: 1000px;
+    }
+}
 @media screen and (max-width: 800px) {
-
     .mainContent .content .product_word .tit img {
         width: 30%;
     }

@@ -516,6 +516,12 @@ img {
     }
 }
 
+@media screen and (max-width:1000px) {
+    #AMain{
+        width: 1000px;
+    }
+}
+
 @media screen and (max-width:1000px)and (min-width:800px) {
     .sup-ContentBox {
         width: 768px;

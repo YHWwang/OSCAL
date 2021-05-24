@@ -16,15 +16,20 @@ $(function () {
     }
   });
   
-  function GetQueryString(name) {
-    var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(regex);
-    if (r != null) return unescape(r[2]);
-    return null;
+  function GetQueryString() {
+    // var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    // var r = window.location.search.substr(1).match(regex);
+    // if (r != null) return unescape(r[2]);
+    // return null;
+    var arr =  window.location.href.split("/")
+    var len = arr.length
+    var params = arr[len-1];
+    var name = params.split("&")[1]
+    return name;
   }
   // console.log(GetQueryString("id"))
-  if (GetQueryString("id")) { //url传值
-    switch (GetQueryString("id")) {
+  if (GetQueryString()) { //url传值
+    switch (GetQueryString()) {
       case 'Phones': selectTab(0); break;
       case 'Laptops': selectTab(1); break;
       case 'Tablets': selectTab(2); break;

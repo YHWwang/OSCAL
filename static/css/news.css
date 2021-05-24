@@ -437,6 +437,12 @@ color: #000;
 
 @media screen and (max-width:1200px)and (min-width:1000px) {}
 
+@media screen and (max-width:1000px) {
+    #AMain{
+        width: 1000px;
+    }
+}
+
 @media screen and (max-width:1000px)and (min-width:800px) {
     .mainContent .newsBox, .mainContent .newsPagination {
         width: 96%;

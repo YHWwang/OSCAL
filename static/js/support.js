@@ -35,11 +35,11 @@ $(function () {
   })
   setTimeout(() => {
     $('.sup-ContentBox .leftBox .pro_type .pro_ul li').eq(0).click()
-  }, 10);
+}, 10);
   var faq_list = [
     `
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_1.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_1.png" alt="oscal">
   <p class="number">
       Shopping FAQs
   </p>
@@ -48,21 +48,21 @@ $(function () {
       </p>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=pho_1" target="_blank">
+  <a href="./faqs/faq.html&pho_1" target="_blank">
       <p>
           1.Do I still need to pay custom fee?
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=pho_2" target="_blank">
+  <a href="./faqs/faq.html&pho_2" target="_blank">
       <p>
           2.What is the version of items ?
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=pho_3" target="_blank">
+  <a href="./faqs/faq.html&pho_3" target="_blank">
       <p>
           3.How can I get other discounts?
       </p>
@@ -71,7 +71,7 @@ $(function () {
   `
     , `
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_1.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_1.png" alt="oscal">
   <p class="number">
       Shopping FAQs
   </p>
@@ -80,21 +80,21 @@ $(function () {
       </p>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=tab_1" target="_blank">
+  <a href="./faqs/faq.html&tab_1" target="_blank">
       <p>
           1.Touchpad gestures
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=tab_2" target="_blank">
+  <a href="./faqs/faq.html&tab_2" target="_blank">
       <p>
           2.Viewing the location of programs and apps downloaded from the Microsoft Store
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=tab_3" target="_blank">
+  <a href="./faqs/faq.html&tab_3" target="_blank">
       <p>
           3.Viewing the Windows system activation time
       </p>
@@ -102,7 +102,7 @@ $(function () {
   </li>
   `,`
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_1.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_1.png" alt="oscal">
   <p class="number">
       Shopping FAQs
   </p>
@@ -111,14 +111,14 @@ $(function () {
       </p>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=lap_1" target="_blank">
+  <a href="./faqs/faq.html&lap_1" target="_blank">
       <p>
       The tablet's battery drains quickly and has a short standby time
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=lap_2" target="_blank">
+  <a href="./faqs/faq.html&lap_2" target="_blank">
       <p>
       My tablet gets overheated
       </p>
@@ -126,7 +126,7 @@ $(function () {
   </li>
   `,`
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_1.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_1.png" alt="oscal">
   <p class="number">
       Shopping FAQs
   </p>
@@ -135,14 +135,14 @@ $(function () {
       </p>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=acc_1" target="_blank">
+  <a href="./faqs/faq.html&acc_1" target="_blank">
       <p>
       What is the weight of the AirBuds 3?
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html?id=acc_2" target="_blank">
+  <a href="./faqs/faq.html&acc_2" target="_blank">
       <p>
       How to charge AirBuds 3?
       </p>
@@ -153,7 +153,7 @@ $(function () {
   var preSale_list = [
     `
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_2.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_2.png" alt="oscal">
   <p class="number">
       Troubleshooting
   </p>
@@ -163,31 +163,31 @@ $(function () {
   
 </li>
 <li>
-  <a href="./faqs/faq.html?id=pho_4" target="_blank">
+  <a href="./faqs/faq.html&pho_4" target="_blank">
       <p>
          1.What to do if my phone gets heat?
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=pho_5" target="_blank">
+  <a href="./faqs/faq.html&pho_5" target="_blank">
       <p>
           2.How to solve the application error?
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=pho_6" target="_blank">
+  <a href="./faqs/faq.html&pho_6" target="_blank">
       <p>
           3.What's the difference between Doke OS and the original Android OS?
       </p>
   </a>
 </li>
-  `, 
-  '', 
-  `
+  `,
+    '',
+    `
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_2.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_2.png" alt="oscal">
   <p class="number">
       Troubleshooting
   </p>
@@ -197,14 +197,14 @@ $(function () {
   
 </li>
 <li>
-  <a href="./faqs/faq.html?id=lap_3" target="_blank">
+  <a href="./faqs/faq.html&lap_3" target="_blank">
       <p>
       1.My tablet is slow to respond when I surf the Internet
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=lap_4" target="_blank">
+  <a href="./faqs/faq.html&lap_4" target="_blank">
       <p>
       2.Find the serial number (SN) on tablets
       </p>
@@ -212,7 +212,7 @@ $(function () {
 </li>
   `,`
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_2.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_2.png" alt="oscal">
   <p class="number">
       Troubleshooting
   </p>
@@ -222,7 +222,7 @@ $(function () {
   
 </li>
 <li>
-  <a href="./faqs/faq.html?id=acc_3" target="_blank">
+  <a href="./faqs/faq.html&acc_3" target="_blank">
       <p>
       1.Do both the AirBuds 3 headphones and charging case have batteries?
       </p>
@@ -232,7 +232,7 @@ $(function () {
   var afterSale_list = [
     `
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_3.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_3.png" alt="oscal">
   <p class="number">
       OS FAQs
   </p>
@@ -242,21 +242,21 @@ $(function () {
       </p>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=pho_7" target="_blank">
+  <a href="./faqs/faq.html&pho_7" target="_blank">
       <p>
           1.Will it get stuck when running the OS?
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=pho_8" target="_blank">
+  <a href="./faqs/faq.html&pho_8" target="_blank">
       <p>
           2.What's the key features of the OS?
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=pho_9" target="_blank">
+  <a href="./faqs/faq.html&pho_9" target="_blank">
       <p>
           3.What to do if my voice cannot be heard when calling? 
       </p>
@@ -264,7 +264,7 @@ $(function () {
 </li>
   `, `
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_3.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_3.png" alt="oscal">
   <p class="number">
       OS FAQs
   </p>
@@ -277,21 +277,21 @@ $(function () {
  
 </li>
 <li>
-  <a href="./faqs/faq.html?id=tab_4" target="_blank">
+  <a href="./faqs/faq.html&tab_4" target="_blank">
       <p>
           1.Displaying or hiding the language bar on the home screen
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=tab_5" target="_blank">
+  <a href="./faqs/faq.html&tab_5" target="_blank">
       <p>
           2.Cleaning up a disk on the laptop
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=tab_6" target="_blank">
+  <a href="./faqs/faq.html&tab_6" target="_blank">
       <p>
           3.Care tips for you laptop
       </p>
@@ -299,7 +299,7 @@ $(function () {
 </li>
   `,`
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_3.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_3.png" alt="oscal">
   <p class="number">
       OS FAQs
   </p>
@@ -309,14 +309,14 @@ $(function () {
       </p>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=lap_5" target="_blank">
+  <a href="./faqs/faq.html&lap_5" target="_blank">
       <p>
       1.How to enable TalkBack/Screen Reader
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=lap_6" target="_blank">
+  <a href="./faqs/faq.html&lap_6" target="_blank">
       <p>
       2.How to reset a tablet to its factory settings
       </p>
@@ -324,7 +324,7 @@ $(function () {
 </li>
   `,`
   <li>
-  <img class="lazyload" data-src="../static/img/support_icon_3.png" alt="oscal">
+  <img class="lazyload" data-src="/img/support_icon_3.png" alt="oscal">
   <p class="number">
       OS FAQs
   </p>
@@ -334,7 +334,7 @@ $(function () {
       </p>
 </li>
 <li>
-  <a href="./faqs/faq.html?id=acc_4" target="_blank">
+  <a href="./faqs/faq.html&acc_4" target="_blank">
       <p>
       1.Working range of Bluetooth
       </p>
@@ -394,7 +394,6 @@ $(function () {
       tit: 'What’s the difference between Doke OS and the original Android OS?',
       msg: 'Doke OS is developed based on the Android OS and provides a more user-friendly interface with clear icons, a smarter control and smoother operation. '
     },
-
     {
       tit: 'Will it get stuck when running the OS?',
       msg: 'No. Our OS optimizes the interaction and brings a better operation experience to our users. '
@@ -421,9 +420,6 @@ $(function () {
 4.If the pointer does not swing when recording, and it can be tested on the charging and speakers. If there is no sound, it means the cable is loose and you can go to the local repair shop for repair. If all are no problem, you can go to the local shop to repair the microphone. If the speaker has no sound but the charging is no problem, you need to return it for analysis.
       `
     },
-
-
-
   ]
   var typeData_2 = [
     {
@@ -618,7 +614,7 @@ A factory reset will erase all data from the storage space of your device, inclu
       html += `
       <li>
                                 <h3>
-                                    <a href="./faqs/faq.html?id=${proname + '_' + (i + 1)}" target="_blank">
+                                    <a href="./faqs/faq.html&${proname + '_' + (i + 1)}" target="_blank">
                                         ${typeData[i].tit}
                                     </a>
                                 </h3>

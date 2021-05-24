@@ -230,22 +230,23 @@ A factory reset will erase all data from the storage space of your device, inclu
       This distance may vary according to the environment in which you use these devices. For example, there may be possible sources of wireless interference (such as microwave ovens) or physical obstacles (such as walls or human bodies), which affect the effective range of your Bluetooth.       `
     }
   }
-  if (GetQueryString("id")) { //url传值
+  if (GetQueryString()) { //url传值
     let html = ''
-    if (GetQueryString("id").includes('pho')) {
-      faqData = phoData
-    }
-    if (GetQueryString("id").includes('tab')) {
+  if (GetQueryString().includes('pho')) {
+    faqData = phoData
+  }
+  if (GetQueryString().includes('tab')) {
       faqData = tabData
     }
-    if (GetQueryString("id").includes('lap')) {
+    if (GetQueryString().includes('lap')) {
       faqData = lapData
     }
-    if (GetQueryString("id").includes('acc')) {
+    if (GetQueryString().includes('acc')) {
       faqData = accData
     }
+
     for (var key in faqData) {
-      if (key == GetQueryString("id")) {
+      if (key == GetQueryString()) {
         html = `
         <div class="BlogContent" style="width: 50%;min-height: 30vw;;margin: 0 auto;min-width: 8px;padding: 5vw 0 4vw 0;">
         <p class="tit" style="text-align: center;font-size: 24px; font-weight: bold;">
@@ -259,10 +260,15 @@ A factory reset will erase all data from the storage space of your device, inclu
       }
     }
   }
-  function GetQueryString(name) {
-    var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(regex);
-    if (r != null) return unescape(r[2]);
-    return null;
+  function GetQueryString() {
+    // var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    // var r = window.location.search.substr(1).match(regex);
+    // if (r != null) return unescape(r[2]);
+    // return null;
+    var arr =  window.location.href.split("/")
+    var len = arr.length
+    var params = arr[len-1];
+    var name = params.split("&")[1]
+    return name;
   }
 })

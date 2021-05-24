@@ -534,7 +534,10 @@ img {
     }
 }
 
-@media screen and (max-width:1000px)and (min-width:800px) {
+@media screen and (max-width:1000px) {
+    #AMain{
+        width: 1000px;
+    }
     .products-lists ul li .buy button {
         font-size: 14px;
     }

@@ -12,32 +12,32 @@
 
 <body class="en">
     <div class="footer_main" th:fragment="myFooter">
-      <div class="footerBox">
-        <link rel='stylesheet' type='text/css' href='../static/css/head&foot.css'>
+ 		<div class="footerBox">
+        <link rel='stylesheet' type='text/css' href='/css/head&foot.css'>
         <div class="foot-list">
             <ul class="ul_1">
                 <li class="li_1">
                     <p class="title">ABOUT OSCAL</p>
                     <ul>
-                        <li><a href="./brand.html" target="_self">About Us</a></li>
-                        <li><a href="./news.html" target="_self">News</a></li>
+                        <li><a href="/brand" target="_self">About Us</a></li>
+                        <li><a href="/news" target="_self">News</a></li>
                         <!-- <li><a href="#" target="_self">Blog</a></li> -->
                     </ul>
                 </li>
                 <li class="li_1">
                     <p class="title">PRODUCTS</p>
                     <ul>
-                        <li><a href="./products.html?id=Phones" target="_self">Phones</a></li>
-                        <li><a href="./products.html?id=Tablet" target="_self">Tablet</a></li>
-                        <li><a href="./products.html?id=Laptop" target="_self">Laptop</a></li>
-                        <li><a href="./products.html?id=Accessories" target="_self">Accessories</a></li>
+                        <li><a th:href="${'/products/'}+Phones"  target="_self">Phones</a></li>
+                        <li><a th:href="${'/products/'}+Tablets"  target="_self">Tablets</a></li>
+                        <li><a th:href="${'/products/'}+Laptops"  target="_self">Laptops</a></li>
+                        <li><a  th:href="${'/products/'}+Accessories" target="_self">Accessories</a></li>
                     </ul>
                 </li>
                 <li class="li_1">
                     <p class="title">SUPPORT</p>
                     <ul>
-                        <li><a href="./support.html" target="_self">Support Center</a></li>
-                        <li><a href="./contact.html" target="_self">Contact US</a></li>
+                        <li><a href="/support" target="_self">Support Center</a></li>
+                        <li><a href="/contact" target="_self">Contact US</a></li>
                     </ul>
                 </li>
             </ul>
@@ -53,19 +53,19 @@
             </div>
             <ul>
                 <li>
-                    <img class="big-img" src="../static/img/facebook.png" alt="facebook">
+                    <img class="big-img" src="/img/facebook.png" alt="facebook">
                 </li>
                 <li>
-                    <img class="big-img" src="../static/img/youtube.png" alt="youtube">
+                    <img class="big-img" src="/img/youtube.png" alt="youtube">
                 </li>
                 <li>
-                    <img class="big-img" src="../static/img/Instagram.png" alt="Instagram">
+                    <img class="big-img" src="/img/Instagram.png" alt="Instagram">
                 </li>
                 <li>
-                    <img class="big-img" src="../static/img/Twitter.png" alt="Twitter">
+                    <img class="big-img" src="/img/Twitter.png" alt="Twitter">
                 </li>
                 <li>
-                    <img class="big-img" src="../static/img/ins.png" alt="ins">
+                    <img class="big-img" src="/img/ins.png" alt="ins">
                 </li>
             </ul>
         </div>
