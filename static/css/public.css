@@ -1,5 +1,10 @@
 @charset "utf-8";
-
+@font-face {
+    font-family: Avenir;
+    src: url('../font/ProximaNova-Regular.woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /* -- reset -- */
 html,
 body,
@@ -114,30 +119,21 @@ h6 {
 
 /* -- reset end -- */
 
-@font-face {
-    font-family: MyriadPro;
-    src: url('../font/MyriadPro-Regular.otf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: MyriadPro Bold;
-    src: url('../font/MyriadPro-Bold.otf');
-    font-weight: bold;
-    font-style: normal;
-}
-
 /* header */
 .head_iframe{
     z-index: 1;
     width:100%;
     height:60px;
 }
-
+.mainContent{
+    font-family: Avenir;
+}
 a {
     text-decoration: none;
     color: #000;
+}
+.big-img {
+    width: 100%;
 }
 .head_svg{
     display: none;

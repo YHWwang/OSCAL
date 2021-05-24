@@ -1,26 +1,10 @@
 @charset "utf-8";
-
 @font-face {
-    font-family: MyriadPro;
-    src: url('../font/MyriadPro-Regular.otf');
+    font-family: Avenir;
+    src: url('../font/ProximaNova-Regular.woff');
     font-weight: normal;
     font-style: normal;
-
 }
-
-@font-face {
-    font-family: MyriadPro Bold;
-    src: url('../font/MyriadPro-Bold.otf');
-    font-weight: bold;
-    font-style: normal;
-}
-
-/* @font-face {
-    font-family: GoogleSans;
-    src: url('../font/GoogleSans-Medium.ttf');
-    font-weight: bold;
-    font-style: normal;
-} */
 
 /* -- reset -- */
 html,
@@ -140,7 +124,7 @@ h6 {
 
 
 html {
-    font-family: MyriadPro;
+    font-family: Avenir;
     font-size: 1rem;
 }
 
@@ -182,7 +166,7 @@ img {
 .watch_video .tit {
     color: white;
     font-size: 60px;
-    font-family: MyriadPro;
+    font-family: Avenir;
     font-weight: bold;
     margin-bottom: 2%;
 }
@@ -220,7 +204,7 @@ img {
 .mainContent .introduction .news_line .title {
     padding: 10vh 0 12vh 0;
     font-size: 36px;
-    font-family: MyriadPro Bold;
+    font-weight: bold;
     line-height: 1.3;
     position: relative;
 }
@@ -238,9 +222,10 @@ img {
 }
 
 .mainContent .introduction .word .msg {
-    font-size: 24px;
-    line-height: 1.3;
-    padding: 20px 0;
+    font-size: 22px;
+    line-height: 1.7;
+    opacity: .8;
+    padding: 30px 0;
 }
 
 .mainContent .introduction .word ul {
@@ -253,17 +238,17 @@ img {
 .mainContent .introduction .word ul li {
     width: 33.33%;
     display: inline-block;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 .mainContent .introduction .word ul li .p1 {
     font-size: 32px;
-    font-family: MyriadPro Bold;
+    font-weight: bold;
 }
 
 .mainContent .introduction .word ul li .p2 {
     font-size: 16px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 .mainContent .introduction .line-year {

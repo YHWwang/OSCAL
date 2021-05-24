@@ -1,11 +1,4 @@
 $(function () {
-
-  $('.productsBox .products-sort .products-tabs a').click(function () {
-    $(this).addClass('active').siblings().removeClass('active')
-  })
-  $('.productsBox .products-sort .products-filters .reset').click(function () {
-    $('.filters-cate li .cate-box span').removeClass('on')
-  })
   var ImgWidth = document.body.clientWidth
   var product_img_height = $('.product-img')
   if (ImgWidth < 800) {
@@ -22,8 +15,46 @@ $(function () {
       product_img_height.css('height', ImgWidth / 5.5)
     }
   });
+  
+  function GetQueryString(name) {
+    var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(regex);
+    if (r != null) return unescape(r[2]);
+    return null;
+  }
+  // console.log(GetQueryString("id"))
+  if (GetQueryString("id")) { //url传值
+    switch (GetQueryString("id")) {
+      case 'Phones': selectTab(0); break;
+      case 'Tablets': selectTab(1); break;
+      case 'Laptops': selectTab(2); break;
+      case 'Accessories': selectTab(3); break;
+    }
+  }
+  else {
+    selectTab(0)
+  }
+  function selectTab(index) {
+    $('.productsBox .products-sort .products-tabs .item-tags').eq(index).addClass('active')
+    $('.item-list').eq(index).addClass('active')
+  }
+  $('.productsBox .products-sort .products-tabs a').click(function () { //产品标签页导航
+    let ds = 0
+    $(this).addClass('active').siblings().removeClass('active')
+    switch ($(this).find('span').text()) {
+      case 'Phones': ds = 0; break;
+      case 'Tablets': ds = 1; break;
+      case 'Laptops': ds = 2; break;
+      case 'Accessories':  ds = 3; break;
+    }
+    $('.item-list').eq(ds).addClass('active').siblings().removeClass('active')
+  })
+  $('.productsBox .products-sort .products-filters .reset').click(function () {
+    $('.filters-cate li .cate-box span').removeClass('on')
+  })
+
   var flag_sort = true
-  $('.productsBox .products-sort .products-filters .filter-btn').click(function () {
+  $('.productsBox .products-sort .products-filters .filter-btn').click(function () { //筛选
     console.log($(this).find('.text').text())
     if (flag_sort) {
       $(this).find('.text').text('Colse')
@@ -40,7 +71,7 @@ $(function () {
     $(this).toggleClass('on')
   })
 
-  $('.products-lists ul li .product-color div').click(function () {
+  $('.products-lists ul li .product-color div').click(function () {//颜色切换
     $(this).addClass('on').siblings().removeClass('on')
     let index = $(this).index()
     let ds = $(this).parent().siblings('.product-img')

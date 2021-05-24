@@ -26,13 +26,16 @@
                     </div>
                     <div class="menu">
                         <ul>
-                            <li><a id="menu_href" href="#">Products</a></li>
-                            <li><a href="./brand.html">Brand</a></li>
-                            <li><a href="./news.html">News</a></li>
-                            <li><a href="./support.html">Support</a></li>
-                            <li><a href="./community.html">Community</a></li>
-                            <li><a href="#">OSCAL Store</a></li>
-                            <li><a href="./contact.html">Contact Us</a></li>
+                            <li><a class="menu_href mhref" onclick="switchProduct('Phones')" href="#" >Phones</a></li>
+                            <li><a class="menu_href mhref" onclick="switchProduct('Laptops')" href="#">Laptops</a></li>
+                            <li><a class="menu_href mhref" onclick="switchProduct('Tablets')" href="#" >Tablets</a></li>
+                            <li><a class="menu_href mhref" onclick="switchProduct('Accessories')" href="#">Accessories</a></li>
+                            <li><a class="mhref" href="./brand.html">Brand</a></li>
+                            <li><a class="mhref" href="./news.html">News</a></li>
+                            <li><a class="mhref" href="./support.html">Support</a></li>
+                            <!-- <li><a class="mhref" href="./community.html">Community</a></li> -->
+                            <!-- <li><a href="#">OSCAL Store</a></li> -->
+                            <li><a href="./contact_us.html">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -140,17 +143,7 @@
         </div>
         <div class="nav-content">
             <div class="menu_lab">
-                <div class="active" onclick="switchProduct('Phone')">
-                    <span>
-                        Phone
-                    </span>
-                </div>
-                <div onclick="switchProduct('Tablet')">
-                    <span>
-                        Tablet 
-                    </span>
-                </div>
-                <div onclick="switchProduct('Laptop')">
+                <!-- <div class="on" onclick="switchProduct('Laptop')">
                     <span>
                         Laptop
                     </span>
@@ -159,7 +152,7 @@
                     <span>
                         Accessories
                     </span>
-                </div>
+                </div> -->
             </div>
             <div class="content">
                 <div class="close-icon">
@@ -171,49 +164,6 @@
                     </svg>
                 </div>
                 <div class="show-box">
-                    <div class="lf-menu">
-                        <ul class="main-menu">
-                            <li><a href="./products.html" target="_self">All Phones</a></li>
-                            <!-- <li class="child-menu"><a href="#" target="_self">S Series</a></li>
-                            <li class="child-menu"><a href="#" target="_self">C Series</a></li> -->
-                        </ul>
-                    </div>
-                    <div class="rg-content">
-                        <div class="content-box">
-                            <ul class="lf-box area-box">
-                                <li class="box-lv1 item-box">
-                                    <div class="img-box">
-                                        <a href="#" target="_self">
-                                            <img class="item-img lazyload" data-src="../static/img/menu_pho1.jpg"
-                                                alt="Oscal">
-                                        </a>
-                                    </div>
-
-                                </li>
-                                <li class="box-lv1 item-box">
-                                    <a href="#" target="_self">
-                                        <div class="img-box right_img">
-                                            <img class="item-img lazyload" data-src="../static/img/menu_pho2.png"
-                                                alt="Oscal">
-                                            <p class="item-title">OSCAL C20</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- <ul class="rg-box area-box">
-                                <li class="box-lv3 item-box">
-                                    <a href="#" target="_self">
-                                        <div class="img-box">
-                                            <img class="item-img lazyload" data-src="../static/img/menu_other.jpg"
-                                                alt="HONOR 20e">
-                                            <p class="item-title">OSCAL C80</p>
-                                        </div>
-                                         <p class="item-title">OSCAL C80</p>
-                                    </a>
-                                </li>
-                            </ul> -->
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

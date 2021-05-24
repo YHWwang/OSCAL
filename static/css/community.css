@@ -1,26 +1,11 @@
 @charset "utf-8";
 
 @font-face {
-    font-family: MyriadPro;
-    src: url('../font/MyriadPro-Regular.otf');
+    font-family: Avenir;
+    src: url('../font/ProximaNova-Regular.woff');
     font-weight: normal;
     font-style: normal;
-
 }
-
-@font-face {
-    font-family: MyriadPro Bold;
-    src: url('../font/MyriadPro-Bold.otf');
-    font-weight: bold;
-    font-style: normal;
-}
-
-/* @font-face {
-    font-family: GoogleSans;
-    src: url('../font/GoogleSans-Medium.ttf');
-    font-weight: bold;
-    font-style: normal;
-} */
 
 /* -- reset -- */
 html,
@@ -138,7 +123,7 @@ h6 {
 /* -- reset end -- */
 
 .main {
-    font-family: MyriadPro;
+    font-family: Avenir;
     font-size: 1rem;
 }
 
@@ -149,10 +134,59 @@ h6 {
     margin-top: 60px;
     background-color: #F5F5F5;
 }
-.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+
+.col-lg-1,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-sm-1,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-xs-1,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9 {
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
+
 .big-img {
     width: 100%;
 }
@@ -160,11 +194,13 @@ h6 {
 img {
     -webkit-user-drag: none;
 }
-.mainContent{
+
+.mainContent {
     position: relative;
     height: auto;
     margin: 0 auto;
 }
+
 .communityBox {
     position: relative;
     width: 1200px;
@@ -172,33 +208,37 @@ img {
     background-color: #F5F5F5;
     overflow: hidden;
     margin: 0 auto;
-    padding:3vw 0;
+    padding: 3vw 0;
 }
 
 .communityBox .content-left {
     float: left;
     width: 816px;
 }
+
 .communityBox .content-right {
     float: right;
     width: 360px;
     margin-left: 24px;
 }
+
 .swiper-container {
     width: 100%;
     height: 100%;
 }
-.content-right .top_image div{
+
+.content-right .top_image div {
     margin-bottom: 16px;
     position: relative;
 }
-.content-right .top_image span{
+
+.content-right .top_image span {
     font-size: 18px;
     color: #fff;
     width: 100%;
     height: 35px;
     line-height: 35px;
-    background: rgba(0,0,0,0.22);
+    background: rgba(0, 0, 0, 0.22);
     position: absolute;
     bottom: 0;
     padding: 0 13px;
@@ -208,22 +248,25 @@ img {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
 }
-.post-list{
+
+.post-list {
     margin-top: 16px;
     background-color: #fff;
 }
 
-.post-list li{
+.post-list li {
     padding: 1.5vw 0;
     position: relative;
     margin-left: 1.5vw;
     margin-right: 1.5vw;
     border-bottom: 1px solid #eee;
 }
-.post-list li:last-child{
+
+.post-list li:last-child {
     border: none;
 }
-.post-list li .news{
+
+.post-list li .news {
     min-width: 74px;
     height: 30px;
     border: 0;
@@ -235,20 +278,24 @@ img {
     border: 1px solid #000;
     border-radius: 0;
 }
-.post-list li .post-main{
+
+.post-list li .post-main {
     width: 100%;
     height: auto;
     overflow: hidden;
 }
-.post-list li .post-main .right{
+
+.post-list li .post-main .right {
     width: 230px;
     float: right;
 }
-.post-list li .post-main .left{
+
+.post-list li .post-main .left {
     width: calc(100% - 275px);
     float: left;
 }
-.post-list li .post-main .left .tit a{
+
+.post-list li .post-main .left .tit a {
     font-size: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -260,7 +307,8 @@ img {
     margin: 15px 0;
     font-weight: bold;
 }
-.post-list li .post-main .left .msg a{
+
+.post-list li .post-main .left .msg a {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -271,12 +319,14 @@ img {
     letter-spacing: 0;
     line-height: 1.3;
 }
-.post-list li .user-info{
+
+.post-list li .user-info {
     width: 100%;
     font-size: 0;
     height: auto;
     overflow: hidden;
 }
+
 .post-list li .user-info .user-left {
     display: flex;
     height: 40px;
@@ -284,6 +334,7 @@ img {
     align-items: center;
     float: left;
 }
+
 .post-list li .user-info .user-right {
     float: right;
     width: 36%;
@@ -294,31 +345,36 @@ img {
     color: #9d9d9d;
     letter-spacing: 0;
 }
-.post-list li .user-info .user-left div{
+
+.post-list li .user-info .user-left div {
     padding-left: 12px;
 }
-.post-list li .user-info .user-left .name{
+
+.post-list li .user-info .user-left .name {
     font-size: 14px;
     color: #242728;
     line-height: 20px;
 }
-.post-list li .user-info .user-left .time{
+
+.post-list li .user-info .user-left .time {
     font-size: 12px;
     color: #9d9d9d;
     line-height: 20px;
 }
-.post-list li .user-info .user-left .name span{
+
+.post-list li .user-info .user-left .name span {
     font-size: 12px;
     color: #9d9d9d;
     margin-left: 8px;
 }
 
-.post-list li .user-info .user-left img{
+.post-list li .user-info .user-left img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
-.post-list li .user-info .user-right>span{
+
+.post-list li .user-info .user-right>span {
     margin-left: 40px;
     height: 20px;
     line-height: 20px;
@@ -328,18 +384,23 @@ img {
     text-overflow: ellipsis;
     vertical-align: middle;
 }
-.post-list li .user-info .user-right svg{
-   margin-bottom: 2px;
+
+.post-list li .user-info .user-right svg {
+    margin-bottom: 2px;
 }
-.post-list li .user-info .user-right .browse_num,.post-list li .user-info .user-right .reply_num{
+
+.post-list li .user-info .user-right .browse_num,
+.post-list li .user-info .user-right .reply_num {
     margin-left: 5px;
 }
 
-.post-list li .post-main .left .tit a:hover,.post-list li .post-main .left .msg a:hover,.content-right .hot_post .post_list .post_tit a:hover{
+.post-list li .post-main .left .tit a:hover,
+.post-list li .post-main .left .msg a:hover,
+.content-right .hot_post .post_list .post_tit a:hover {
     color: #00a5ee !important;
 }
 
-.content-left .ViewMore{
+.content-left .ViewMore {
     width: 100%;
     height: 60px;
     background: #ebeced;
@@ -348,21 +409,25 @@ img {
     line-height: 60px;
     margin-top: 24px;
 }
-.content-left .ViewMore:hover{
+
+.content-left .ViewMore:hover {
     background: #00B1FF;
     color: white;
 }
-.content-right .createPost{
+
+.content-right .createPost {
     margin-bottom: 24px;
 }
-.content-right .createPost a span{
+
+.content-right .createPost a span {
     margin-left: 15px;
     max-width: 200px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.content-right .createPost a{
+
+.content-right .createPost a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -379,12 +444,16 @@ img {
     border-radius: 35px;
     text-align: center;
 }
-.content-right .check_day,.content-right .hot_sections,.content-right .hot_post {
+
+.content-right .check_day,
+.content-right .hot_sections,
+.content-right .hot_post {
     width: 100%;
     margin-top: 0;
     margin-bottom: 24px;
     background: #fff;
 }
+
 .content-right .check_day .yeat_month {
     display: block;
     height: 60px;
@@ -396,22 +465,26 @@ img {
     letter-spacing: 0;
     border-bottom: 1px solid #eee;
 }
+
 .content-right .check_day .day {
     text-align: center;
     position: relative;
     width: 100%;
 }
-.content-right .check_day .day .date{
+
+.content-right .check_day .day .date {
     font-size: 28px;
-    font-family: MyriadPro Bold;
+    font-weight: bold;
     line-height: 1;
     padding-top: 25px;
 }
-.content-right .check_day .day .week{
+
+.content-right .check_day .day .week {
     font-size: 24px;
     line-height: 1.3;
 }
-.content-right .check_day .day .check_login{
+
+.content-right .check_day .day .check_login {
     margin-top: 20px;
     border: 1px solid #000;
     border-radius: 24px;
@@ -423,59 +496,72 @@ img {
     background: #fff;
     cursor: pointer;
 }
-.content-right .check_day .day .check_num{
+
+.content-right .check_day .day .check_num {
     font-size: 14px;
     color: #777474;
     letter-spacing: 0;
     margin-top: 13px;
     padding-bottom: 10px;
 }
-.content-right .hot_sections .top_box,.content-right .hot_post .top_tit{
+
+.content-right .hot_sections .top_box,
+.content-right .hot_post .top_tit {
     position: relative;
     padding: 1vw;
     width: 100%;
     border-bottom: 1px solid #eee;
 }
-.content-right .hot_sections .top_box .tit,.content-right .hot_post .top_tit .tit{
+
+.content-right .hot_sections .top_box .tit,
+.content-right .hot_post .top_tit .tit {
     font-size: 20px;
     vertical-align: middle;
-    font-family: MyriadPro Bold;
- }
- .content-right .hot_sections .top_box .tit img{
-     margin-right: 5px;
-     margin-bottom: 3px;
- }
-.content-right .hot_sections .top_box .more{
-   float: right;
+    font-weight: bold;
 }
-.content-right .hot_sections .top_box .more a{
+
+.content-right .hot_sections .top_box .tit img {
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+.content-right .hot_sections .top_box .more {
+    float: right;
+}
+
+.content-right .hot_sections .top_box .more a {
     color: #000;
 }
-.content-right .hot_sections .bottom_box ul{
+
+.content-right .hot_sections .bottom_box ul {
     font-size: 0;
     margin-bottom: 0;
     position: relative;
 }
-.content-right .hot_sections .bottom_box ul li{
-   width: 25%;
-   margin-bottom: 1vw;
-   text-align: center;
-   display: inline-block;
+
+.content-right .hot_sections .bottom_box ul li {
+    width: 25%;
+    margin-bottom: 1vw;
+    text-align: center;
+    display: inline-block;
 }
-.content-right .hot_sections .bottom_box ul li img{
+
+.content-right .hot_sections .bottom_box ul li img {
     width: 60px;
     height: 60px;
 }
-.content-right .hot_sections .bottom_box{
+
+.content-right .hot_sections .bottom_box {
     padding: 1vw;
 }
-.content-right .hot_sections .bottom_box ul li p{
+
+.content-right .hot_sections .bottom_box ul li p {
     font-size: 12px;
     color: #333;
     letter-spacing: 0;
     display: block;
     margin-top: 10px;
-    width:90%;
+    width: 90%;
     margin: 0 auto;
     white-space: nowrap;
     overflow: hidden;
@@ -483,18 +569,21 @@ img {
     text-align: center;
 }
 
-.content-right .hot_post .top_tit img{
+.content-right .hot_post .top_tit img {
     margin-right: 5px;
     margin-bottom: 5px;
 }
-.content-right .hot_post .post_list{
+
+.content-right .hot_post .post_list {
     margin: 0 1vw;
     position: relative;
 }
-.content-right .hot_post .post_list li{
+
+.content-right .hot_post .post_list li {
     padding: 1.5vw 0;
     border-bottom: 1px solid #eee;
 }
+
 .content-right .hot_post .post_list .post_tit {
     font-size: 14px;
     display: block;
@@ -506,9 +595,11 @@ img {
     -webkit-box-orient: vertical;
     letter-spacing: 0;
 }
-.content-right .hot_post .post_list .post_tit a{
+
+.content-right .hot_post .post_list .post_tit a {
     color: #000;
 }
+
 .content-right .hot_post .post_list .user_name {
     font-size: 16px;
     color: #9f9f9f;
@@ -520,6 +611,7 @@ img {
     text-overflow: ellipsis;
     width: 160px;
 }
+
 .content-right .hot_post .post_list .post_num {
     text-align: right;
     float: right;
@@ -530,7 +622,8 @@ img {
     line-height: 18px;
 }
 
-.content-right .hot_post .post_list .post_num .browse_num,.content-right .hot_post .post_list .post_num .reply_num{
+.content-right .hot_post .post_list .post_num .browse_num,
+.content-right .hot_post .post_list .post_num .reply_num {
     margin-left: 5px;
     display: inline-block;
     width: 40px;
@@ -539,21 +632,24 @@ img {
     text-overflow: ellipsis;
     vertical-align: middle;
 }
- .community_bottom{
+
+.community_bottom {
     position: relative;
     background-color: white;
     width: 100%;
     margin: 0 auto;
     text-align: center;
 }
-.community_bottom .box{
+
+.community_bottom .box {
     width: 1000px;
     margin: 0 auto;
     padding: 5vw 0;
     font-size: 0;
     position: relative;
 }
-.community_bottom .box ul li{
+
+.community_bottom .box ul li {
     width: 25%;
     display: inline-block;
     font-size: 16px;
@@ -563,7 +659,8 @@ img {
     line-height: 30px;
     line-height: 1;
 }
-.community_bottom .box ul li .tit{
+
+.community_bottom .box ul li .tit {
     font-size: 34px;
     margin-bottom: 5px;
     text-transform: uppercase;

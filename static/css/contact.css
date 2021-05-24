@@ -1,19 +1,11 @@
 @charset "utf-8";
-
 @font-face {
-    font-family: MyriadPro;
-    src: url('../font/MyriadPro-Regular.otf');
+    font-family: Avenir;
+    src: url('../font/ProximaNova-Regular.woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
-@font-face {
-    font-family: MyriadPro Bold;
-    src: url('../font/MyriadPro-Bold.otf');
-    font-weight: bold;
-    font-style: normal;
-}
 
 /* @font-face {
     font-family: GoogleSans;
@@ -138,7 +130,7 @@ h6 {
 /* -- reset end -- */
 
 .main {
-    font-family: MyriadPro;
+    font-family: Avenir;
     font-size: 1rem;
 }
 
@@ -174,7 +166,7 @@ img {
 
 .mainContent .contactBox .tit {
     font-size: 36px;
-    font-family: MyriadPro Bold;
+    font-weight: bold;
     line-height: 1.3;
 }
 

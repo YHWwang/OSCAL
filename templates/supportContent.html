@@ -31,28 +31,28 @@
                             <span>-</span>
                         </p>
                         <ul class="pro_ul">
-                            <li>
+                            <li class="pro_li" onclick="ProductType('Phones')">
                                 <a href="#">
                                     <p class="">
-                                        Smart phone
+                                        Phones
                                     </p>
                                 </a>
                             </li>
-                            <li>
+                            <li class="pro_li" onclick="ProductType('Tablets')">
+                                <a href="#">
+                                    <p>
+                                        Tablets
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="pro_li" onclick="ProductType('Laptops')">
                                 <a href="#">
                                     <p>
                                         Laptops
                                     </p>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <p>
-                                        Pad
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
+                            <li class="pro_li" onclick="ProductType('Accessories')">
                                 <a href="#">
                                     <p>
                                         Accessories
@@ -61,27 +61,27 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="art_type">
+                    <div class="art_type" style="display: none;">
                         <p class="name">
                             Article type
                             <span>-</span>
                         </p>
                         <ul class="art_ul">
-                            <li>
+                            <li class="pro_li">
                                 <a href="#">
                                     <p class="">
                                         Usage Tips
                                     </p>
                                 </a>
                             </li>
-                            <li>
+                            <li class="pro_li">
                                 <a href="#">
                                     <p>
                                         FAQs
                                     </p>
                                 </a>
                             </li>
-                            <li>
+                            <li class="pro_li">
                                 <a href="#">
                                     <p>
                                         Software Download
@@ -93,81 +93,31 @@
                 </div>
                 <div class="rightBox">
                     <div class="problem_list">
-                        <ul>
-                            <li>
-                                <h3>
-                                    <a href="./supportContentPage.html" target="_blank">
-                                        Updates to System Apps in EMUI 9.1
-                                    </a>
-                                </h3>
-                                <p class="msg">
-                                    In EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance, In
-                                    EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance,
-                                </p>
-                            </li>
-                            <li>
-                                <h3>
-                                    <a href="./supportContentPage.html" target="_blank">
-                                        Updates to System Apps in EMUI 9.1
-                                    </a>
-                                </h3>
-                                <p class="msg">
-                                    In EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance, In
-                                    EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance,
-                                </p>
-                            </li>
-                            <li>
-                                <h3>
-                                    <a href="./supportContentPage.html" target="_blank">
-                                        Updates to System Apps in EMUI 9.1
-                                    </a>
-                                </h3>
-                                <p class="msg">
-                                    In EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance, In
-                                    EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance,
-                                </p>
-                            </li>
-                            <li>
-                                <h3>
-                                    <a href="./supportContentPage.html" target="_blank">
-                                        Updates to System Apps in EMUI 9.1
-                                    </a>
-                                </h3>
-                                <p class="msg">
-                                    In EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance, In
-                                    EMUI 9.1, the settings and layout of system apps have been further optimized for
-                                    your convenience.Update 1: Shortcuts & gestures In Settings > Smart assistance,
-                                </p>
-                            </li>
+                        <ul class="dataList">
                         </ul>
                         <div class="newsPagination">
                             <nav aria-label="Page navigation example">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
                                         <li class="page-item page-item-current prev disabled">
-                                            <a class="page-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                            <a class="page-link"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" fill="currentColor" class="bi bi-chevron-left"
+                                                    viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd"
                                                         d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
                                                 </svg></i></a>
                                         </li>
                                         <li class="page-item index active"><a class="page-link">1</a></li>
-                                        <li class="page-item index"><a class="page-link">2</a></li>
+                                        <!-- <li class="page-item index"><a class="page-link">2</a></li> -->
                                         <!-- <li class="page-item index"><a class="page-link">3</a></li>
                                         <li class="page-item index"><a class="page-link">4</a></li>
                                         <li class="page-item index"><a class="page-link">5</a></li>
                                         <li class="page-item index"><a class="page-link">6</a></li>
                                         <li class="page-item index"><a class="page-link">7</a></li> -->
                                         <li class="page-item page-item-current next">
-                                            <a class="page-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                            <a class="page-link"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" fill="currentColor" class="bi bi-chevron-right"
+                                                    viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd"
                                                         d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                                 </svg></a>

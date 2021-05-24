@@ -1,26 +1,10 @@
 @charset "utf-8";
-
 @font-face {
-    font-family: MyriadPro;
-    src: url('../font/MyriadPro-Regular.otf');
+    font-family: Avenir;
+    src: url('../font/ProximaNova-Regular.woff');
     font-weight: normal;
     font-style: normal;
-
 }
-
-@font-face {
-    font-family: MyriadPro Bold;
-    src: url('../font/MyriadPro-Bold.otf');
-    font-weight: bold;
-    font-style: normal;
-}
-
-/* @font-face {
-    font-family: GoogleSans;
-    src: url('../font/GoogleSans-Medium.ttf');
-    font-weight: bold;
-    font-style: normal;
-} */
 
 /* -- reset -- */
 html,
@@ -139,7 +123,7 @@ h6 {
 /* -- reset end -- */
 
 .main {
-    font-family: MyriadPro;
+    font-family: Avenir;
     font-size: 1rem;
 }
 
@@ -155,7 +139,12 @@ h6 {
 .big-img {
     width: 100%;
 }
-
+.products-lists ul li.item-list{
+    display: none;
+}
+.products-lists ul li.item-list.active{
+    display: block !important;
+}
 img {
     -webkit-user-drag: none;
 }
