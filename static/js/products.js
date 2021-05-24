@@ -26,8 +26,8 @@ $(function () {
   if (GetQueryString("id")) { //url传值
     switch (GetQueryString("id")) {
       case 'Phones': selectTab(0); break;
-      case 'Tablets': selectTab(1); break;
-      case 'Laptops': selectTab(2); break;
+      case 'Laptops': selectTab(1); break;
+      case 'Tablets': selectTab(2); break;
       case 'Accessories': selectTab(3); break;
     }
   }
@@ -43,8 +43,8 @@ $(function () {
     $(this).addClass('active').siblings().removeClass('active')
     switch ($(this).find('span').text()) {
       case 'Phones': ds = 0; break;
-      case 'Tablets': ds = 1; break;
-      case 'Laptops': ds = 2; break;
+      case 'Laptops': ds = 1; break;
+      case 'Tablets': ds = 2; break;
       case 'Accessories':  ds = 3; break;
     }
     $('.item-list').eq(ds).addClass('active').siblings().removeClass('active')

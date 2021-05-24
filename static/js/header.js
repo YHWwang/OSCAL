@@ -1,26 +1,25 @@
 $(function () {
     var html = ''
     var data = [
-        {//Phones
+        {//Phones 手机
             name: 'OSCAL C20',
             url: '#',
             img: ['../static/img/menu_pho1.jpg', '../static/img/menu_pho2.png']
         },
-        {//Accessories
+        {//Laptops平板
+            name: 'OSCAL Tab 9',
+            url: '#',
+            img: ['../static/img/menu_Laptop1.jpg', '../static/img/menu_Laptop2.png'],
+        },
+        {//Tablets电脑
+            name: 'OSCAL Acebook 1',
+            url: '#',
+            img: ['../static/img/menu_Tablet1.jpg', '../static/img/menu_Tablet2.png']
+        },
+          {//Accessories 配件
             name: 'OSCAL Airbuds 3',
             url: '#',
             img: ['../static/img/menu_air1.jpg', '../static/img/menu_air2.png']
-        },
-        {//Tablet
-            name: 'OSCAL Tab 9',
-            url: '#',
-            img: ['../static/img/menu_Tablet1.jpg', '../static/img/menu_Tablet2.png']
-
-        },
-        {//Laptop
-            name: 'OSCAL Acebook 1',
-            url: '#',
-            img: ['../static/img/menu_Laptop1.jpg', '../static/img/menu_Laptop2.png'],
         },
     ]
     function fillHtml(proName, index) {
@@ -65,9 +64,9 @@ $(function () {
     switchProduct = function (proName) {
         switch (proName) {
             case 'Phones': fillHtml(proName, 0); break;
-            case 'Accessories': fillHtml(proName, 1); break;
+            case 'Accessories': fillHtml(proName, 3); break;
             case 'Tablets': fillHtml(proName, 2); break;
-            case 'Laptops': fillHtml(proName, 3); break;
+            case 'Laptops': fillHtml(proName, 1); break;
         }
         if (proName == 'Phones' || proName == 'Tablet') {
             $('.nav-content .menu_lab div').addClass('active')
