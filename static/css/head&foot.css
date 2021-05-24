@@ -538,6 +538,7 @@ a {
 .foot-list .ul_1 .li_1 ul li {
     font-family: Avenir;
     font-size: 18px;
+    font-weight: normal;
     padding-top: 10px;
     opacity: .8;
 }

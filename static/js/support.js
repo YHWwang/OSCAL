@@ -80,21 +80,21 @@ $(function () {
       </p>
   </li>
   <li>
-  <a href="./faqs/faq.html&tab_1" target="_blank">
+  <a href="./faqs/faq.html&lap_1" target="_blank">
       <p>
           1.Touchpad gestures
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html&tab_2" target="_blank">
+  <a href="./faqs/faq.html&lap_2" target="_blank">
       <p>
           2.Viewing the location of programs and apps downloaded from the Microsoft Store
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html&tab_3" target="_blank">
+  <a href="./faqs/faq.html&lap_3" target="_blank">
       <p>
           3.Viewing the Windows system activation time
       </p>
@@ -111,14 +111,14 @@ $(function () {
       </p>
   </li>
   <li>
-  <a href="./faqs/faq.html&lap_1" target="_blank">
+  <a href="./faqs/faq.html&tab_1" target="_blank">
       <p>
       The tablet's battery drains quickly and has a short standby time
       </p>
   </a>
   </li>
   <li>
-  <a href="./faqs/faq.html&lap_2" target="_blank">
+  <a href="./faqs/faq.html&tab_2" target="_blank">
       <p>
       My tablet gets overheated
       </p>
@@ -197,14 +197,14 @@ $(function () {
   
 </li>
 <li>
-  <a href="./faqs/faq.html&lap_3" target="_blank">
+  <a href="./faqs/faq.html&tab_3" target="_blank">
       <p>
       1.My tablet is slow to respond when I surf the Internet
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html&lap_4" target="_blank">
+  <a href="./faqs/faq.html&tab_4" target="_blank">
       <p>
       2.Find the serial number (SN) on tablets
       </p>
@@ -277,21 +277,21 @@ $(function () {
  
 </li>
 <li>
-  <a href="./faqs/faq.html&tab_4" target="_blank">
+  <a href="./faqs/faq.html&lap_4" target="_blank">
       <p>
           1.Displaying or hiding the language bar on the home screen
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html&tab_5" target="_blank">
+  <a href="./faqs/faq.html&lap_5" target="_blank">
       <p>
           2.Cleaning up a disk on the laptop
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html&tab_6" target="_blank">
+  <a href="./faqs/faq.html&lap_6" target="_blank">
       <p>
           3.Care tips for you laptop
       </p>
@@ -309,14 +309,14 @@ $(function () {
       </p>
 </li>
 <li>
-  <a href="./faqs/faq.html&lap_5" target="_blank">
+  <a href="./faqs/faq.html&tab_5" target="_blank">
       <p>
       1.How to enable TalkBack/Screen Reader
       </p>
   </a>
 </li>
 <li>
-  <a href="./faqs/faq.html&lap_6" target="_blank">
+  <a href="./faqs/faq.html&tab_6" target="_blank">
       <p>
       2.How to reset a tablet to its factory settings
       </p>
@@ -347,8 +347,8 @@ $(function () {
     //0-phone,1-Tablets,2-Laptops,3-Accessories
     switch (selProName) {
       case 'Phones': index = 0; break;
-      case 'Tablets': index = 1; break;
-      case 'Laptops': index = 2; break;
+      case 'Laptops': index = 1; break;
+      case 'Tablets': index = 2; break;
       case 'Accessories': index = 3; break;
     }
     index == 1 ? $('.preSale-list').hide() : $('.preSale-list').show()
@@ -606,8 +606,8 @@ A factory reset will erase all data from the storage space of your device, inclu
     let proname = ''
     switch (name) {
       case 'Phones': { typeData = typeData_1; proname = 'pho' }; break;
-      case 'Tablets': { typeData = typeData_2; proname = 'tab' }; break;
-      case 'Laptops': { typeData = typeData_3; proname = 'lap' }; break;
+      case 'Laptops': { typeData = typeData_2; proname = 'lap' }; break;
+      case 'Tablets': { typeData = typeData_3; proname = 'tab' }; break;
       case 'Accessories': { typeData = typeData_4; proname = 'acc' }; break;
     }
     for (let i = 0; i < typeData.length; i++) {

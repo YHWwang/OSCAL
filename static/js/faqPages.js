@@ -1,7 +1,7 @@
 $(function () {
   var faqData = ''
-  var tabData = {
-    'tab_1': {
+  var lapData = {
+    'lap_1': {
       tit: 'Touchpad gestures',
       msg: `
       The keyboard touchpad supports gesture controls and works like a mouse for more convenient laptop operations.<br><br>
@@ -20,14 +20,14 @@ k.Slide to the left or right with three fingers: switch between apps<br><br>
 l.Tap with four fingers: open Action center
       `
     },
-    'tab_2': {
+    'lap_2': {
       tit: 'Viewing the Windows system activation time',
       msg: `
       In normal cases, the system is automatically activated when a new device is connected to the Internet. You can estimate the activation time of the system by using the time when the laptop is connected to the Internet for the first time.<br><br>
       After the laptop is activated, your activation information will be stored on the Microsoft activation server. You can also contact Microsoft, for example, calling their hotline, to confirm the activation time of your laptop system.  
       `
     },
-    'tab_3': {
+    'lap_3': {
       tit: 'Viewing the location of programs and apps downloaded from the Microsoft Store',
       msg: `
       Programs and apps downloaded from the Microsoft Store are installed in the following path by default: C:/Program Files/WindowsApps (Hidden items). To check hidden items, open This PC, click View and select Hidden items.<br><br>
@@ -35,7 +35,7 @@ l.Tap with four fingers: open Action center
       Double-click WindowsApps, go to Continue > security tab > Advanced > Change. Enter the current account name in the pop-up window and click OK.
       `
     },
-    'tab_4': {
+    'lap_4': {
       tit: 'Displaying or hiding the language bar on the home screen',
       msg: `
       By default, the language bar is enabled on your computer. You can see the language bar of the input method on the right corner of the taskbar.<br><br>
@@ -45,7 +45,7 @@ To hide the language bar, perform the following steps:<br><br>
 3.Select Use the desktop language bar when it's available. You can also deselect the option to display the language bar.
       `
     },
-    'tab_5': {
+    'lap_5': {
       tit: 'Cleaning up a disk on the laptop',
       msg: `
       1.Enter disk cleanup in the search box on the taskbar and select Disk Cleanup.<br><br>
@@ -55,13 +55,13 @@ To hide the language bar, perform the following steps:<br><br>
 3.Select the file you want to delete and select OK. In the displayed dialog box, select Delete Files.
       `
     },
-    'tab_6': {
+    'lap_6': {
       tit: 'Care tips for you laptop',
       msg: `
       Use a laptop cleaning brush and neutral, non-corrosive cleaner to clean the surface of your laptop. Prevent liquid from entering your laptop during cleaning.
       `
     },
-    'tab_7': {
+    'lap_7': {
       tit: 'Creating a partition',
       msg: `
       1.Press the Win and E keys at the same time to display the File Explorer.<br><br>
@@ -142,14 +142,14 @@ To hide the language bar, perform the following steps:<br><br>
       `
     }
   }
-  var lapData = {
-    'lap_1': {
+  var tabData = {
+    'tab_1': {
       tit: "The tablet's battery drains quickly and has a short standby time",
       msg: `
       msg:  from CN, the order price doesn't include custom tax fee. Different countries have different custom rules. After we hand your package to the shipping carrier, the carrier will adjust the declaration based on your local custom policies."
       `
     },
-    'lap_2': {
+    'tab_2': {
       tit: 'My tablet gets overheated',
       msg: `It is normal that your device heats up. The faster your tablet consumes power, the more heat it generates. It is recommended that you reduce your tablet's power consumption to prevent it from overheating.<br><br>
       Solution:<br><br>
@@ -164,7 +164,7 @@ To hide the language bar, perform the following steps:<br><br>
       5.It is recommended that you do not play music, videos, or games at a high volume for a long time.
       `
     },
-    'lap_3': {
+    'tab_3': {
       tit: 'My tablet is slow to respond when I surf the Internet',
       msg: `
       Please perform the steps below to troubleshoot:<br><br>
@@ -178,7 +178,7 @@ You can also reset the network settings and try again.<br><br>
 3.Clear background apps<br><br>
 If this issue occurs when a large number of apps are running in the background, close the apps that you are not using and try again.`
     },
-    'lap_4': {
+    'tab_4': {
       tit: 'Find the serial number (SN) on tablets',
       msg: `
       What is an SN?<br><br>
@@ -187,7 +187,7 @@ If this issue occurs when a large number of apps are running in the background, 
       Enter *#06# on the dialer and the SN will appear on your screen (applicable to the phones and tablets that support SIM cards).      
       `
     },
-    'lap_5': {
+    'tab_5': {
       tit: 'How to enable TalkBack/Screen Reader',
       msg: `
       What is TalkBack?<br><br>
@@ -198,7 +198,7 @@ If this issue occurs when a large number of apps are running in the background, 
       If Talkback or Screen Reader is not enabled on your device, your device does not support this function.
        `
     },
-    'lap_6': {
+    'tab_6': {
       tit: 'How to reset a tablet to its factory settings',
       msg: `
       Go to Settings >System > Reset options> Factory reset to erase all data.<br><br>
