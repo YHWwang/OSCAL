@@ -526,12 +526,12 @@ a {
     width: 33%;
     max-width: 300px;
     vertical-align: top;
-   font-weight: bold;
     color: white;
 }
 
 .foot-list .ul_1 .li_1 .title {
     font-size: 20px;
+    font-weight: bold;
     padding-bottom: 10px;
 }
 

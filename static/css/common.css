@@ -6,7 +6,12 @@
     font-weight: normal;
     font-style: normal;
 }
-
+@font-face {
+    font-family: googleSans;
+    src: url('../font/GOOGLESANS-MEDIUM.TTF');
+    font-weight: normal;
+    font-style: normal;
+}
 /* -- reset -- */
 html,
 body,
@@ -291,7 +296,7 @@ img {
     margin-left: 10px;
     position: relative;
     line-height: 1;
-    font-family: Avenir;
+    font-family: googleSans;
 }
 .mainContent .content .product_word .tit p sup{
     font-size: 14px;

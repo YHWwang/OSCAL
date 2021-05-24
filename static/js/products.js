@@ -23,8 +23,10 @@ $(function () {
     // return null;
     var arr =  window.location.href.split("/")
     var len = arr.length
-    var params = arr[len-1];
-    var name = params.split("&")[1]
+    var name = arr[len-1];
+    if(name == null || name == ''){
+      name = 'Phones'
+    }
     return name;
   }
   // console.log(GetQueryString("id"))

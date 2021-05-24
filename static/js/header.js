@@ -7,14 +7,15 @@ $(function () {
             img: ['/img/menu_pho1.jpg', '/img/menu_pho2.png']
         },
         {//Laptopsƽ��
-            name: 'OSCAL Tab 9',
-            url: '#',
-            img: ['/img/menu_Laptop1.jpg', '/img/menu_Laptop2.png'],
-        },
-        {//Tablets����
             name: 'OSCAL Acebook 1',
             url: '#',
-            img: ['/img/menu_Tablet1.jpg', '/img/menu_Tablet2.png']
+            img: ['/img/menu_Laptop1.jpg', '/img/menu_Laptop2.png']
+        },
+        {//Tablets����
+            name: 'OSCAL Tab 9',
+            url: '#',
+            img: ['/img/menu_Tablet1.jpg', '/img/menu_Tablet2.png'],
+           
         },
           {//Accessories ���
             name: 'OSCAL Airbuds 3',
