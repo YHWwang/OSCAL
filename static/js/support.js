@@ -113,14 +113,14 @@ $(function () {
   <li>
   <a href="./faqs/faq.html&tab_1" target="_blank">
       <p>
-      The tablet's battery drains quickly and has a short standby time
+      1.The tablet's battery drains quickly and has a short standby time
       </p>
   </a>
   </li>
   <li>
   <a href="./faqs/faq.html&tab_2" target="_blank">
       <p>
-      My tablet gets overheated
+      2.My tablet gets overheated
       </p>
   </a>
   </li>
@@ -137,14 +137,14 @@ $(function () {
   <li>
   <a href="./faqs/faq.html&acc_1" target="_blank">
       <p>
-      What is the weight of the AirBuds 3?
+      1.What is the weight of the AirBuds 3?
       </p>
   </a>
   </li>
   <li>
   <a href="./faqs/faq.html&acc_2" target="_blank">
       <p>
-      How to charge AirBuds 3?
+      2.How to charge AirBuds 3?
       </p>
   </a>
   </li>
