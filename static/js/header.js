@@ -15,9 +15,9 @@ $(function () {
             name: 'OSCAL Tab 9',
             url: '#',
             img: ['/img/menu_Tablet1.jpg', '/img/menu_Tablet2.png'],
-           
+
         },
-          {//Accessories ���
+        {//Accessories ���
             name: 'OSCAL Airbuds 3',
             url: '#',
             img: ['/img/menu_air1.jpg', '/img/menu_air2.png']
@@ -48,7 +48,7 @@ $(function () {
     </li>
     <li class="box-lv1 item-box">
         <a href="`+ data[index].url + `" target="_self">
-            <div class="img-box right_img ${proName == 'Phones' ? 'mobileImg' :''}">
+            <div class="img-box right_img ${proName == 'Phones' ? 'mobileImg' : ''}">
                 <img class="item-img lazyload" data-src="${data[index].img[1]}"
                     alt="Oscal">
                 <p class="item-title">${data[index].name}</p>
@@ -63,6 +63,7 @@ $(function () {
     }
     VideoWith()
     switchProduct = function (proName) {
+        $('body').css('overflow', 'hidden')
         switch (proName) {
             case 'Phones': fillHtml(proName, 0); break;
             case 'Accessories': fillHtml(proName, 3); break;
@@ -97,7 +98,9 @@ $(function () {
     })
 
     $('.close-icon').click(function () {
+        $('.menu_box .pc-header .menu ul li .mhref').removeClass('on')
         menuHide()
+        $('body').css('overflow', 'auto')
     })
 
 
