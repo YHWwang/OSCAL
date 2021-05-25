@@ -540,11 +540,11 @@ To hide the language bar, perform the following steps:
       Please perform the steps below to troubleshoot:
 1.Check the network conditions
 If this issue occurs when using an audio or video player, use a similar app and check whether the issue persists.
-If the issue does not occur again, the server of the app in question may not be responding promptly, or there may be an issue with the audio or video file itself. It is recommended that you switch to a lower image quality or sound quality, or update the app to the latest version and try again. If the issue persists, report the issue to the app's customer service.
-If all apps requiring an Internet connection fail to run smoothly, check whether your Mobile data network or Wi-Fi signal is sufficiently strong. If not, connect your device to a network with a stronger signal. Or alternatively, enable Airplane mode, wait for a short while and disable it, and then try again.
+*If the issue does not occur again, the server of the app in question may not be responding promptly, or there may be an issue with the audio or video file itself. It is recommended that you switch to a lower image quality or sound quality, or update the app to the latest version and try again. If the issue persists, report the issue to the app's customer service.
+*If all apps requiring an Internet connection fail to run smoothly, check whether your Mobile data network or Wi-Fi signal is sufficiently strong. If not, connect your device to a network with a stronger signal. Or alternatively, enable Airplane mode, wait for a short while and disable it, and then try again.
 You can also reset the network settings and try again.
 2.Clean up storage space
-If your device's RAM or storage space is insufficient, the app may freeze while being used. Go to System Manager((Via OTA to update) and clean your device's storage space.
+*If your device's RAM or storage space is insufficient, the app may freeze while being used. Go to System Manager((Via OTA to update) and clean your device's storage space.
 3.Clear background apps
 If this issue occurs when a large number of apps are running in the background, close the apps that you are not using and try again.`
     },
@@ -562,10 +562,10 @@ If this issue occurs when a large number of apps are running in the background, 
       msg: `
       What is TalkBack?
       TalkBack is an Android service that gives spoken feedback and notifications for users with visual impairments. With TalkBack enabled, your device will automatically read the content you touch, select, and activate. While TalkBack is enabled, you will be able to navigate across your device in a significantly different way from the regular mode.
-      The voice feedback provided by TalkBack is determined by the language engine pre-installed in the system. This means that voice feedback may not be available for all languages.
+      *The voice feedback provided by TalkBack is determined by the language engine pre-installed in the system. This means that voice feedback may not be available for all languages.
       Enable TalkBack
       Go to Settings > Accessibility, and enable TalkBack.
-      If Talkback or Screen Reader is not enabled on your device, your device does not support this function.
+      *If Talkback or Screen Reader is not enabled on your device, your device does not support this function.
        `
     },
     {
@@ -576,7 +576,7 @@ A factory reset will erase all data from the storage space of your device, inclu
 1.Your accounts
 2.App data and system settings
 3.Installed apps, music files, photos, and all files in the internal storage
-Make sure to back up your data before a factory reset.`
+*Make sure to back up your data before a factory reset.`
     },
   ]
   var typeData_4 = [
@@ -613,15 +613,15 @@ A factory reset will erase all data from the storage space of your device, inclu
     for (let i = 0; i < typeData.length; i++) {
       html += `
       <li>
-                                <h3>
-                                    <a href="./faqs/faq.html&${proname + '_' + (i + 1)}" target="_blank">
-                                        ${typeData[i].tit}
-                                    </a>
-                                </h3>
-                                <p class="msg">
-                                ${typeData[i].msg}
-                                </p>
-                            </li>
+          <h3>
+              <a href="./faqs/faq.html&${proname + '_' + (i + 1)}" target="_blank">
+                  ${typeData[i].tit}
+              </a>
+          </h3>
+          <p class="msg">
+          ${typeData[i].msg}
+          </p>
+      </li>
       `
     }
     $('.rightBox .problem_list .dataList').html(html)

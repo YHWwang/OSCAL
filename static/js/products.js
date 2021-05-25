@@ -1,6 +1,7 @@
 $(function () {
   var ImgWidth = document.body.clientWidth
   var product_img_height = $('.product-img')
+  var flag_sort = true
   if (ImgWidth < 800) {
     // product_img_height.css('height',ImgWidth / .6)
   } else {
@@ -15,22 +16,22 @@ $(function () {
       product_img_height.css('height', ImgWidth / 5.5)
     }
   });
-  
-  function GetQueryString() {
+
+  function GetQueryString() { //url传值
     // var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     // var r = window.location.search.substr(1).match(regex);
     // if (r != null) return unescape(r[2]);
     // return null;
-    var arr =  window.location.href.split("/")
+    var arr = window.location.href.split("/")
     var len = arr.length
-    var name = arr[len-1];
-    if(name == null || name == ''){
+    var name = arr[len - 1];
+    if (name == null || name == '') {
       name = 'Phones'
     }
     return name;
   }
   // console.log(GetQueryString("id"))
-  if (GetQueryString()) { //url传值
+  if (GetQueryString()) { 
     switch (GetQueryString()) {
       case 'Phones': selectTab(0); break;
       case 'Laptops': selectTab(1); break;
@@ -41,7 +42,7 @@ $(function () {
   else {
     selectTab(0)
   }
-  function selectTab(index) {
+  function selectTab(index) { // 根据url的值显示对于的产品块
     $('.productsBox .products-sort .products-tabs .item-tags').eq(index).addClass('active')
     $('.item-list').eq(index).addClass('active')
   }
@@ -52,15 +53,19 @@ $(function () {
       case 'Phones': ds = 0; break;
       case 'Laptops': ds = 1; break;
       case 'Tablets': ds = 2; break;
-      case 'Accessories':  ds = 3; break;
+      case 'Accessories': ds = 3; break;
     }
     $('.item-list').eq(ds).addClass('active').siblings().removeClass('active')
+    let that = $('.item-list.active .product-img')
+    imgLoad(that, function () {
+      that.removeClass('on')
+    })
   })
-  $('.productsBox .products-sort .products-filters .reset').click(function () {
+  $('.productsBox .products-sort .products-filters .reset').click(function () { //重置
     $('.filters-cate li .cate-box span').removeClass('on')
   })
 
-  var flag_sort = true
+  
   $('.productsBox .products-sort .products-filters .filter-btn').click(function () { //筛选
     console.log($(this).find('.text').text())
     if (flag_sort) {
@@ -74,11 +79,11 @@ $(function () {
     $('.productsBox .products-sort .products-filters .reset').toggle()
   })
 
-  $('.filters-cate li .cate-box span').click(function () {
+  $('.filters-cate li .cate-box span').click(function () { //选中与取消选中
     $(this).toggleClass('on')
   })
 
-  $('.products-lists ul li .product-color div').click(function () {//颜色切换
+  $('.products-lists ul li .product-color div').click(function () { //颜色切换
     $(this).addClass('on').siblings().removeClass('on')
     let index = $(this).index()
     let ds = $(this).parent().siblings('.product-img')
@@ -87,14 +92,14 @@ $(function () {
       ds.removeClass('on')
     })
   })
-  $('.products-lists ul li .product-img .on').each(function () {
+  $('.products-lists ul li .product-img .on').each(function () { // 图片未加载时显示加载中图片
     let that = $(this)
     imgLoad(that, function () {
       that.parent().parent().removeClass('on')
     })
   })
 
-  function imgLoad(img, callback) {
+  function imgLoad(img, callback) { // 判断图片是否加载
     var timer = setInterval(function () {
       var flag = true
       if (img.find('img.on').attr('data-src')) {

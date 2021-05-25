@@ -62,7 +62,7 @@ $(function () {
         $('.show-box').html(html)
     }
     VideoWith()
-    switchProduct = function (proName) {
+    switchProduct = function (proName) { // 显示对于的产品菜单块
         $('body').css('overflow', 'hidden')
         switch (proName) {
             case 'Phones': fillHtml(proName, 0); break;

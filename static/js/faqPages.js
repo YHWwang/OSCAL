@@ -170,11 +170,11 @@ To hide the language bar, perform the following steps:<br><br>
       Please perform the steps below to troubleshoot:<br><br>
 1.Check the network conditions<br><br>
 If this issue occurs when using an audio or video player, use a similar app and check whether the issue persists.<br><br>
-If the issue does not occur again, the server of the app in question may not be responding promptly, or there may be an issue with the audio or video file itself. It is recommended that you switch to a lower image quality or sound quality, or update the app to the latest version and try again. If the issue persists, report the issue to the app's customer service.<br><br>
-If all apps requiring an Internet connection fail to run smoothly, check whether your Mobile data network or Wi-Fi signal is sufficiently strong. If not, connect your device to a network with a stronger signal. Or alternatively, enable Airplane mode, wait for a short while and disable it, and then try again.<br><br>
+*If the issue does not occur again, the server of the app in question may not be responding promptly, or there may be an issue with the audio or video file itself. It is recommended that you switch to a lower image quality or sound quality, or update the app to the latest version and try again. If the issue persists, report the issue to the app's customer service.<br><br>
+*If all apps requiring an Internet connection fail to run smoothly, check whether your Mobile data network or Wi-Fi signal is sufficiently strong. If not, connect your device to a network with a stronger signal. Or alternatively, enable Airplane mode, wait for a short while and disable it, and then try again.<br><br>
 You can also reset the network settings and try again.<br><br>
 2.Clean up storage space<br><br>
-If your device's RAM or storage space is insufficient, the app may freeze while being used. Go to System Manager((Via OTA to update) and clean your device's storage space.<br><br>
+*If your device's RAM or storage space is insufficient, the app may freeze while being used. Go to System Manager((Via OTA to update) and clean your device's storage space.<br><br>
 3.Clear background apps<br><br>
 If this issue occurs when a large number of apps are running in the background, close the apps that you are not using and try again.`
     },
@@ -192,10 +192,10 @@ If this issue occurs when a large number of apps are running in the background, 
       msg: `
       What is TalkBack?<br><br>
       TalkBack is an Android service that gives spoken feedback and notifications for users with visual impairments. With TalkBack enabled, your device will automatically read the content you touch, select, and activate. While TalkBack is enabled, you will be able to navigate across your device in a significantly different way from the regular mode.<br><br>
-      The voice feedback provided by TalkBack is determined by the language engine pre-installed in the system. This means that voice feedback may not be available for all languages.<br><br>
+      *The voice feedback provided by TalkBack is determined by the language engine pre-installed in the system. This means that voice feedback may not be available for all languages.<br><br>
       Enable TalkBack<br><br>
       Go to Settings > Accessibility, and enable TalkBack.<br><br>
-      If Talkback or Screen Reader is not enabled on your device, your device does not support this function.
+      *If Talkback or Screen Reader is not enabled on your device, your device does not support this function.
        `
     },
     'tab_6': {
@@ -206,7 +206,7 @@ A factory reset will erase all data from the storage space of your device, inclu
 1.Your accounts<br><br>
 2.App data and system settings<br><br>
 3.Installed apps, music files, photos, and all files in the internal storage<br><br>
-Make sure to back up your data before a factory reset.`
+*Make sure to back up your data before a factory reset.`
     },
   }
   var accData = {
@@ -232,10 +232,10 @@ A factory reset will erase all data from the storage space of your device, inclu
   }
   if (GetQueryString()) { //url传值
     let html = ''
-  if (GetQueryString().includes('pho')) {
-    faqData = phoData
-  }
-  if (GetQueryString().includes('tab')) {
+    if (GetQueryString().includes('pho')) {
+      faqData = phoData
+    }
+    if (GetQueryString().includes('tab')) {
       faqData = tabData
     }
     if (GetQueryString().includes('lap')) {
@@ -265,9 +265,9 @@ A factory reset will erase all data from the storage space of your device, inclu
     // var r = window.location.search.substr(1).match(regex);
     // if (r != null) return unescape(r[2]);
     // return null;
-    var arr =  window.location.href.split("/")
+    var arr = window.location.href.split("/")
     var len = arr.length
-    var params = arr[len-1];
+    var params = arr[len - 1];
     var name = params.split("&")[1]
     return name;
   }
