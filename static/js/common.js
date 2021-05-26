@@ -17,8 +17,8 @@ $(function () {
     var scroll_1, scroll_2, scroll_3 = false
     var pro_scroll_1, pro_scroll_2, pro_scroll_3, pro_scroll_4, pro_scroll_5 = false
 
-    $('.watch_video .tit').addClass('show')
-    $('.watch_video .watch_vid').addClass('show')
+    $('.watch_video .tit').addClass('mainShow')
+    $('.watch_video .watch_vid').addClass('mainShow')
 
     $(window).scroll(function () {
         var winp = $(document).scrollTop();
@@ -85,9 +85,9 @@ $(function () {
     }
 
     function dom_fun(dom) {
-        dom.find('.tit').addClass('show')
-        dom.find('.msg').addClass('show')
-        dom.find('.buy_href').addClass('show')
+        dom.find('.tit').addClass('mainShow')
+        dom.find('.msg').addClass('mainShow')
+        dom.find('.buy_href').addClass('mainShow')
     }
 
     // let debounce_timer = null

@@ -172,7 +172,7 @@ img {
     width: 70%;
 }
 
-.show {
+.mainShow {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
@@ -200,7 +200,10 @@ img {
     height: 100vh;
     height: calc(var(--vh, 1vh)* 50);
 }
-
+.watch_video .modal-dialog {
+    max-width: 1000px;
+    margin: 1.75rem auto;
+}
 .watch_video .box1 {
     position: absolute;
     text-align: center;

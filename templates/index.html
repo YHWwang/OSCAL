@@ -18,6 +18,8 @@
     <link rel='stylesheet' type='text/css' href='css/common.css'>
     <link rel='stylesheet' type='text/css' href='css/public.css'>
     <link rel="stylesheet" type="text/css" href="lib/css/swiper.min.css">
+    <link rel='stylesheet' type='text/css' href="lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
     <script src="lib/js/jquery-3.3.1.min.js"></script>
     <script async
@@ -44,8 +46,23 @@
                    ONLY THE BRAVE
                 </p>
                 <p class="watch_vid delay-2">
-                    <a class="watch" href="#">Watch the video ></a>
+                    <a class="watch" href="javascript:viod(0)" data-toggle="modal" data-target="#exampleModal">Watch the video ></a>
                 </p>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Video</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <video controls autoplay style="width: 100%;" src="/img/video.mp4">
+                    </div>
+                  </div>
+                </div>
             </div>
             <img class="big-img lazyload" data-src="img/video_img.jpg">
         </div>
@@ -261,3 +278,4 @@
 <script src="js/common.js"></script>
 <script src="js/public.js"></script>
 <script src="lib/js/swiper.min.js"></script>
+<script async src="lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
