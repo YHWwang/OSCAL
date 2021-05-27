@@ -406,6 +406,7 @@ img {
     font-size: 1.5rem;
     text-align: left !important;
     bottom: 3vw !important;
+    padding-left: 5vw !important;
 }
 .swiper-pagination-total{
     color: gray !important;

@@ -19,7 +19,12 @@ $(function () {
 
     $('.watch_video .tit').addClass('mainShow')
     $('.watch_video .watch_vid').addClass('mainShow')
-
+    $('.watch_video .box1 .watch').click(function () {
+        $(this).parents('.box1').addClass('on')
+    })
+    $('#exampleModal').on('hidden.bs.modal', function (event) {
+        $('.watch_video .box1').removeClass('on')
+    })
     $(window).scroll(function () {
         var winp = $(document).scrollTop();
         if (flag && winp > $('.mainContent').offset().top - height / 2) { // 滚动大于产品盒子高度时开始执行移动效果

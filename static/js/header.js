@@ -12,7 +12,7 @@ $(function () {
             img: ['/img/menu_Laptop1.jpg', '/img/menu_Laptop2.png']
         },
         {//Tablets����
-            name: 'OSCAL Tab 9',
+            name: 'OSCAL Pad 8',
             url: '#',
             img: ['/img/menu_Tablet1.jpg', '/img/menu_Tablet2.png'],
 
@@ -63,7 +63,6 @@ $(function () {
     }
     VideoWith()
     switchProduct = function (proName) { // 显示对于的产品菜单块
-        $('body').css('overflow', 'hidden')
         switch (proName) {
             case 'Phones': fillHtml(proName, 0); break;
             case 'Accessories': fillHtml(proName, 3); break;
@@ -100,11 +99,7 @@ $(function () {
     $('.close-icon').click(function () {
         $('.menu_box .pc-header .menu ul li .mhref').removeClass('on')
         menuHide()
-        $('body').css('overflow', 'auto')
     })
-
-
-
 
     function menuHide() {
         $('.nav-content').removeClass('nav-menu-hide')

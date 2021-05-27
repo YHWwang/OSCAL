@@ -6,12 +6,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
 @font-face {
     font-family: googleSans;
     src: url('../font/GOOGLESANS-MEDIUM.TTF');
     font-weight: normal;
     font-style: normal;
 }
+
 /* -- reset -- */
 html,
 body,
@@ -200,15 +202,22 @@ img {
     height: 100vh;
     height: calc(var(--vh, 1vh)* 50);
 }
+
 .watch_video .modal-dialog {
     max-width: 1000px;
     margin: 1.75rem auto;
 }
+
 .watch_video .box1 {
     position: absolute;
     text-align: center;
     width: 100%;
     top: 30%;
+    z-index: 1;
+}
+
+.watch_video .box1.on {
+    z-index: auto;
 }
 
 .watch_video img {
@@ -270,16 +279,19 @@ img {
     margin: 0 auto;
     text-align: center;
 }
-.mainContent .content .product_img.bigImg{
+
+.mainContent .content .product_img.bigImg {
     width: 60%;
     min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.mainContent .content .product_img.bigImg2{
+
+.mainContent .content .product_img.bigImg2 {
     width: 35%;
 }
+
 .mainContent .content .pho_product_img {
     width: 25%;
 }
@@ -301,15 +313,18 @@ img {
     line-height: 1;
     font-family: googleSans;
 }
-.mainContent .content .product_word .tit p sup{
+
+.mainContent .content .product_word .tit p sup {
     font-size: 14px;
     border-radius: 10px;
     padding: 3px 8px;
     margin-left: 5px;
     line-height: 1;
+    vertical-align:revert;
     color: gray;
     border: 1px solid gray;
 }
+
 .mainContent .content .product_word .tit,
 .mainContent .four-content .product_word .tit {
     display: flex;
@@ -440,11 +455,13 @@ img {
         font-size: 50px;
     }
 }
+
 @media screen and (max-width: 1000px) {
-    #AMain{
+    #AMain {
         width: 1000px;
     }
 }
+
 @media screen and (max-width: 800px) {
     .mainContent .content .product_word .tit img {
         width: 30%;
