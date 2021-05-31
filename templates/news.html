@@ -10,11 +10,11 @@
     <title>OSCAL</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <link rel='stylesheet' type='text/css' href='css/news.css'>
-    <link rel='stylesheet' type='text/css' href='css/public.css'>
-    <link rel='stylesheet' type='text/css' href="lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' href='/css/news.css'>
+    <link rel='stylesheet' type='text/css' href='/css/public.css'>
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <script src="lib/js/jquery-3.3.1.min.js"></script>
+    <script src="/lib/js/jquery-3.3.1.min.js"></script>
     <script async
         src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
 </head>
@@ -35,16 +35,16 @@
     <div id="AMain" class="main">
         <div class="mainContent">
             <div class="newsBox">
-                <div class="newsCon">
-                    <p class="time_line">
-                        May 2021
+                <div class="newsCon" th:each="news:${newsList}">
+                    <p class="time_line" th:text="${news.news_month}+'  '+'2021'">
+                       <!-- May 2021-->
                     </p>
                     <ul>
                         <li>
-                            <a href="/news/20210519" target="_blank">
+                            <a  th:href="${'/newsDetail/'}+${news.id}" target="_blank">
                                 <div class="content">
                                     <div class="left">
-                                        <img class="big-img lazyload" data-src="img/news_20210514.jpg"
+                                        <img class="big-img lazyload" th:data-src="${news.news_img}"
                                             alt="oscal">
                                     </div>
                                     <div class="right">
@@ -54,10 +54,10 @@
                                         <p class="time">
                                             May 19,2021
                                         </p>
-                                        <p class="tit" title="Blackview kicks off a wider global expansion by launching a new OSCAL brand">
+                                        <p class="tit" title="Blackview kicks off a wider global expansion by launching a new OSCAL brand" th:text="${news.news_title}">
                                             Blackview kicks off a wider global expansion by launching a new OSCAL brand
                                         </p>
-                                        <p class="msg">
+                                        <p class="msg" th:text="${news.news_sim_des}">
                                             In a bigger step toward becoming a major global player, the world-known
                                             rugged phone brand Blackview has announced its new brand, OSCAL, to the
                                             world today. At the same time, the OSCAL official website is live where the
@@ -70,7 +70,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li>
+                     <!--   <li>
                             <a href="/newsContent" target="_blank">
                                 <div class="content">
                                     <div class="left">
@@ -98,10 +98,10 @@
                                     </div>
                                 </div>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
-                <div class="newsCon">
+               <!-- <div class="newsCon">
                     <p class="time_line">
                         APRIL 2021
                     </p>
@@ -179,7 +179,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div>-->
             </div>
             <div class="newsPagination">
                 <nav aria-label="Page navigation example">
@@ -224,6 +224,6 @@
 </body>
 
 </html>
-<script async src="lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
-<script src="js/news.js"></script>
-<script src="js/public.js"></script>
+<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="/js/news.js"></script>
+<script src="/js/public.js"></script>

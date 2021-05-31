@@ -32,14 +32,14 @@
                             <span>-</span>
                         </p>
                         <ul class="pro_ul">
-                            <li class="pro_li" onclick="ProductType('Phones')">
+                            <li class="pro_li" th:onclick="ProductType([[${prodcut.cate_name}]])" th:each="prodcut:${prodcutList}">
                                 <a href="#">
-                                    <p class="">
+                                    <p class="" th:text="${prodcut.cate_name}">
                                         Phones
                                     </p>
                                 </a>
                             </li>
-                            <li class="pro_li" onclick="ProductType('Tablets')">
+                        <!--    <li class="pro_li" onclick="ProductType('Tablets')">
                                 <a href="#">
                                     <p>
                                         Tablets
@@ -59,7 +59,7 @@
                                         Accessories
                                     </p>
                                 </a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                     <div class="art_type" style="display: none;">

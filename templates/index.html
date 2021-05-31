@@ -59,17 +59,18 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                        <video controls autoplay style="width: 100%;" src="/img/video.mp4">
+                        <video controls autoplay style="width: 100%;" th:src="${videoTopMap[top_video]}"/>
                     </div>
                   </div>
                 </div>
             </div>
             <video muted autoplay loop style="width: 100%;">
-                <source src="/img/video_img.mp4" type="video/mp4">
+               <!-- <source src="/img/video_img.mp4" type="video/mp4">-->
+                <source th:src="${videoTopMap[top_video]}" type="video/mp4" th:if="${videoTopMap!=null}">
              </video> 
         </div>
-        <div class="mainContent">
-            <div class="product_box">
+        <div class="mainContent" th:utext="${bannerDataMap}" th:if="${bannerDataMap!=null}">
+       <!--     <div class="product_box">
                 <div class="content content-item-1">
                     <div class="product_word">
                         <div class="box">
@@ -217,23 +218,24 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div>-->
             </div>
+        <!-- <div class="mainContent" th:utext="${bannerDataMap}" th:if="${bannerDataMap!=null}">-->
             <div class="banner">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+                        <div class="swiper-slide"  th:each="oscalMiddleImg:${bottomListMap}">
                             <div class="word">
-                                <p class="tit delay-1">SHOT ON OSCAL</p>
+                                <p class="tit delay-1" th:text="${oscalMiddleImg.middle_title}">SHOT ON OSCAL</p>
                                 <div class="more delay-3">
-                                    <a href="/gallery" target="_blank">
+                                    <a  th:href="${'/gallery/'}+${oscalMiddleImg.id}" target="_blank">
                                         <span>Explore More</span>
                                     </a>
                                 </div>
                             </div>
-                            <img class="big-img pho_image lazyload" data-src="img/banner_1.jpg" alt="OSCAL">
+                            <img class="big-img pho_image lazyload" th:data-src="${oscalMiddleImg.middle_img}" alt="OSCAL">
                         </div>
-                        <div class="swiper-slide">
+                        <!--<div class="swiper-slide">
                             <div class="word">
                                 <p class="tit delay-1">SHOT ON OSCAL</p>
                                 <div class="more delay-3">
@@ -254,7 +256,7 @@
                                 </div>
                             </div>
                             <img class="big-img pho_image lazyload" data-src="img/banner_3.jpg" alt="OSCAL">
-                        </div>
+                        </div>-->
                     </div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-prev"></div>

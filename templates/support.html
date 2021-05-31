@@ -51,11 +51,11 @@
                         updates, and more.
                     </p>
                     <ul class="pro-sort-ul">
-                        <li onclick="selectProSort('Phones')">
-                            <img class="big-img lazyload" data-src="/img/OSCAL-support_1.png" alt="Phones">
-                            <p>Phones</p>
+                        <li  th:onclick="selectProSort([[${prodcut.id}]])" th:each="prodcut:${prodcutList}">
+                            <img class="big-img lazyload" th:data-src="${prodcut.pic}" alt="Phones">
+                            <p th:text="${prodcut.cate_name}">Phones</p>
                         </li>
-                        <li onclick="selectProSort('Laptops')">
+                       <!-- <li onclick="selectProSort('Laptops')">
                             <img class="big-img lazyload" data-src="/img/OSCAL-support_2.png" alt="Laptops">
                             <p>Laptops</p>
                         </li>
@@ -66,7 +66,7 @@
                         <li onclick="selectProSort('Accessories')">
                             <img class="big-img lazyload" data-src="/img/OSCAL-support_4.png" alt="Accessories">
                             <p>Accessories</p>
-                        </li>
+                        </li>-->
                     </ul>
                     <div class="faq_box">
                         <div>

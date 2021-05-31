@@ -3,7 +3,7 @@ $(function () {
         '2021': [{
             'img': '/img/brand_swiper.jpg',
             'time': '10th May 2021',
-            'messages': 'OSCAL launched the C20, a budget smart phone packing with stylish appearance, Android 11 GO and a range of great features, to push the boundaries of affordable smart phones.'
+            'messages': 'OSCAL launched Tab 9, packing incredible features. OSCAL launched the Tab 9, a budget tablet packing with a range of great features and exceptional quality to push the boundaries of affordable smart devices.'
         }],
         '2020': [{
             'img': '/img/brand_swiper3.jpg',
