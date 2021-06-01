@@ -155,6 +155,27 @@ img {
     top: 8vw;
 }
 
+#rightdiv {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#rightdiv a {
+    color: #000;
+    text-decoration: none;
+}
+
+#rightdiv span {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+}
+
+#rightdiv span:hover {
+    color: gray;
+}
+
 .supportBox .bannerTop .word .tit {
     font-size: 40px;
     font-weight: bold;
@@ -412,92 +433,148 @@ img {
     text-align: center;
 }
 
-.newsPagination .page-item.disabled .page-link,
-.newsPagination .page-item:last-child .page-link {
-    background-color: transparent;
-    color: #000;
+.app-close,
+.app-icon {
+    display: none;
 }
 
-.newsPagination .page-link {
-    background-color: transparent;
-    border: none;
-    color: #000;
-}
-
-.newsPagination ul {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.newsPagination li:nth-child(1) {
-    margin-right: 3vw;
-}
-
-.newsPagination li:last-child {
-    margin-left: 3vw;
-}
-
-.newsPagination svg {
-    vertical-align: auto;
-}
-
-.newsPagination li {
-    display: inline-block;
-    margin: 0 4px;
-    padding: 1px;
-    width: 40px;
-    vertical-align: middle;
-    height: 40px;
-    font-family: Avenir;
-    position: relative;
-    line-height: 40px;
-    font-size: 20px;
-    border-radius: 100%;
-    cursor: pointer;
-}
-
-.newsPagination li.active:not(.newsPagination li:last-child) {
-    background: transparent;
-    border: 1px solid #000;
-}
-
-.newsPagination .page-item.active .page-link {
-    z-index: 3;
-    color: black;
-    font-weight: bold;
-    background-color: transparent;
-    top: 50%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-left: 0;
-    font-weight: bold;
-    padding: 0;
-    line-height: normal;
-}
-
-.newsPagination .page-link:hover {
-    background-color: transparent;
-    border-color: transparent;
-}
-
-.newsPagination .index a:hover {
-    text-decoration: none;
-}
-
-.newsPagination .icon-arr {
-    display: inline-block;
-    margin-left: 20px;
-    margin-right: 20px;
-    vertical-align: middle;
-    font-size: 40px;
-    overflow: hidden;
-    cursor: pointer;
+.mainContent .BlogContent {
+    width: 50%;
+    min-height: 30vw;
+    ;
+    margin: 0 auto;
+    min-width: 8px;
+    padding: 10vw 0 4vw 0;
 }
 
 /* end */
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+    .app-close {
+        display: block;
+    }
+
+    .supportBox .productBox .faq_box div {
+        width: 100%;
+        min-width: auto;
+        padding: 1vw;
+        text-align: center;
+    }
+
+    .supportBox .productBox .faq_box div .app-close {
+        text-align: right;
+    }
+
+    .supportBox .productBox .faq_box ul li p {
+        min-height: 30px;
+        height: auto;
+    }
+
+    .supportBox .productBox .faq_box {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .supportBox .productBox {
+        width: 98%;
+        min-width: auto;
+    }
+
+    .supportBox .productBox .faq_box ul li:nth-child(1) {
+        margin: 0;
+        padding: 30px 10px;
+        box-shadow: 1px 1px 3px 1px rgb(150 150 150);
+    }
+
+    .supportBox .productBox .faq_box ul li:nth-child(1) .msg {
+        height: 60px;
+    }
+
+    .supportBox .productBox .faq_box .more {
+        padding: 8vw 0;
+    }
+
+    .sup-ContentBox .leftBox .name span {
+        right: 0;
+    }
+
+    .app-icon {
+        display: block;
+        padding-bottom: 10px;
+    }
+
+    .sup-ContentBox .leftBox {
+        width: 160px;
+        position: fixed;
+        left: 0;
+        top: 60px;
+        padding: 10px;
+        background-color: white;
+        height: 100%;
+        transition: all .5s;
+        box-shadow: 1px 1px 1px rgb(226, 226, 226);
+        /* border-right: 1px solid rgb(230, 230, 230); */
+    }
+
+    .sup-ContentBox .rightBox {
+        width: auto;
+        padding: 2vw;
+        margin-left: 50px;
+    }
+
+    .sup-ContentBox .rightBox {
+        border-left: none;
+    }
+
+    .sup-ContentBox .leftBox.boxClose {
+        width: 50px;
+    }
+
+    .sup-ContentBox .leftBox.boxClose .pro_type {
+        opacity: 0;
+    }
+
+    .sup-ContentBox .leftBox .pro_type {
+        border-top: 1px solid gray;
+    }
+
+    .sup-ContentBox .leftBox p {
+        margin: 2vw 0;
+    }
+
+    .supportBox .productBox .faq_box ul {
+        width: 80%;
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 10vw;
+    }
+
+    .sup-ContentBox {
+        width: auto;
+    }
+
+    .mainContent .BlogContent {
+        width: 90%;
+    }
+
+    #rightdiv span {
+        display: inline-block;
+        padding: 5px 15px;
+        border: 1px solid #8b8b8b;
+        border-radius: 5px;
+    }
+
+    .sup-ContentBox .rightBox .problem_list li h3 {
+        font-size: 5.5vw;
+    }
+}
 
 @media screen and (max-width:1500px)and (min-width:1000px) {}
 
@@ -516,11 +593,7 @@ img {
     }
 }
 
-@media screen and (max-width:1000px) {
-    #AMain{
-        width: 1000px;
-    }
-}
+@media screen and (max-width:1000px) {}
 
 @media screen and (max-width:1000px)and (min-width:800px) {
     .sup-ContentBox {

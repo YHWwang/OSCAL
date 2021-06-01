@@ -248,7 +248,7 @@ A factory reset will erase all data from the storage space of your device, inclu
     for (var key in faqData) {
       if (key == GetQueryString()) {
         html = `
-        <div class="BlogContent" style="width: 50%;min-height: 30vw;;margin: 0 auto;min-width: 8px;padding: 10vw 0 4vw 0;">
+        <div class="BlogContent" style="">
         <p class="tit" style="text-align: center;font-size: 24px; font-weight: bold;">
            ${faqData[key].tit}
         </p>

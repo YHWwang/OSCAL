@@ -41,9 +41,7 @@
     padding: 0 20px;
 
 }
-.contact-right{
-    display: none;
-}
+
 .contact-left {
     /*border-right: 1px solid #000;*/
 }
@@ -191,7 +189,5 @@
 }
 
 @media screen and (max-width:1000px) {
-    .contact-us-box{
-        width: 1000px;
-    }
+ 
 }

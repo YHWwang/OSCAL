@@ -487,7 +487,26 @@ img {
 
 /* end */
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+    .products-lists ul li .products-name{
+        font-size: 5vw;
+    }
+    .productsBox .products-sort .products-tabs a {
+        margin-right: 0;
+        min-width: 125px;
+    }
+    .productsBox .products-sort .products-tabs a.active span {
+        padding: 0 10px;
+    }
+    .products-lists ul li {
+        width: 49%;
+    }
+    .productsBox .products-sort{
+        min-width: auto;
+        width: 96%;
+        margin: 0 auto;
+    }
+}
 
 @media screen and (max-width:1500px)and (min-width:1000px) {
     .products-lists ul li {
@@ -535,9 +554,6 @@ img {
 }
 
 @media screen and (max-width:1000px) {
-    #AMain{
-        width: 1000px;
-    }
     .products-lists ul li .buy button {
         font-size: 14px;
     }

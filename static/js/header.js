@@ -63,6 +63,7 @@ $(function () {
     }
     VideoWith()
     switchProduct = function (proName) { // 显示对于的产品菜单块
+        $('body').css('overflow', 'hidden')
         switch (proName) {
             case 'Phones': fillHtml(proName, 0); break;
             case 'Accessories': fillHtml(proName, 3); break;
@@ -83,9 +84,24 @@ $(function () {
         $(this).toggleClass('clicked')
         $('.app-header .menu').toggleClass('active')
     })
-    $('.menu_box .app-header .menu ul li.has-child').click(function () {
-        $('.app-header .plus-icon').toggleClass('clicked')
-        $('.app-header .menu .app-nav-content').toggleClass('active')
+    $('.menu_box .app-header .menu ul li.has-child').click(function () { //移动端点击产品的显示与隐藏
+        if ($('.app-header .has-child .plus-icon').hasClass('clicked')) {
+            if (!$(this).find('.plus-icon').hasClass('clicked')) {
+                $('.app-header .has-child .plus-icon').removeClass('clicked')
+                $('.app-header .has-child .app-nav-content').removeClass('active')
+                $(this).find('.plus-icon').addClass('clicked')
+                $(this).find('.app-nav-content').addClass('active')
+
+            } else {
+                $('.app-header .has-child .plus-icon').removeClass('clicked')
+                $('.app-header .has-child .app-nav-content').removeClass('active')
+            }
+
+        } else {
+            $(this).find('.plus-icon').toggleClass('clicked')
+            $(this).find('.app-nav-content').toggleClass('active')
+        }
+
     })
     $('.nav-content .menu_lab div').click(function () {
         $(this).addClass('on').siblings().removeClass('on')
@@ -99,7 +115,11 @@ $(function () {
     $('.close-icon').click(function () {
         $('.menu_box .pc-header .menu ul li .mhref').removeClass('on')
         menuHide()
+        $('body').css('overflow', 'auto')
     })
+
+
+
 
     function menuHide() {
         $('.nav-content').removeClass('nav-menu-hide')

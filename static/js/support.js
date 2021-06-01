@@ -1,38 +1,4 @@
 $(function () {
-  let ds = $('.newsPagination .page-item')
-  let len = ds.length - 2
-  $('.page-item-current').click(function () {
-    if ($(this).hasClass('next')) { // next下一页
-      if ($('.newsPagination .page-item.active').text() == len) {
-        $(this).addClass('disabled')
-        return false
-      } else {
-        $(this).removeClass('disabled')
-      }
-      ds.eq(parseInt($('.newsPagination .page-item.active').text()) + 1).addClass('active').siblings().removeClass('active')
-    } else { // prev上一页
-      if ($('.newsPagination .page-item.active').text() == 1) {
-        $('.newsPagination li:nth-child(0)').addClass('disabled')
-        return false
-      } else {
-        $('.newsPagination li:nth-child(0)').removeClass('disabled')
-      }
-      ds.eq(parseInt($('.newsPagination .page-item.active').text()) - 1).addClass('active').siblings().removeClass('active')
-    }
-  })
-  $('.newsPagination li.index').click(function () { //点击跳转页码
-    $(this).addClass('active').siblings().removeClass('active')
-    if ($('.newsPagination .page-item.active').text() == len) {
-      $('.newsPagination li:nth-child(' + len + 2 + ')').addClass('disabled')
-    } else {
-      $('.newsPagination li:nth-child(' + len + 2 + ')').removeClass('disabled')
-    }
-    if ($('.newsPagination .page-item.active').text() == 1) {
-      $('.newsPagination li:nth-child(1)').addClass('disabled')
-    } else {
-      $('.newsPagination li:nth-child(1)').removeClass('disabled')
-    }
-  })
   setTimeout(() => {
     $('.sup-ContentBox .leftBox .pro_type .pro_ul li').eq(0).click()
 }, 10);
@@ -353,12 +319,23 @@ $(function () {
     //   case 'Accessories': index = 3; break;
     // }
     // index == 1 ? $('.preSale-list').hide() : $('.preSale-list').show()
-
+      if( document.body.offsetWidth <800){
+        $('.go-top').hide()
+        $('body').css('overflow', 'hidden')
+      }
     $('.faq-list').html(faq_list[index])
     $('.preSale-list').html(preSale_list[index])
     $('.afterSale-list').html(afterSale_list[index])
   }
 
+  $('.supportBox .productBox .faq_box div .app-close svg').click(function () {
+    $(this).parent().parents('.faq_box').toggle()
+     $('body').css('overflow', 'auto')
+    $('.go-top').show()
+  })
+  $('.app-icon svg').click(function(){
+    $(this).parents('.leftBox').toggleClass('boxClose')
+  })
 //   var typeData = []
 //   var typeData_1 = [
 //     {
@@ -605,6 +582,9 @@ $(function () {
   ProductType = function (name) {
     let html = ''
     let proname = ''
+    if( document.body.offsetWidth <800){
+     $('.sup-ContentBox .leftBox').addClass('boxClose')
+    }
     switch (name) {
       case 'Phones': { typeData ; proname = 'pho' }; break;
       case 'Laptops': { typeData ; proname = 'lap' }; break;
@@ -627,10 +607,6 @@ $(function () {
     }
     $('.rightBox .problem_list .dataList').html(html)
   }
-
-  $('.supportBox .productBox ul li').click(function () {
-    $('.supportBox .productBox .faq_box').show()
-  })
 
   $('.sup-ContentBox .pro_li').click(function () {
     $('.sup-ContentBox .pro_li').removeClass('active')

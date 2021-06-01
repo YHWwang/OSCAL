@@ -147,8 +147,8 @@ a {
 }
 .pagesServer h5{
     font-size: 40px;
-    font-weight: bold;
     text-align: center;
+    font-weight: bold;
 }
 .pagesServer .data{
     font-size: 16px;
@@ -200,6 +200,16 @@ a {
     transform: translateY(-50%);
 }
  @media screen and (max-width: 800px) {
+     .pagesServer{
+         min-width: auto;
+         width: 90%;
+     }
+     .pagesServer h5 {
+        font-size: 30px;
+    }
+     .pagesServer .msg {
+        font-size: 16px;
+    }
     .head_svg{
         display: inherit;
         position: fixed;

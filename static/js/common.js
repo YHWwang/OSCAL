@@ -6,16 +6,10 @@ $(function () {
     } else {
         height = ImgWidth * .8
     }
-    if (ImgWidth < 800) {
-        $('.pho_image').each(function () {
-            var _this = $(this)
-            var src = $(this).attr('data-phone')
-            _this.attr('data-src', src);
-        })
-    }
+
     var flag = true
-    var scroll_1, scroll_2, scroll_3 = false
-    var pro_scroll_1, pro_scroll_2, pro_scroll_3, pro_scroll_4, pro_scroll_5 = false
+    var scroll_1, scroll_2, scroll_3, scroll_4 = false
+    var pro_scroll_1, pro_scroll_2, pro_scroll_3, pro_scroll_4, pro_scroll_6 = false
 
     $('.watch_video .tit').addClass('mainShow')
     $('.watch_video .watch_vid').addClass('mainShow')
@@ -49,11 +43,18 @@ $(function () {
         }
         if (scroll_3 && winp > scroll_3) {
             dom_fun($('.mainContent .content-item-3 .product_word'))
+            scroll_4 = $('.mainContent .content-item-4').offset().top - height / 2
             if ($('.mainContent .content-item-3 .product_img img').hasClass('lazyloaded')) {
                 scroll_3 = false
                 pro_scroll_3 = $('.mainContent .content-item-3 .product_img').offset().top - height * .7
+            }
+        }
+        if (scroll_4 && winp > scroll_4) {
+            dom_fun($('.mainContent .content-item-4 .product_word'))
+            if ($('.mainContent .content-item-4 .product_img img').hasClass('lazyloaded')) {
+                scroll_4 = false
+                pro_scroll_6 = $('.mainContent .content-item-4 .product_img').offset().top - height * .7
                 pro_scroll_4 = $('.mainContent .two_Column .four-content .first_row').eq(0).offset().top - height * .7
-                pro_scroll_5 = $('.mainContent .two_Column .four-content .second_row').eq(0).offset().top - height * .7
             }
         }
         if (pro_scroll_1) {
@@ -65,11 +66,11 @@ $(function () {
         if (pro_scroll_3) {
             productScrollFun(winp, pro_scroll_3, 3)
         }
+        if (pro_scroll_6) {
+            productScrollFun(winp, pro_scroll_6, 4)
+        }
         if (pro_scroll_4) {
             productScrollFun(winp, pro_scroll_4, 'first_row')
-        }
-        if (pro_scroll_5) {
-            productScrollFun(winp, pro_scroll_5, 'second_row')
         }
     })
 

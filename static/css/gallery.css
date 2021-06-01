@@ -291,9 +291,87 @@ img {
 
 /* end */
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
 
-@media screen and (max-width:1500px)and (min-width:1000px) {}
+    .galleryContent .modal-dialog {
+        width: 100%;
+        top: 0;
+        min-width: auto;
+    }
+
+    .galleryContent .slider {
+        box-shadow: none;
+        padding-top: 60%;
+        width: 100%;
+    }
+
+    .galleryContent .modal-dialog .slider .big-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .galleryContent .modal-dialog .modal-content {
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+
+    .galleryContent .bottomGallery li img {
+        opacity: 1;
+    }
+
+    .galleryContent .bottomGallery .word {
+        top: 5%;
+        left: 10%;
+    }
+
+    .galleryContent .bottomGallery .word p {
+        font-size: 24px;
+    }
+
+    .galleryContent .bottomGallery {
+        font-size: 0;
+        position: relative;
+        display: block;
+        align-items: center;
+    }
+
+    .galleryContent .bottomGallery li {
+        vertical-align: top;
+        opacity: 1;
+        width: 100%;
+        display: inline-block;
+        height: 280px;
+    }
+
+    .galleryContent .topBanner {
+        height: calc(var(--vh, 1vh)* 100);
+        object-fit: cover;
+    }
+
+    .galleryContent .topBanner img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .galleryContent .topBanner .tit {
+        width: 100%;
+        font-size: 8vw;
+    }
+}
+
+@media (min-width: 576px) {
+    .galleryContent .modal-dialog {
+        max-width: none;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .slider label img {
+        width: 80px;
+    }
+
+}
 
 @media screen and (max-width:1200px)and (min-width:800px) {
     .galleryContent .bottomGallery .word {
@@ -306,8 +384,4 @@ img {
     }
 }
 
-@media screen and (max-width:1000px){
-    #AMain{
-        width: 1000px;
-    }
-}
+@media screen and (max-width:1000px) {}

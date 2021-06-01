@@ -400,13 +400,12 @@ img {
 .swiper-button-next, .swiper-button-prev {
     background-size: 20px 40px !important;
 }
-.swiper-pagination{
-    left: 50% !important;
-    width: 50% !important;
+.swiper_box .swiper-pagination{
+    left: 50% ;
+    width: 50% ;
     font-size: 1.5rem;
-    text-align: left !important;
-    bottom: 3vw !important;
-    padding-left: 5vw !important;
+    text-align: left ;
+    bottom: 3vw ;
 }
 .swiper-pagination-total{
     color: gray !important;
@@ -420,16 +419,76 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+    .mainContent .introduction .line-year {
+        height: 40px;
+    }
+    .mainContent .introduction li.line-year-active {
+        font-size: 22px;
+    }
+    .news_line .swiper-container{
+        width: 90%;
+    }
+    .mainContent .introduction .word .msg {
+        font-size: 3.5vw;
+        padding: 10px 0;
+    }
+    .mainContent .introduction .word ul li {
+        width: 50%;
+    }
+    .mainContent .introduction .word ul li .p1,.mainContent .introduction .word .title, .mainContent .introduction .news_line .title{
+        font-size: 6vw;
+    }
+    .watch_video .tit {
+        font-size: 8vw;
+        margin-bottom: 4vw;
+    }
+    .watch_video .watch{
+        font-size: 4vw;
+    }
+    .mainContent .introduction .word{
+        min-width: auto;
+        width: 96%;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide {
+        display: block;
+        width: 100%;
+    }
+    .news_line .swiper-container {
+        height: calc(var(--vh, 1vh)* 100);
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .left,
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right{
+        width: 100%;
+        height: auto;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .left img{
+        width: 70%;
+        padding: 2vw 0;
+    }
 
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right .messages {
+        position: relative;
+        top: auto; 
+        transform: none;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right .messages p{
+        font-size: 16px;
+        margin-top: 2vw;
+    }
+    .swiper_box .swiper-pagination{
+        text-align: center;
+        transform: translateX(-50%);
+    }
     .watch_video {
         height: calc(var(--vh, 1vh)* 100);
     }
 
 }
 
-@media screen and (max-width:1000px) {
-    #AMain{
-        width: 1000px;
+@media screen and (max-width:500px) {
+
+    .news_line .swiper-container {
+        height: calc(var(--vh, 1vh)* 120);
     }
 }
 

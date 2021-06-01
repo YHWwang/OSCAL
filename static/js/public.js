@@ -8,6 +8,13 @@ $(function () {
         var vh = document.body.clientWidth * 0.01
         document.documentElement.style.setProperty('--vh', `${vh}px`)
     })
+    if (ImgWidth < 800) {
+        $('.pho_image').each(function () {
+            var _this = $(this)
+            var src = $(this).attr('data-phone')
+            _this.attr('data-src', src);
+        })
+    }
     $("#contactForm").submit(function (e) {
         let data = $('#contactSubmit').val()
         e.preventDefault();
