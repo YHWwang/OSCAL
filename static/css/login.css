@@ -1,0 +1,335 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: MyriadPro;
+    src: url('../font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: MyriadPro Bold;
+    src: url('../font/MyriadPro-Bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -- reset -- */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* -- reset end -- */
+
+/* header */
+
+#AMain {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: auto;
+    height: 100vh;
+    background-color: #F5F5F5;
+    padding: 5% 0;
+}
+
+.loginContent .alert-danger {
+    display: none;
+}
+
+.loginContent .alert-success {
+    color: #155724 !important;
+    background-color: #d4edda !important;
+    border-color: #c3e6cb !important;
+}
+
+.loginContent .alert-danger {
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+    z-index: 11;
+}
+
+.loginContent .alert-danger .errorMsg {
+    margin-bottom: 0;
+}
+
+.loginContent {
+    position: relative;
+    border-radius: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: MyriadPro;
+    width: 450px;
+    background-color: white;
+}
+
+div.border {
+    border: none !important;
+}
+
+.loginSubmitBtn,
+.forgotPwdSubmitBtn {
+    width: 100%;
+    height: 50px;
+}
+
+.loginContent .logo {
+    text-align: center;
+    background-color: #F5F5F5;
+    padding-bottom: 30px;
+}
+
+.loginContent .nav-tabs .nav-link.active h5 {
+    color: black;
+    background: #ffffff;
+
+}
+
+.loginContent .nav-tabs .nav-link {
+    color: rgb(194, 194, 194);
+    border: none;
+    padding: 0;
+}
+
+#myTab {
+    border: none;
+}
+
+.loginContent .nav-tabs .nav-link h5 {
+    font-family: MyriadPro Bold;
+    height: 66px;
+    font-size: 24px;
+    line-height: 66px;
+    background: #DDDDDD;
+}
+
+.loginContent .loginTabs .form-control {
+    height: 50px;
+}
+
+.loginContent .forgotPwd .title {
+    font-family: MyriadPro Bold;
+    text-align: center;
+    font-size: 24px;
+}
+
+.loginContent .forgotPwd .loginTabs {
+    margin-top: 10px;
+}
+
+.forgotOther {
+    height: 30px;
+}
+
+.forgotOther .left {
+    float: left;
+}
+
+.forgotOther .right {
+    float: right
+}
+
+.loginContent .forgotPwd .message {
+    font-size: 18px;
+    line-height: 1.3;
+    color: #646464;
+}
+
+.successWord {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.successWord span {
+    color: #0043A8;
+    display: inline-block;
+    margin-left: 30px;
+    line-height: 1.3;
+}
+
+.loginContent .loginTabs .forgetPassword a {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.loginContent .loginTabs .forgetPassword a:hover {
+    color: #0043A8;
+}
+
+.btnGroupAddon {
+    background-color: transparent !important;
+}
+
+.loginContent .loginSubmitBtn {
+    color: white;
+    border: 0;
+    font-size: 18px;
+    font-family: MyriadPro Bold;
+    border-radius: 25px;
+    background-image: linear-gradient(to right, #E511CA, #7062EB, #3595F1, #16B6F3);
+}
+
+.loginContent .loginSubmitBtn:hover {
+    color: white;
+}
+
+.loginContent .other {
+    color: gray;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.loginContent .other a {
+    color: #0043A8;
+    font-family: MyriadPro Bold;
+    text-decoration: none;
+}
+
+.loginTabs {
+    margin-top: 30px;
+    padding: 1vw 2rem;
+    position: relative;
+}
+
+.eyeIcon {
+    color: rgb(216, 216, 216);
+    position: absolute;
+    height: 50px;
+    line-height: 50px;
+    right: 10px;
+    cursor: pointer;
+}
+.eyeIcon svg{
+    display: none;
+}
+.eyeIcon svg.active{
+    display: inline-block;
+}
+#myTab .nav-item {
+    width: 50%;
+    height: 66px;
+    line-height: 66px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.big-img {
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {}

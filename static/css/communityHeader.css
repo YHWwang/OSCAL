@@ -1,0 +1,324 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: Regular;
+    src: url('../font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -- reset -- */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* -- reset end -- */
+
+/* header */
+
+.header_main {
+    width: 100%;
+    height: 116px;
+    position: fixed;
+    z-index: 11;
+    top: 0%;
+    background-color: #ffffff;
+    font-family: Regular;
+}
+
+.header_main .pc-header {
+    position: relative;
+    width: 1220px;
+    margin: 0 auto;
+    height: 116px;
+    background: #FFFFFF;
+}
+
+.header_main .pc-header .topBox {
+    position: relative;
+    height: 69px;
+    line-height: 69px;
+}
+
+.header_main .pc-header .menuBox {
+    height: 46px;
+    line-height: 46px;
+}
+.header_main .pc-header .menuBox .nav{
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid rgb(228, 228, 228);
+
+}
+.header_main .pc-header .menuBox .nav-item .nav-link{
+    font-size: 18px;
+    color: #333333;
+    padding: 0rem 1rem;
+}
+.header_main .pc-header .menuBox .nav-item.active .nav-link{
+    color:  #4880F0;
+    font-weight: bold;
+}
+.header_main .pc-header .menuBox .nav-item .nav-link:hover{
+    color: #4880F0;
+    font-weight: bold;
+}
+
+.big-img {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+.communityMenu_box{
+    background-color: white;
+    border-bottom: 1px solid #E4E4E4;
+}
+.communityMenu_box ul li {
+    list-style: none;
+}
+
+
+.communityMenu_box .logo {
+    position: relative;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.communityMenu_box .logo .headerTit {
+    font-size: 20px;
+    font-weight: bold;
+    color: #010101;
+    padding-left: 10px;
+    position: relative;
+}
+.communityMenu_box .logo .headerTit::after{
+    content: '';
+    background-color: rgb(228, 228, 228);
+    height: 20px;
+    width: 1px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.loged {
+    display: none;
+}
+
+.communityMenu_box .login {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 38px;
+}
+
+.communityMenu_box .login svg {
+    cursor: pointer;
+}
+
+.communityMenu_box .login .loginIcon {
+    float: right;
+    height: 100%;
+}
+
+.communityMenu_box .login .loginIcon ul {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: auto;
+}
+
+.communityMenu_box .login .loginIcon ul li {
+    margin-left: 30px;
+    position: relative;
+    transition: all .5s;
+}
+.searchIconBox .searchInput{
+    width: 0;
+    transition: all .3s;
+    padding: 0;
+}
+.searchIconBox .searchInput.active{
+    width: 200px;
+    padding: 0 .75rem;
+}
+.searchIconBox .input-group-text,.searchIconBox .form-control{
+    background-color: white;
+    border: 0;
+}
+.searchInput.form-control:focus{
+    box-shadow:none;
+}
+.searchIcon ul li{
+    position: relative;
+}
+ .loginIcon ul li .dropdown-menu{
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: auto;
+    margin: .5rem 0 0;
+}
+.loginIcon ul li .dropdown-menu .dropdown-item{
+    position: relative;
+    color: unset;
+    line-height: 26px;
+    text-decoration: none;
+    background-color: unset;
+}
+.loginIcon ul li .dropdown-menu .dropdown-item:hover{
+    background-color: #E9ECEF;
+}
+
+.communityMenu_box .login .loginIcon ul li .usersInfo {
+    display: none;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background-color: red;
+    color: white;
+    top: -10px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    right: -10px;
+    border-radius: 50%;
+    margin-top: auto;
+}
+
+.login a {
+    position: relative;
+    color: unset;
+    text-decoration: none;
+    background-color: unset;
+}
+
+
+
+@media screen and (max-width:1200px)and (min-width:800px) {
+    .header_main .pc-header{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .header_main {
+        width: 1000px;
+    }
+}
+
+@media screen and (max-width: 800px) {}

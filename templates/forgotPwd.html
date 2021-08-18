@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="Description" content="Wireless Headphones Without Compromise For Better Workouts">
+    <title>OSCAL</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel='stylesheet' type='text/css' th:href='@{/css/login.css?v=1.001}'>
+    <link rel='stylesheet' type='text/css' th:href='@{/css/public.css?v=1.000}'>
+    <link rel='stylesheet' type='text/css' th:href="@{/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+
+    <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
+    <script async
+        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+</head>
+
+<body class="en">
+<!-- <div th:include="communityHeader :: communityHeader">
+</div> -->
+    <div id="AMain" class="main">
+        <div class="loginContent">
+            <div class="logo">
+                <img th:src="@{/img/loginLogo.png}" alt="logo">
+            </div>
+            <div class="tab-content border border-top-0" id="myTabContent">
+                <div class="tab-pane fade show active" id="signIn" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="forgotPwd">
+                        <div class="loginTabs">
+                            <div class="forgotPwdWord">
+                                <p class="title">Password assistance</p>
+                                <p class="message">
+                                    Enter your email to recover your password. You will receive an email with instructions. If you are having problems recovering your password contact.
+                                </p>
+                            </div>
+                            <form id="forgotPwdForm" class="needs-validation-forgotPwdForm" novalidate>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" id="validationForgotPwd01"
+                                        placeholder="Email Address" required>
+                                    <div class="invalid-feedback">
+                                        Please enter the correct email format
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-row">
+                                    <div class="col-8">
+                                        <input type="text" class="form-control form-control-lg" id="validationCustomforget"
+                                            placeholder="Code" required>
+                                        <div class="invalid-feedback">
+                                            Please enter Verification code
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <span class="btn btn-info btn-lg btn-block sendCode forget">Send</span>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" id="validationForgotPwd02"
+                                        placeholder="New password" pattern="^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$" required>
+                                    <div class="invalid-feedback">
+                                        The password must be at least six digits and letters
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary forgotPwdSubmitBtn" type="submit">Comfirm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" alert alert-danger alert-dismissible fade show" role="alert">
+                <p class="errorMsg"></p>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="footer" th:include="footer :: myFooter">
+    </div> -->
+</body>
+<script th:src="@{/js/login.js?v=1.000}"></script>
+<script th:src="@{/js/public.js?v=1.000}"></script>
+<script async th:src="@{/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+</html>

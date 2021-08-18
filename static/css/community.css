@@ -131,7 +131,7 @@ h6 {
     width: 100%;
     margin: 0 auto;
     position: relative;
-    margin-top: 60px;
+    margin-top: 120px;
     background-color: #F5F5F5;
 }
 
@@ -195,12 +195,6 @@ img {
     -webkit-user-drag: none;
 }
 
-.mainContent {
-    position: relative;
-    height: auto;
-    margin: 0 auto;
-}
-
 .communityBox {
     position: relative;
     max-width: 1200px;
@@ -211,6 +205,587 @@ img {
     margin: 0 auto;
     padding: 3vw 0;
 }
+
+.communityBox .toast {
+    width: 500px;
+    max-width: none;
+}
+
+.postContent .comments {
+    background-color: white;
+    padding: 2vw;
+    margin-top: 5vw;
+}
+
+.postContent .comments .commentsTop {
+    position: relative;
+}
+
+.postContent .comments .commentsTop .order {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.postContent .comments .commentsTop .order svg {
+    display: none;
+    cursor: pointer;
+}
+
+.postContent .comments .commentsTop .order .active {
+    display: block;
+}
+
+.postContent .comments .commentsTop span {
+    font-size: 24px;
+}
+
+.postContent .comments .comments_user_item {
+    margin-top: 2vw;
+}
+
+.postContent .comments .comments_user_item .comments_users {
+    height: 40px;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_img {
+    float: left;
+    height: 40px;
+    width: 50px;
+    text-align: left;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_img img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_info {
+    float: left;
+    width: 250px;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_info p {
+    font-size: 14px;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_btn {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_btn ul li {
+    cursor: pointer;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_btn span {
+    float: right;
+    cursor: pointer;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_btn .comments_user_menu {
+    display: none;
+    clear: both;
+    position: relative;
+    z-index: 11;
+    border: 1px solid rgb(241, 241, 241);
+    background-color: white;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_btn .comments_user_menu li span {
+    float: none;
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_btn .comments_user_menu li:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.postContent .comments .comments_user_item .comments_users .comments_user_btn .comments_user_menu li {
+    text-align: center;
+    width: 150px;
+    height: 40px;
+}
+
+.postContent .comments .comments_user_item .comments_content {
+    clear: both;
+    margin: 2vw 0;
+    margin-left: 50px;
+}
+
+.postContent .comments .comments_user_item .comments_content img {
+    width: 26px;
+    height: 26px;
+}
+
+.postContent .comments .comments_user_item .comments_btn span svg {
+    cursor: pointer;
+}
+
+.postContent .comments .comments_user_item .comments_btn {
+    margin-left: 50px;
+}
+
+.postContent .comments .comments_user_item .comments_btn .commentsIcon {
+    margin-left: 24px;
+}
+
+.postContent .comments .comments_user_item .comments_reply {
+    margin-top: 2vw;
+    background-color: #F6F7F7;
+    padding: 2vw;
+    margin-left: 50px;
+}
+
+.modal .modal-body .comments_reply_content_wrap {
+    position: relative;
+    background-color: white;
+}
+
+.modal .modal-body .comments_reply_content_wrap .reply_content {
+    padding: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    height: auto;
+    min-height: 198px;
+    border-radius: 5px;
+}
+
+.modal .modal-footer .btn {
+    width: 100px;
+    border: 1px solid #9d9d9d;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.modal .modal-footer .btn-primary {
+    color: white;
+    background-color: #00B1FF;
+    border: 0;
+}
+
+.modal .modal-footer .btn-secondary {
+    color: black;
+    background-color: transparent;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_users .comments_user_img {
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    width: 50px;
+    text-align: left;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_users .comments_user_img img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.alertSuccess {
+    position: fixed;
+    left: 50%;
+    z-index: 1111;
+    width: 400px;
+    top: 50%;
+    transform: translate(-50%);
+}
+
+.alertSuccess .alert-warning {
+    display: none;
+}
+
+.newsPagination {
+    display: block;
+    padding: 5vw 0 3vw 0;
+    text-align: center;
+}
+
+#rightdiv {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#rightdiv a {
+    color: #000;
+}
+
+#rightdiv span {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+}
+
+#rightdiv span:hover {
+    color: gray;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_users .comments_reply_name {
+    height: 70px;
+    line-height: 70px;
+    font-size: 14px;
+    float: left;
+    color: gray;
+}
+
+.postContent .right {
+    margin-top: 44px;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_users .comments_reply_name .reply_user {
+    font-size: 16px;
+    color: #000;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_content {
+    margin-left: 50px;
+    clear: both;
+    padding-bottom: 1vw;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_icon {
+    margin-left: 50px;
+    color: gray;
+    height: 50px;
+    line-height: 50px;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_icon .comments_reply_datetime {
+    float: right;
+}
+
+.postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_icon .comments_reply_icon_flag svg {
+    cursor: pointer;
+}
+
+.comments_bottom {
+    background-color: white;
+    margin: 0 auto;
+    padding: 2vw;
+}
+
+.summernoteBtn {
+    text-align: center;
+}
+
+.summernoteBtn button {
+    color: white !important;
+    border: 0;
+    width: 143px;
+    height: 44px;
+    background: linear-gradient(90deg, #F010C7 0%, #5D6BEF 47%, #0AC3F4 100%);
+    border-radius: 22px;
+}
+
+.navsMenu a {
+    font-weight: bold;
+    color: #000;
+}
+
+.postContent {
+    width: 1220px;
+    padding: 4vw 0;
+    position: relative;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+}
+
+.main .alert:not(.alert-warning) {
+    display: none;
+}
+
+.postContent .postMain .topBox {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px 30px;
+}
+
+.postContent .postMain .icon {
+    color: #646464;
+    margin-top: 10px;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.postContent .postMain .icon .data {
+    margin-right: 40px;
+}
+
+.postContent .postMain .icon span:not(:nth-child(1)) {
+    vertical-align: middle;
+
+}
+
+.postContent .postMain .icon span.pageviews,
+.postContent .postMain .icon span.likes,
+.postContent .postMain .icon span.commentsIcon {
+    margin: 0 10px;
+}
+
+.postContent .postMain .icon svg {
+    margin-right: 5px;
+    vertical-align: sub;
+}
+
+.postContent .postMain .lastReply {
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #F6F7F7;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    color: #646464;
+}
+
+.postContent .postMain .lastReply p {
+    padding-left: 10px;
+}
+.BlogContentDetail{
+    width: 50%;margin: 0 auto;min-width: 800px;padding: 2vw 0 4vw 0;
+
+}
+.comments_bottom .note-modal-footer{
+    height: 60px;
+}
+.BlogContentDetail img{
+    width: 100%;
+}
+.postContent .postMain .postComments {
+    width: 780px;
+    overflow-y: hidden;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgb(242, 242, 242);
+}
+.postContent .postMain .postComments img{
+    max-width: 100%;
+}
+.postContent .postMain .postComments .table td{
+    border: 1px solid #dee2e6;
+}
+.postContent .postMain .shareBox {
+    border-top: 1px solid #eeeeee;
+    margin-top: 50px;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.postContent .postMain .shareBox .btn {
+    margin: 0 20px;
+    width: 161px;
+    height: 50px;
+    border: 1px solid #B2B2B2;
+    border-radius: 25px;
+}
+
+.shareBox svg {
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.likesSvg svg {
+    display: none;
+}
+
+.likesSvg.act {
+    color: red;
+}
+
+.likesSvg .active {
+    display: inline-block;
+}
+
+
+.usersInfo .usersBox {
+    width: 360px;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.usersInfo .usersBox .userBtn {
+    margin-top: 21px;
+}
+
+.usersInfo .usersBox .userBtn button {
+    width: 117px;
+    height: 42px;
+    border-radius: 5px;
+    line-height: 42px;
+    padding: 0 5px;
+    margin: 0 10px;
+
+}
+
+.usersInfo .usersBox .userBtn .followBtn svg {
+    display: none;
+}
+
+
+#messageModal .modal-header {
+    border-bottom: none
+}
+
+#messageModal .modal-footer {
+    border-top: none;
+    justify-content: center;
+}
+
+#messageModal .modal-footer button {
+    width: 147px;
+    height: 42px;
+    background: linear-gradient(90deg, #F010C7 0%, #5D6BEF 47%, #0AC3F4 100%);
+    border-radius: 21px;
+    border: transparent;
+    font-size: 20px;
+}
+
+#messageModal .modal-body .modalInput {
+    width: 100%;
+    height: 49px;
+    border: 1px solid #e6e6e6;
+    padding-left: 10px;
+}
+
+#messageModal .modal-body .invalid-feedback {
+    display: none;
+}
+
+#rewardModal .modal-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+#rewardModal .modal-body .row {
+    margin: 0;
+    margin-top: 30px;
+    text-align: right;
+}
+
+#rewardModal .modal-body .rewardBtn {
+    margin-top: 30px;
+    width: 110px;
+    height: 34px;
+    background: linear-gradient(90deg, #F010C7 0%, #5D6BEF 47%, #0AC3F4 100%);
+    border-radius: 17px;
+    border: none;
+    color: white !important;
+}
+
+#rewardModal .modal-body .coin {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    color: #999999;
+}
+
+#rewardModal .modal-dialog {
+    max-width: 280px;
+}
+
+#rewardModal .modal-body .coin span {
+    float: right;
+}
+
+.usersInfo {
+    text-align: center;
+    position: relative;
+    margin-left: 20px;
+
+}
+
+.usersInfo ul {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.postContent .right .hot_post {
+    margin-top: 25px !important;
+    text-align: left;
+}
+
+.postContent .right .hot_post ul {
+    display: block;
+    margin-top: 0;
+}
+
+.usersInfo p {
+    margin-bottom: 0;
+}
+
+.usersInfo ul li .number {
+    font-size: 18px;
+    color: #111111;
+    line-height: 1;
+}
+
+.usersInfo ul li .user_info {
+    font-size: 14px;
+    color: #646464;
+}
+
+.usersInfo .user_image {
+    cursor: pointer;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+}
+
+.usersInfo .usersName {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #111111;
+}
+
+.usersInfo .usersName svg {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.usersInfo .postBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 0;
+    border: 0;
+    background-image: linear-gradient(to right, #E511CA, #7062EB, #3595F1, #16B6F3);
+    text-align: center;
+    width: 100%;
+    height: 68px;
+    line-height: 68px;
+    margin-top: 24px;
+    border-radius: 34px;
+}
+
+.usersInfo .replyPost {
+    background-image: none;
+    color: #000;
+    border: 1px solid black;
+}
+
+.usersInfo .postBtn span {
+    padding-left: 10px;
+}
+
+.usersInfo .postBtn a {
+    color: #fff;
+    text-decoration: none;
+}
+
 
 .communityBox .content-left {
     float: left;
@@ -228,10 +803,12 @@ img {
 }
 
 .content-right .top_image div {
-    margin-bottom: 16px;
+    height: 48%;
     position: relative;
 }
-
+.content-right .top_image div:nth-child(2){
+    margin-top: 5%;
+}
 .content-right .top_image span {
     font-size: 18px;
     color: #fff;
@@ -337,9 +914,12 @@ img {
 
 .post-list li .user-info .user-right {
     float: right;
-    width: 36%;
+    width: 230px;
     height: 40px;
     text-align: right;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     line-height: 58px;
     font-size: 16px;
     color: #9d9d9d;
@@ -375,7 +955,6 @@ img {
 }
 
 .post-list li .user-info .user-right>span {
-    margin-left: 40px;
     height: 20px;
     line-height: 20px;
     position: relative;
@@ -387,6 +966,7 @@ img {
 
 .post-list li .user-info .user-right svg {
     margin-bottom: 2px;
+    vertical-align: sub;
 }
 
 .post-list li .user-info .user-right .browse_num,
@@ -396,7 +976,8 @@ img {
 
 .post-list li .post-main .left .tit a:hover,
 .post-list li .post-main .left .msg a:hover,
-.content-right .hot_post .post_list .post_tit a:hover {
+.content-right .hot_post .post_list .post_tit a:hover,
+.postContent .right .hot_post .post_list .post_tit a:hover {
     color: #00a5ee !important;
 }
 
@@ -409,14 +990,27 @@ img {
     line-height: 60px;
     margin-top: 24px;
 }
-
+.sliceTitle{
+    width: 150px;
+    color: white;
+    overflow: hidden;
+    position: absolute;
+    bottom: 10px;
+    right: 1%;
+    font-size: 16px;
+    text-align: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
 .content-left .ViewMore:hover {
     background: #00B1FF;
     color: white;
 }
 
 .content-right .createPost {
-    margin-bottom: 24px;
+    margin: 0 0 24px 0;
 }
 
 .content-right .createPost a span {
@@ -440,14 +1034,44 @@ img {
     border: 0;
     height: 70px;
     line-height: 70px;
-    background: #000;
+    background-image: linear-gradient(to right, #E511CA, #7062EB, #3595F1, #16B6F3);
     border-radius: 35px;
     text-align: center;
 }
 
+.check_day .layui-laydate-content table {
+    width: 100%;
+}
+
+.check_day .layui-laydate,
+.layui-laydate-hint,
+.check_day .layui-laydate-main {
+    width: 100%;
+    border: 0;
+    box-shadow: none;
+}
+
+.check_day .laydate-set-ym span {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.check_day .layui-laydate-content td {
+    border-radius: 50%;
+    height: 49px;
+    font-size: 18px;
+}
+
+.check_day .layui-laydate .layui-this {
+    background-color: #00B1FF !important;
+
+}
+
 .content-right .check_day,
 .content-right .hot_sections,
-.content-right .hot_post {
+.content-right .hot_post,
+.postContent .right .hot_post {
+    position: relative;
     width: 100%;
     margin-top: 0;
     margin-bottom: 24px;
@@ -498,6 +1122,10 @@ img {
     cursor: pointer;
 }
 
+.content-right .check_day .day .check_login:disabled {
+    opacity: .2;
+}
+
 .content-right .check_day .day .check_num {
     font-size: 14px;
     color: #777474;
@@ -507,7 +1135,8 @@ img {
 }
 
 .content-right .hot_sections .top_box,
-.content-right .hot_post .top_tit {
+.content-right .hot_post .top_tit,
+.postContent .right .hot_post .top_tit {
     position: relative;
     padding: 1vw;
     width: 100%;
@@ -515,7 +1144,8 @@ img {
 }
 
 .content-right .hot_sections .top_box .tit,
-.content-right .hot_post .top_tit .tit {
+.content-right .hot_post .top_tit .tit,
+.postContent .right .hot_post .top_tit .tit {
     font-size: 20px;
     vertical-align: middle;
     font-weight: bold;
@@ -570,22 +1200,26 @@ img {
     text-align: center;
 }
 
-.content-right .hot_post .top_tit img {
+.content-right .hot_post .top_tit img,
+.postContent .right .hot_post .top_tit img {
     margin-right: 5px;
     margin-bottom: 5px;
 }
 
-.content-right .hot_post .post_list {
+.content-right .hot_post .post_list,
+.postContent .right .hot_post .post_list {
     margin: 0 1vw;
     position: relative;
 }
 
-.content-right .hot_post .post_list li {
+.content-right .hot_post .post_list li,
+.postContent .right .hot_post .post_list li {
     padding: 1.5vw 0;
     border-bottom: 1px solid #eee;
 }
 
-.content-right .hot_post .post_list .post_tit {
+.content-right .hot_post .post_list .post_tit,
+.postContent .right .hot_post .post_list .post_tit {
     font-size: 14px;
     display: block;
     margin-bottom: 11px;
@@ -597,11 +1231,13 @@ img {
     letter-spacing: 0;
 }
 
-.content-right .hot_post .post_list .post_tit a {
+.content-right .hot_post .post_list .post_tit a,
+.postContent .right .hot_post .post_list .post_tit a {
     color: #000;
 }
 
-.content-right .hot_post .post_list .user_name {
+.content-right .hot_post .post_list .user_name,
+.postContent .right .hot_post .post_list .user_name {
     font-size: 16px;
     color: #9f9f9f;
     letter-spacing: 0;
@@ -613,19 +1249,27 @@ img {
     max-width: 160px;
     width: 50%;
 }
-
-.content-right .hot_post .post_list .post_num {
+.content-right .hot_post .post_list .post_num svg{
+    vertical-align: sub;
+    }
+.content-right .hot_post .post_list .post_num,
+.postContent .right .hot_post .post_list .post_num {
     text-align: right;
     float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 12px;
     color: #9d9d9d;
     letter-spacing: 0;
     text-align: left;
-    line-height: 18px;
+    line-height: 24px;
 }
 
 .content-right .hot_post .post_list .post_num .browse_num,
-.content-right .hot_post .post_list .post_num .reply_num {
+.content-right .hot_post .post_list .post_num .reply_num,
+.postContent .right .hot_post .post_list .post_num .reply_num,
+.postContent .right .hot_post .post_list .post_num .browse_num {
     margin-left: 5px;
     display: inline-block;
     width: 40px;
@@ -692,35 +1336,81 @@ img {
 /* end */
 
 @media screen and (max-width: 800px) {
+    .phoneHide {
+        display: none;
+    }
+
+    .comments_bottom {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .postContent .comments .comments_user_item .comments_users .comments_user_info .user_grade {
+        color: #808080;
+    }
+
+    .postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_content {
+        margin-left: auto;
+        clear: none;
+        padding-bottom: 0;
+        z-index: 11;
+        color: #808080;
+    }
+
+    .postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_users .comments_reply_name {
+        height: 24px;
+        position: relative;
+        line-height: 24px;
+        margin-right: 10px;
+    }
+
+    .postContent .comments .comments_user_item .comments_reply .comments_reply_item .comments_reply_users .comments_reply_name .author::after {
+        content: ' :';
+    }
+
+    .communityBox .toast {
+        width: 300px;
+        max-width: none;
+    }
+
     .community_bottom .box ul li .tit {
         font-size: 5vw;
     }
-    .community_bottom .box ul li p{
+
+    .community_bottom .box ul li p {
         font-size: 2vw;
     }
+
     .post-list li {
         padding: 5vw 0;
     }
+
     .post-list li .user-info .user-right {
         width: 40%;
     }
+
     .post-list li .user-info .user-right>span {
         margin-left: 10px;
     }
+
     .post-list li .post-main .left {
         width: calc(100% - 250px);
     }
-    .communityBox{
+
+    .communityBox {
         min-width: auto;
         width: auto;
     }
-    .communityBox .content-right{
+
+    .communityBox .content-right {
         display: none;
     }
-    .community_bottom .box{
+
+    .community_bottom .box {
         width: 98%;
     }
-    .content-left .ViewMore{
+
+    .content-left .ViewMore {
         width: 90%;
         height: 40px;
         line-height: 40px;
@@ -729,34 +1419,42 @@ img {
     }
 }
 
-@media screen and (max-width:500px){
-    .post-list li .post-main .right img{
+@media screen and (max-width:500px) {
+    .post-list li .post-main .right img {
         height: 132px;
         object-fit: cover;
     }
+
     .post-list li .user-info .user-right>span {
         margin-left: 4px;
     }
+
     .post-list li .user-info .user-left div {
         padding-left: 2px;
     }
+
     .post-list li .user-info .user-right .browse_num {
         margin-left: 0px;
     }
+
     .post-list li .user-info .user-right {
         font-size: 14px;
     }
+
     .post-list li .user-info .user-left {
         width: 70%;
         height: 50px;
         margin-top: 3vw;
     }
+
     .post-list li .user-info .user-right {
         width: 30%;
     }
+
     .post-list li .post-main .left {
         width: calc(100% - 150px);
     }
+
     .post-list li .post-main .right {
         width: 150px;
     }
@@ -766,17 +1464,28 @@ img {
     .communityBox .content-right {
         width: 30%;
         margin-right: 10px;
-        margin-left:5px
+        margin-left: 5px
+    }
+    .postContent {
+        width: 98%;
+    }
+    .postContent .postMain .postComments {
+        width: 100%;
     }
 }
 
 @media screen and (max-width:1000px)and (min-width:800px) {
-    .content-right .hot_post .post_list .user_name {
+
+    .content-right .hot_post .post_list .user_name,
+    .postContent .right .hot_post .post_list .user_name {
         width: 40%;
     }
-    .content-right .hot_post .post_list .post_num .browse_num {
-      width: 30px;
+
+    .content-right .hot_post .post_list .post_num .browse_num,
+    .postContent .right .hot_post .post_list .post_num .browse_num {
+        width: 30px;
     }
+
     .post-list li .user-info .user-right {
         width: 40%;
     }

@@ -13,36 +13,36 @@
 
 <body class="en">
     <div id="Header" th:fragment="myHeader">
-        <link rel='stylesheet' type='text/css' href='/css/head&foot.css'>
-        <link rel="icon" href="/favicon.ico" mce_href="/favicon.ico"
+        <link rel='stylesheet' type='text/css'th:href="@{/css/head&foot.css?v=1.000}"  >
+        <link rel="icon" th:href="@{/favicon.ico}" mce_href="/favicon.ico"
             type="image/x-icon">
         <div class="header_main">
             <div class="menu_box">
                 <div class="pc-header">
                     <div class="logo">
                         <a href="/" target="_parent">
-                            <img src="/img/logo.png" alt="logo">
+                            <img th:src="@{/img/logo.png}" alt="logo">
                         </a>
                     </div>
                     <div class="menu">
-                        <ul>
-                            <li><a class="menu_href mhref" onclick="switchProduct('Phones')" href="#" >Phones</a></li>
+                        <ul >
+                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/productsMenu?id='+${product.id}+'&name='+${product.cate_name}}"  ><span th:text="${product.cate_name}">Phones</span></a></li>
                             <!-- <li><a class="menu_href mhref" onclick="switchProduct('Laptops')" href="#">Laptops</a></li> -->
-                            <li><a class="menu_href mhref" onclick="switchProduct('Tablets')" href="#" >Tablets</a></li>
-                            <!-- <li><a class="menu_href mhref" onclick="switchProduct('Accessories')" href="#">Accessories</a></li> -->
+                           <!-- <li><a class="menu_href mhref" onclick="switchProduct('Tablets')" href="#" >Tablets</a></li>-->
+                                <!-- <li><a class="menu_href mhref" onclick="switchProduct('Accessories')" href="#">Accessories</a></li> -->
                             <li><a class="mhref" href="/brand">Brand</a></li>
-                            <li><a class="mhref" href="/news/1">News</a></li>
+                            <li><a class="mhref" href="/news/list">News</a></li>
                             <li><a class="mhref" href="/support">Support</a></li>
-                            <!-- <li><a class="mhref" href="./community.html">Community</a></li> -->
+                            <li><a class="mhref" href="/discuss/community">Community</a></li>
                             <!-- <li><a href="#">OSCAL Store</a></li> -->
-                            <li><a href="/contact">Contact Us</a></li>
+                            <li><a href="/contact_us">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="app-header">
                     <div class="logo">
                         <a href="/" target="_parent">
-                            <img src="/img/logo.png" alt="logo">
+                            <img th:src="@{/img/logo.png}" alt="logo">
                         </a>
                     </div>
                     <div class="menu-icon">
@@ -52,8 +52,8 @@
                     </div>
                     <div class="menu">
                         <ul>
-                            <li class="has-child">
-                                <a id="menu_href" href="#">Phones</a>
+                            <li class="has-child" th:each="product:${prodcutList}">
+                                <a id="menu_href" href="#"><span th:text="${product.cate_name}">Phones</span></a>
                                 <div class="plus-icon">
                                     <span></span>
                                     <span></span>
@@ -67,12 +67,22 @@
                                                         <a href="#" target="_blank">
                                                             <div class="img-box">
                                                                 <img class="item-img lazyload"
-                                                                    data-src="../static/img/pho/menu_c20_pho1.jpg"
+                                                                     th:data-src="${product.pic}"
                                                                     alt="Oscal">
                                                             </div>
                                                         </a>
                                                     </li>
-                                                    <li class="box-lv3 item-box">
+                                                    <li class="box-lv3 item-box" th:each="productDetail:${product.productDetailList}">
+                                                        <a href="#" target="_blank">
+                                                            <div class="img-box">
+                                                                <img class="item-img lazyload"
+                                                                    th:data-src="${productDetail.image}"
+                                                                    alt="oscal">
+                                                            </div>
+                                                            <p class="item-title" th:text="${productDetail.store_name}">OSCAL C80</p>
+                                                        </a>
+                                                    </li>
+                                                   <!-- <li class="box-lv3 item-box">
                                                         <a href="#" target="_blank">
                                                             <div class="img-box">
                                                                 <img class="item-img lazyload"
@@ -91,31 +101,21 @@
                                                             </div>
                                                             <p class="item-title">OSCAL C80</p>
                                                         </a>
-                                                    </li>
-                                                    <li class="box-lv3 item-box">
-                                                        <a href="#" target="_blank">
-                                                            <div class="img-box">
-                                                                <img class="item-img lazyload"
-                                                                    data-src="../static/img/pho/pho_c20.png"
-                                                                    alt="oscal">
-                                                            </div>
-                                                            <p class="item-title">OSCAL C80</p>
-                                                        </a>
-                                                    </li>
+                                                    </li>-->
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="lf-menu">
                                             <ul class="main-menu">
-                                                <li><a href="/products" target="_self">All Phones</a></li>
-                                               <!--  <li class="child-menu"><a href="#" target="_self">S Series</a></li>
-                                                <li class="child-menu"><a href="#" target="_self">C Series</a></li>-->
+                                                <ul class="main-menu" >
+                                                    <li><a th:href="@{'/productsDetail?id='+${product.id}+'&name='+${product.cate_name}}" target="_self" ><span th:text="All+'  '+${product.cate_name}"></span></a></li>
+                                                </ul>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="has-child">
+                           <!-- <li class="has-child">
                                 <a id="menu_href" href="#">Tablets</a>
                                 <div class="plus-icon">
                                     <span></span>
@@ -169,20 +169,20 @@
                                             </div>
                                         </div>
                                         <div class="lf-menu">
-                                            <ul class="main-menu">
-                                                <li><a href="./products.html" target="_self">All Phones</a></li>
-                                                <!-- <li class="child-menu"><a href="#" target="_self">S Series</a></li>
-                                                <li class="child-menu"><a href="#" target="_self">C Series</a></li> -->
+                                            <ul class="main-menu" th:each="product:${prodcutList}">
+                                                <li><a th:href="@{'/productsDetail?id='+${product.id}+'&name='+${product.cate_name}}" target="_self" ><span th:text="All+'  '+${product.cate_name}"></span></a></li>
+                                                &lt;!&ndash; <li class="child-menu"><a href="#" target="_self">S Series</a></li>
+                                                <li class="child-menu"><a href="#" target="_self">C Series</a></li> &ndash;&gt;
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li><a href="./brand.html">Brand</a></li>
-                            <li><a href="./news.html">News</a></li>
-                            <li><a href="./support.html">Support</a></li>
-                            <!-- <li><a href="#">Community</a></li> -->
-                            <li><a href="#">Contact Us</a></li>
+                            </li>-->
+                            <li><a href="/brand">Brand</a></li>
+                            <li><a href="/news/1">News</a></li>
+                            <li><a href="/support">Support</a></li>
+                          <li><a href="/community">Community</a></li>
+                            <li><a href="/contact_us">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -202,20 +202,11 @@
                 </div> -->
             </div>
             <div class="content">
-                <div class="close-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                        class="bi bi-x-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                        <path
-                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                    </svg>
-                </div>
-                <div class="show-box">
-                </div>
+
             </div>
         </div>
-        <script src="/lib/js/jquery-3.3.1.min.js"></script>
-        <script src="/js/header.js"></script>
+        <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
+        <script th:src="@{/js/header.js?v=1.000}"></script>
         <script async
             src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
     </div>

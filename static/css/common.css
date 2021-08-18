@@ -155,9 +155,10 @@ img {
 
 .watch_video .box1 .tit,
 .watch_video .box1 .watch_vid,
-.mainContent .content .product_word .tit,
-.mainContent .content .product_word .msg,
-.mainContent .content .product_word .buy_href {
+.mainContent .product_word .tit,
+.mainContent .product_word .msg,
+.mainContent .product_word .msg2,
+.mainContent .product_word .buy_href {
     opacity: 0;
     transform: translateY(50px);
     transition: all 1s ease;
@@ -171,7 +172,7 @@ img {
 .mainContent .two_Column .product_img img {
     transform: translateY(30px);
     transition: all 2s ease;
-    width: 30%;
+    width: 70%;
 }
 
 .mainShow {
@@ -245,7 +246,7 @@ img {
     font-size: 20px;
     line-height: 1.5;
     transition: all 1s;
-    padding: 10px 25px;
+    padding: 5px 25px;
     border-radius: 25px;
 }
 
@@ -282,8 +283,20 @@ img {
     text-align: center;
 }
 
-.mainContent .content .product_big_img {
-    width: 70%;
+.mainContent .content .product_img.bigImg {
+    width: 60%;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContent .content .product_img.bigImg2 {
+    width: 35%;
+}
+
+.mainContent .content .pho_product_img {
+    width: 20%;
 }
 
 .mainContent .four-content .product_img {
@@ -304,16 +317,32 @@ img {
     line-height: 1;
     font-family: googleSans;
 }
+.mainContent .content .product_word .tit p .line{
+    width: 1px;
+    display: inline-block;
+    background-color: black;
+    height: 56px;
+    vertical-align: top;
+    margin: 0px 20px;
+}
 .mainContent .content .product_word .tit p sup{
     top: auto;
-    vertical-align: revert;
+    vertical-align: top;
     font-size: 14px;
     border-radius: 10px;
     padding: 3px 8px;
     margin-left: 5px;
     line-height: 1;
     color: gray;
+    position: initial;
     border: 1px solid gray;
+}
+.mainContent .content .product_word .tit p sup label{
+    position: absolute;
+    bottom: -10px;
+    font-size: 28px;
+    color: #000;
+    right: -10px;
 }
 
 .mainContent .content .product_word .tit,
@@ -330,6 +359,13 @@ img {
     color: gray;
 }
 
+.mainContent .content .product_word .msg2 {
+    font-size: 20px;
+    font-family: Avenir;
+    margin-top: 15px;
+    color: gray;
+}
+
 .mainContent .content .product_word .buy_href {
     margin-top: 65px;
 }
@@ -340,6 +376,7 @@ img {
 
 .mainContent .product_word .buy_href a:hover {
     color: #0043a8;
+    text-decoration: none;
 }
 
 .mainContent .content .product_word .buy_href .more,
@@ -405,12 +442,12 @@ img {
     transition: all 2s;
 }
 
-.mainContent .banner {
+.banner {
     position: relative;
     padding-bottom: 10px;
 }
 
-.mainContent .banner .word {
+.banner .word {
     position: absolute;
     width: 100%;
     left: 50%;
@@ -419,7 +456,7 @@ img {
     text-align: center;
 }
 
-.mainContent .banner .swiper-container .word .tit {
+.banner .swiper-container .word .tit {
     color: white;
     font-weight: bold;
     font-size: 60px;
@@ -428,12 +465,12 @@ img {
     transform: translateY(50px);
 }
 
-.mainContent .banner .swiper-container .word .more {
+.banner .swiper-container .word .more {
     opacity: 0;
     transform: translateY(50px);
 }
 
-.mainContent .banner .swiper-container .word .more span {
+.banner .swiper-container .word .more span {
     color: white;
     font-family: Avenir;
     font-size: 20px;
@@ -454,6 +491,18 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+    .mainContent .content .product_word .tit p .line{
+        height: 46px;
+    }
+    .mainContent .content .product_word .tit p sup label {
+        bottom: 0;
+        font-size: 20px;
+        right: -4px;
+        margin-bottom: 0;
+    }
+    .mainContent .content .product_img img{
+        transform: translateY(0) !important;
+    }
     .mainContent .content .product_word .tit img {
         width: 30%;
     }
@@ -462,7 +511,8 @@ img {
     }
     .mainContent .content .product_word .tit p sup{
         top: auto;
-        vertical-align: revert;
+        font-size: 12px;
+        padding: 1px 5px;
     }
     .mainContent .content .product_word .tit p {
         font-size: 8vw;
@@ -472,9 +522,11 @@ img {
     .mainContent .content .product_word .msg {
         font-size: 5vw;
     }
-
+    .mainContent .content .product_word .msg2 {
+        font-size: 4vw;
+    }
     .mainContent .content {
-        height: 100vw;
+        height: 120vw;
         padding: 7vw 0 3vw;
     }
 
@@ -484,13 +536,19 @@ img {
 
     .mainContent .content .product_img {
         width: 80%;
+        padding-top: 7.5vw;
     }
 
     .mainContent .content .product_img,
     .mainContent .four-content .product_img {
-        width: 100%;
+        width: 40%;
     }
-
+    .mainContent .content .product_img.bigImg {
+        width: 96%;
+    }
+    .mainContent .content .product_word .buy_href {
+        margin-top: 25px;
+    }
     .mainContent .two_Column ul li {
         width: 96%;
         display: block;
@@ -519,7 +577,7 @@ img {
     }
 
     .watch_video .tit,
-    .mainContent .banner .swiper-container .word .tit {
+    .banner .swiper-container .word .tit {
         font-size: 7vw;
         margin-bottom: 4%;
     }
@@ -530,22 +588,36 @@ img {
         display: none;
     }
     .watch_video .watch,
-    .mainContent .banner .swiper-container .word .more span {
-        font-size: 3vw;
-        padding: 1.5vw 3.5vw;
+    .banner .swiper-container .word .more span {
+        font-size: 4vw;
+        padding: 1vw 3.5vw;
     }
 
     .swiper-container .swiper-wrapper .swiper-slide {
         width: 100vw !important;
-        height: 100%;
+        height: 100vw !important;
     }
-
+    .swiper-container .swiper-wrapper .swiper-slide img{
+        object-fit: cover;
+    }
     .swiper-container .swiper-wrapper .swiper-slide-active {
         width: 100vw !important;
     }
 }
 
-@media screen and (max-width:1200px)and (min-width:1000px) {}
+@media screen and (max-width:500px){
+    .mainContent .content .product_word .tit p .line {
+        height: 36px;
+        margin: 0px 10px;
+    }
+    .mainContent .content .product_word .tit p sup label {
+        font-size: 16px;
+        right: 0px;
+    }
+    .mainContent .content {
+        height: 110vw !important;
+    }
+}
 
 @media screen and (max-width:1000px)and (min-width:800px) {
     .mainContent .two_Column ul li .four-content .product_word .tit p {

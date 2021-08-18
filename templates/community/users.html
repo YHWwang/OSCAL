@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Community-users</title>
+    <meta name="description" content="description">
+    <meta name="keywords" content="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel='stylesheet' type='text/css' href='/css/users.css?v=1.001'>
+    <link rel='stylesheet' type='text/css'
+          href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css'
+          href="/lib/bootstrap-fileinput-master/css/fileinput.min.css">
+</head>
+
+<body class="en">
+<div th:include="communityHeader :: communityHeader">
+</div>
+<div id="AMain" class="main">
+    <div class="mainContent">
+        <div class="usersBox">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-link active" id="nav-following-tab" data-toggle="tab" href="#nav-following" onclick="navMain('following')"
+                       role="tab" aria-controls="nav-following" aria-selected="true" >Followings<span th:text="'('+${followeeCount} +')'" ></span></a>
+                    <a class="nav-link" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" onclick="navMain('posts')"
+                       aria-controls="nav-posts" aria-selected="false" >Posts <span th:text="'('+${rows} +')'" ></span></a>
+                    <a class="nav-link" id="nav-likes-tab" data-toggle="tab" href="#nav-likes" role="tab" onclick="navMain('likes')"
+                       aria-controls="nav-likes" aria-selected="false" >Likes<span th:text="'('+${userLikeCount} +')'" ></span></a>
+                    <a class="nav-link" id="nav-followers-tab" data-toggle="tab" href="#nav-followers" role="tab" onclick="navMain('followers')"
+                       aria-controls="nav-followers" aria-selected="false">Followers <span th:text="'('+${followeeCount} +')'" ></span></a>
+                    <a class="nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab" onclick="navMain('comments')"
+                       aria-controls="nav-comments" aria-selected="false">Comments <span th:text="'('+${commentNum} +')'" ></span></a>
+                    <input type="hidden" th:value="${userInfo.id}" id="sys_user_id">
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-following" role="tabpanel"
+                     aria-labelledby="nav-following-tab">
+                    <ul>
+                    </ul>
+                     <!--分页 -->
+                     <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+                            </li>
+                            <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+                            <li th:each="i:${#numbers.sequence(page.from,page.to)}"
+                                th:class="|page-item ${i==page.current? 'active' : ''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+                            </li>
+                            <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="tab-pane fade" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab" >
+                    <ul>
+                        <!-- <li >
+                            <div class="postsBox">
+                                <div class="usersMessage">
+                                    <p class="postsLabel"  >oscal-C20</p>
+                                    <p class="postsTitle">
+                                        <a href="#" target="_blank">
+                                                <span>  [HONOR MagicBook] Why It is the Best Laptop for Studying? (5 Reasons)Why
+                                                It is the Best Laptop for StudyWhy It is the Best Laptop for Studying?
+                                                (5 Reasons)ing? (5 Reasons)Why It is the Best Laptop for Studying? (5
+                                                Reasons)
+                                                </span>
+                                        </a>
+                                    </p>
+                                    <p class="postsTime">
+                                        <span class="dataTime" >11-06-2021 03:24:17</span>
+                                        <span class="comments">
+                                                <span class="browse">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                        </path>
+                                                        <path
+                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="browse_num" >334</span>
+                                                </span>
+                                                <span class="reply">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
+                                                        </path>
+                                                        <path
+                                                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="reply_num" >336</span>
+                                                </span>
+                                            </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <!--分页 -->
+                    <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+                            </li>
+                            <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+                            <li th:each="i:${#numbers.sequence(page.from,page.to)}"
+                                th:class="|page-item ${i==page.current? 'active' : ''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+                            </li>
+                            <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="tab-pane fade" id="nav-likes" role="tabpanel" aria-labelledby="nav-likes-tab">
+                    <ul>
+                        <!-- <li >
+                            <div class="postsBox">
+                                <div class="usersMessage">
+                                    <p class="postsLabel" >oscal-C20</p>
+                                    <p class="postsTitle">
+                                        <a href="#" target="_blank">
+                                                <span >
+                                                      [HONOR MagicBook] Why It is the Best Laptop for Studying? (5 Reasons)Why
+                                                It is the Best Laptop for StudyWhy It is the Best Laptop for Studying?
+                                                (5 Reasons)ing? (5 Reasons)Why It is the Best Laptop for Studying? (5
+                                                Reasons)
+                                                </span>
+
+                                        </a>
+                                    </p>
+                                    <p class="postsTime">
+                                        <span class="dataTime" >11-06-2021 03:24:17</span>
+                                        <span class="comments">
+                                                <span class="browse">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                        </path>
+                                                        <path
+                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="browse_num" >334</span>
+                                                </span>
+                                                <span class="reply">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
+                                                        </path>
+                                                        <path
+                                                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="reply_num" >336</span>
+                                                </span>
+                                            </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li> -->
+                    </ul>
+                     <!--分页 -->
+                     <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+                            </li>
+                            <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+                            <li th:each="i:${#numbers.sequence(page.from,page.to)}"
+                                th:class="|page-item ${i==page.current? 'active' : ''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+                            </li>
+                            <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="tab-pane fade" id="nav-followers" role="tabpanel" aria-labelledby="nav-followers-tab">
+                    <ul>
+                        <!-- <li >
+                            <div class="following-left">
+                                <img src="/img/user-img.jpg" alt="usersImg">
+                                <div class="usersMessage">
+                                    <p class="name" >Aniket_Kumar323</p>
+                                    <p class="info">
+                                        Followers <span >130</span>
+                                        Posts <span >124</span>
+                                        Likes <span >486</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="following-right">
+                                <button type="button" class="btn btn-outline-primary followMessage"
+                                        onclick="followMessageFun('Aniket_Kumar323')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                         fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                        <path
+                                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                                    </svg>
+                                    Message
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary followersBtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                         fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                                        <path
+                                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                        <path fill-rule="evenodd"
+                                              d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <!--分页 -->
+                    <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+                            </li>
+                            <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+                            <li th:each="i:${#numbers.sequence(page.from,page.to)}"
+                                th:class="|page-item ${i==page.current? 'active' : ''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+                            </li>
+                            <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
+                    <ul>
+                        <!-- <li >
+                            <div class="postsBox">
+                                <div class="usersMessage">
+                                    <p class="postsLabel" >oscal-C20</p>
+                                    <p class="postsTitle">
+                                        <a href="#" target="_blank">
+                                                <span >
+                                                    [HONOR MagicBook] Why It is the Best Laptop for Studying? (5 Reasons)Why
+                                                It is the Best Laptop for StudyWhy It is the Best Laptop for Studying?
+                                                (5 Reasons)ing? (5 Reasons)Why It is the Best Laptop for Studying? (5
+                                                Reasons)
+                                                </span>
+
+                                        </a>
+                                    </p>
+                                    <p class="postsTime">
+                                        <span class="dataTime" >11-06-2021 03:24:17</span>
+                                        <span class="comments">
+                                                <span class="browse">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                        </path>
+                                                        <path
+                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="browse_num" >334</span>
+                                                </span>
+                                                <span class="reply">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
+                                                        </path>
+                                                        <path
+                                                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="reply_num" >336</span>
+                                                </span>
+                                            </span>
+                                    </p>
+                                    <p class="myComments">
+                                         sttesttesttesttesttesttesttesttesttesttesttestteststtesttesttesttesttesttesttesttesttesttesttestteststtesttsttesttesttesttesttesttesttesttesttesttesttestteststtesttesttesttesttesttesttesttesttesttesttestteststtestt
+                                     </p>
+                                </div>
+                            </div>
+                        </li> -->
+                    </ul>
+                     <!--分页 -->
+                     <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+                            </li>
+                            <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+                            <li th:each="i:${#numbers.sequence(page.from,page.to)}"
+                                th:class="|page-item ${i==page.current? 'active' : ''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+                            </li>
+                            <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="usersInfo">
+            <div class="usersBox">
+                <div class="usersImage">
+                    <img class="user_image" id="usersImage"
+                         th:src="${userInfo.headPhoto}" alt="usersImg">
+                </div>
+                <p class="usersName">
+                    <span class="usersName" th:text="${userInfo.sysUserAccount}">test</span>
+                    <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path
+                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd"
+                                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                        </span>
+                </p>
+                <ul>
+                    <li onclick="clickNav('nav-posts-tab')">
+                        <p class="number" th:text="${rows}">2</p>
+                        <p class="user_info">Posts</p>
+                    </li>
+                    <li onclick="clickNav('nav-following-tab')">
+                        <p class="number" th:text="${followeeCount}">0</p>
+                        <p class="user_info">Following</p>
+                    </li>
+                    <li onclick="clickNav('nav-followers-tab')">
+                        <p class="number" th:text="${followerCount}">1</p>
+                        <p class="user_info">Followers</p>
+                    </li>
+                    <li>
+                        <a href="/user/jumpToCoin" target="_self">
+                            <p class="number" th:text="${userInfo.oCoin}">90</p>
+                            <p class="user_info">O Coin</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a href="/discuss/jumpNewPost" target="_self">
+                <div class="createPost">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                         class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
+                    <span>
+                            New Post
+                        </span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 上传头像弹窗 -->
+    <div class="modal fade" id="updateImageModal" tabindex="-1" aria-labelledby="exampleModalLabel2"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input id="input-id" name='file' type="file" class="file" data-preview-file-type="text">
+                    <!--  <div style="width: 900px;height: 500px;margin: auto auto;">
+                          <div class="container-fluid">
+                              <form id="form" th:action="@{/admin/uploadTest}" method="post" enctype="multipart/form-data">
+                                  <div class="row form-group">
+                                      <label class="col-md-4">图片上传:</label>
+                                      <div class="col-sm-12">
+                                          <input id="input-id" name="file" multiple="multiple" th:multiple="multiple" type="file" data-show-caption="true"/>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modifyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input class="modalInput" type="text">
+                    <div class="invalid-feedback">
+                        Username can not be empty!
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary modifyUsersNameBtn">Submit</button>
+                    <button type="button" class="btn btn-primary submitReplayBtn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" th:include="footer :: myFooter">
+    </div>
+</div>
+</body>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/js/users.js?v=1.001"></script>
+<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap-fileinput-master/js/fileinput.min.js"></script>
+<script async
+        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+
+</html>

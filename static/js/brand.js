@@ -1,9 +1,19 @@
 $(function () {
+    $('#exampleModal').on('hidden.bs.modal', function (event) {
+        $('.watch_video .box1').removeClass('on')
+        var elevideo = document.getElementById("brandVideo");
+        elevideo.pause()
+    })
     var brandList = {
         '2021': [{
-            'img': '/img/brand_swiper.jpg',
+            'img': '',
+            'time': '20th May 2021',
+            'title':'OSCAL launched C20, The Budget King of Android Phones',
+            'messages': 'OSCAL launched the C20, a budget smart phone packing with stylish appearance, Android 11 GO and a range of great features, to push the boundaries of affordable smart phones.'
+        },{
+            'img': 'https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/menu_Tablet1-20210731015219217.jpg',
             'time': '10th May 2021',
-            'messages': 'OSCAL launched Tab 9, packing incredible features. OSCAL launched the Tab 9, a budget tablet packing with a range of great features and exceptional quality to push the boundaries of affordable smart devices.'
+            'messages': 'OSCAL launched Pad 8, packing incredible features. OSCAL launched the Pad 8, a budget tablet packing with a range of great features and exceptional quality to push the boundaries of affordable smart devices.'
         }],
         '2020': [{
             'img': '/img/brand_swiper3.jpg',
@@ -29,7 +39,7 @@ $(function () {
         $.each(brandList[index], function (list, detail) {
             if (detail.img == '' || !detail.img) {
                 monthList = ` <div class="swiper-slide"><div class="middle"><div class="time"> <p>${detail.time}</p> </div>
-                 <div class="messages"><p>  ${detail.messages}</p></div> </div></div>`
+                <div class="tit"><p>  ${detail.title}</p></div> <div class="messages"><p>  ${detail.messages}</p></div> </div></div>`
             } else {
                 monthList = `  <div class="swiper-slide"><div class="left"> <img class="big-img lazyload" data-src="${detail.img}" alt="OSCAL"></div>
             <div class="right"><div class="time"> <p>${detail.time}</p> </div> <div class="messages"><p> ${detail.messages}</p></div></div></div>`

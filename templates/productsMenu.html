@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OSCAL-header</title>
+    <meta name="description" content="description">
+    <meta name="keywords" content="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+</head>
+
+<body class="en">
+   <!-- <div id="ProductsMenuContent" th:fragment="myProductsMenu">-->
+   <div id="header" th:include="header :: myHeader">
+       </div>
+        <div class="nav-content">
+            <div class="content">
+                <div class="close-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </div>
+                <div class="show-box">
+                    <div class="lf-menu">
+                        <ul class="main-menu">
+                            <li><a  th:href="@{'/productsDetail?id='+${id}+'&name='+${name}}"   target="_self"><span th:text="All+'  '+${name}"></span></a></li>
+                            <!-- <li class="child-menu"><a href="#" target="_self">S Series</a></li>
+                         <li class="child-menu"><a href="#" target="_self">C Series</a></li>
+                         -->
+                        </ul>
+                    </div>
+                    <div class="rg-content">
+                        <div class="content-box">
+                            <ul class="lf-box area-box" >
+                                <li class="box-lv1 item-box" >
+                                    <div class="img-box">
+                                        <a href="#" target="_self">
+                                            <img class="item-img lazyload" th:data-src="${imgCategory}" alt="Oscal">
+                                        </a>
+                                    </div>
+
+                                </li>
+                                <li class="box-lv1 item-box" th:each="product:${prodcutDetailList}">
+                                    <a href="#" target="_self">
+                                        <div class="img-box right_img ${proName == 'Phones' ? 'mobileImg' : ''}">
+                                            <img class="item-img lazyload" th:data-src="${product.image}" alt="Oscal">
+                                        </div>
+                                        <p class="item-title" th:text="${product.store_name}"></p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

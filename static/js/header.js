@@ -1,85 +1,69 @@
 $(function () {
-    var html = ''
-    var data = [
-        {//Phones �ֻ�
-            name: 'OSCAL C20',
-            url: '#',
-            img: ['/img/menu_pho1.jpg', '/img/menu_pho2.png']
-        },
-        {//Laptopsƽ��
-            name: 'OSCAL Acebook 1',
-            url: '#',
-            img: ['/img/menu_Laptop1.jpg', '/img/menu_Laptop2.png']
-        },
-        {//Tablets����
-            name: 'OSCAL Pad 8',
-            url: '#',
-            img: ['/img/menu_Tablet1.jpg', '/img/menu_Tablet2.png'],
+    // 临时链接
+    $('.nav-content .content .show-box .rg-content .item-box').click(function(){
+        if($(this).find('.item-title').text() == 'OSCAL C20'){
+           location.href = '/c20'
+        }
+        if($(this).find('.item-title').text() == 'OSCAL Pad 8'){
+            location.href = '/pad8'
+         }
+    })
+   
+       if(GetQueryString("name") == 'Tablets'){
+        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function(){
+            location.href = '/pad8'
+        })
+       }else if(GetQueryString("name") == 'Phones'){
+        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function(){
+            location.href = '/c20'
+        })
+       }
+  
+    // 临时链接
 
-        },
-        {//Accessories ���
-            name: 'OSCAL Airbuds 3',
-            url: '#',
-            img: ['/img/menu_air1.jpg', '/img/menu_air2.png']
-        },
-    ]
-    function fillHtml(proName, index) {
-        html =
-            `
-<div class="lf-menu">
-<ul class="main-menu">
-<li><a href="/products/`+ proName + `" target="_self">All ` + proName + `</a></li>
-<!-- <li class="child-menu"><a href="#" target="_self">S Series</a></li>
- <li class="child-menu"><a href="#" target="_self">C Series</a></li>
- -->
-</ul>
-</div>
-<div class="rg-content">
-<div class="content-box">
-<ul class="lf-box area-box">
-    <li class="box-lv1 item-box">
-        <div class="img-box">
-            <a href="`+ data[index].url + `" target="_self">
-                <img class="item-img lazyload" data-src="${data[index].img[0]}"
-                    alt="Oscal">
-            </a>
-        </div>
-
-    </li>
-    <li class="box-lv1 item-box">
-        <a href="`+ data[index].url + `" target="_self">
-            <div class="img-box right_img ${proName == 'Phones' ? 'mobileImg' : ''}">
-                <img class="item-img lazyload" data-src="${data[index].img[1]}"
-                    alt="Oscal">
-                <p class="item-title">${data[index].name}</p>
-            </div>
-        </a>
-    </li>
-</ul>
-</div>
-</div>
-`
-        $('.show-box').html(html)
+    $('.menu_box .logo img').click(function () {
+        localStorage.setItem('menu', null)
+    })
+    let dom = $('.menu_box .pc-header .menu ul li a')
+    if (localStorage.getItem('menu') != null) {//解决刷新菜单没选中问题
+        dom.each((index, item) => {
+            if (dom.eq(index).text() == localStorage.getItem('menu')) {
+                dom.eq(index).addClass('on')
+                return false
+            }
+        })
+    }
+    changeWindow()
+    if(window.location.href.includes('productsMenu')){
+        window.onresize = debounce(() => location.reload(), 500)//改变屏幕后刷新
+    }
+    function debounce(fn, delay) {
+        let timer = null
+        return () => {
+            if (timer) {
+                clearTimeout(timer)
+            }
+            let arg = arguments
+            timer = setTimeout(() => {
+                fn.apply(this, arg)
+            }, delay)
+        }
+    }
+    function changeWindow() {
+        let setHeight = setInterval(() => {
+            if ($('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').hasClass('lazyloaded')) {
+                window.clearInterval(setHeight)
+                let Bheight = $('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').height()
+                $('.nav-content .content .show-box .rg-content .item-box').height(Bheight / 2)
+                $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').height(Bheight+10)
+                if (GetQueryString("name") == 'Tablets') {
+                    $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').css('height', 'auto')
+                }
+            }
+        }, 100);
     }
     VideoWith()
-    switchProduct = function (proName) { // 显示对于的产品菜单块
-        $('body').css('overflow', 'hidden')
-        switch (proName) {
-            case 'Phones': fillHtml(proName, 0); break;
-            case 'Accessories': fillHtml(proName, 3); break;
-            case 'Tablets': fillHtml(proName, 2); break;
-            case 'Laptops': fillHtml(proName, 1); break;
-        }
-        if (proName == 'Phones' || proName == 'Tablet') {
-            $('.nav-content .menu_lab div').addClass('active')
-        } else {
-            $('.nav-content .menu_lab div').removeClass('active')
-        }
-        menuHide()
-        setTimeout(() => {
-            menuShow()
-        }, 500);
-    }
+
     $('.app-header .menu-icon').click(function () {
         $(this).toggleClass('clicked')
         $('.app-header .menu').toggleClass('active')
@@ -107,28 +91,20 @@ $(function () {
         $(this).addClass('on').siblings().removeClass('on')
     })
 
-    $('.menu_box .pc-header .menu ul li').click(function () {
+    $('.menu_box .pc-header .menu ul li').click(function () {//菜单点击记录当前页面
+        if ($(this).find('a').text() == 'Community') {
+            localStorage.setItem('menu', null)
+            localStorage.setItem('communityMenu', 'Home')
+        }
         $('.menu_box .pc-header .menu ul li .mhref').removeClass('on')
         $(this).find('a').addClass('on')
+        localStorage.setItem('menu', $(this).find('a').text())
     })
-
     $('.close-icon').click(function () {
-        $('.menu_box .pc-header .menu ul li .mhref').removeClass('on')
-        menuHide()
-        $('body').css('overflow', 'auto')
+        localStorage.setItem('menu', null)
+        window.location.href = '/'
     })
 
-
-
-
-    function menuHide() {
-        $('.nav-content').removeClass('nav-menu-hide')
-        return false
-    }
-    function menuShow() {
-        $('.nav-content').addClass('nav-menu-hide')
-        return true
-    }
     function VideoWith() {
         var width = document.body.offsetWidth;
         if (width < 800) {
@@ -138,5 +114,12 @@ $(function () {
                 _this.attr('src', src);
             });
         };
+    }
+
+    function GetQueryString(name) {
+        var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(regex);
+        if (r != null) return unescape(r[2]);
+        return null;
     }
 })

@@ -2,27 +2,27 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="Description" content="Wireless Headphones Without Compromise For Better Workouts">
-    <title>OSCAL</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link rel='stylesheet' type='text/css' href='/css/news.css'>
-    <link rel='stylesheet' type='text/css' href='/css/public.css'>
-    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <script src="/lib/js/jquery-3.3.1.min.js"></script>
-    <script async
-        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="Description" content="Wireless Headphones Without Compromise For Better Workouts">
+  <title>OSCAL</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <link rel='stylesheet' type='text/css' th:href='@{/css/news.css?v=1.000}'>
+  <link rel='stylesheet' type='text/css' th:href='@{/css/public.css?v=1.000}'>
+  <link rel='stylesheet' type='text/css' th:href="@{/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+  <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
+  <script async
+    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
 </head>
 
 <body class="en">
-    <div id="header" th:include="header :: myHeader">
-        <!-- <div class="head_svg">
+  <div id="header" th:include="header :: myHeader">
+    <!-- <div class="head_svg">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                 class="bi bi-menu-button-wide" viewBox="0 0 16 16">
                 <path
@@ -32,213 +32,116 @@
             </svg>
         </div> -->
 
-    </div>
-    <div id="AMain" class="main">
-        <div class="mainContent">
-            <div class="newsBox">
-                <div class="newsCon" th:each="news:${newsList}">
-                    <p class="time_line" th:text="${news.news_month}+'  '+'2021'">
-                       <!-- May 2021-->
-                    </p>
-                    <ul>
-                        <li>
-                            <a  th:href="${'/newsDetail/'}+${news.id}" target="_blank">
-                                <div class="content">
-                                    <div class="left">
-                                        <img class="big-img lazyload" th:data-src="${news.news_img}"
-                                            alt="oscal">
-                                    </div>
-                                    <div class="right">
-                                        <div class="other">
-                                            <p>News</p>
-                                        </div>
-                                        <p class="time">
-                                            May 19,2021
-                                        </p>
-                                        <p class="tit" title="Blackview kicks off a wider global expansion by launching a new OSCAL brand" th:text="${news.news_title}">
-                                            Blackview kicks off a wider global expansion by launching a new OSCAL brand
-                                        </p>
-                                        <p class="msg" th:text="${news.news_sim_des}">
-                                            In a bigger step toward becoming a major global player, the world-known
-                                            rugged phone brand Blackview has announced its new brand, OSCAL, to the
-                                            world today. At the same time, the OSCAL official website is live where the
-                                            product shelf has presented the first product - OSCAL C20 smartphone.
-                                        </p>
-                                        <div class="more">
-                                            <p>Read More</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                     <!--   <li>
-                            <a href="/newsContent" target="_blank">
-                                <div class="content">
-                                    <div class="left">
-                                        <img class="big-img lazyload" data-src="img/news_20210513.jpg"
-                                            alt="oscal">
-                                    </div>
-                                    <div class="right">
-                                        <div class="other">
-                                            <p>News</p>
-                                        </div>
-                                        <p class="time">
-                                            May 17,2021
-                                        </p>
-                                        <p class="tit" title=" OSCAL Tab 9 hits the market with 7480mAh battery and Doke OS_P 1.0 at $149.99 ($50 off)">
-                                            OSCAL Tab 9 hits the market with 7480mAh battery and Doke OS_P 1.0 at
-                                            $149.99 ($50 off)
-                                        </p>
-                                        <p class="msg">
-                                            OSCAL is now looking to push the boundaries of affordable smart devices.Its
-                                            new budget tablet Tab 9 has been hitting the market since early May.
-                                        </p>
-                                        <div class="more">
-                                            <p>Read More</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>-->
-                    </ul>
-                </div>
-               <!-- <div class="newsCon">
-                    <p class="time_line">
-                        APRIL 2021
-                    </p>
-                    <ul>
-                        <li>
-                            <a href="/news/20210413" target="_blank">
-                                <div class="content">
-                                    <div class="left">
-                                        <img class="big-img lazyload" data-src="img/news_20210413.jpg"
-                                            alt="oscal">
-                                    </div>
-                                    <div class="right">
-                                        <div class="other">
-                                            <p>News</p>
-                                        </div>
-                                        <p class="time">
-                                            April 13,2021
-                                        </p>
-                                        <p class="tit" title="OSCAL Brand Launch: Let More People Enjoy the Smart Life">
-                                            OSCAL Brand Launch: Let More People Enjoy the Smart Life
-                                        </p>
-                                        <p class="msg">
-                                            Today, OSCAL brand has officially announced its launch.<br>
-                                            OSCAL is a technology brand that focuses on product performance, design,
-                                            quality, and service. Driven by the innovation DNA, we will always adhere to
-                                            our concept of “Only the Brave” and be committed to letting everyone enjoy
-                                            smart devices with leap-forward performance and trendsetting design at a
-                                            very friendly price.
-                                        </p>
-                                        <div class="more">
-                                            <p>Read More</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="newsCon">
-                    <p class="time_line">
-                        MARCH 2021
-                    </p>
-                    <ul>
-                        <li>
-                            <a href="/news/20210314" target="_blank">
-                                <div class="content">
-                                    <div class="left">
-                                        <img class="big-img lazyload" data-src="img/news_img_20210314.jpg"
-                                            alt="oscal">
-                                    </div>
-                                    <div class="right">
-                                        <div class="other">
-                                            <p>News</p>
-                                        </div>
-                                        <p class="time">
-                                            March 14,2021
-                                        </p>
-                                        <p class="tit" title="   Blackview Confirms New Sub-brand OSCAL; OSCAL C20 Smartphone to Launch Soon">
-                                            Blackview Confirms New Sub-brand OSCAL;
-                                            OSCAL C20 Smartphone to Launch Soon
-                                        </p>
-                                        <p class="msg">
-                                            It is common to see famous phones brands roll out a sub-brand to cover more
-                                            users, expand market share and improve their competitiveness. For example,
-                                            Xiaomi had the Redmi brand and Huawei launched the Honor brand. And
-                                            recently, the well-known outdoor rugged phone brand Blackview has also
-                                            announced that it will soon internationally establish a sub-brand called
-                                            OSCAL.
-                                        </p>
-                                        <div class="more">
-                                            <p>Read More</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>-->
-            </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="newsPagination">
-                <div>
-                    <div id="rightdiv">
-                        <a href="#">
-                            <span class="firstPage">First</span>
-                        </a>
-                        <a href="#">
-                            <span class="prePage">&lt;</span>
-                        </a>
-                        <a href="#">
-                            <span class="currentPage">1</span>
-                        </a>
-                        <a href="#">
-                            <span class="prePage">&gt;</span>
-                        </a>
-                        <a href="#">
-                            <span class="lastPage">Last</span>
-                        </a>
+  </div>
+  <div id="AMain" class="main">
+    <div class="mainContent">
+      <div class="newsBox">
+        <div class="newsCon" th:each="map:${newsList}">
+          <p class="time_line" th:text="${map.news.newsMonth}+'  '+'2021'">
+            <!-- May 2021-->
+          </p>
+          <ul>
+            <li>
+              <a th:href="@{|/news/detail/${map.news.id}|}" target="_blank">
+                <div class="content">
+                  <div class="left">
+                    <img class="big-img lazyload" th:data-src="${map.news.newsImg}" alt="oscal">
+                  </div>
+                  <div class="right">
+                    <div class="other">
+                      <p>News</p>
                     </div>
+                    <p class="time" th:text="${map.news.newsCre}">
+                      May 19,2021
+                    </p>
+                    <p class="tit" title="Blackview kicks off a wider global expansion by launching a new OSCAL brand"
+                      th:text="${map.news.newsTitle}">
+                      Blackview kicks off a wider global expansion by launching a new OSCAL brand
+                    </p>
+                    <p class="msg" th:text="${map.news.newsSimDes}">
+                      In a bigger step toward becoming a major global player, the world-known
+                      rugged phone brand Blackview has announced its new brand, OSCAL, to the
+                      world today. At the same time, the OSCAL official website is live where the
+                      product shelf has presented the first product - OSCAL C20 smartphone.
+                    </p>
+                    <div class="more">
+                      <p>Read More</p>
+                    </div>
+                  </div>
                 </div>
-
-                <!-- <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item page-item-current prev disabled">
-                            <a class="page-link">Previous</a>
-                        </li>
-                        <li class="page-item index active"><a class="page-link">1</a></li>
-
-                        <li class="page-item page-item-current next">
-                            <a class="page-link">Next</a>
-                        </li>
-                    </ul>
-                </nav> -->
-            </div>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div class="go-top">
-            <span class="top-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                    class="bi bi-chevron-up" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
-                </svg>
-            </span>
-        </div>
+
+      </div>
     </div>
-    <div id="footer" th:include="footer :: myFooter">
-    </div>
+  </div>
+  </a>
+  </li>
+  </ul>
+  </div>
+  </div>
+  <!--       <div class="newsPagination">
+           <div>
+               <div id="rightdiv">
+                   <a  th:href="${'/news/'}+'1'">
+                       <span  class="firstPage">First</span>
+                   </a>
+                   <a  th:href="${'/news/'}+${pageNumber -1}" th:if=" ${pageNumber} gt '1'">
+                       <span class="prePage">&lt;</span>
+                   </a>
+                   <a th:href="${'/news/'}+${pageNumber}">
+                       <span th:text="${pageNumber}" class="currentPage"></span>
+                   </a>
+                   <a th:href="${'/news/'}+${pageNumber +1}" th:if=" ${pageNumber lt lastPage}">
+                       <span class="nextPage">&gt;</span>
+                   </a>
+
+                   <a th:href="${'/news/'}+${lastPage}">
+                       <span class="lastPage">Last</span>
+                   </a>
+               </div>
+           </div>
+       </div>-->
+  <!--分页 -->
+  <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+      </li>
+      <li th:class="|page-item ${page.current==1?'disabled':''}|">
+        <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+      </li>
+      <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+      <li th:each="i:${#numbers.sequence(page.from,page.to)}" th:class="|page-item ${i==page.current? 'active' : ''}|">
+        <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+      </li>
+      <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+        <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+      </li>
+    </ul>
+  </nav>
+  </div>
+  </div>
+  <div class="go-top">
+    <span class="top-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-up"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+      </svg>
+    </span>
+  </div>
+  </div>
+  <div id="footer" th:include="footer :: myFooter">
+  </div>
 </body>
+<script async th:src="@{/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/news.js?v=1.000}"></script>
+<script th:src="@{/js/public.js?v=1.000}"></script>
 
 </html>
-<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
-<script src="/js/news.js"></script>
-<script src="/js/public.js"></script>

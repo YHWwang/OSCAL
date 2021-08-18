@@ -32,7 +32,6 @@ $(".contact-email-box li").on('click',function () {
         $(this).parent().find(".error").hide()
     })
     /* 提交 */
-
     $(".submit span").click(function () {
         if(  $(this).html() == 'waiting...'){
             return
@@ -40,7 +39,6 @@ $(".contact-email-box li").on('click',function () {
         var flag = true
         $(".form-ipt").each((index, item)=>{
             flag = true
-            console.log(item.getAttribute("data-name"));
             if(item.value == false && item.getAttribute("data-name") != 'orderId'){
                 let value = ""
                 value = $(".ipt-name").eq(index).html()
@@ -65,12 +63,12 @@ $(".contact-email-box li").on('click',function () {
             ruleForm.contractName = $("[data-name = contractName ]").val()
             ruleForm.content = $("[data-name = content ]").val()
             ruleForm.category = $("[data-name = category ]").val()
+            ruleForm.contractModel  = $("[data-name =model ]").val()/*型号*/
             ruleForm.subject = $("[data-name = subject ]").val()
             ruleForm.orderId = $("[data-name = orderId ]").val()
-
-            $.ajax({ url: "/api/contactus/",
+            $.ajax({ url: "/contactUs",
                 type:"POST",
-                // contentType:"application/x-www-form-urlencoded",
+        
                 contentType:"application/json",
                 data:JSON.stringify(ruleForm) ,
                 beforeSend:function(){

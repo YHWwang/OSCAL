@@ -1,0 +1,392 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: Regular;
+    src: url('../font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -- reset -- */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* -- reset end -- */
+
+.big-img {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    background-color: #F5F5F5;
+    min-height: 100vh;
+    padding-top: 150px;
+    /* display: flex;
+    align-items: center; */
+}
+
+.receiveCoinBox {
+    width: 1220px;
+    margin: 0 auto;
+    display: flex
+}
+
+.receiveCoinBox p {
+    margin-bottom: 0;
+}
+
+.receiveCoinBox .receiveCoinMsg {
+    width: 817px;
+    padding: 30px 20px;
+    min-height: 500px;
+}
+.receiveCoinBox .receiveCoinMsg .navsMenu a{
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.receiveCoinBox .receiveCoinMsg .coinBox {
+    background-color: #fff;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+.receiveCoinBox .receiveCoinMsg .coinBox ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.receiveCoinBox .receiveCoinMsg .nav-tabs{
+    border-bottom: 1px solid #EEEEEE;
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    margin-top: 25px;
+
+}
+.receiveCoinBox .receiveCoinMsg .nav-tabs .nav-link{
+    width: 220px;
+    font-size: 20px;
+    border: 0;
+    color: #000;
+}
+#myTabContent{
+    background-color: white;
+    padding-bottom: 30px;
+}
+#myTabContent table{
+    position: relative;
+    width: 96%;
+    margin: 0 auto;
+}
+#myTabContent table tr{
+    border-bottom: 1px solid #E4E4E4;
+    font-size: 14px;
+}
+#myTabContent table tr:not(:nth-child(1)) td span{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+   
+    border-radius: 2px;
+    line-height:normal;
+    display: inline-block;
+}
+#myTabContent table tr:nth-child(2) td:nth-child(1) span{
+    background-color: #EB7251;
+    color: white;
+}
+#myTabContent table tr:nth-child(3) td:nth-child(1) span{
+    background-color: #F39A5E;
+    color: white;
+}
+#myTabContent table tr:nth-child(4) td:nth-child(1) span{
+    background-color: #F5C866;
+    color: white;
+}
+/* #myTabContent table tr:nth-child(2) td:nth-child(1){
+    background-color: red;
+} */
+#myTabContent table th{
+    padding: 30px 0;
+    font-size: 16px;
+}
+#myTabContent table td{
+    padding: 15px 0;
+}
+
+.Pagination {
+    display: block;
+    padding: 5vw 0 3vw 0;
+    text-align: center;
+}
+
+
+.Pagination .rightdiv {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.Pagination .rightdiv a {
+    color: #000;
+    text-decoration: none;
+}
+.rightdiv .prePage{
+    display: none;
+}
+
+.Pagination .rightdiv span {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+}
+
+.Pagination .rightdiv span:hover {
+    color: gray;
+}
+.receiveCoinBox .receiveCoinMsg .nav-tabs .nav-link.active{
+    color: #007bff;
+}
+.receiveCoinBox .receiveCoinMsg .coinBox ul li {
+    font-size: 18px;
+    font-weight: 400;
+    color: #111111;
+}
+
+.receiveCoinBox .receiveCoinMsg .coinIntroduction {
+    padding: 20px;
+}
+
+.receiveCoinBox .receiveCoinMsg .coinIntroduction .title {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: #111111;
+}
+
+.receiveCoinBox .receiveCoinMsg .coinIntroduction p {
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.usersInfo a,.usersInfo a:hover {
+    text-decoration: none;
+}
+
+.usersBox a,.usersBox a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.usersInfo {
+    width: 360px;
+    text-align: center;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 82px;
+}
+.usersInfo .usersBox{
+    background-color: white;
+    padding: 20px 0;
+}
+.usersInfo ul {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.usersInfo ul li{
+    cursor: pointer;
+}
+
+.postsBox p,
+.usersInfo p {
+    margin-bottom: 0;
+}
+
+.usersInfo ul li .number {
+    font-size: 18px;
+    color: #111111;
+    line-height: 1;
+}
+
+.usersInfo ul li .user_info {
+    font-size: 14px;
+    color: #646464;
+}
+
+#updateImageModal .krajee-default .file-footer-buttons {
+    display: none;
+}
+
+.usersInfo .user_image {
+    cursor: pointer;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+}
+
+.usersInfo .usersName {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #111111;
+}
+
+.usersInfo .usersName svg {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.usersInfo .createPost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 0;
+    border: 0;
+    background-image: linear-gradient(to right, #E511CA, #7062EB, #3595F1, #16B6F3);
+    text-align: center;
+    width: 100%;
+    height: 68px;
+    line-height: 68px;
+    margin-top: 24px;
+    border-radius: 34px;
+}
+.usersInfo .createPost svg{
+    margin-right: 15px;
+}
+
+
+@media screen and (max-width:1200px)and (min-width:800px) {
+    .receiveCoinBox {
+        width: 98%;
+    }
+    
+}
+
+
+
+@media screen and (max-width:1000px) {
+    .header_main {
+        width: 1000px;
+    }
+    .receiveCoinBox{
+        width: 98%;
+    }
+}
+
+@media screen and (max-width: 800px) {}

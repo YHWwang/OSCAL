@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="Description" content="Wireless Headphones Without Compromise For Better Workouts">
+    <title>OSCAL</title>
+    <link rel='stylesheet' type='text/css' href='/css/osSystem.css?v=1.000'>
+    <link rel='stylesheet' type='text/css'
+        href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+</head>
+
+<body class="en">
+    <div th:include="communityHeader :: communityHeader">
+    </div>
+    <div id="AMain" class="main">
+        <div class="osContent">
+            <ul>
+                <li class="os-list" th:each="osCategory:${osCategorySystem}">
+                    <div class="os-item">
+                     <p class="title" th:text="${osCategory.category_cate_name}">
+                     General
+                     </p>
+                        <div class="toolBox">
+                            <div class="tool-item" th:each="osSecondCategory:${osCategory.sonList}">
+                                <a th:href="@{'/showOsCommunity/'+${osSecondCategory.id}+'/'+${osSecondCategory.category_cate_name}}">
+                                <img th:src="${osSecondCategory.category_pic}" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name" th:text="${osSecondCategory.category_cate_name}">问答</p>
+                                    <p class="number" th:text="${osSecondCategory.countPosts}">(5)</p>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+             <!--   <li class="os-list">
+                    <div class="os-item">
+                        <p class="title">玩法技巧</p>
+                        <div class="toolBox">
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/c20.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">C20</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/c20pro.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">C20pro</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/c80.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">C80</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/s60.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">S60</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/pad8.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">Pad8</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/other-2.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">其它</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="os-list">
+                    <div class="os-item">
+                        <p class="title">系统和下载</p>
+                        <div class="toolBox">
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/osTool.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">系统工具</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/room.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">系统room</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/android.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">安卓</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="os-list">
+                    <div class="os-item">
+                        <p class="title">分享</p>
+                        <div class="toolBox">
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/image.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">图片和视频</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/evaluation.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">评测</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/recommend.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">建议反馈</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/manual.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">技巧想法</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="os-list">
+                    <div class="os-item">
+                        <p class="title">FAQ</p>
+                        <div class="toolBox">
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/rule.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">社区规则</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/skill.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">系统政策</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/policy.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">设备说明书</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="os-list">
+                    <div class="os-item">
+                        <p class="title">招募</p>
+                        <div class="toolBox">
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/celebrities.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">红人</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/experience.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">体验官</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="os-list">
+                    <div class="os-item">
+                        <p class="title">活动专区</p>
+                        <div class="toolBox">
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/activity.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">活动</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                            <div class="tool-item">
+                                <img src="/OSCAL/oscal-test/static/img/os/calendar.png" alt="OS-system">
+                                <div class="line-word">
+                                    <p class="name">营销日历</p>
+                                    <p class="number">(5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <div id="footer" th:include="footer :: myFooter">
+    </div>
+</body>
+
+</html>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+<script src="/js/osSystem.js?v=1.0000"></script>
+<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>

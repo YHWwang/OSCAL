@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Community-users</title>
+    <meta name="description" content="description">
+    <meta name="keywords" content="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel='stylesheet' type='text/css' href='/css/message.css?v=1.000'>
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+</head>
+
+<body class="en">
+    <div th:include="communityHeader :: communityHeader">
+    </div>
+    <div id="AMain" class="main">
+        <div class="mainContent">
+            <div class="usersBox">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                        <a class="nav-link active" id="nav-messages-tab" data-toggle="tab" href="#nav-messages"
+                            role="tab" aria-controls="nav-messages" aria-selected="true">Messages
+                        </a>
+                        <span class="total messages-total"></span>
+                        <a class="nav-link" id="nav-notifications-tab" onclick="navMain('notifications')"
+                            data-toggle="tab" href="#nav-notifications" role="tab" aria-controls="nav-notifications"
+                            aria-selected="false"> Notifications
+                        </a>
+                        <span class="total notifications-total"></span>
+                        <div class="comments_user_btn">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                                </svg>
+                            </span>
+                            <div class="comments_user_menu">
+                                <ul>
+                                    <li onclick="ReadStatusFun('all')">
+                                        <span>Mark all read</span>
+                                    </li>
+                                    <li onclick="delMessages('all')">
+                                        <span>Delete all</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-messages" role="tabpanel"
+                        aria-labelledby="nav-messages-tab">
+                        <ul class="item">
+                        </ul>
+                        <!--分页 -->
+                        <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+                                </li>
+                                <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                    <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+                                </li>
+                                <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+                                <li th:each="i:${#numbers.sequence(page.from,page.to)}"
+                                    th:class="|page-item ${i==page.current? 'active' : ''}|">
+                                    <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+                                </li>
+                                <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+                                    <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="tab-pane fade show active" id="nav-notifications" role="tabpanel"
+                    aria-labelledby="nav-notifications-tab">
+                    <ul class="item">
+                    </ul>
+                    <!--分页 -->
+                    <nav class="mt-5" th:if="${page.rows>0}" th:fragment="pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=1)}">First</a>
+                            </li>
+                            <li th:class="|page-item ${page.current==1?'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current-1})}">&lt;</a>
+                            </li>
+                            <!--numbers.sequence 生成一个 page.from 到 page.to 的连续整数数组-->
+                            <li th:each="i:${#numbers.sequence(page.from,page.to)}"
+                                th:class="|page-item ${i==page.current? 'active' : ''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${i})}" th:text="${i}"></a>
+                            </li>
+                            <li th:class="|page-item ${page.current==page.total ? 'disabled':''}|">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.current+1})}">&gt;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{${page.path}(current=${page.total})}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                </div>
+            </div>
+            <div class="usersInfo">
+                <div class="usersBox">
+                    <div class="usersImage">
+                        <img class="user_image" id="usersImage" data-toggle="modal" data-target="#updateImageModal"
+                            th:src="${userInfo.headPhoto}" alt="usersImg">
+                    </div>
+                    <p class="usersName">
+                        <span class="usersName" th:text="${userInfo.sysUserAccount}">test</span>
+
+                    </p>
+                    <ul>
+                        <li>
+                            <p class="number" th:text="${rows}">0</p>
+                            <p class="user_info">Posts</p>
+                        </li>
+                        <li>
+                            <p class="number" th:text="${followeeCount}">0</p>
+                            <p class="user_info">Following</p>
+                        </li>
+                        <li>
+                            <p class="number" th:text="${followerCount}">0</p>
+                            <p class="user_info">Followers</p>
+                        </li>
+                        <li>
+                            <p class="number" th:text="${userInfo.oCoin}">0</p>
+                            <p class="user_info">O coin</p>
+                        </li>
+                    </ul>
+                </div>
+                <a href="/discuss/jumpNewPost" target="_self">
+                    <div class="createPost">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                        <span>
+                            New Post
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input rows="3" class="form-control modalInput" type="text">
+                        <div class="invalid-feedback">
+                            Reply content cannot be empty
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary submitReplayBtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" th:include="footer :: myFooter">
+        </div>
+
+</body>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/js/message.js?v=1.000"></script>
+<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script async
+    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+
+</html>

@@ -1,0 +1,249 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: Regular;
+    src: url('../font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -- reset -- */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* -- reset end -- */
+
+.big-img {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    background-color: #F5F5F5;
+    padding-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom:50px;
+}
+
+.mainContent {
+    width: 1200px;
+    background-color: white;
+    min-height: 300px;
+    padding: 50px 0;
+}
+
+.mainContent .SearchPostBox {
+    width: 768px;
+    margin: 0 auto;
+}
+
+.searchListBox ul li {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.searchListBox .imgBox img {
+    width: 48px;
+    height: 48px;
+}
+
+.searchListBox {
+    margin-left: 10px;
+}
+
+.searchListBox p {
+    margin-bottom: 0;
+}
+
+.searchListBox a,
+.searchListBox a:hover {
+    text-decoration: none
+}
+
+.searchListBox a:hover .postsTit{
+    color: #007bff;
+}
+.searchListBox ul li:hover{
+    background-color: #F5F5F5;
+
+}
+.searchListBox ul{
+    margin-top: 30px;
+}
+.searchListBox .itemList .msg .number .num {
+    display: inline-block;
+    position: relative;
+    width: 70px;
+    height: 19px;
+    line-height: 19px;
+}
+
+.searchListBox .itemList .title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #111111;
+}
+
+.searchListBox .itemList .msg {
+    font-size: 14px;
+    color: #999999;
+    margin-top: .5rem;
+}
+
+.searchListBox .itemList .msg .number {
+    position: absolute;
+    right: 0;
+}
+
+.newsPagination {
+    display: block;
+    padding: 5vw 0 3vw 0;
+    text-align: center;
+}
+
+#rightdiv {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#rightdiv a {
+    color: #000;
+    text-decoration: none;
+}
+
+#rightdiv span {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+}
+
+#rightdiv span:hover {
+    color: gray;
+}
+
+
+
+@media screen and (max-width:1000px)and (min-width:800px) {}
+
+@media screen and (max-width:1000px) {
+    .header_main {
+        width: 1000px;
+    }
+}
+
+@media screen and (max-width: 800px) {}

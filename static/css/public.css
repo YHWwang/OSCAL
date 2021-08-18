@@ -200,9 +200,13 @@ a {
     transform: translateY(-50%);
 }
  @media screen and (max-width: 800px) {
+    .pagesServer .title {
+        font-size: 22px;
+    }
      .pagesServer{
          min-width: auto;
          width: 90%;
+         margin-top: 100px;
      }
      .pagesServer h5 {
         font-size: 30px;

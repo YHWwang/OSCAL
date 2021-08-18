@@ -10,9 +10,9 @@
     <title>OSCAL</title>
     <meta name="description" content="Legal">
     <meta name="keywords" content="Legal">
-    <link rel='stylesheet' type='text/css' href='css/public.css'>
+    <link rel='stylesheet' type='text/css' th:href='@{/css/public.css?v=1.000}'>
 
-    <script src="lib/js/jquery-3.3.1.min.js"></script>
+    <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
     <script async
         src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
 </head>
@@ -285,6 +285,6 @@
     <div id="footer" th:include="footer :: myFooter">
     </div>
 </body>
-
+<script th:src="@{/js/public.js?v=1.000}"></script>
 </html>
-<script src="js/public.js"></script>
+

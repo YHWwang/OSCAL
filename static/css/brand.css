@@ -378,6 +378,11 @@ img {
    margin-top: 50%;
    transform: translateY(-50%);
 }
+.news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle .tit p{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle .time p{
     font-size: 36px;
     padding-bottom: 20px;
@@ -389,7 +394,7 @@ img {
     left: 10px !important;
 }
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-    left: 45% !important;
+    left: 50% !important;
 }
 .swiper-button-prev, .swiper-container-rtl .swiper-button-next{
     background-image: url('../img/brand-swiper-prev.svg') !important;
@@ -400,12 +405,11 @@ img {
 .swiper-button-next, .swiper-button-prev {
     background-size: 20px 40px !important;
 }
-.swiper_box .swiper-pagination{
-    left: 50% ;
-    width: 50% ;
+.swiper-pagination{
+    width: 100% !important;
     font-size: 1.5rem;
-    text-align: left ;
-    bottom: 3vw ;
+    text-align: center !important;
+    bottom: 3vw !important;
 }
 .swiper-pagination-total{
     color: gray !important;
@@ -419,6 +423,29 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+    .mainContent .introduction .word .title {
+        padding: 5vh 0;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle .time p {
+        font-size: 6vw;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle .tit p {
+        font-size: 5vw;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle p {
+        font-size: 3.7vw;
+        width: 94%;
+        margin: 0 auto;
+    }
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+        left: 5% !important;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .middle {
+        width: 100%;
+    }
+    .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide .right p {
+        width: 100%;
+    }
     .mainContent .introduction .line-year {
         height: 40px;
     }
@@ -426,7 +453,7 @@ img {
         font-size: 22px;
     }
     .news_line .swiper-container{
-        width: 90%;
+        width: 98%;
     }
     .mainContent .introduction .word .msg {
         font-size: 3.5vw;
@@ -438,6 +465,9 @@ img {
     .mainContent .introduction .word ul li .p1,.mainContent .introduction .word .title, .mainContent .introduction .news_line .title{
         font-size: 6vw;
     }
+    .mainContent .introduction .word ul li .p2 {
+        padding-top: 10px;
+    }
     .watch_video .tit {
         font-size: 8vw;
         margin-bottom: 4vw;
@@ -447,6 +477,7 @@ img {
     }
     .mainContent .introduction .word{
         min-width: auto;
+        padding: 0;
         width: 96%;
     }
     .news_line .swiper_box .swiper-container .swiper-wrapper .swiper-slide {
@@ -477,7 +508,7 @@ img {
     }
     .swiper_box .swiper-pagination{
         text-align: center;
-        transform: translateX(-50%);
+        /* transform: translateX(-50%); */
     }
     .watch_video {
         height: calc(var(--vh, 1vh)* 100);

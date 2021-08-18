@@ -139,12 +139,10 @@ h6 {
 .big-img {
     width: 100%;
 }
-.products-lists ul li.item-list{
-    display: none;
-}
-.products-lists ul li.item-list.active{
+
+/* .products-lists ul li.item-list.active{
     display: block !important;
-}
+} */
 img {
     -webkit-user-drag: none;
 }
@@ -285,7 +283,7 @@ img {
     color: #000;
 }
 
-.productsBox .products-sort .products-tabs a.active {
+.productsBox .products-sort .products-tabs .item-tags.active {
     padding: 1px;
     border-radius: 21px;
     border: 1px solid #000;
@@ -394,20 +392,33 @@ img {
     padding: 2vw 0;
 }
 .products-lists ul li .product-img{
-    width: 80%;
+    height: auto;
+    width: 60%;
     margin: 0 auto;
 }
 .products-lists ul li a img {
+    height: 100%;
     display: none;
+    opacity: 0;
 }
 
 .products-lists ul li a img.on {
     display: block;
-    transition-delay: 1s;
+    opacity: 1;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
 }
-
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .products-lists ul li .product-img.on {
-    background-image: url('../img/loading.gif');
+    background-image: url('/img/loading.gif');
     background-size: 15% 15%;
     background-position: center;
     background-repeat: no-repeat;
@@ -488,18 +499,39 @@ img {
 /* end */
 
 @media screen and (max-width: 800px) {
+    .products-lists ul li .product-img.on {
+        height: 150px;
+    }
+    .products-lists ul li .product-img {
+        width: 70%;
+    }
+    .products-lists ul li .product-color .on span {
+        width: 16px;
+        height: 16px;
+    }
+    .productsBox {
+        padding: 6vw 0;
+    }
     .products-lists ul li .products-name{
         font-size: 5vw;
+        margin-top: 10px;
     }
     .productsBox .products-sort .products-tabs a {
         margin-right: 0;
-        min-width: 125px;
+        height: 30px;
+        line-height: 30px;
+        min-width: 105px;
+    }
+    .productsBox .products-sort .products-tabs a.active span {
+        height: 30px;
+        line-height: 30px;
     }
     .productsBox .products-sort .products-tabs a.active span {
         padding: 0 10px;
     }
     .products-lists ul li {
         width: 49%;
+        padding: 5vw 0;
     }
     .productsBox .products-sort{
         min-width: auto;
@@ -519,9 +551,6 @@ img {
 }
 
 @media screen and (max-width:1200px)and (min-width:800px) {
-    .products-lists ul li .product-img{
-        width: 100%;
-    }
     .products-lists ul li .products-name {
         font-size: 3vw;
     }

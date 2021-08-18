@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="Description" content="Wireless Headphones Without Compromise For Better Workouts">
+    <title>OSCAL</title>
+    <link rel='stylesheet' type='text/css' href='/css/createPosts.css?v=1.002'>
+    <link rel='stylesheet' type='text/css'
+        href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/Summernote/summernote-lite.min.css">
+</head>
+
+<body class="en">
+<div th:include="communityHeader :: communityHeader">
+</div>
+    <div id="AMain" class="main">
+        <div class="mainContent">
+            <div class="navsMenu">
+                <p><a href="/discuss/community">Home</a> > Create a new post</p>
+            </div>
+            <div class="createPostBox">
+                <form id="createPostsForm" class="needs-validation-createPostsForm" novalidate>
+                     <div class="mb-3">
+                        <div class="sort">
+                            <div class="item active" onclick="postSort(0)">
+                                <img src="/img/blog-img/normalpost.png" alt="normalpost">
+                                <img src="/img/blog-img/normalpost0.png" alt="normalpost">
+                                <p>Normal Post</p>
+                            </div>
+                            <div class="item" onclick="postSort(1)">
+                                <img src="/img/blog-img/qapost0.png" alt="qapost0">
+                                <img src="/img/blog-img/qapost.png" alt="qapost0">
+                                <p>OS Post</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="input-group">
+                            <input type="text" class="postTitle" id="postTitle" pattern="[\s\S+A-Za-z0-9]{5,100}"
+                                placeholder="Enter title (5/100)" required></input>
+                            <div class="invalid-feedback">
+                                Please enter 5-100 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <!-- 富文本编辑器 -->
+                        <div class="comments_bottom">
+                            <textarea id="summernote" class="summernote" pattern="[\w]{5,100000}" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter 5-100000 characters
+                            </div>
+                        </div>
+                        <p class="note">5-100000 characters</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="selectBox">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <select class="form-control custom-select" id="category" required>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <select class="form-control custom-select" id="section" required>
+                                        <option value='' disabled selected style='display:none;'>Section</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <select class="form-control custom-select" id="threeSection" required>
+                                        <option value='' disabled selected style='display:none;'>Section</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="postBtn">
+                        <button type="button" class="btn postCancel" data-toggle="modal"
+                            data-target="#postCancelModel">Cancel</button>
+                        <button type="submit btn btn-light" class="btn postSubmit">Submit</button>
+                    </div>
+                </form>
+                <!-- Modal -->
+                <div class="modal fade" id="postCancelModel" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Cancel</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure to leave the page?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                <a href="/community" target="_self"><button type="button"
+                                        class="btn btn-primary">OK</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+    </div>
+    <div id="alertBox">
+    </div>
+    <div id="maskLayer">
+        <div class="spinner-border text-light" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div id="footer" th:include="footer :: myFooter">
+    </div>
+</body>
+
+</html>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+<script src="/js/createPosts.js?v=1.002"></script>
+<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="/lib/Summernote/summernote-lite.min.js"></script>

@@ -1,0 +1,422 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: Avenir;
+    src: url('../font/ProximaNova-Regular.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -- reset -- */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+.main p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+.main a,
+.main a:hover {
+    text-decoration: none;
+}
+
+a,
+button {
+    color: #000;
+    cursor: pointer;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* -- reset end -- */
+.productsMenuBox {
+    position: fixed;
+    width: 100%;
+    z-index: 111;
+    background-color: white;
+    height: 40px;
+    line-height: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.productsMenuBox-bg {
+    width: 100%;
+    max-width: 1200px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+}
+
+.productContent {
+    margin-top: 40px;
+    position: relative;
+    width: 100%;
+}
+
+.productsMenuBox .productsName {
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.productsMenuBox .products-rightBox .products-buyBtn {
+    margin-left: 1rem;
+}
+
+.productsMenuBox .products-rightBox .products-buyBtn span {
+    color: white;
+    background: linear-gradient(90deg, #F010C7 0%, #5D6BEF 47%, #0AC3F4 100%);
+    border-radius: 16px;
+    line-height: 1;
+    padding: 8px 20px;
+}
+
+.productsMenuBox .products-rightBox {
+    float: right;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+#pills-tab a {
+    color: #CCCCCC;
+    padding: 0 1rem;
+}
+
+#pills-tab a.active {
+    color: #000;
+    font-weight: bold;
+}
+
+#pills-profile {
+    background-color: #FAFAFA;
+}
+
+#pills-profile .oscal-spescBoxBg {
+    width: 100%;
+    background-color: white;
+}
+
+.main {
+    font-family: Avenir;
+    font-size: 1rem;
+}
+
+#AMain {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color: transparent;
+    margin-top: 60px;
+    background-color: #F5F5F5;
+}
+#pills-profile .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #d4d4d4;
+}
+.big-img {
+    width: 100%;
+}
+
+img {
+    -webkit-user-drag: none;
+}
+
+.mainContent {
+    padding-bottom: 5vw;
+}
+
+
+#pills-profile .products_spesc,
+.oscal-specification-table {
+    width: 80%;
+    max-width: 1200px;
+    padding: 100px 0;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spesc-img-left {
+    width: 40%;
+    height: 510px;
+    position: relative;
+}
+
+.spesc-img-left img.image-active.on {
+    background-image: url('../img/loading.gif');
+    background-size: 20%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /*初始状态 透明度为0*/
+    }
+
+    100% {
+        opacity: 1;
+        /*结尾状态 透明度为1*/
+    }
+}
+
+.spesc-img-left img.image-active {
+    opacity: 1;
+    display: block;
+    -webkit-animation-name: fadeIn;
+    /*动画名称*/
+    -webkit-animation-duration: 1s;
+    /*动画持续时间*/
+    -webkit-animation-iteration-count: 1;
+    /*动画次数*/
+}
+
+.spesc-img-left img {
+    max-width: 400px;
+    width: 100%;
+    /* opacity: 0; */
+    margin: 0 auto;
+    /* display: none; */
+}
+
+.spesc-img-right {
+    width: 60%;
+}
+
+.spesc-img-right .spesc-img-right-ul {
+    font-size: 0;
+    text-align: center;
+}
+
+.spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    text-align: center;
+}
+
+.spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li .spescColor {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+}
+
+.spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li .spescColorName {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.oscal-specification-table table {
+    width: 100%;
+    text-align: left;
+}
+
+.oscal-specification-table .oscal-specification-table-tit p {
+    font-size: 30px;
+    color: #000;
+}
+
+.oscal-specification-table table tr {
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.oscal-specification-table table tr td p {
+    padding: 20px 0;
+    font-size: 22px;
+    color: gray;
+    line-height: 2;
+}
+
+
+
+/* end */
+
+@media screen and (max-width: 800px) {
+
+    .productsMenuBox-bg,
+    #pills-profile .products_spesc,
+    .oscal-specification-table {
+        width: 96%;
+        max-width: none;
+    }
+
+    #pills-profile .products_spesc,
+    .oscal-specification-table {
+        padding: 50px 0;
+    }
+
+    .spesc-img-left,
+    .spesc-img-right {
+        width: 100%;
+        height: auto;
+    }
+
+    #pills-profile .products_spesc {
+        display: block;
+    }
+
+    .productsMenuBox .productsName {
+        font-size: 3vw;
+    }
+
+    .spesc-img-left img {
+        max-width: 250px;
+        height: 320px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+    }
+
+    #pills-tab a {
+        padding: 0 .5rem;
+    }
+
+    #pills-tab a.nav-link,
+    .productsMenuBox .products-rightBox .products-buyBtn span {
+        font-size: 3vw;
+    }
+
+    .oscal-specification-table .oscal-specification-table-tit p {
+        font-size: 3.5vw;
+        line-height: 1.3;
+    }
+
+    .oscal-specification-table table tr td p {
+        font-size: 2.5vw;
+        padding: 20px 0;
+        line-height: 1.5;
+
+    }
+
+}
+
+@media screen and (max-width:1200px)and (min-width:800px) {
+
+    .productsMenuBox-bg,
+    #pills-profile .products_spesc,
+    .oscal-specification-table {
+        width: 96%;
+        max-width: none;
+    }
+
+    .spesc-img-right .spesc-img-right-ul {
+        text-align: right;
+    }
+
+    .oscal-specification-table .oscal-specification-table-tit p {
+        font-size: 26px;
+    }
+
+    .oscal-specification-table table tr td p {
+        font-size: 20px;
+    }
+
+    .spesc-img-left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,16 +1,90 @@
-.contact-us-box{
-    /*background: #f1f1f1;*/
-    background: #fff;
-    padding: 50px;
+@charset "utf-8";
+
+@font-face {
+    font-family: Regular;
+    src: url('/font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body .main-contanter,
+html .main-contanter {
+    font-family: Regular;
+}
+
+.contact-us-box {
+    background: #F2F2F2;
     position: relative;
+    width: 100%;
+    margin-top: 60px;
+    min-height: 100vh;
 }
-.contact-us-main{
-    max-width: 1052px;
+
+.contact-right .sendTopUl {
+    font-size: 0;
+}
+
+#pills-tabContent {
+    padding: 50px 0;
+}
+
+.contact-right .sendTopUl li:nth-child(1) {
+    width: 45%;
+}
+
+.contact-right .sendTopUl li {
+    font-size: 16px;
+    width: 27.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.contact-right .sendTopUl li .tit,
+.contact-right .sendTopUl li .msg {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.contact-right .sendTopUl li .tit {
+    font-size: 20px;
+    padding-right: 5%;
+    color: #111111;
+    line-height: 1;
+}
+
+.contact-right .sendTopUl li .msg {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #333333;
+}
+.contact-right .sendTopUl li .msg a{
+    color: #333333;
+}
+.navMenu {
+    background-color: white;
+    height: 60px;
+    line-height: 60px;
+}
+
+#pills-tab .nav-link {
+    padding: 0;
+    font-size: 18px;
+    padding-right: 1rem;
+    color: #000;
+}
+
+#pills-tab .nav-link.active {
+    font-weight: bold;
+}
+
+#pills-tab,
+.contact-us-main {
+    width: 60%;
+    min-width: 1000px;
     margin: 0 auto;
-    background: white;
-    box-sizing: border-box;
 }
-.contact-us-box .contact-us-tips{
+
+.contact-us-box .contact-us-tips {
     display: none;
     box-sizing: border-box;
     margin: 0 auto;
@@ -19,175 +93,241 @@
     background: #fff3cd;
 
 }
-.contact-content{
+
+.contact-content {
     display: flex;
     justify-content: center;
     flex: 1;
 }
-.contact-content .p1{
-    height: 30px;
-    line-height: 30px;
-    font-size: 20px;
-    text-align: center;
+
+#pills-Send .p1 {
+    margin-top: 100px;
 }
-.contact-us-main h3{
+
+.contact-us-main h3 {
     font-size: 36px;
     text-align: center;
     padding: 20px;
 }
-.contact-left,.contact-right{
-    width: 80%;
-    margin: 10px;
-    padding: 0 20px;
+
+.contact-left,
+.contact-right {
+    width: 100%;
 
 }
 
 .contact-left {
     /*border-right: 1px solid #000;*/
 }
-.chat-item{
-    margin: 20px 0px;
+
+.chat-item {
+    margin: 50px 0px;
 }
-.email-item{
+
+.email-item {
     margin: 0;
 }
-.chat-item:nth-child(3){
-    border-bottom: 1px solid #DCDFE6;
-    border-top: 1px solid #DCDFE6;
-    padding: 10px 0px;
+
+.chat-item li a {
+    color: #4880F0;
+    text-decoration: none;
 }
-.chat-item:nth-child(4){
+
+.chat-item:not(.chat-item:last-child) {
     border-bottom: 1px solid #DCDFE6;
-    /*padding: 30px 0px;*/
 }
-.chat-item ul{
+
+.chat-item ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
 }
-.chat-item li{
+
+.chat-item li {
     width: 150px;
     display: flex;
-    line-height:32px;
-    text-align:left;
-    background:url(../img/online_bj_2.jpg) no-repeat 8px 6px;padding-left:36px;
+    line-height: 32px;
+    text-align: left;
+    background: url(../img/online_bj_2.jpg) no-repeat 8px 6px;
+    padding-left: 36px;
 }
-.email-box li{
+
+.email-box li {
     background: none;
     padding-left: 0;
 }
-.email-box svg{
+
+.email-box svg {
     margin-right: 5px;
 }
-.chat-item .chat-item-name{
-    line-height: 30px;
-    padding: 5px;
+
+.chat-item-name {
+    font-size: 20px;
 }
-.btn-submit{
+
+.btn-submit {
     /*margin: 0 auto;*/
     text-align: center;
 }
 
-.marketing{
+.marketing {
     padding-bottom: 20px;
 }
 
-.chat-item-box{
+.chat-item-box {
     display: flex;
     flex-wrap: wrap;
 }
- .contact-content a:hover{
+
+.contact-content a:hover {
     text-decoration: underline;
 }
 
-.contact-email-box{
+.contact-email-box {
     display: flex;
     justify-content: start;
 }
-.contact-email-box li{
+
+.contact-email-box li {
     background: #96bbed;
     color: #fff;
     padding: 10px 20px;
     margin-left: 5px;
     cursor: pointer;
 }
-.email-content{
+
+.email-content {
     height: 60px;
 }
-.contact-email-box li.active{
+
+.contact-email-box li.active {
     background: #2d77db;
 }
-.email-content li{
+
+.email-content li {
     display: none;
     padding: 10px;
 }
-.email-content .active{
+
+.email-content .active {
     display: block;
 }
-.form-ipt:focus{ outline: none; }
-.form-ipt{
+
+.form-ipt:focus {
+    outline: none;
+}
+
+.form-ipt {
     width: 400px;
     height: 40px;
     margin: 10px 0 5px 0;
-
-    border:1px solid #dcdfe6;
+    background-color: #F2F2F2;
+    border: 1px solid #dcdfe6;
     border-radius: 3px;
     padding-left: 10px;
 }
-.red-star{
+
+.red-star {
     color: red;
 }
-.form-item{
+
+.form-item {
     margin-top: 20px;
 }
-.form-item li{
+
+.form-item li {
     height: 100px;
 }
-.form-item li.submit{
+
+.form-item li.submit {
+    width: 400px;
     height: 50px;
     text-align: center;
     margin-top: 20px;
 }
-.submit span{
-    background: #409eff;
+
+.submit span {
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #F010C7 0%, #5D6BEF 47%, #0AC3F4 100%);
+    border-radius: 25px;
     color: #fff;
-    padding: 10px 20px;
-    border-radius: 3px;
+    padding: 10px 30px;
     cursor: pointer;
 }
-.success{
+
+.success {
     display: none;
 }
-.ipt-name,.ipt-p{
+
+.ipt-name,
+.ipt-p {
     color: #606266;
     font-size: 14px;
 }
-.error{
+
+.error {
     font-size: 12px;
 }
-.error-box{
+
+.error-box {
     height: 20px;
 }
-@media screen and (max-width:800px) and (min-width:200px){
-    .form-ipt{
-        width: 95%;
+
+
+@media screen and (max-width:800px) and (min-width:200px) {
+    .form-item li.submit{
+        width: 100%;
     }
-    .contact-us-box{
-        padding: 10px;
+    .sendBr{
+        display: none;
     }
-    .contact-content{
+    #pills-tab, .contact-us-main{
+        min-width: auto;
+        width: 96%;
+    }
+    .contact-right .sendTopUl li{
+        width: 100% !important;
         display: block;
     }
-    .contact-left,.contact-right{
-        width: 90%;
+    #pills-Send .p1 {
+        margin-top: 50px;
+    }
+    .contact-right .sendTopUl li .tit, .contact-right .sendTopUl li .msg{
+        display: block;
+    }
+    .form-ipt {
+        width: 95%;
+    }
+
+    .contact-content {
+        display: block;
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 96%;
         margin: 0px auto;
     }
-    .chat-item li{
+
+    .chat-item li {
         width: 120px;
     }
 
 }
 
-@media screen and (max-width:1000px) {
- 
+@media screen and (max-width:1200px)and (min-width:800px)  {
+    .sendBr{
+        display: none;
+    }
+    #pills-tab, .contact-us-main{
+        min-width: auto;
+        width: 96%;
+    }
+    .contact-right .sendTopUl li{
+        width: 33.33% !important;
+    }
+    .contact-right .sendTopUl li .tit, .contact-right .sendTopUl li .msg{
+        display: block;
+    }
 }

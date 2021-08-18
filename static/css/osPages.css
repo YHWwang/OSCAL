@@ -1,0 +1,538 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: Regular;
+    src: url('../font/MyriadPro-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* -- reset -- */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    text-align: left;
+    font-weight: normal;
+}
+
+em {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+img {
+    border: none;
+    vertical-align: top;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.1;
+    color: inherit;
+}
+
+/* -- reset end -- */
+
+.big-img {
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    background-color: #F5F5F5;
+    min-height: 100vh;
+    padding-top: 150px;
+}
+
+.OSContent .usersInfo a {
+    text-decoration: none;
+}
+
+.usersBox a {
+    text-decoration: none;
+    color: #000;
+}
+
+.OSContent {
+    width: 1220px;
+    margin: 0 auto;
+    display: flex;
+    padding-bottom: 50px;
+}
+
+.OSContent .osSys-left {
+    width: 817px;
+    background-color: #fff;
+    padding: 30px 20px;
+}
+.OSContent .osSys-left .osTitle{
+    font-size: 24px;
+    font-weight: 500;
+    color: #111111;
+}
+.OSContent .osSys-left .osTitle .sp{
+    margin: 0 10px;
+    font-size: 16px;
+    color: #333333;
+}
+.OSContent .osSys-left .osSysList .title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.OSContent .osSys-left .osSysList .title img {
+    vertical-align: revert;
+}
+.OSContent .osSys-left .sort .cascader-model ul{
+    height: auto;
+}
+.OSContent .osSys-left .postsTit {
+    max-width: 600px;
+    font-size: 18px;
+    color: #111111;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-weight: 500;
+}
+
+.OSContent .osSys-left .postsTit:hover {
+    color: #4880F0;
+}
+
+.OSContent .osSys-left .postsTit[postType=3] {
+    color: #EE1B2E;
+}
+
+.newsPagination {
+    display: block;
+    padding: 5vw 0 3vw 0;
+    text-align: center;
+}
+
+#rightdiv {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#rightdiv a {
+    color: #000;
+    text-decoration: none;
+}
+
+#rightdiv span {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid #8b8b8b;
+    border-radius: 5px;
+}
+
+#rightdiv span:hover {
+    color: gray;
+}
+
+
+
+.OSContent .osSys-left .sort {
+    background-color: #F5F5F5;
+    padding: 20px;
+    position: relative;
+}
+
+.OSContent .osSys-left .osSysList ul li {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.OSContent .osSys-left .osSysList ul li:last-child {
+    border-bottom: 0;
+}
+
+.OSContent .osSys-left .osSysList ul li p {
+    margin-bottom: 0;
+}
+
+.OSContent .osSys-left .osSysList ul li .itemList {
+    margin-left: 24px;
+}
+
+.OSContent .osSys-left .osSysList ul li .itemList a {
+    text-decoration: none;
+}
+
+.OSContent .osSys-left .osSysList ul li .itemList .msg {
+    font-size: 14px;
+    color: #999999;
+    margin-top: .5rem;
+ 
+}
+
+.OSContent .osSys-left .osSysList ul li .itemList .msg .number {
+    position: absolute;
+    right: 0;
+   bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.OSContent .osSys-left .osSysList ul li .itemList .msg .number .num {
+    position: relative;
+    width: 70px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.OSContent .osSys-left .osSysList ul li .itemList .msg .number .num svg {
+    margin-bottom: 2px;
+    vertical-align: sub;
+}
+
+.OSContent .osSys-left .sort .form-control {
+    width: 208px;
+    display: inline-block;
+    background-color: #F5F5F5;
+}
+
+
+
+.OSContent .osSys-left .osSysList .imgBox img {
+    width: 48px;
+    height: 48px;
+}
+
+.OSContent .usersBox .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.OSContent .usersBox .nav-link {
+    border: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.OSContent .usersBox .nav .nav-item.show .nav-link,
+.OSContent .usersBox .nav .nav-link.active {
+    color: #495057;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.OSContent .usersBox .nav .nav-link.active {
+    color: #4880F0
+}
+
+.OSContent .osSys-right {
+    width: 360px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.OSContent .osSys-right .newBtn {
+    height: 48px;
+    background: linear-gradient(90deg, #F010C7 0%, #5D6BEF 47%, #0AC3F4 100%);
+    border-radius: 24px;
+}
+
+.OSContent .osSys-right .newBtn a {
+    text-decoration: none;
+}
+
+.OSContent .osSys-right .newBtn .createPost {
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    line-height: 48px;
+}
+
+.OSContent .osSys-right .newBtn .createPost span {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.OSContent .osSys-right .hot_discussion,.OSContent .osSys-right .sectorBox {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+}
+
+.OSContent .osSys-right .hot_discussion .top_tit,.OSContent .osSys-right .sectorBox .top_tit{
+    position: relative;
+    padding:0 0 1vw 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    font-size: 20px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li {
+    padding: 20px 0;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li:last-child {
+    border-bottom: 0;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li .post_tit {
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    letter-spacing: 0;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li .post_tit a {
+    color: #111111;
+    text-decoration: none;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li .post_tit a:hover,.OSContent .osSys-right .sectorBox ul li a:hover {
+    color: #4880F0;
+    text-decoration: none;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li div {
+    position: relative;
+    color: #999999;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: normal;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li div .post_num {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.OSContent .osSys-right .hot_discussion .post_list li div .post_num span {
+    margin-right: 10px;
+}
+.OSContent .osSys-right .hot_discussion .post_list li div .post_num span svg{
+    vertical-align: sub;
+}
+.OSContent .osSys-right .sectorBox ul{
+    font-size: 0;
+    position: relative;
+}
+.OSContent .osSys-right .sectorBox ul li{
+    width: 50%;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #EEEEEE;
+    font-size: 16px;
+    font-weight: 400;
+    padding:  20px 0;
+}
+
+.OSContent .osSys-right .sectorBox ul li:nth-of-type(odd){
+    border-left: 0;
+}
+.OSContent .osSys-right .sectorBox ul li:nth-of-type(even){
+    border-right: 0;
+}
+.OSContent .osSys-right .sectorBox ul li a{
+    color: #000;
+}
+.usersInfo {
+    text-align: center;
+    position: relative;
+    margin-left: 20px;
+
+}
+
+.usersInfo ul {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.postsBox p,
+.usersInfo p {
+    margin-bottom: 0;
+}
+
+.usersInfo ul li .number {
+    font-size: 18px;
+    color: #111111;
+    line-height: 1;
+}
+
+.usersInfo ul li .user_info {
+    font-size: 14px;
+    color: #646464;
+}
+
+#updateImageModal .krajee-default .file-footer-buttons {
+    display: none;
+}
+
+.usersInfo .user_image {
+    cursor: pointer;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+}
+
+.usersInfo .usersName {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #111111;
+}
+
+.usersInfo .usersName svg {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.usersInfo .createPost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 0;
+    border: 0;
+    background-image: linear-gradient(to right, #E511CA, #7062EB, #3595F1, #16B6F3);
+    text-align: center;
+    width: 100%;
+    height: 68px;
+    line-height: 68px;
+    margin-top: 24px;
+    border-radius: 34px;
+}
+
+
+
+
+@media screen and (max-width:1200px)and (min-width:800px) {
+    .OSContent{
+        width: 98%;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .header_main {
+        width: 1000px;
+    }
+}
+
+@media screen and (max-width: 800px) {}

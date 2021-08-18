@@ -1,42 +1,39 @@
 $(function () {
-  var ImgWidth = document.body.clientWidth
-  var product_img_height = $('.product-img')
+    // 临时链接
+    $('.products-lists ul li').click(function(){
+      console.log($(this).find('.products-name').text())
+      if($(this).find('.products-name').text() == 'OSCAL C20'){
+         location.href = '/c20'
+      }
+      if($(this).find('.products-name').text() == 'OSCAL Pad 8'){
+          location.href = '/pad8'
+       }
+  })
+  // 临时链接
+
   var flag_sort = true
-  if (ImgWidth < 800) {
-    // product_img_height.css('height',ImgWidth / .6)
-  } else {
-    product_img_height.css('height', ImgWidth / 5.5)
-  }
-
-  $(window).resize(function () {
-    ImgWidth = document.body.clientWidth
-    if (ImgWidth < 800) {
-      // product_img_height.css('height',ImgWidth / .6)
-    } else {
-      product_img_height.css('height', ImgWidth / 5.5)
-    }
-  });
-
-  function GetQueryString() { //url传值
-    // var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    // var r = window.location.search.substr(1).match(regex);
-    // if (r != null) return unescape(r[2]);
-    // return null;
-    var arr = window.location.href.split("/")
-    var len = arr.length
-    var name = arr[len - 1];
-    if (name == null || name == '') {
-      name = 'Phones'
-    }
+  function GetQueryString(name) { //url传值
+    var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(regex);
+    if (r != null) return unescape(r[2]);
     return name;
   }
-  // console.log(GetQueryString("id"))
-  if (GetQueryString()) { 
-    switch (GetQueryString()) {
+  let dom = ''
+  $('.products-lists ul li .product-img .on').each(function () { // 图片未加载时显示加载中图片
+    dom = $(this)
+    imgLoad(dom, function () {
+      console.log(dom.parents('.product-img'))
+      $('.product-img').removeClass('on')
+    })
+  })
+
+  // console.log(GetQueryString("name"))
+  if (GetQueryString("name")) {
+    switch (GetQueryString("name")) {
       case 'Phones': selectTab(0); break;
-      case 'Laptops': selectTab(1); break;
-      case 'Tablets': selectTab(2); break;
-      case 'Accessories': selectTab(3); break;
+      // case 'Laptops': selectTab(1); break;
+      case 'Tablets': { selectTab(1); }; break;
+      // case 'Accessories': selectTab(3); break;
     }
   }
   else {
@@ -44,30 +41,15 @@ $(function () {
   }
   function selectTab(index) { // 根据url的值显示对于的产品块
     $('.productsBox .products-sort .products-tabs .item-tags').eq(index).addClass('active')
-    $('.item-list').eq(index).addClass('active')
+    // data = $('.productsBox .products-sort .products-tabs a')
   }
-  $('.productsBox .products-sort .products-tabs a').click(function () { //产品标签页导航
-    let ds = 0
-    $(this).addClass('active').siblings().removeClass('active')
-    switch ($(this).find('span').text()) {
-      case 'Phones': ds = 0; break;
-      case 'Laptops': ds = 1; break;
-      case 'Tablets': ds = 2; break;
-      case 'Accessories': ds = 3; break;
-    }
-    $('.item-list').eq(ds).addClass('active').siblings().removeClass('active')
-    let that = $('.item-list.active .product-img')
-    imgLoad(that, function () {
-      that.removeClass('on')
-    })
-  })
+
   $('.productsBox .products-sort .products-filters .reset').click(function () { //重置
     $('.filters-cate li .cate-box span').removeClass('on')
   })
 
-  
+
   $('.productsBox .products-sort .products-filters .filter-btn').click(function () { //筛选
-    console.log($(this).find('.text').text())
     if (flag_sort) {
       $(this).find('.text').text('Colse')
       flag_sort = false
@@ -92,33 +74,14 @@ $(function () {
       ds.removeClass('on')
     })
   })
-  $('.products-lists ul li .product-img .on').each(function () { // 图片未加载时显示加载中图片
-    let that = $(this)
-    imgLoad(that, function () {
-      that.parent().parent().removeClass('on')
-    })
-  })
 
   function imgLoad(img, callback) { // 判断图片是否加载
     var timer = setInterval(function () {
-      var flag = true
-      if (img.find('img.on').attr('data-src')) {
-        if (img.find('img.on')[0].complete) {
-          callback(img);
-          clearInterval(timer);
-        } else if (flag) {
-          flag = false
-          img.addClass('on')
-        }
-      }
-      else {
-        if (img[0].complete) {
-          callback(img);
-          clearInterval(timer);
-        } else {
-          img.parent().parent().addClass('on')
-          img.parent().siblings('.product-img').addClass('on')
-        }
+      if (img[0].complete) {
+        callback(img);
+        clearInterval(timer);
+      } else {
+        img.parent().parent().addClass('on')
       }
     }, 200);
   }

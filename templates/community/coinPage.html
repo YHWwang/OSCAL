@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Community-users</title>
+    <meta name="description" content="description">
+    <meta name="keywords" content="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel='stylesheet' type='text/css' href='/css/coinPage.css?v=1.000'>
+    <link rel='stylesheet' type='text/css'
+        href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+</head>
+
+<body class="en">
+<div th:include="communityHeader :: communityHeader">
+</div>
+    <div id="AMain" class="main">
+        <div class="receiveCoinBox">
+           
+            <div class="receiveCoinMsg">
+                <div class="navsMenu">
+                    <p><a href="/community">Home</a> > Collection rules</p>
+                </div>
+                <!--<div class="coinBox">
+                    <ul>
+                        <li>
+                            Sign in this month(2)
+                        </li>
+                        <li>
+                            Cumulative attendance(2)
+                        </li>
+                        <li>
+                            Continuous attendance(3)
+                        </li>
+                    </ul>
+                </div>-->
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-link active" id="nav-income-tab" onclick="navMain(1)" data-toggle="tab"
+                            href="#nav-income" role="tab" aria-controls="nav-income" aria-selected="true">O Coin Income</a>
+                        <a class="nav-link" id="nav-expenditure-tab" onclick="navMain(2)" data-toggle="tab"
+                            href="#nav-expenditure" role="tab" aria-controls="nav-expenditure" aria-selected="false">
+                            O Coin Spending</a>
+                        <a class="nav-link" id="nav-rule-tab" data-toggle="tab" href="#nav-rule" role="tab"
+                            aria-controls="nav-rule" aria-selected="false"> O Coin Rules</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="nav-income" role="tabpanel"
+                        aria-labelledby="nav-income-tab">
+                        <table>
+                           
+                        </table>
+                        <div class="Pagination incomePagination paginationActive">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade show" id="nav-expenditure" role="tabpanel"
+                        aria-labelledby="nav-expenditure-tab">
+                        <table>
+                            
+                        </table>
+                        <div class="Pagination expenditurePagination paginationActive">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-rule" role="tabpanel" aria-labelledby="nav-rule-tab">
+                        <div class="ruleBox">
+                <div class="coinIntroduction coinRules">
+                    <p class="title">Rules for earning o currency</p>
+                    <p>1 Log in to the community and sign in, you can get 5 O coins each time</p>
+                    <p>2 Every time a post is published and the number of likes and comments exceeds 10 people, 10 O coins will be awarded, and the number of likes and comments greater than 20 people will be awarded 20 O coins.</p>
+                    <p>3 Every time a post is published, other users can give rewards according to their preferences. Each time each user can give rewards on the same post of the same blogger, no more than 10 O coins can be given.</p>
+                </div>
+                <div class="coinIntroduction coinUse">
+                    <p class="title">The use of O coins</p>
+                    <p>1 After getting O coins, you can reward the posts posted by bloggers you like </p>
+                    <p>2 A certain amount of O Coins can be exchanged, lottery, and bid for your favorite products in the O Coin Mall (Points Mall) </p>
+                    <p>3 Opportunities to participate in our product experience after obtaining a certain amount of O coins</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="usersInfo">
+                <div class="usersBox">
+                    <div class="usersImage">
+                        <img class="user_image" th:src="${userInfoMap.headPhoto}" alt="usersImg">
+                    </div>
+                    <p class="usersName">
+                        <span class="usersName" th:text="${userInfoMap.sysUserAccount}">test</span>
+
+                    </p>
+                    <ul>
+                        <li onclick="gotoUsers('posts')">
+                            <p class="number" th:text="${rows}">2</p>
+                            <p class="user_info">Posts</p>
+                        </li>
+                        <li onclick="gotoUsers('following')">
+                            <p class="number" th:text="${followeeCount}">0</p>
+                            <p class="user_info">Following</p>
+                        </li>
+                        <li onclick="gotoUsers('followers')">
+                            <p class="number" th:text="${followerCount}">1</p>
+                            <p class="user_info">Followers</p>
+                        </li>
+                        <li>
+                            <p class="number" th:text="${userInfoMap.oCoin}">90</p>
+                            <p class="user_info">O coin</p>
+                        </li>
+                    </ul>
+                </div>
+                <a href="/discuss/jumpNewPost" target="_self">
+                    <div class="createPost">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                            class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path
+                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd"
+                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                        <span>
+                            New Post
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="footer" th:include="footer :: myFooter">
+        </div>
+    </div>
+</body>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="/js/coinPage.js?v=1.000"></script>
+<script async
+    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+
+</html>
