@@ -43,28 +43,30 @@ $(function () {
         }
         var reg = /^(\w|\.|\-)+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
         if (data.email == '' || data.email == null) {
-            alert('E-mail can not be empty')
+            alertBox('danger','E-mail can not be empty')
             return false
         }else if(reg.test(data.email)){
             $.ajax({
                 type: "post",
-                url: "/web/user/login/sendCode/getCode",
+                url: "/sendCode/getCode",
                 dataType: 'json',
                 data: '{"email":"' + data.email + '","busType":"' + data.busType + '"}',
                 async: false,
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
-                    if (!req.success) {
-                        $('.loginContent .alert-danger').show().find('.errorMsg').text(req.msg)
+                    if (req.code == 999999) {
+                        alertBox('success',req.msg)
                         setTimeout(() => {
-                            $('.loginContent .alert-danger').hide()
+                            $('#alertBox').hide()
                         }, 2000);
+                    }else{
+                        alertBox('danger',req.msg)
                     }
                 },
             })
         }
         else {
-            alert('The email format is wrong!')
+            alertBox('danger','The email format is wrong!')
             return false;
         }
         $(this).addClass('disabled')
@@ -80,9 +82,18 @@ $(function () {
                 $(this).text(text)
             }
         }, 1000);
-       
-    })
 
+    })
+ function alertBox(type,text){
+    $('#alertBox').html(`
+    <div class="alert alert-${type}  alert-dismissible fade show" role="alert">
+    ${text}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    `)
+ }
     window.addEventListener('load', function () { //登录功能验证
         var forms = document.getElementsByClassName('needs-validation-signInForm');
         var validation = Array.prototype.filter.call(forms, function (form) {
@@ -120,23 +131,23 @@ $(function () {
     function login(email, passpword) {//登录
         $.ajax({
             type: "post",
-            url: "/web/user/login/userLogin",
-            dataType: 'json',
-            data: '{"sys_user_account":"' + email + '","login_password":"' + passpword + '"}',
+            url: "/login",
+            data: {"username": email,
+            "password":passpword
+            },
             async: false,
-            contentType: "application/json;charset=UTF-8",
             success: function (req) {
-                // console.log(req)
-                if (req.success) {
-                    $('.loginContent .alert-danger').addClass('alert-success').show('slow').find('.errorMsg').text('Login successful')
-                    localStorage.setItem('communityMenu', 'Home')
+                req=$.parseJSON(req);
+                if (req.code==999999) {
+                    alertBox('success','Login successful')
+                    // localStorage.setItem('communityMenu', 'Home')
                     setTimeout(() => {
-                        window.location.href = '/community'
+                        window.location.href = '/discuss/community'
                     }, 2000);
                 } else {
-                    $('.loginContent .alert-danger').show('fast').find('.errorMsg').text(req.msg)
+                    alertBox('danger',req.msg)
                     setTimeout(() => {
-                        $('.loginContent .alert-danger').hide()
+                        $('#alertBox').hide()
                     }, 4000);
                 }
             }
@@ -163,29 +174,31 @@ $(function () {
                     if(data.passpword != data.rePasspword){
                         event.currentTarget[3].value = ''
                         event.currentTarget[4].value = ''
-                        $('.loginContent .alert-danger').show().find('.errorMsg').text('Inconsistent passwords')
+                        alertBox('danger','Inconsistent passwords')
                         setTimeout(() => {
-                            $('.loginContent .alert-danger').hide()
+                            $('#alertBox').hide()
                         }, 5000);
                         return false
                     }
                     $.ajax({
                         type: "post",
-                        url: "/web/user/login/userRegister",
-                        dataType: 'json',
-                        data: '{"code":"' + data.code + '","user_account":"' + data.email + '","sys_user_account":"' + data.name + '","login_password":"' + data.passpword + '"}',
+                        url: "/register",
+                        data: {"parentChain": data.code,
+                                "userEmail":data.email ,
+                                "sysUserAccount": data.name ,
+                                "loginPassword":data.passpword },
                         async: false,
-                        contentType: "application/json;charset=UTF-8",
                         success: function (req) {
-                            if (!req.success) {
-                                $('.loginContent .alert-danger').show().find('.errorMsg').text(req.msg)
+                        req=$.parseJSON(req);
+                            if (req.code!=999999) {
+                                alertBox('success',req.msg)
                                 setTimeout(() => {
-                                    $('.loginContent .alert-danger').hide()
+                                    $('#alertBox').hide()
                                 }, 2000);
                             } else {
-                                $('.loginContent .alert-danger').addClass('alert-success').show('slow').find('.errorMsg').text('Registration success')
+                                alertBox('warning','Registration success')
                                 setTimeout(() => {
-                                    $('.loginContent .alert-danger').hide()
+                                    $('#alertBox').hide()
                                     window.location.href = '/login'
                                 }, 2000);
                             }
@@ -216,21 +229,22 @@ $(function () {
                     console.log(data)
                     $.ajax({
                         type: "post",
-                        url: "/web/user/login/userForgetPass",
-                        dataType: 'json',
-                        data: '{"sys_user_account":"' + data.email + '","code":"' + data.code + '","login_password":"' + data.passpword + '"}',
+                        url: "/userForgetPass",
+                        data: {"username": data.email ,
+                        "emailVerifyCode":data.code ,
+                        "password": data.passpword },
                         async: false,
-                        contentType: "application/json;charset=UTF-8",
                         success: function (req) {
-                            if (!req.success) {
-                                $('.loginContent .alert-danger').show().find('.errorMsg').text(req.msg)
+                        req=$.parseJSON(req);
+                            if (req.code!=999999) {
+                                alertBox('danger',req.msg)
                                 setTimeout(() => {
-                                    $('.loginContent .alert-danger').hide()
+                                    $('#alertBox').hide()
                                 }, 2000);
                             } else {
-                                $('.loginContent .alert-danger').addClass('alert-success').show('slow').find('.errorMsg').text('Successfully change password')
+                                alertBox('success','Successfully change password')
                                 setTimeout(() => {
-                                    $('.loginContent .alert-danger').hide()
+                                    $('#alertBox').hide()
                                     window.location.href = '/login'
                                 }, 2000);
                             }

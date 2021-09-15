@@ -124,7 +124,7 @@ h6 {
 .productsMenuBox {
     position: fixed;
     width: 100%;
-    z-index: 111;
+    z-index: 1;
     background-color: white;
     height: 40px;
     line-height: 40px;
@@ -141,7 +141,7 @@ h6 {
 }
 
 .productContent {
-    margin-top: 40px;
+    padding: 40px 0;
     position: relative;
     width: 100%;
 }
@@ -272,9 +272,9 @@ img {
 .spesc-img-left img {
     max-width: 400px;
     width: 100%;
-    /* opacity: 0; */
+    opacity: 0;
     margin: 0 auto;
-    /* display: none; */
+    display: none;
 }
 
 .spesc-img-right {

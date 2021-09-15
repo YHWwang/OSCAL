@@ -47,17 +47,17 @@ $(function () {
     function getTabData(pageNum, type) {
         $.ajax({
             type: "post",
-            url: "/web/user/login/getOcinIncomeAndExpenditure",
+            url: "/user/web/user/login/getOcinIncomeAndExpenditure",
             dataType: 'json',
             data: '{"pageNum":' + pageNum + ',"message_type":' + type + '}',
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
                 let index = 1
-                totalPage = req.data.total
+                totalPage = req.newsPageList.total
                 totalPage > 10 ? $('.paginationActive').html(html) : $('.paginationActive .rightdiv').hide()
-                lastPage = req.data.lastPage
-                console.log(totalPage,lastPage)
+                lastPage = req.newsPageList.lastPage
+                // console.log(totalPage,lastPage)
                 var coinHtml = ''
                 type == 1 ? coinHtml = `
                     <tr><th>Rank</th>
@@ -72,7 +72,7 @@ $(function () {
                     <th>Reward of the month</th>
                     <th>Cumulative rewards</th>
                     </tr>`
-                for (let data of req.data.list) {
+                for (let data of req.newsPageList.list) {
                     coinHtml += `
                     <tr>
                     <td><span>${index++}</span></td>
@@ -88,7 +88,7 @@ $(function () {
         })
     }
     gotoUsers = function (type) {//前往用户中心
-        window.location.href = `/web/user/login/toUserCenter?name=${type}`
+        window.location.href = `/user/profile?name=${type}`
     }
     //proxy监听值的变化
     var observe1 = (object, onChange) => {

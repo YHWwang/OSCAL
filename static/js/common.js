@@ -7,86 +7,28 @@ $(function () {
         height = ImgWidth * .8
     }
 
-    var flag = true
-    var scroll_1, scroll_2, scroll_3, scroll_4 = false
-    var pro_scroll_1, pro_scroll_2, pro_scroll_3, pro_scroll_4 = false
+    var scrollH = null
 
     $(window).scroll(function () {
         var winp = $(document).scrollTop();
-        if (flag && winp > $('.mainContent').offset().top - height / 2) { // 滚动大于产品盒子高度时开始执行移动效果
-            scroll_1 = $('.mainContent .content-item-1').offset()
-            scroll_1 = scroll_1 ? (scroll_1.top - height / 2) : ''
-            flag = false
-        }
-        if (scroll_1 && winp > scroll_1) {
-            dom_fun($('.mainContent .content-item-1 .product_word'))
-            scroll_2 = $('.mainContent .content-item-2').offset()
-            scroll_2 = scroll_2 ? scroll_2.top - height / 2 : ''
-            if ($('.mainContent .content-item-1 .product_img img').hasClass('lazyloaded')) {
-                pro_scroll_1 = $('.mainContent .content-item-1 .product_img').offset().top - height * .7
-                scroll_1 = false
-            }
-        }
-        if (scroll_2 && winp > scroll_2) {
-            dom_fun($('.mainContent .content-item-2 .product_word'))
-            scroll_3 = $('.mainContent .content-item-3').offset()
-            scroll_3 = scroll_3 ? scroll_3.top - height / 2 : ''
-            if ($('.mainContent .content-item-2 .product_img img').hasClass('lazyloaded')) {
-                scroll_2 = false
-                pro_scroll_2 = $('.mainContent .content-item-2 .product_img').offset().top - height * .7
-            }
-        }
-        if (scroll_3 && winp > scroll_3) {
-            dom_fun($('.mainContent .content-item-3 .product_word'))
-            scroll_4 = $('.mainContent .two_Column').offset()
-            scroll_4 =  scroll_4 ? scroll_4.top - height / 2 : ''
-            if ($('.mainContent .content-item-3 .product_img img').hasClass('lazyloaded')) {
-                scroll_3 = false
-                pro_scroll_3 = $('.mainContent .content-item-3 .product_img').offset().top - height * .7
-            }
-        }
-        if (scroll_4 && winp > scroll_4) {
-            dom_fun($('.mainContent .two_Column .four-content .product_word'))
-            if ($('.mainContent .two_Column .four-content .product_img img').hasClass('lazyloaded')) {
-                scroll_4 = false
-                pro_scroll_4 = $('.mainContent .two_Column .four-content .first_row').eq(0).offset().top - height * .7
-            }
-        }
-        if (pro_scroll_1) {
-            productScrollFun(winp, pro_scroll_1, 1)
-        }
-        if (pro_scroll_2) {
-            productScrollFun(winp, pro_scroll_2, 2)
-        }
-        if (pro_scroll_3) {
-            productScrollFun(winp, pro_scroll_3, 3)
-        }
-        if (pro_scroll_4) {
-            productScrollFun(winp, pro_scroll_4, 'first_row')
-        }
+        productScrollFun($('.content-item-1 .product_img img'), $('.content-item-1'), winp, scrollH)
+        productScrollFun($('.content-item-2 .product_img img'), $('.content-item-2'), winp, scrollH)
+        productScrollFun($('.content-item-3 .product_img img'), $('.content-item-3'), winp, scrollH)
+        productScrollFun($('.two_Column .product_img img'), $('.two_Column'), winp, scrollH)
     })
 
-    function productScrollFun(winp, value, index) {
-        if (index == 'first_row') {
-            if (winp > value && winp < value + 100) {
-                $('.mainContent .four-content .product_img').find(`.${index}`).addClass('product_show')
-            } else if (winp < value && winp > value - 100) {
-                $('.mainContent .four-content .product_img').find(`.${index}`).removeClass('product_show')
-            }
-        } else {
-            if (winp > value && winp < value + 100) {
-                $('.mainContent .content-item-' + index + ' .product_img img').addClass('product_show')
-            } else if (winp < value && winp > value - 100) {
-                $('.mainContent .content-item-' + index + ' .product_img img').removeClass('product_show')
+    function productScrollFun(img, dom, winp, scrollH) {
+        if (img.hasClass('lazyloaded')) {
+            scrollH = dom.offset().top
+            if (winp > scrollH - height / 2 && winp < scrollH + height * .5) {
+                dom.find('.delay-1').addClass('mainShow')
+                dom.find('.delay-2').addClass('mainShow')
+                dom.find('.delay-3').addClass('mainShow')
+                dom.find('.product_img img').addClass('product_show')
+            }else if(winp > scrollH + height){
+                dom.find('.product_img img').removeClass('product_show')
             }
         }
-    }
-
-    function dom_fun(dom) {
-        dom.find('.tit').addClass('mainShow')
-        dom.find('.msg').addClass('mainShow')
-        dom.find('.msg2').addClass('mainShow')
-        dom.find('.buy_href').addClass('mainShow')
     }
 
     // let debounce_timer = null

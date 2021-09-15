@@ -1,19 +1,56 @@
 $(function () {
-  var community_id = getParenthesesStr($('.likesSvg').attr('onclick'))
+  var addCommentsuserId = ''
+  var addCommentsPostId = ''
+  var community_id = ''
   var vote = 1
   var height = window.innerHeight
   // var ImgWidth = document.body.clientWidth //获取默认宽度
   var toUserId = ''
   var follow = 'follow'
+  var likeStatus = $('#likeStatus').val()
+  var hasFollowed = $('#hasFollowed').val()
+  getParenthesesStr($('.likesSvg').attr('onclick'))
   detailFun()
-
   function getParenthesesStr(text) {
     let result = ''
     let regex = /\((.+?)\)/g;
     let options = text.match(regex)
     let option = options[0]
     result = option.substring(1, option.length - 1)
-    return result
+    addCommentsuserId = result.substring(result.indexOf(',') + 1, option.length)
+    community_id = addCommentsPostId = result.substring(0, result.indexOf(','))
+  }
+  function alertBox(type, text) {
+    $('#alertBox').html(`
+    <div class="alert alert-${type}  alert-dismissible fade show" role="alert">
+    ${text}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    `)
+  }
+
+  function formatDate(date) {
+    var date = new Date(date);
+    var YY = date.getFullYear() + '-';
+    var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+    var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+    var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+    var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+    var time = YY + MM + DD + " " + hh + mm + ss
+    return time
+  }
+  if (likeStatus == 1) { // 判断是否已经点击点赞按钮
+    $('.likesSvg').find('.active').removeClass('active').siblings().addClass('active')
+    $('.likesSvg').find('.active').hasClass('bi-hand-thumbs-up-fill') ? $('.likesSvg').addClass('act') : $('.likesSvg').removeClass('act')
+  }
+
+  if (hasFollowed == 'true') { // 判断是否已经关注
+    $('.userBtn .followBtn').removeClass('btn-outline-primary').addClass('btn-outline-secondary')
+    $('.userBtn .followBtn').find('svg').show().parent().find('span').hide()
+    follow = 'unfollow'
   }
 
   var commentsData = {
@@ -79,6 +116,7 @@ $(function () {
     tabsize: 2,
     height: 300,
     toolbar: [
+      ['history', ['undo', 'redo']],
       ['style', ['style']],
       ['font', ['bold', 'underline', 'clear']],
       ['color', ['color']],
@@ -114,17 +152,16 @@ $(function () {
         contentType: "application/json;charset=UTF-8",
         success: function (req) {
           if (req.code == 'code_990000') {
-            window.location.href = '/web/user/login/toLogin'
+            window.location.href = '/login'
           }
-          $('#messageModal').modal('hide')
-          // $('div.modal-backdrop').hide()
+          alertBox('success', 'Message sent successfully')
           setTimeout(() => {
+            $('#messageModal').modal('hide')
             $('div.modal-backdrop').hide()
             $('.submitReplayBtn').removeAttr('disabled')
-          }, 100);
+          }, 1000);
         }
       })
-
     }
   })
   rewardInput = function (value) { //打赏数字限制
@@ -152,30 +189,21 @@ $(function () {
         async: false,
         contentType: "application/json;charset=UTF-8",
         success: function (req) {
-          if (req.code == 'code_990000') {
-            window.location.href = '/web/user/login/toLogin'
+          if (req.code == 100000) {
+            window.location.href = '/login'
           }
-          if (req.success) {
+          if (req.code == 999999) {
+            alertBox('success', 'Reward for success')
             setTimeout(() => {
               $('#rewardModal').modal('hide')
               $('#rewardBtn').attr('disabled', 'disabled')
               window.location.href = '/communityUserDetail/' + community_id
             }, 500);
           } else {
-            $('.alertSuccess').html(`
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              ${req.msg}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            `)
-            $('.main .alert:not(.alert-warning)').show()
-            $('.alertSuccess .alert-warning').show()
+            alertBox('success', req.msg)
           }
         }
       })
-
     }
   })
   followBtn = function (entityId) {//关注功能
@@ -206,40 +234,38 @@ $(function () {
       }
     })
   }
-  function sendComment(type,entity_id,target_id,content) {//评论和回复评论
+  function sendComment(type, entity_id, target_id, content) {//评论和回复评论
     $.ajax({
       type: "post",
-      url: "/comment/add/" + community_id,
+      url: "/comment/add",
       dataType: 'json',
-      data: '{"entity_type":' + type + ',"comment":' + content + ',"entity_id":' + entity_id + ',"target_id":' + target_id + '}',
-      async: false,
+      data: '{"entity_type":' + type + ',"comment":"' + content + '","entity_id":' + entity_id + ',"target_id":' + target_id + '}',
+      async: true,
       contentType: "application/json;charset=UTF-8",
       success: function (req) {
-        if (type == 1) {
-          if (req.code == 'code_990000') {
-            window.location.href = '/web/user/login/toLogin'
-          }
-          let alert = `
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-         Comment successful
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>`
-          $('.alertSuccess').html(alert)
-          $('.alertSuccess .alert-warning').show()
+        if (req.code == '999999') {
+          alertBox('success', 'Comment successful')
           setTimeout(() => {
-            $('.alertSuccess .alert-warning').hide()
             location.reload();
           }, 2000);
-        } else if(type == 2){
-          if (req.code == 'code_990000') {
-            window.location.href = '/web/user/login/toLogin'
-          } else {
-            location.reload()
-          }
-          $('#exampleModal').modal('hide')
         }
+        else {
+          alertBox('danger', req.msg)
+        }
+        //  else if (type == 2) {
+        //   if (req.code == '999999') {
+        //     alertBox('success', 'Comment successful')
+        //     $('.alertBox').show()
+        //     setTimeout(() => {
+        //        location.reload();
+        //     }, 1000);
+        //   } 
+        //   else{
+        //     alertBox('danger', req.msg)
+        //     $('.alertBox').show()
+        //   }
+        //   $('#exampleModal').modal('hide')
+        // }
       }
     })
 
@@ -265,23 +291,24 @@ $(function () {
             $('#summernoteBox .invalid-feedback').hide()
           }
           // console.log(data.content)
-          sendComment(1,'','',data.content)
+          sendComment(1, addCommentsPostId, addCommentsuserId, data.content)
         }
         form.classList.add('was-validated');
 
       }, false);
     });
   }, false);
+
   replyComment = function (entity_id, target_id) {//提交回复评论
     $('.commentsSubmit').off()
     $('.commentsSubmit').on('click', function () {
-      commentsData.comment =  $('#exampleModal .modal-body .reply_content').text()
+      commentsData.comment = $('#exampleModal .modal-body .reply_content').text()
 
       if (commentsData.comment == '' || commentsData.comment == null) {
-        alert('Comment cannot be empty')
+        alertBox('warning', 'Comment cannot be empty')
         return false
       } else {
-        sendComment(2,entity_id,target_id,commentsData.comment)
+        sendComment(2, entity_id, target_id, commentsData.comment)
       }
     })
 
@@ -308,7 +335,7 @@ $(function () {
     }
   });
 
-  function detailFun() {
+  function detailFun() { // 初始化加载
     $.ajax({//浏览量
       type: "post",
       url: "/web/user/login/userLookThrough",
@@ -316,19 +343,19 @@ $(function () {
       data: '{"community_id":"' + community_id + '"}',
       async: false,
       contentType: "application/json;charset=UTF-8",
-
     })
+
     $.ajax({//评论列表数据
       type: "post",
-      url: "/getCommentList",
+      url: "/comment/detail",
       dataType: 'json',
-      data: '{"community_id":"' + community_id + '","pageNum":"' + 1 + '"}',
+      data: '{"discussPostId":"' + community_id + '","current":"' + 1 + '"}',
       async: false,
       contentType: "application/json;charset=UTF-8",
       success: function (req) {
-        renderList(req.data)
-        var totalPage = req.data.total
-        totalPage == 0 ? $('.newsPagination').hide() : ''
+        renderList(req.comments)
+        var totalPage = req.totalPage
+        totalPage <= 10 ? $('.newsPagination').hide() : ''
         $('.postContent .comments .commentsTop span').text(`Comments ( ${totalPage} )`)
         var pageSize = 10
         var obj = {
@@ -392,7 +419,7 @@ $(function () {
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
-              renderList(req.data)
+              renderList(req.comments)
             }
           })
         }
@@ -403,10 +430,10 @@ $(function () {
       var commentList = ''
       var hasComments = 0
       var commentsChlid = {}
-      $('.postContent .comments .commentsTop span').text(`Comments ( ${req.total} )`)
-      for (let data of req.list) {
+      $('.postContent .comments .commentsTop span').text(`Comments ( ${req.length} )`)
+      for (let data of req) {
         hasComments = 0
-        commentsChlid = data.replyCommentList
+        commentsChlid = data.replys
         commentsChlidHtml = ''
         if (commentsChlid.length > 0) {
           for (let child of commentsChlid) {
@@ -415,26 +442,26 @@ $(function () {
               <div class="comments_reply_item">
                   <div class="comments_reply_users">
                       <span class="comments_user_img phoneHide">
-                          <img src="${child.head_photo}"
+                          <img src="${child.reply.userPhoto}"
                               alt="users">
                       </span>
                       <div class="comments_reply_name">
                           <p>
-                              <span class="reply_user users">${child.sys_user_account}</span>
+                              <span class="reply_user users">${child.reply.userAccount}</span>
                               <!-- 评论用户名 -->
                               <span>reply to</span>
-                              <span class="reply_user author">${child.receive_user_account}</span>
+                              <span class="reply_user author">${child.reply.targrtAccount}</span>
                               <!-- 评论人名称 -->
                           </p>
                       </div>
                   </div>
                   <div class="comments_reply_content">
-                      <p>${child.comment} </p>
+                      <p>${child.reply.content} </p>
                       <!-- 评论内容 -->
                   </div>
                   <div class="comments_reply_icon phoneHide">
-                      <span class="comments_reply_icon_flag commomModal" onclick="replyComment('${child.comment_id}','${child.user_id}','${child.sys_user_account}')"
-                      value='${child.sys_user_account}'>
+                      <span class="comments_reply_icon_flag commomModal" onclick="replyComment('${child.reply.entityId}','${child.reply.userId}','${child.reply.targrtAccount}')"
+                      value='${child.reply.userAccount}'>
                           <svg xmlns="http://www.w3.org/2000/svg" width="16"
                               height="16" fill="currentColor"
                               class="bi bi-chat-square-dots" viewBox="0 0 16 16">
@@ -445,7 +472,7 @@ $(function () {
                           </svg>
                       </span>
                       <span class="comments_reply_datetime">
-                      ${child.comment_cre}
+                      ${formatDate(child.reply.createTime)}
                           <!-- 评论时间 -->
                       </span>
                   </div>
@@ -461,14 +488,14 @@ $(function () {
               <div class="comments_user_item">
                   <div class="comments_users">
                       <span class="comments_user_img">
-                          <img src="${data.head_photo}" alt="users">
+                          <img src="${data.comment.userPhoto}" alt="users">
                           <!-- �û�ͷ�� -->
                       </span>
                       <div class="comments_user_info">
-                          <p class="user_name">${data.sys_user_account}</p>
+                          <p class="user_name">${data.comment.userAccount}</p>
                           <!-- �û����� -->
                           <p class="user_grade">
-                             ${data.comment_cre}
+                             ${formatDate(data.comment.createTime)}
                               <!-- ����ʱ�� -->
                           </p>
                       </div>
@@ -494,12 +521,24 @@ $(function () {
                   </div>
                   <div class="comments_content">
                       <p class="comments_content_info">
-                      ${data.comment}
+                      ${data.comment.content}
                       </p>
                       <!-- �������� -->
                   </div>
                    <div class="comments_btn">
-                      <span class="commentsIcon commomModal" onclick="replyComment('${data.id}','${data.user_id}','${data.sys_user_account}')" value='${data.sys_user_account}'>
+                   <!--  <span class="likeIcon">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                       fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                       <path
+                           d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                   </svg>
+                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style='color:red' fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                   <span class="number">2</span>
+               </span> -->
+                  
+                      <span class="commentsIcon commomModal" onclick="replyComment('${data.comment.id}','${data.comment.userId}','${data.comment.userAccount}')" value='${data.comment.userAccount}'>
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                               fill="currentColor" class="bi bi-chat-square-dots" viewBox="0 0 16 16">
                               <path
@@ -507,11 +546,11 @@ $(function () {
                               <path
                                   d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                           </svg>
-                           <span class="number">${data.replyCommentList.length}</span>
+                           <span class="number">${commentsChlid.length}</span>
                       </span>
                   </div>
                  ${hasComments == 1 ? `
-                  <div class="comments_reply hasComments" id='comments-${data.id}'>
+                  <div class="comments_reply hasComments" id='comments-${data.comment.id}'>
                  <ul>
                  ${commentsChlidHtml}
                  </ul>

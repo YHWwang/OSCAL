@@ -609,4 +609,8 @@ h6 {
     }
 }
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+    .main {
+        width: 1220px;
+    }
+}

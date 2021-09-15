@@ -386,17 +386,13 @@ img {
     height: 40px;
 }
 
-.alertSuccess {
+#alertBox {
     position: fixed;
     left: 50%;
     z-index: 1111;
     width: 400px;
     top: 50%;
     transform: translate(-50%);
-}
-
-.alertSuccess .alert-warning {
-    display: none;
 }
 
 .newsPagination {
@@ -468,6 +464,14 @@ img {
     margin: 0 auto;
     padding: 2vw;
 }
+.note-editor .table{
+    width: auto !important;
+}
+.note-editor .note-editable li,.note-editor .note-editable ol,.note-editor .note-editable ul{
+    list-style: revert;
+    margin: inherit;
+    padding: inherit;
+}
 
 .summernoteBtn {
     text-align: center;
@@ -494,10 +498,6 @@ img {
     height: auto;
     display: flex;
     margin: 0 auto;
-}
-
-.main .alert:not(.alert-warning) {
-    display: none;
 }
 
 .postContent .postMain .topBox {
@@ -789,6 +789,7 @@ img {
 
 .communityBox .content-left {
     float: left;
+    width: 800px;
 }
 
 .communityBox .content-right {
@@ -1335,7 +1336,7 @@ img {
 
 /* end */
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
     .phoneHide {
         display: none;
     }
@@ -1417,7 +1418,7 @@ img {
         background-color: #00B1FF;
         margin: 0 auto;
     }
-}
+} */
 
 @media screen and (max-width:500px) {
     .post-list li .post-main .right img {

@@ -1,40 +1,51 @@
 $(function () {
     // 临时链接
-    $('.nav-content .content .show-box .rg-content .item-box').click(function(){
-        if($(this).find('.item-title').text() == 'OSCAL C20'){
-           location.href = '/c20'
+    $('.nav-content .content .show-box .rg-content .item-box').click(function () {
+        if ($(this).find('.item-title').text() == 'OSCAL C20') {
+            location.href = '/c20'
         }
-        if($(this).find('.item-title').text() == 'OSCAL Pad 8'){
+        if ($(this).find('.item-title').text() == 'OSCAL Pad 8') {
             location.href = '/pad8'
-         }
+        }
     })
-   
-       if(GetQueryString("name") == 'Tablets'){
-        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function(){
+
+    if (GetQueryString("name") == 'Tablets') {
+        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
             location.href = '/pad8'
         })
-       }else if(GetQueryString("name") == 'Phones'){
-        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function(){
+    } else if (GetQueryString("name") == 'Phones') {
+        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
             location.href = '/c20'
         })
-       }
-  
+    }
+
     // 临时链接
 
-    $('.menu_box .logo img').click(function () {
-        localStorage.setItem('menu', null)
-    })
-    let dom = $('.menu_box .pc-header .menu ul li a')
-    if (localStorage.getItem('menu') != null) {//解决刷新菜单没选中问题
-        dom.each((index, item) => {
-            if (dom.eq(index).text() == localStorage.getItem('menu')) {
-                dom.eq(index).addClass('on')
-                return false
-            }
-        })
+    var localHref = window.location.href
+    if (localHref.includes('Phones')) {//选中菜单
+        selectMenu(0)
+    } else if (localHref.includes('Tablets')) {
+        selectMenu(1)
+    }
+    else if (localHref.includes('brand')) {
+        selectMenu(2)
+    }
+    else if (localHref.includes('news')) {
+        selectMenu(3)
+    }
+    else if (localHref.includes('support')) {
+        selectMenu(4)
+    }
+    else if (localHref.includes('contact_us')) {
+        selectMenu(6)
+    }
+
+    function selectMenu(number) {
+        let dom = $('.menu_box .pc-header .menu ul li a')
+        dom.eq(number).addClass('on')
     }
     changeWindow()
-    if(window.location.href.includes('productsMenu')){
+    if (window.location.href.includes('productsMenu')) {
         window.onresize = debounce(() => location.reload(), 500)//改变屏幕后刷新
     }
     function debounce(fn, delay) {
@@ -55,7 +66,7 @@ $(function () {
                 window.clearInterval(setHeight)
                 let Bheight = $('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').height()
                 $('.nav-content .content .show-box .rg-content .item-box').height(Bheight / 2)
-                $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').height(Bheight+10)
+                $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').height(Bheight + 10)
                 if (GetQueryString("name") == 'Tablets') {
                     $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').css('height', 'auto')
                 }
@@ -92,16 +103,13 @@ $(function () {
     })
 
     $('.menu_box .pc-header .menu ul li').click(function () {//菜单点击记录当前页面
-        if ($(this).find('a').text() == 'Community') {
-            localStorage.setItem('menu', null)
-            localStorage.setItem('communityMenu', 'Home')
-        }
+        // if ($(this).find('a').text() == 'Community') {
+        //     localStorage.setItem('communityMenu', 'Home')
+        // }
         $('.menu_box .pc-header .menu ul li .mhref').removeClass('on')
         $(this).find('a').addClass('on')
-        localStorage.setItem('menu', $(this).find('a').text())
     })
     $('.close-icon').click(function () {
-        localStorage.setItem('menu', null)
         window.location.href = '/'
     })
 

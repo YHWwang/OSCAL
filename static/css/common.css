@@ -422,6 +422,9 @@ img {
     margin-top: 26px;
     font-family: Avenir;
 }
+.mainContent .two_Column ul li .four-content .product_word p.buy_href span{
+    margin: 0 20px;
+}
 
 .mainContent .two_Column .four-content {
     padding: 4vw 0 3vw;

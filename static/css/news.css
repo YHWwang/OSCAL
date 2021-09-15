@@ -245,7 +245,10 @@ img {
     color: #58b1ff
 }
 
-.newsPagination {
+.mt-5 .pagination .page-item .page-link{
+    color: #000;
+}
+/* .newsPagination {
     background-color: #F5F5F5;
     display: block;
     padding: 5vw 0 3vw 0;
@@ -270,7 +273,7 @@ img {
 
 #rightdiv span:hover {
     color: gray;
-}
+} */
 
 
 .newsContentBox {

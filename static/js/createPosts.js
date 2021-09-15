@@ -10,7 +10,7 @@ $(function () {
     var select_two = GetQueryString('se')//获取二级
     var select_three = GetQueryString('se2')//获取三级
     var category_id = select_three
-    $('#threeSection').hide()
+    $('#threeSection').hide().siblings('.invalid-feedback').hide()
     var dataAll = ''
     var dataAll2 = ''
     var flag = true
@@ -53,7 +53,6 @@ $(function () {
         if (flag) {
             flag = false
             sectionFun1()
-
         }
     });
     var watchedObj2 = observe2(obj, (val) => {
@@ -73,9 +72,8 @@ $(function () {
         async: false,
         contentType: "application/json;charset=UTF-8",
         success: function (req) {
-            // console.log(req.data)
-            dataAll = req.data
-            for (let i of req.data) {
+            dataAll = req.prodcutListCategory
+            for (let i of req.prodcutListCategory) {
                 if (i.category_pid == 0) {
                     categoryHtml += `<option value='${i.id}'>${i.category_cate_name}</option>`
                 }
@@ -127,7 +125,7 @@ $(function () {
         for (let data of Bid) {
             // console.log(data.osThirdCategory)
             if (data.osThirdCategory.length > 0) {
-                $('#threeSection').show()
+                $('#threeSection').show().attr('required',true)
                 if (watchedObj2.two == data.id) {
                     for (let z of data.osThirdCategory) {//三级
                         category2_pidHtml = "<option value='' disabled selected style='display:none;'>Section</option>"
@@ -136,9 +134,8 @@ $(function () {
                     $('#threeSection').html(category2_pidHtml)
                     return false
                 }
-            }
-            else {
-                $('#threeSection').hide().siblings('.invalid-feedback').hide()
+            } else {
+                $('#threeSection').hide().attr('required',false).siblings('.invalid-feedback').hide()
             }
         }
     }
@@ -159,6 +156,7 @@ $(function () {
         tabsize: 2,
         height: 462,
         toolbar: [
+            ['history', ['undo','redo']],
             ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
             ['color', ['color']],
@@ -198,9 +196,10 @@ $(function () {
             processData: false,
             type: 'POST',
             success: function (data) {
+              data= $.parseJSON(data);
                 $('#maskLayer').hide()
-                $summernote.summernote('insertImage', data.data, function ($image) {
-                    $image.attr('src', data.data);
+                $summernote.summernote('insertImage', data.url, function ($image) {
+                    $image.attr('src', data.url);
                 });
             }
         });
@@ -222,17 +221,19 @@ $(function () {
                         oscal_comment_category_id: category_id,
                         community_type: sort
                     }
-                    data.community_content = JSON.stringify(data.community_content).replace(/\"/g, "'");
-                    data.community_content = JSON.stringify(data.community_content).replace(/\\/g, "");
+                    // data.community_content = JSON.stringify(data.community_content).replace(/\"/g, "'");
+                    // data.community_content = JSON.stringify(data.community_content).replace(/\\/g, "");
                     $.ajax({
                         type: "post",
-                        url: "/toCommunityUser",
-                        dataType: 'json',
-                        data: '{"community_title":"' + data.community_title + '","community_content":' + data.community_content + ',"oscal_comment_category_id":"' + data.oscal_comment_category_id + '","community_type":"' + data.community_type + '"}',
+                        url: "/discuss/add",
+                        data: {"community_title": data.community_title ,
+                        "community_content":data.community_content ,
+                        "oscal_comment_category_id": data.oscal_comment_category_id
+                        },
                         async: false,
-                        contentType: "application/json;charset=UTF-8",
                         success: function (req) {
-                            if (req.success) {
+                          req=$.parseJSON(req);
+                            if (req.code==999999) {
                                 $('#alertBox').html(`
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>Post successfully</strong>
@@ -241,7 +242,6 @@ $(function () {
                                     </button>
                                 </div>
                                 `)
-                                
                                 //清空表单
                                 // $('#postTitle').val('')
                                 // $('.note-editable p').text('')
@@ -249,7 +249,7 @@ $(function () {
                                 // $('#section').prop('selectedIndex', 0)
                                 // $('#threeSection').prop('selectedIndex', 0)
                                 setTimeout(() => {
-                                    location.href = '/communityUserPosts'
+                                    location.href = '/user/communityUserPosts'
                                 }, 2000);
                             } else {
                                 $('#alertBox').html(`

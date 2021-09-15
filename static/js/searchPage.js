@@ -73,7 +73,7 @@ $(function () {
             }, false);
         });
     }, false);
-    $('.searchListBox .searchNum').hide()
+    // $('.searchListBox .searchNum').hide()
     $('.newsPagination').hide()
     function searchList(size) {
         $.ajax({//搜索列表数据
@@ -84,15 +84,15 @@ $(function () {
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
-                totalPage = req.data.total
+                totalPage = req.total
                 lastPage = Math.ceil(totalPage / pageSize)
                 totalPage == 0 ? $('.newsPagination').hide() : $('.newsPagination').show()
                 watchedObj.currentPage == lastPage ? $('#rightdiv .nextPage').hide() : $('#rightdiv .nextPage').show()
-                $('.searchListBox .searchNum').show()
+                // $('.searchListBox .searchNum').show()
                 $('.searchListBox .searchNum span').text(totalPage)
                 let html = ''
                 $('.searchNum span').text(req.totalTopics)
-                for (let data of req.data.list) {
+                for (let data of req.postList) {
                     html += `
                  <li>
                             <div class="itemList">
@@ -101,7 +101,7 @@ $(function () {
                                         <p class="postsTit">${data.community_title}</p>
                                     </div>
                                     <p class="msg">
-                                        <span class="lastReply">${data.community_title}</span>
+                                        <span class="lastReply">${formatDate(data.community_cre)}</span>
                                         <span class="number">
                                             <span class="num browse">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -137,6 +137,17 @@ $(function () {
                 $('.searchListBox ul').html(html)
             }
         })
+    }
+    function formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        var time = YY + MM + DD + " " + hh + mm + ss
+        return time
     }
 
     function GetQueryString(name) { //url传值

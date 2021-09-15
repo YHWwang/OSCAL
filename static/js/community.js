@@ -61,10 +61,11 @@ $(function () {
   $('.check_login').click(function () {
     $.ajax({
       type: "post",
-      url: "/web/user/login/toSign",
+      url: "/user/toSign",
       contentType: "application/json;charset=UTF-8",
       success: function (data) {
-        if (data.success) {
+        data = $.parseJSON(data);
+        if (data.code == 999999) {
           $('.check_login').text('Signed in today').attr('disabled', 'disabled')
         } else {
           window.location.href = '/login'
@@ -78,10 +79,10 @@ $(function () {
     let index = $('.post-list ul li:last-child a').attr('value')
     $.ajax({
       type: "post",
-      url: "/getMoreCommunity",
-      contentType: "application/json;charset=UTF-8",
-      data: '{"id": ' + index + '}',
+      url: "/discuss/getMoreCommunity",
+      data: { "id": index },
       success: function (data) {
+        data = $.parseJSON(data);
         if (data.conmmunityMoreList.length == 0) {
           $('.content-left .ViewMore:hover').css('background', 'gray')
           $('.toast').toast('show')

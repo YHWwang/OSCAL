@@ -178,6 +178,15 @@ h6 {
     padding: 30px 10px;
 }
 
+.note-editor .note-editable li,.note-editor .note-editable ol,.note-editor .note-editable ul{
+    list-style: revert;
+    margin: inherit;
+    padding: inherit;
+}
+.note-editor .table{
+    width: auto !important;
+}
+
 .navsMenu a {
     font-size: 18px;
     font-weight: 500;
@@ -300,4 +309,11 @@ h6 {
     }
 }
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+    .main {
+        padding-top: 30px;
+    }
+    .selectBox .row{
+        flex-wrap: inherit;
+    }
+}

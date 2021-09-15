@@ -495,7 +495,7 @@ h6 {
     color: #000;
     text-decoration: none;
 }
-.rightdiv .prePage,.rightdiv .nextPage{
+.rightdiv .prePage{
     display: none;
 }
 
@@ -530,4 +530,8 @@ h6 {
     }
 }
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+    .main{
+        padding-top: 30px;
+    }
+}

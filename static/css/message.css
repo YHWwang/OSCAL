@@ -250,13 +250,14 @@ h6 {
 
 #nav-messages .message-contents {
     margin-left: 10px;
+    width: 90%;
     color: #F5F5F5;
 }
 
 #nav-notifications .message-contents {
     display: flex;
     justify-content: flex-start;
-    padding-left: 5px;
+    padding-left: 15px;
     align-items: center;
 }
 
@@ -281,7 +282,7 @@ h6 {
     display: inline-block;
 }
 
-#nav-messages .message-contents p {
+#nav-tabContent .message-contents p {
     margin-bottom: 0;
     font-size: 18px;
     color: #9e9e9e;
@@ -303,16 +304,7 @@ h6 {
 #nav-notifications .item li {
     position: relative;
     padding: 10px;
-    border-bottom: 1px solid #EEEEEE;
-    border-radius: 5px;
-    margin: 10px 0 10px 10px;
-}
-
-#nav-notifications .item li {
-    padding: 30px 0 60px 0;
-}
-
-#nav-messages .item li.list-group-item {
+    margin: 10px;
     border: 0;
 }
 
@@ -327,7 +319,7 @@ h6 {
     border-bottom: none;
 }
 
-#nav-messages .item li .time {
+#nav-tabContent .item li .time {
     color: #999999;
     padding-left: 20px;
 }
@@ -547,7 +539,7 @@ h6 {
     color: #000;
     text-decoration: none;
 }
-.rightdiv .prePage,.rightdiv .nextPage{
+.rightdiv .prePage{
     display: none;
 }
 
@@ -579,4 +571,8 @@ h6 {
     }
 }
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+    .main {
+        padding-top: 30px;
+    }
+}

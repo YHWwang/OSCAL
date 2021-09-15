@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel='stylesheet' type='text/css' href='/css/message.css?v=1.000'>
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
 </head>
 
 <body class="en">
@@ -20,7 +21,7 @@
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-                        <a class="nav-link active" id="nav-messages-tab" onclick="navMain('messages')" data-toggle="tab" href="#nav-messages"
+                        <a class="nav-link active" id="nav-messages-tab" data-toggle="tab" href="#nav-messages"
                             role="tab" aria-controls="nav-messages" aria-selected="true">Messages
                         </a>
                         <span class="total messages-total"></span>
@@ -55,15 +56,11 @@
                         aria-labelledby="nav-messages-tab">
                         <ul class="item">
                         </ul>
-                        <div class="Pagination messagesPagination paginationActive">
-                        </div>
                     </div>
                    <div class="tab-pane fade show active" id="nav-notifications" role="tabpanel"
                     aria-labelledby="nav-notifications-tab">
                     <ul class="item">
                     </ul>
-                    <div class="Pagination notificationsPagination">
-                    </div>
                 </div>
                 </div>
             </div>
@@ -139,7 +136,9 @@
         </div>
 
 </body>
-<script async src="/js/message.js?v=1.000"></script>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/js/message.js?v=1.000"></script>
+<script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
 <script async
     src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
 

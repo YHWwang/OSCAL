@@ -18,12 +18,12 @@ $(function () {
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (res) {
-                let data = res.data
+                let data = res.prodcutListCategory
+                res.prodcutListCategory.length > 10 ? '' : $('.newsPagination').hide()
                 //存在ArrID就是二级，不存在就是三级
                 for (let i of data) {
                     for (let j of i.sonList) {
                         // arrID.push(j.id)//二级
-                        console.log(j.osThirdCategory)
                         if (j.osThirdCategory.length != 0) {
                             for (let z = 0; z < j.osThirdCategory.length; z++) {
                                 arrID.push(j.osThirdCategory[z].id)//三级id
@@ -31,15 +31,14 @@ $(function () {
                         }
                     }
                 }
-                console.log(localStorage.getItem('selectID'),arrID)
-                if (arrID.includes(parseInt(localStorage.getItem('selectID')))) {//解决无法显示三级列表的数据
+                if(arrID.includes(parseInt(localStorage.getItem('selectID')))){//解决无法显示三级列表的数据
                     for (let i of data) {
                         for (let j of i.sonList) {
                             if (j.osThirdCategory.length != 0) {
                                 for (let z = 0; z < j.osThirdCategory.length; z++) {
-                                    if (j.osThirdCategory[z].id == faID) {
-                                        faID = j.osThirdCategory[z].category_pid
-                                    }
+                                   if(j.osThirdCategory[z].id == faID){
+                                       faID = j.osThirdCategory[z].category_pid
+                                   }
                                 }
                             }
                         }
@@ -72,10 +71,10 @@ $(function () {
                         }
                     }
                 }
-                console.log(faID)
+
                 // 直接赋值模式
                 cascader.load({
-                    elem: '#category',
+                    elem: '#category',                 
                     data: codeData,
                     showlast: true,
                     width: '250',
@@ -94,10 +93,10 @@ $(function () {
                 // })
             }
         });
-        if (arrID.includes(parseInt(localStorage.getItem('selectID')))) {
+        if(arrID.includes(parseInt(localStorage.getItem('selectID')))){
             $('.cascader-input').val(name)
         }
-
+      
         cascader.on('click', '#category', function (e) {
             faID = e.value
             localStorage.setItem('selectID', codeData)
@@ -118,7 +117,7 @@ $(function () {
     // function selectCategory  (type) {//1新发2热门3精华4所有
     //     window.location.href = `/showUserCommunity?type=${type}&pageNum=1`
     // }
-
+    
     var postType = {
         4: '',
         3: '<img src="/OSCAL/oscal-test/static/img/blog-img/import.png" alt="import">',

@@ -321,4 +321,23 @@ a {
     }
 }
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+    .postContent .postMain .topBox {
+        padding: 20px 10px;
+    }
+    .communityBox .content-right {
+        margin-right: 15px;
+    }
+    .header_main{
+        width: 1170px !important;
+        position: relative !important;
+    }
+    #AMain {
+        width: 1200px;
+        margin-top: 60px;
+    }
+    .header_main .pc-header{
+        display: block;
+        width: 1170px;
+    }
+}

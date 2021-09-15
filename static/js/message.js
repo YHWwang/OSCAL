@@ -1,6 +1,5 @@
 $(function () {
     var messageId = ''
-    var msgHtml = ''
     var modelsIds = ''
     var totalPage = 0
     var pageSize = 10
@@ -9,10 +8,10 @@ $(function () {
     }
     var lastPage = 0
     var allUserId = ''
-    htmlList(1)
-
+    var type = 'letter'
     var checkAllFlag = false
     var checkAllFlag2 = false
+    htmlList(1)
     //proxy监听值的变化
     var observe1 = (object, onChange) => {
         const handler = {
@@ -49,18 +48,21 @@ $(function () {
     </a>
 </div>
 `
-    $('.Pagination.paginationActive').html(html)
-
+    // $('.Pagination.paginationActive').html(html)
 
     navMain = function (tabName) {
         $('.Pagination').removeClass('paginationActive')
         watchedObj.currentPage = 1 //初始化当前页
         switch (tabName) {
             case 'messages':
+                type = 'letter'
+                watchedFun(1)
                 $('.messagesPagination').html(html).addClass('paginationActive');
                 clickFun()
                 break;
             case 'notifications':
+                type = 'notice'
+                watchedFun(1)
                 $('.notificationsPagination').html(html).addClass('paginationActive');
                 clickFun()
                 break;
@@ -69,7 +71,7 @@ $(function () {
         }
     }
 
-    $('.followingsPagination').html(html)
+    $('.messagesPagination').html(html)
     var watchedObj = observe1(obj, (val) => {
         // console.log(`哈哈哈，监听到值变化为${val}了`);
     });
@@ -95,11 +97,11 @@ $(function () {
 
     watchedObj.currentPage == lastPage ? $('.rightdiv .nextPage').hide() : $('.rightdiv .nextPage').show()
     function watchedFun(size) {
-        // console.log(size)
-        htmlList(size)
+        type == 'letter' ? htmlList(size) : noticeHtml(size)
+        console.log(size)
         watchedObj.currentPage = size
-        size == 1 ? $('.rightdiv .prePage').hide() : $('.rightdiv .prePage').show()
-        size == lastPage ? $('.rightdiv .nextPage').hide() : $('.rightdiv .nextPage').show()
+        size == 1 ? $('.paginationActive .rightdiv .prePage').hide() : $('.paginationActive .rightdiv .prePage').show()
+        size == lastPage ? $('.paginationActive .rightdiv .nextPage').hide() : $('.paginationActive .rightdiv .nextPage').show()
     }
     function htmlList(size) {
         $.ajax({//信息标签页
@@ -110,21 +112,22 @@ $(function () {
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
-                totalPage = req.data.total
+                totalPage = req.letterUnreadCount
                 totalPage > 10 ? '' : $('.paginationActive').hide()
                 lastPage = Math.ceil(totalPage / pageSize)
-                $('#nav-tab .messages-total').text(`(${totalPage})`)
-                msgHtml = ''
-                for (let data of req.data.list) {
+                $('#nav-tab .messages-total').text(`(${req.letterUnreadCount})`)
+                $('#nav-tab .notifications-total').text(`(${req.noticeUnreadCount})`)
+                let msgHtml = ''
+                for (let data of req.conversations) {
                     allUserId += data.id + ','
                     msgHtml += `<li class=" list-group-item">
                     <a href="javascript:void(0)">
                         <div class="message-left">
                             <div class="sub-checkbox">
-                            ${data.message_status == 0 ? `<span class="badgeMessage"></span>` : ''}
+                            ${data.status == 0 ? `<span class="badgeMessage"></span>` : ''}
                             </div>
                             <div class="message-contents">
-                                <p>${data.message}
+                                <p>${data.content}
                                 </p>
                             </div>
                             <div class="comments_user_btn">
@@ -141,9 +144,9 @@ $(function () {
                                         <li onclick="ReadStatusFun('${data.id}')">
                                             <span>Mark this article</span>
                                         </li>
-                                        ${data.message_type == 2 ? `<li onclick="messageFun('${data.send_user_id}','${data.sys_user_account}','${data.id}',this)">
+                                        <li onclick="messageFun('${data.fromId}','${data.fromAccount}','${data.id}',this)">
                                         <span>Reply</span>
-                                    </li>`: ''}
+                                    </li>
                                         <li onclick="delMessages(${data.id})">
                                             <span>Delete</span>
                                         </li>
@@ -152,7 +155,7 @@ $(function () {
                             </div>
                         </div>
                     </a>
-                    <p class="time">${data.message_cre}</p>
+                    <p class="time">${formatDate(data.createTime)}</p>
                 </li>`
                 }
                 allUserId = allUserId.substring(0, allUserId.length - 1)
@@ -170,10 +173,7 @@ $(function () {
             }
         })
     }
-    $('#nav-messages-tab').click(function(){
-        htmlList(1)
-    })
-    $('#nav-notifications-tab').click(function(){
+    function noticeHtml(size){
         $.ajax({//通知标签页
             type: "post",
             url: "/notice/lists",
@@ -182,21 +182,22 @@ $(function () {
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
-                totalPage = req.data.total
+                totalPage = req.noticeUnreadCount
                 totalPage > 10 ? '' : $('.paginationActive').hide()
                 lastPage = Math.ceil(totalPage / pageSize)
-                $('#nav-tab .notifications-total').text(`(${totalPage})`)
-                notifiHtml = ''
-                for (let data of req.data.list) {
+                $('#nav-tab .messages-total').text(`(${req.letterUnreadCount})`)
+                $('#nav-tab .notifications-total').text(`(${req.noticeUnreadCount})`)
+                var notifiHtml = ''
+                for (let data of req.conversations) {
                     allUserId += data.id + ','
-                    msgHtml += `<li class=" list-group-item">
+                    notifiHtml += `<li class=" list-group-item">
                     <a href="javascript:void(0)">
-                        <div class="message-left">
+                        <div class="notifications-left">
                             <div class="sub-checkbox">
-                            ${data.message_status == 0 ? `<span class="badgeMessage"></span>` : ''}
+                            ${data.status == 0 ? `<span class="badgeMessage"></span>` : ''}
                             </div>
                             <div class="message-contents">
-                                <p>${data.message}
+                                <p>${data.information}
                                 </p>
                             </div>
                             <div class="comments_user_btn">
@@ -213,9 +214,6 @@ $(function () {
                                         <li onclick="ReadStatusFun('${data.id}')">
                                             <span>Mark this article</span>
                                         </li>
-                                        ${data.message_type == 2 ? `<li onclick="messageFun('${data.send_user_id}','${data.sys_user_account}','${data.id}',this)">
-                                        <span>Reply</span>
-                                    </li>`: ''}
                                         <li onclick="delMessages(${data.id})">
                                             <span>Delete</span>
                                         </li>
@@ -224,7 +222,7 @@ $(function () {
                             </div>
                         </div>
                     </a>
-                    <p class="time">${data.message_cre}</p>
+                    <p class="time">${formatDate(data.createTime)}</p>
                 </li>`
                 }
                 allUserId = allUserId.substring(0, allUserId.length - 1)
@@ -241,6 +239,15 @@ $(function () {
                 })
             }
         })
+    }
+    $('#nav-messages-tab').click(function () {
+        allUserId = ''
+
+        htmlList(1)
+    })
+    $('#nav-notifications-tab').click(function () {
+        allUserId = ''
+        noticeHtml(1)
     })
     checkall = function (num) {
         if (num == 1) {
@@ -272,8 +279,16 @@ $(function () {
             }
         }
     }
-
-
+    function formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+        var time = YY + MM + DD + " " + hh + mm
+        return time
+    }
     $("body").on("click", function () {
         let dom = $('.comments_user_btn .comments_user_menu')
         for (let i = 0; i < dom.length; i++) {
@@ -283,7 +298,7 @@ $(function () {
         }
     });
 
-    ReadStatusFun = function (id) {
+    ReadStatusFun = function (id) { // 信息已读状态
         let user_id = id
         if (user_id == 'all') {
             //将本页的全部id赋值给变量id
@@ -293,7 +308,7 @@ $(function () {
             type: "put",
             url: "/web/user/login/" + user_id,
             dataType: 'json',
-            async: false,
+            async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
                 location.reload()
@@ -311,17 +326,12 @@ $(function () {
             type: "delete",
             url: "/web/user/login/" + id,
             dataType: 'json',
-            async: false,
+            async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
                 location.reload()
             }
         })
-
-    }
-    messageClose = function (id, th) {
-        console.log(id)
-        $(th).parents('li').hide('fast')
     }
     messageFun = function (userId, name, id, that) {//回复弹窗信息
         $(that).attr({
@@ -340,9 +350,9 @@ $(function () {
         } else {
             $.ajax({
                 type: "post",
-                url: "/web/user/login/sendMessage",
+                url: "/letter/send",
                 dataType: 'json',
-                data: '{"to_user_id":"' + messageId + '","message":"' + $('#messageModal .modal-body .modalInput').val() + '"}',
+                data: '{"toUserId":"' + messageId + '","content":"' + $('#messageModal .modal-body .modalInput').val() + '"}',
                 async: false,
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {

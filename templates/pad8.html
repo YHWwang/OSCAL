@@ -18,6 +18,24 @@
     <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
     <script async
         src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+        <!-- Event snippet for oscal pad8 buy now 点击 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-318904184/zK2yCMOo2PQCEPiuiJgB',
+          'value': 1.0,
+          'currency': 'USD',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
 </head>
 
 <body class="en">
@@ -38,11 +56,11 @@
                                 role="tab" aria-controls="pills-profile" aria-selected="false">SPECS</a>
                         </li>
                     </ul>
-                    <!-- <div class="products-buyBtn">
-                        <a href="#" target="_blank">
+                    <div class="products-buyBtn">
+                        <a href="https://store.blackview.hk/products/oscal-pad-8-10-1-4gb-64gb-android-11-4g-tablet" onclick="gtag_report_conversion()" target="_blank">
                             <span>BUY NOW</span>
                         </a>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,7 +124,7 @@
                                         alt="pad8">
                                 </li>
                                 <li>
-                                    <p class="tit">9.4mm & 547g Metal Body</p>
+                                    <p class="tit">9.4mm & 500g Metal Body</p>
                                     <img class="lazyload big-img"
                                         data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/pad8_img/sect2-6.webp"
                                         alt="pad8">
@@ -132,7 +150,7 @@
                                         alt="pad8">
                                 </li>
                                 <li>
-                                    <p class="tit">9.4mm & 547g Metal Body</p>
+                                    <p class="tit">9.4mm & 500g Metal Body</p>
                                     <img class="lazyload big-img"
                                         data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/pad8_img/sect2-6.webp"
                                         alt="pad8">
@@ -285,7 +303,7 @@
                                             alt="pad8">Incredibly Thin and
                                         Light
                                     </p>
-                                    <p class="msg msg-1 pad8-pc">Pad 8 keeps its weight down to 547g and the thickness
+                                    <p class="msg msg-1 pad8-pc">Pad 8 keeps its weight down to 500g and the thickness
                                         down to 9.4mm. It
                                         is so light
                                         and thin that you can carry it around with just one hand for entertainment and
@@ -296,7 +314,7 @@
                                 <div class="imgBox-1">
                                     <ul class="imgBox-1-ul">
                                         <li>
-                                            <p class="p1">547g</p>
+                                            <p class="p1">500g</p>
                                             <p class="p2">Light Weight</p>
                                         </li>
                                         <li>
@@ -766,7 +784,7 @@
                                     </tr>
                                     <tr>
                                         <td>Weight</td>
-                                        <td>547g</td>
+                                        <td>500g</td>
                                     </tr>
                                     <tr>
                                         <td>OS</td>
@@ -872,7 +890,7 @@
                                         <p>Weight</p>
                                     </td>
                                     <td>
-                                        <p>547g</p>
+                                        <p>500g</p>
                                     </td>
                                 </tr>
                                 <tr>

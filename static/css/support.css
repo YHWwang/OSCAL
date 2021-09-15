@@ -144,6 +144,10 @@ img {
     -webkit-user-drag: none;
 }
 
+.mt-5 .pagination .page-item .page-link:hover{
+    text-decoration: none;
+}
+
 .supportBox .bannerTop {
     position: relative;
 }
@@ -388,10 +392,6 @@ img {
 
 .sup-ContentBox .leftBox p:hover {
     color: #c3172e;
-}
-
-.sup-ContentBox .rightBox .problem_list li {
-    margin-bottom: 3vw;
 }
 
 .sup-ContentBox .rightBox .problem_list li h3 {

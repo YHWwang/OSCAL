@@ -139,29 +139,6 @@ h6 {
     padding: 5% 0;
 }
 
-.loginContent .alert-danger {
-    display: none;
-}
-
-.loginContent .alert-success {
-    color: #155724 !important;
-    background-color: #d4edda !important;
-    border-color: #c3e6cb !important;
-}
-
-.loginContent .alert-danger {
-    position: absolute;
-    width: 500px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%);
-    z-index: 11;
-}
-
-.loginContent .alert-danger .errorMsg {
-    margin-bottom: 0;
-}
-
 .loginContent {
     position: relative;
     border-radius: 6px;
@@ -301,12 +278,19 @@ div.border {
     padding: 1vw 2rem;
     position: relative;
 }
-
+#alertBox{
+    position: fixed;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+}
 .eyeIcon {
     color: rgb(216, 216, 216);
     position: absolute;
     height: 50px;
     line-height: 50px;
+    z-index: 11;
     right: 10px;
     cursor: pointer;
 }

@@ -1,310 +1,14 @@
 $(function () {
     var totalPage = 0
-    var index = 0
+    var index = 'nav-following'
     var pageSize = 10
     var obj = {
         currentPage: 1
     }
     var toUserId = 0
-    var follow = 'followCancelOthersPeople'
+    var follow = 'unfollow'
     var lastPage = 0
     var sys_user_id = $('#sys_user_id').val()
-    getTabData(1, 'nav-following')
-    function getTabData(type) {//根据选择不同获取对应的数据并渲染
-        switch (type) {
-            case 'nav-following':
-                $.ajax({
-                    type: "get",
-                    url: "/followees/" + sys_user_id,
-                    dataType: 'json',
-                    async: false,
-                    contentType: "application/json;charset=UTF-8",
-                    success: function (req) {
-                        for (let i of req.user) {
-                            html += `
-                            <li >
-                            <div class="following-left">
-                                <img src="${i.headPhoto}" alt="usersImg">
-                                <div class="usersMessage">
-                                    <p class="name" >${i.sysUserAccount}</p>
-                                    <p class="info">
-                                        Followers <span >${i.user_followers}</span>
-                                        Posts <span >${i.user_posts}</span>
-                                        Likes <span >${i.user_likes}</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="following-right">
-                                <button type="button" class="btn btn-outline-primary followMessage"
-                                        onclick="followMessageFun('${i.id}','${i.sysUserAccount}')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                         fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                                        <path
-                                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
-                                    </svg>
-                                    Message
-                                </button>
-                                <button type="button" class="btn btn-outline-secondary followBtn" onclick="followBtn(${i.id})">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                         fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
-                                        <path
-                                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                        <path fill-rule="evenodd"
-                                              d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                                    </svg>
-                                    <span class="followWord">+ Follow</span>
-                                </button>
-                            </div>
-                        </li>
-                            `
-                        }
-                        $(`#${type} ul`).html(html)
-                    }
-                })
-                break;
-            case 'nav-posts':
-                $.ajax({
-                    type: "post",
-                    url: "/user/discuss/" + sys_user_id,
-                    dataType: 'json',
-                    async: false,
-                    contentType: "application/json;charset=UTF-8",
-                    success: function (req) {
-                        for (let i of req.data.list) {
-                            html += `
-                            <li >
-                            <div class="postsBox">
-                                <div class="usersMessage">
-                                    <p class="postsLabel"  >${i.category_cate_name}</p>
-                                    <p class="postsTitle">
-                                        <a href="/communityUserDetail/${i.id}" target="_blank">
-                                                <span>  ${i.community_title}
-                                                </span>
-                                        </a>
-                                    </p>
-                                    <p class="postsTime">
-                                        <span class="dataTime" >${i.community_cre}</span>
-                                        <span class="comments">
-                                                <span class="browse">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                         fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                        <path
-                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
-                                                        </path>
-                                                        <path
-                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
-                                                        </path>
-                                                    </svg>
-                                                    <span class="browse_num" >${i.community_num}</span>
-                                                </span>
-                                                <span class="reply">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                         fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                                                        <path
-                                                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
-                                                        </path>
-                                                        <path
-                                                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
-                                                        </path>
-                                                    </svg>
-                                                    <span class="reply_num" >${i.community_comment}</span>
-                                                </span>
-                                            </span>
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                            `
-                        }
-                        $(`#${type} ul`).html(html)
-                    }
-                })
-                break;
-            case 'nav-likes':
-                $.ajax({
-                    type: "post",
-                    url: "/user/like/" + sys_user_id,
-                    dataType: 'json',
-                    async: false,
-                    contentType: "application/json;charset=UTF-8",
-                    success: function (req) {
-                        for (let i of req.data.list) {
-                            html += `
-                                <li >
-                                <div class="postsBox">
-                                    <div class="usersMessage">
-                                        <p class="postsLabel" >${i.category_cate_name}</p>
-                                        <p class="postsTitle">
-                                            <a href="/communityUserDetail/${i.id}" target="_blank">
-                                                    <span >
-                                                    ${i.community_title}
-                                                    </span>
-    
-                                            </a>
-                                        </p>
-                                        <p class="postsTime">
-                                            <span class="dataTime" >${i.community_cre}</span>
-                                            <span class="comments">
-                                                    <span class="browse">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                             fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                            <path
-                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
-                                                            </path>
-                                                            <path
-                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
-                                                            </path>
-                                                        </svg>
-                                                        <span class="browse_num" >${i.community_num}</span>
-                                                    </span>
-                                                    <span class="reply">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                             fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                                                            <path
-                                                                    d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
-                                                            </path>
-                                                            <path
-                                                                    d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
-                                                            </path>
-                                                        </svg>
-                                                        <span class="reply_num" >${i.community_comment}</span>
-                                                    </span>
-                                                </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                                `
-                        }
-                        $(`#${type} ul`).html(html)
-                    }
-                })
-                break;
-            case 'nav-followers':
-                $.ajax({
-                    type: "get",
-                    url: "/followers/" + sys_user_id,
-                    dataType: 'json',
-                    async: false,
-                    contentType: "application/json;charset=UTF-8",
-                    success: function (req) {
-                        for (let i of req.user) {
-                            html += `
-                        <li >
-                        <div class="following-left">
-                            <img src="${i.headPhoto}" alt="usersImg">
-                            <div class="usersMessage">
-                                <p class="name" >${i.sysUserAccount}</p>
-                                <p class="info">
-                                    Followers <span >${i.user_followers}</span>
-                                    Posts <span >${i.user_posts}</span>
-                                    Likes <span >${i.user_likes}</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="following-right">
-                            <button type="button" class="btn btn-outline-primary followMessage"
-                                    onclick="followMessageFun('${i.id}','${i.sysUserAccount}')">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                     fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                                    <path
-                                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
-                                </svg>
-                                Message
-                            </button>
-                            <button type="button" class="btn btn-outline-secondary followBtn" onclick="followBtn(${i.id})">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                     fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
-                                    <path
-                                            d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                    <path fill-rule="evenodd"
-                                          d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                                </svg>
-                                <span class="followWord">+ Follow</span>
-                            </button>
-                        </div>
-                    </li>
-                        `
-                        }
-                        $(`#${type} ul`).html(html)
-                    }
-                })
-                break;
-            case 'nav-comments':
-                $.ajax({
-                    type: "get",
-                    url: "/followers/" + sys_user_id,
-                    dataType: 'json',
-                    async: false,
-                    contentType: "application/json;charset=UTF-8",
-                    success: function (req) {
-                        for (let i of req.data.list) {
-                            let childHtml = ''
-                            i.community_content = i.community_content.replace(/'/g, "").replace(/<.*?>/ig, "")
-                            for (let j of i.commentMap) {
-                                childHtml += `
-                                    <span>${j.comment_cre}</span>${j.comment}
-                                    `
-                            }
-                            html += `
-                                <li >
-                                <div class="postsBox">
-                                    <div class="usersMessage">
-                                        <p class="postsLabel" >${i.category_cate_name}</p>
-                                        <p class="postsTitle">
-                                            <a href="/communityUserDetail/${i.id}" target="_blank">
-                                                    <span >
-                                                    ${i.community_title}
-                                                    </span>
-    
-                                            </a>
-                                        </p>
-                                        <p class="postsTime">
-                                            <span class="dataTime" >${i.community_cre}</span>
-                                            <span class="comments">
-                                                    <span class="browse">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                             fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                            <path
-                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
-                                                            </path>
-                                                            <path
-                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
-                                                            </path>
-                                                        </svg>
-                                                        <span class="browse_num" >${i.community_num}</span>
-                                                    </span>
-                                                    <span class="reply">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                             fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                                                            <path
-                                                                    d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
-                                                            </path>
-                                                            <path
-                                                                    d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
-                                                            </path>
-                                                        </svg>
-                                                        <span class="reply_num" >${i.community_comment}</span>
-                                                    </span>
-                                                </span>
-                                        </p>
-                                       <div class='myCommentsBox'>
-                                       ${childHtml}
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                `
-                        }
-                        $(`#${type} ul`).html(html)
-                    }
-                })
-                break;
-            default:
-                break;
-        }
-    }
-
     //proxy监听值的变化
     var observe1 = (object, onChange) => {
         const handler = {
@@ -322,7 +26,7 @@ $(function () {
         };
         return new Proxy(object, handler);
     };
-    var html = `
+    var paginationHtml = `
     <div class="rightdiv">
         <a class="firstPage">
             <span >First</span>
@@ -342,35 +46,360 @@ $(function () {
     </div>
    `
 
-    navMain = function (tabName) {
+    setTimeout(() => {
+        if (GetQueryString('name')) {//o币跳转标签页
+            $(`#nav-${GetQueryString('name')}-tab`).trigger('click')
+        }
+    }, 100);
+
+    getTabData(1, 'nav-following')
+    function getTabData(size, name) {//根据选择不同获取对应的数据并渲染
+        switch (name) {
+            case 'nav-following':
+                $.ajax({
+                    type: "post",
+                    url: "/followees",
+                    dataType: 'json',
+                    data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
+                    async: false,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (req) {
+                        totalPage = req.totalPage
+                        totalPage > 10 ? '' : $('.paginationActive').hide()
+                        lastPage = Math.ceil(totalPage / pageSize)
+                        var html = ''
+                        for (let i of req.user) {
+                            html += `
+                            <li >
+                            <div class="following-left">
+                                <img src="${i.user.headPhoto}" alt="usersImg">
+                                <div class="usersMessage">
+                                    <p class="name" >${i.user.sysUserAccount}</p>
+                                    <p class="info">
+                                        Followers <span >${i.followerCount}</span>
+                                        Posts <span >${i.userPosts}</span>
+                                        Likes <span >${i.userLikeCount}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="following-right">
+                                <button type="button" class="btn btn-outline-primary followMessage"
+                                        onclick="followMessageFun('${i.user.id}','${i.user.sysUserAccount}')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                         fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                        <path
+                                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                                    </svg>
+                                    Message
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary followBtn" onclick="followBtn(${i.user.id})">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                         fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                                        <path
+                                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                        <path fill-rule="evenodd"
+                                              d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                    </svg>
+                                    <span class="followWord">+ Follow</span>
+                                </button>
+                            </div>
+                        </li>
+                            `
+                        }
+                        $(`#${name} ul`).html(html)
+
+                    }
+                })
+                break;
+            case 'nav-posts':
+                $.ajax({
+                    type: "post",
+                    url: "/user/discuss",
+                    data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
+                    dataType: 'json',
+                    async: false,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (req) {
+                        totalPage = req.totalPage
+                        totalPage > 10 ? '' : $('.paginationActive').hide()
+                        lastPage = Math.ceil(totalPage / pageSize)
+                        var html = ''
+                        for (let data of req.discussPosts) {
+                            html += `
+                            <li >
+                            <div class="postsBox">
+                                <div class="usersMessage">
+                                    <p class="postsLabel"  >${data.post.oscalCommentCategoryName}</p>
+                                    <p class="postsTitle">
+                                        <a href="/communityUserDetail/${data.post.id}" target="_blank">
+                                                <span>  ${data.post.communityTitle}
+                                                </span>
+                                        </a>
+                                    </p>
+                                    <p class="postsTime">
+                                        <span class="dataTime">${formatDate(data.post.communityCre)}</span>
+                                        <span class="comments">
+                                                <span class="browse">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                        </path>
+                                                        <path
+                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="browse_num" >${data.post.communityNum}</span>
+                                                </span>
+                                                <span class="reply">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
+                                                        </path>
+                                                        <path
+                                                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="reply_num" >${data.post.communityComment}</span>
+                                                </span>
+                                            </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                            `
+                        }
+                        $(`#${name} ul`).html(html)
+                    }
+                })
+                break;
+            case 'nav-likes':
+                $.ajax({
+                    type: "post",
+                    url: "/user/like",
+                    data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
+                    dataType: 'json',
+                    async: false,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (req) {
+                        totalPage = req.totalPage
+                        totalPage > 10 ? '' : $('.paginationActive').hide()
+                        lastPage = Math.ceil(totalPage / pageSize)
+                        var html = ''
+                        for (let i of req.postVoList) {
+                            html += `
+                            <li >
+                            <div class="postsBox">
+                                <div class="usersMessage">
+                                    <p class="postsLabel" >${i.oscalCommentCategoryName}</p>
+                                    <p class="postsTitle">
+                                        <a href="/communityUserDetail/${i.id}" target="_blank">
+                                                <span>
+                                                ${i.communityTitle}
+                                                </span>
+
+                                        </a>
+                                    </p>
+                                    <p class="postsTime">
+                                        <span class="dataTime" >${formatDate(i.communityCre)}</span>
+                                        <span class="comments">
+                                                <span class="browse">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                        </path>
+                                                        <path
+                                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="browse_num" >${i.communityNum}</span>
+                                                </span>
+                                                <span class="reply">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                         fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
+                                                        </path>
+                                                        <path
+                                                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="reply_num" >${i.communityComment}</span>
+                                                </span>
+                                            </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                            `
+                        }
+                        $(`#${name} ul`).html(html)
+                    }
+                })
+                break;
+            case 'nav-followers':
+                $.ajax({
+                    type: "post",
+                    url: "/followers",
+                    data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
+                    dataType: 'json',
+                    async: false,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (req) {
+                        totalPage = req.totalPage
+                        totalPage > 10 ? '' : $('.paginationActive').hide()
+                        lastPage = Math.ceil(totalPage / pageSize)
+                        var html = ''
+                        for (let i of req.user) {
+                            html += `
+                        <li >
+                        <div class="following-left">
+                            <img src="${i.user.headPhoto}" alt="usersImg">
+                            <div class="usersMessage">
+                                <p class="name" >${i.user.sysUserAccount}</p>
+                                <p class="info">
+                                    Followers <span >${i.followerCount}</span>
+                                    Posts <span >${i.userPosts}</span>
+                                    Likes <span >${i.userLikeCount}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="following-right">
+                            <button type="button" class="btn btn-outline-primary followMessage"
+                                    onclick="followMessageFun('${i.user.id}','${i.user.sysUserAccount}')">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                     fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path
+                                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                                </svg>
+                                Message
+                            </button>
+                        </div>
+                    </li>
+                        `
+                        }
+                        $(`#${name} ul`).html(html)
+                    }
+                })
+                break;
+            case 'nav-comments':
+                $.ajax({
+                    type: "post",
+                    url: "/user/comment",
+                    data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
+                    dataType: 'json',
+                    async: true,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (req) {
+                        totalPage = req.totalPage
+                        totalPage > 10 ? '' : $('.paginationActive').hide()
+                        lastPage = Math.ceil(totalPage / pageSize)
+                        var html = ''
+                        for (let i of req.comments) {
+                            html += `
+                                <li >
+                                <div class="postsBox">
+                                    <div class="usersMessage">
+                                        <p class="postsLabel" >${i.post.oscalCommentCategoryName}</p>
+                                        <p class="postsTitle">
+                                            <a href="/communityUserDetail/${i.entityId}" target="_blank">
+                                                    <span >
+                                                    ${i.post.communityTitle}
+                                                    </span>
+    
+                                            </a>
+                                        </p>
+                                        <p class="postsTime">
+                                            <span class="dataTime" >${formatDate(i.post.communityCre)}</span>
+                                            <span class="comments">
+                                                    <span class="browse">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                             fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                                            <path
+                                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
+                                                            </path>
+                                                            <path
+                                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
+                                                            </path>
+                                                        </svg>
+                                                        <span class="browse_num" >${i.post.communityNum}</span>
+                                                    </span>
+                                                    <span class="reply">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                             fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                                            <path
+                                                                    d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
+                                                            </path>
+                                                            <path
+                                                                    d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
+                                                            </path>
+                                                        </svg>
+                                                        <span class="reply_num" >${i.post.communityComment}</span>
+                                                    </span>
+                                                </span>
+                                        </p>
+                                       <div class='myCommentsBox'>
+                                            <p>${i.content}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                                `
+                        }
+                        $(`#${name} ul`).html(html)
+                    }
+                })
+                break;
+            default:
+                break;
+        }
+    }
+    function formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        var time = YY + MM + DD + " " + hh + mm + ss
+        return time
+    }
+
+    navMain = function (tabName) { // 点击标签页
         $('.Pagination').removeClass('paginationActive')
         watchedObj.currentPage = 1 //初始化当前页
         switch (tabName) {
             case 'following':
-                $('.followingsPagination').html(html).addClass('paginationActive');
+                $('.followingsPagination').html(paginationHtml).addClass('paginationActive');
                 clickFun()
                 getTabData(1, 'nav-following')
-                index = 1
+                index = 'nav-following'
                 break;
             case 'posts':
-                $('.postsPagination').html(html).addClass('paginationActive');
+                $('.postsPagination').html(paginationHtml).addClass('paginationActive');
                 getTabData(1, 'nav-posts')
-                index = 2
+                index = 'nav-posts'
                 clickFun()
                 break;
-            case 'likes': $('.likesPagination').html(html).addClass('paginationActive');
+            case 'likes':
+                $('.likesPagination').html(paginationHtml).addClass('paginationActive');
                 getTabData(1, 'nav-likes')
-                index = 3
+                index = 'nav-likes'
                 clickFun()
                 break;
-            case 'followers': $('.followersPagination').html(html).addClass('paginationActive');
+            case 'followers':
+                $('.followersPagination').html(paginationHtml).addClass('paginationActive');
                 getTabData(1, 'nav-followers')
-                index = 4
+                index = 'nav-followers'
                 clickFun()
                 break;
-            case 'comments': $('.commentsPagination').html(html).addClass('paginationActive');
+            case 'comments':
+                $('.commentsPagination').html(paginationHtml).addClass('paginationActive');
                 getTabData(1, 'nav-comments')
-                index = 5
+                index = 'nav-comments'
                 clickFun()
                 break;
             default:
@@ -397,7 +426,7 @@ $(function () {
         $('#modifyModal .modal-body .modifyUsersName').val($(this).parents('.usersName').find('.usersName').text())
     })
 
-    $('.followingsPagination').html(html)
+    $('.followingsPagination').html(paginationHtml)
     var watchedObj = observe1(obj, (val) => {
         // console.log(`哈哈哈，监听到值变化为${val}了`);
     });
@@ -420,9 +449,7 @@ $(function () {
             $('.paginationActive .rightdiv .currentPage span').text(watchedObj.currentPage)
         })
     }
-
     function watchedFun(size) {
-        // console.log(size,index)
         getTabData(size, index)
         watchedObj.currentPage = size
         size == 1 ? $('.rightdiv .prePage').hide() : $('.rightdiv .prePage').show()
@@ -440,20 +467,20 @@ $(function () {
         } else {
             $.ajax({
                 type: "post",
-                url: "/web/user/login/userToUpdateNick",
+                url: "/user/userToUpdateNick",
                 dataType: 'json',
                 data: '{"sys_user_account":"' + name + '"}',
                 async: false,
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
-                    let box = `  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    let box = `  <div class="alert alert-success alert-dismissible fade show" role="alert">
                     ${req.msg}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>`
                     $('.main').append(box);
-                    if (req.success) {
+                    if (req.code == 999999) {
                         setTimeout(() => {
                             location.reload();
                         }, 2000);
@@ -491,17 +518,31 @@ $(function () {
         } else {
             $.ajax({
                 type: "post",
-                url: "/web/user/login/sendMessage",
+                url: "/letter/send",
                 dataType: 'json',
-                data: '{"to_user_id":"' + toUserId + '","message":"' + $('.submitReplay').val() + '"}',
-                async: false,
+                data: '{"toUserId":"' + toUserId + '","content":"' + $('.submitReplay').val() + '"}',
+                async: true,
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
+                    if (req.code == 0) {
+                        let box = `  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Sent successfully
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>`
+                        $('.main').append(box);
+                    }
+
                     if (req.code == 'code_990000') {
                         window.location.href = '/web/user/login/toLogin'
                     }
-                    $('#modifyModal').modal('hide')
-                    $('div.modal-backdrop').hide()
+                    setTimeout(() => {
+                        $('#modifyModal').modal('hide')
+                        $('div.modal-backdrop').hide()
+                        $('.main .alert').hide()
+                    }, 2000);
+
                 },
                 error: function (e) {
                     console.log(e)
@@ -516,9 +557,9 @@ $(function () {
         $('.followBtn').prop({ disabled: true })
         $.ajax({
             type: "post",
-            url: "/web/user/login/" + follow,
+            url: "/" + follow,
             dataType: 'json',
-            data: '{"to_user_id":"' + id + '"}',
+            data: '{"entityId":' + id + ',"entityType":3}',
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
@@ -527,12 +568,12 @@ $(function () {
                 }
                 setTimeout(() => {
                     $('.followBtn').removeAttr('disabled')
-                    if (follow == 'followOthersPeople') {
-                        follow = 'followCancelOthersPeople'
+                    if (follow == 'follow') {
+                        follow = 'unfollow'
                         $('#nav-following .userBtn .followBtn').removeClass('btn-outline-primary').addClass('btn-outline-secondary')
                         $('#nav-following .userBtn .followBtn').find('svg').show().parent().find('span').hide()
                     } else {
-                        follow = 'followOthersPeople'
+                        follow = 'follow'
                         $('#nav-following .userBtn .followBtn').removeClass('btn-outline-secondary').addClass('btn-outline-primary')
                         $('#nav-following .userBtn .followBtn').find('svg').hide().parent().find('span').show()
                     }
@@ -551,13 +592,13 @@ $(function () {
         }
     })
 
-    //上传头像  
+    //上传头像
     initFileInput("input-id");
     function initFileInput(ctrlName) {
         var control = $('#' + ctrlName);
         control.fileinput({
             language: 'zh', //设置语言
-            uploadUrl: "/web/user/login/updateUserPhoto", //上传的地址
+            uploadUrl: "/user/updateUserPhoto", //上传的地址
             allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
             uploadAsync: false, //默认异步上传，这里如果不是异步上传，多个图片一次性提交到后台，只发一次请求，如果为异步上传，每张图片都会发一次请求，多次请求
             showUpload: true, //是否显示上传按钮
@@ -608,9 +649,6 @@ $(function () {
         })
     }
 
-    if (GetQueryString('name')) {//o币跳转标签页
-        $(`#nav-${GetQueryString('name')}-tab`).trigger('click')
-    }
     // 获取地址栏用户id
     function GetQueryString(name) {
         var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

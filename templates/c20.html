@@ -18,6 +18,25 @@
     <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
     <script async
         src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+        <!-- Event snippet for C20 buy now 点击 conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+        function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+            window.location = url;
+            }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-318904184/wuLZCIvG2fQCEPiuiJgB',
+            'value': 1.0,
+            'currency': 'USD',
+            'event_callback': callback
+        });
+        return false;
+        }
+
+        </script>
 </head>
 
 <body class="en">
@@ -38,11 +57,11 @@
                                 role="tab" aria-controls="pills-profile" aria-selected="false">SPECS</a>
                         </li>
                     </ul>
-                    <!-- <div class="products-buyBtn">
-                        <a href="#" target="_blank">
+                    <div class="products-buyBtn">
+                        <a href="https://store.blackview.hk/products/oscal-c20-3g-smartphone" onclick="gtag_report_conversion()" target="_blank">
                             <span>BUY NOW</span>
                         </a>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,9 +126,9 @@
                                     src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/c20/c20-c2-5.png" alt="">
                                 <img class="bv-phone"
                                     src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/c20/c20-c2-5-phone.png" alt="">
-                                <div class="txt-box bv-init">
-                                    <p class="p1">1GB + 32GB</p>
-                                    <p class="p2">RAM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ROM</p>
+                                <div class="txt-box bv-init"  style="width: 100%;">
+                                    <p class="p1">New Android 11.0</p>
+                                    <p class="p2">Boosts the speed by 20%</p>
                                 </div>
                             </div>
                         </div>
@@ -138,13 +157,13 @@
                     <section class="c20-5">
                         <div class="c20-5-txt-box bv-flex img-80p">
                             <div class="left c20-item bv-init">
-                                <p class="bv-samll-title">6.88" HD+ Display</p>
+                                <p class="bv-samll-title">6.088" HD+ Display</p>
                                 <p class="bv-font-title">View Beyond Expectation</p>
                             </div>
                             <div class="right bv-font-txt c20-item bv-init">
                                 Discover more beauties with a broader vision thanks to the large 6.088" in-cell
                                 full-screen
-                                waterdrop display. 720*1640 HD+ resolution makes details vivid with rich colors and
+                                waterdrop display. 720*1560 HD+ resolution makes details vivid with rich colors and
                                 brilliant
                                 contrast.
                             </div>
@@ -169,7 +188,7 @@
                                             alt="">
                                     </div>
                                     <div class="icon-right">
-                                        <p class="p2">720*1640</p>
+                                        <p class="p2">720*1560</p>
                                         <p class="p3">HD Display</p>
                                     </div>
                                 </li>
@@ -201,7 +220,7 @@
                     <section class="c20-8">
                         <ul class="bv-flex img-80p">
                             <li>
-                                <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/c20/c20-c8-1.png" alt="">
+                                <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/c20-c8-1-20210831014903483.png" alt="">
                                 <p class="p1 bv-font-title bv-init">Navigation Function</p>
                                 <p class="p2 bv-font-txt bv-init">
                                     With the GPS, GLONASS and Beidou triple navigation system,
@@ -209,7 +228,7 @@
                                 </p>
                             </li>
                             <li>
-                                <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/c20/c20-c8-2.png" alt="">
+                                <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/c20-c8-2-20210831014910735.png" alt="">
                                 <p class="p1 bv-font-title bv-init">Easy Connectivity</p>
                                 <p class="p2 bv-font-txt bv-init">
                                     Connectivity options include 3G network, Wi-Fi 802.11 b/g/n,
