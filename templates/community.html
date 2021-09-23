@@ -44,7 +44,7 @@
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide" th:each="community:${communityList}">
-                                <a th:href="${'/communityUserDetail/'}+${community.id}" target="_blank">
+                                <a th:href="${'/communityUserDetail/'}+${community.id}" target="_self">
                                     <p class="sliceTitle">
                                         <span th:text="${community.community_title}"></span>
                                     </p>
@@ -53,13 +53,15 @@
                                 </a>
                             </div>
                            <!-- <div class="swiper-slide">
-                                <a href="/blog/blog-1" target="_blank">
+                                <a href="/blog/blog-1" target="_self">
                                     <img class="big-img lazyload"
                                         data-src="img/blog-img/community-swiper2.jpg" alt="oscal">
                                 </a>
                             </div>-->
                         </div>
                         <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                     <div class="post-list">
                         <ul>
@@ -68,14 +70,14 @@
                                 <div class="post-main">
                                     <div class="left">
                                         <p class="tit">
-                                            <a th:href="${'/communityUserDetail/'}+${community.id}" target="_blank" >
+                                            <a th:href="${'/communityUserDetail/'}+${community.id}" target="_self" >
                                                 <span th:text="${community.community_title}">
                                                     [OSCAl Tab9] 6 Reasons Why You'll Love OSCAL Tab 9
                                                 </span>
                                             </a>
                                         </p>
                                         <p class="msg">
-                                            <a th:href="${'/communityUserDetail/'}+${community.id}" target="_blank">
+                                            <a th:href="${'/communityUserDetail/'}+${community.id}" target="_self">
                                                 <span th:text="${community.community_name}">
                                                     Today is a very cool topic about 6 reasons to love buying the
                                                     amazing
@@ -88,7 +90,7 @@
                                         </p>
                                     </div>
                                     <div class="right">
-                                        <a th:href="${'/communityUserDetail/'}+${community.id}" target="_blank">
+                                        <a th:href="${'/communityUserDetail/'}+${community.id}" target="_self">
                                             <img class="big-img lazyload"
                                                 th:data-src="${#strings.isEmpty(community.community_img)} ? 'https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/tab9_2-20210802015602396.jpg':${community.community_img}"
                                                 alt="oscal">
@@ -162,7 +164,7 @@
                 <div class="content-right col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <!-- <div class="top_image">
                         <div th:each="community:${communityHotList}">
-                            <a th:href="${'/communityUserDetail/'}+${community.id}" target="_blank">
+                            <a th:href="${'/communityUserDetail/'}+${community.id}" target="_self">
                                 <span th:text="${community.community_title}">6 Reasons Why You'll Love OSCAL Tab 9</span>
                                 <img class="big-img lazyload"  th:data-src="${community.community_img}" th:if="${community.get('community_img') !=null &&community.get('community_img')!='' }" alt="oscal">
                                 <img class="big-img lazyload"  src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/tab9_2-20210802015602396.jpg"  th:if="${community.get('community_img') ==null || community.get('community_img')==''}" alt="oscal">
@@ -255,7 +257,7 @@
                             <ul>
                                 <li th:each="community:${communityHotList}">
                                     <p class="post_tit">
-                                        <a th:href="${'/communityUserDetail/'}+${community.id}" target="_blank">
+                                        <a th:href="${'/communityUserDetail/'}+${community.id}" target="_self">
                                             <span th:text="${community.community_title}">
                                                 [OSCAl Tab9] 6 Reasons Why You'll Love OSCAL Tab 9
                                             </span>

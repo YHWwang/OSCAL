@@ -4,6 +4,7 @@ $(function () {
     localStorage.setItem('selectID', faID)
     var arrID = []
     var codeData = []
+    var Listdata = {}
     layui.config({
         base: '/lib/layuiCascader/mods/ajaxCascader/'
         , version: '1.6'
@@ -18,7 +19,7 @@ $(function () {
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (res) {
-                let data = res.prodcutListCategory
+                let data = Listdata = res.prodcutListCategory
                 res.prodcutListCategory.length > 10 ? '' : $('.newsPagination').hide()
                 //存在ArrID就是二级，不存在就是三级
                 for (let i of data) {
@@ -31,14 +32,14 @@ $(function () {
                         }
                     }
                 }
-                if(arrID.includes(parseInt(localStorage.getItem('selectID')))){//解决无法显示三级列表的数据
+                if (arrID.includes(parseInt(localStorage.getItem('selectID')))) {//解决无法显示三级列表的数据
                     for (let i of data) {
                         for (let j of i.sonList) {
                             if (j.osThirdCategory.length != 0) {
                                 for (let z = 0; z < j.osThirdCategory.length; z++) {
-                                   if(j.osThirdCategory[z].id == faID){
-                                       faID = j.osThirdCategory[z].category_pid
-                                   }
+                                    if (j.osThirdCategory[z].id == faID) {
+                                        faID = j.osThirdCategory[z].category_pid
+                                    }
                                 }
                             }
                         }
@@ -74,7 +75,7 @@ $(function () {
 
                 // 直接赋值模式
                 cascader.load({
-                    elem: '#category',                 
+                    elem: '#category',
                     data: codeData,
                     showlast: true,
                     width: '250',
@@ -93,10 +94,10 @@ $(function () {
                 // })
             }
         });
-        if(arrID.includes(parseInt(localStorage.getItem('selectID')))){
+        if (arrID.includes(parseInt(localStorage.getItem('selectID')))) {
             $('.cascader-input').val(name)
         }
-      
+        
         cascader.on('click', '#category', function (e) {
             faID = e.value
             localStorage.setItem('selectID', codeData)
@@ -108,16 +109,30 @@ $(function () {
             console.log(cascader.getChooseData('#category'))
         })
 
-
     });
-
+    $('.OSContent .osSys-right .newBtn').click(() => {
+        let ID = localStorage.getItem('selectID')
+        for (let parent of Listdata) {
+            for (let son of parent.sonList) {
+                if (son.id == ID) {
+                    window.location.href = `/discuss/jumpNewPost?id=${son.category_pid}&se=${son.id}`
+                } else {
+                    for (let grandson of son.osThirdCategory) {
+                        if (grandson.id == ID) {
+                            window.location.href = `/discuss/jumpNewPost?id=${son.category_pid}&se=${son.id}&se2=${grandson.id}`
+                        }
+                    }
+                }
+            }
+        }
+    })
     //   $('#category').change(function(){
     //     selectCategory($(this).find('option:selected').attr('num'))
     // })
     // function selectCategory  (type) {//1新发2热门3精华4所有
     //     window.location.href = `/showUserCommunity?type=${type}&pageNum=1`
     // }
-    
+
     var postType = {
         4: '',
         3: '<img src="/OSCAL/oscal-test/static/img/blog-img/import.png" alt="import">',

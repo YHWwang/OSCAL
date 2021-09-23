@@ -110,7 +110,7 @@ $(function () {
     $('#exampleModalLabel').text('Reply ' + $(this).attr('value'))
     commentsData.sys_user_account = $(this).attr('value')
   })
-
+  document.emojiSource = '/lib/Summernote/summernote-emoji-master/tam-emoji/img'
   $('#summernote').summernote({//富文本编辑
     placeholder: '',
     tabsize: 2,
@@ -118,6 +118,7 @@ $(function () {
     toolbar: [
       ['history', ['undo', 'redo']],
       ['style', ['style']],
+      ['insert', ['emoji']],
       ['font', ['bold', 'underline', 'clear']],
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
@@ -126,7 +127,20 @@ $(function () {
       ['view', ['codeview', 'help']]
     ]
   });
-
+  $('.note-editor').focusin(function(){
+    return false
+  })
+  $('.note-editor').focusout(function(){
+    $('.note-editable').focus()
+  })
+  $(document).click(function (event) {
+    let dom = $('.note-editor')[0]
+    if (event.target != dom && !$.contains(dom, event.target)) {
+      $('.note-editable').attr('contenteditable',false)
+    }else{
+      $('.note-editable').attr('contenteditable',true)
+    }
+  })
   MessageFun = function (id) {//修改弹窗信息
     $('#messageModal .modal-body .modalInput').val('')
     $('#messageModal .modal-body .invalid-feedback').hide()
@@ -200,7 +214,7 @@ $(function () {
               window.location.href = '/communityUserDetail/' + community_id
             }, 500);
           } else {
-            alertBox('success', req.msg)
+            alertBox('danger', req.msg)
           }
         }
       })
@@ -413,24 +427,25 @@ $(function () {
         function htmlList(size) {
           $.ajax({//评论列表数据
             type: "post",
-            url: "/getCommentList",
+            url: "/comment/detail",
             dataType: 'json',
-            data: '{"community_id":"' + community_id + '","pageNum":"' + size + '"}',
+            data: '{"discussPostId":"' + community_id + '","current":"' + size + '"}',
             async: false,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
+              var totalPage = req.totalPage
+              totalPage <= 10 ? $('.newsPagination').hide() : ''
+                $('.postContent .comments .commentsTop span').text(`Comments ( ${totalPage} )`)
               renderList(req.comments)
             }
           })
         }
-
       }
     })
     function renderList(req) {
       var commentList = ''
       var hasComments = 0
       var commentsChlid = {}
-      $('.postContent .comments .commentsTop span').text(`Comments ( ${req.length} )`)
       for (let data of req) {
         hasComments = 0
         commentsChlid = data.replys

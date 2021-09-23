@@ -151,6 +151,7 @@ $(function () {
             console.log('yes')
         }
     }
+    document.emojiSource = '/lib/Summernote/summernote-emoji-master/tam-emoji/img'
     $('#summernote').summernote({//富文本编辑
         placeholder: '',
         tabsize: 2,
@@ -158,6 +159,7 @@ $(function () {
         toolbar: [
             ['history', ['undo','redo']],
             ['style', ['style']],
+            ['insert', ['emoji']],
             ['font', ['bold', 'underline', 'clear']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
@@ -172,6 +174,22 @@ $(function () {
             }
         }
     });
+
+    $('.note-editor').focusin(function(){
+        return false
+      })
+      $('.note-editor').focusout(function(){
+        $('.note-editable').focus()
+      })
+      $(document).click(function (event) {
+        let dom = $('.note-editor')[0]
+        if (event.target != dom && !$.contains(dom, event.target)) {
+          $('.note-editable').attr('contenteditable',false)
+        }else{
+          $('.note-editable').attr('contenteditable',true)
+        }
+      })
+
     //ajax上传图片
     function sendFile($summernote, file) {
         if ((file.size / 1024 / 1024) > 1) {//限制图片的文件大小

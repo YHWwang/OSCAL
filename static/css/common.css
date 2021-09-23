@@ -657,7 +657,7 @@ img {
 }
 
 .swiper-container .swiper-button-next {
-    background-image: url('../img/swiper-next-icon.png');
+    background-image: url('/img/swiper-next-icon.png');
     right: 12%;
     width: 6vh;
     background-size: 6vh 6vh;
@@ -665,7 +665,7 @@ img {
 }
 
 .swiper-container .swiper-button-prev {
-    background-image: url('../img/swiper-prev-icon.png');
+    background-image: url('/img/swiper-prev-icon.png');
     left: 12%;
     background-size: 6vh 6vh;
     width: 6vh;
