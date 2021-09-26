@@ -9,12 +9,12 @@ $(function () {
             localStorage.setItem('goSignPage', true)
         })
     }, 200);
-    $('.eyeIcon').click(function(){
+    $('.eyeIcon').click(function () {
         $(this).find('.active').removeClass('active').siblings().addClass('active')
-        if($(this).siblings('.form-control').attr('type') == 'password'){
-            $(this).siblings('.form-control').attr('type','text')
-        }else{
-            $(this).siblings('.form-control').attr('type','password')
+        if ($(this).siblings('.form-control').attr('type') == 'password') {
+            $(this).siblings('.form-control').attr('type', 'text')
+        } else {
+            $(this).siblings('.form-control').attr('type', 'password')
         }
     })
 
@@ -43,9 +43,9 @@ $(function () {
         }
         var reg = /^(\w|\.|\-)+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
         if (data.email == '' || data.email == null) {
-            alertBox('danger','E-mail can not be empty')
+            alertBox('danger', 'E-mail can not be empty')
             return false
-        }else if(reg.test(data.email)){
+        } else if (reg.test(data.email)) {
             $.ajax({
                 type: "post",
                 url: "/sendCode/getCode",
@@ -55,18 +55,21 @@ $(function () {
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
                     if (req.code == 999999) {
-                        alertBox('success',req.msg)
+                        alertBox('success', req.msg)
                         setTimeout(() => {
-                            $('#alertBox').hide()
+                            $('#alertBox .alert').alert('close')
                         }, 2000);
-                    }else{
-                        alertBox('danger',req.msg)
+                    } else {
+                        alertBox('danger', req.msg)
+                        setTimeout(() => {
+                            $('#alertBox .alert').alert('close')
+                        }, 2000);
                     }
                 },
             })
         }
         else {
-            alertBox('danger','The email format is wrong!')
+            alertBox('danger', 'The email format is wrong!')
             return false;
         }
         $(this).addClass('disabled')
@@ -84,8 +87,8 @@ $(function () {
         }, 1000);
 
     })
- function alertBox(type,text){
-    $('#alertBox').html(`
+    function alertBox(type, text) {
+        $('#alertBox').html(`
     <div class="alert alert-${type}  alert-dismissible fade show" role="alert">
     ${text}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -93,7 +96,7 @@ $(function () {
         </button>
     </div>
     `)
- }
+    }
     window.addEventListener('load', function () { //登录功能验证
         var forms = document.getElementsByClassName('needs-validation-signInForm');
         var validation = Array.prototype.filter.call(forms, function (form) {
@@ -132,22 +135,23 @@ $(function () {
         $.ajax({
             type: "post",
             url: "/login",
-            data: {"username": email,
-            "password":passpword
+            data: {
+                "username": email,
+                "password": passpword
             },
             async: false,
             success: function (req) {
-                req=$.parseJSON(req);
-                if (req.code==999999) {
-                    alertBox('success','Login successful')
+                req = $.parseJSON(req);
+                if (req.code == 999999) {
+                    alertBox('success', 'Login successful')
                     // localStorage.setItem('communityMenu', 'Home')
                     setTimeout(() => {
                         window.location.href = '/discuss/community'
                     }, 2000);
                 } else {
-                    alertBox('danger',req.msg)
+                    alertBox('danger', req.msg)
                     setTimeout(() => {
-                        $('#alertBox').hide()
+                        $('#alertBox .alert').alert('close')
                     }, 4000);
                 }
             }
@@ -169,36 +173,38 @@ $(function () {
                         email: event.currentTarget[1].value,
                         code: event.currentTarget[2].value,
                         passpword: event.currentTarget[3].value,
-                        rePasspword:event.currentTarget[4].value,
+                        rePasspword: event.currentTarget[4].value,
                     }
-                    if(data.passpword != data.rePasspword){
+                    if (data.passpword != data.rePasspword) {
                         event.currentTarget[3].value = ''
                         event.currentTarget[4].value = ''
-                        alertBox('danger','Inconsistent passwords')
+                        alertBox('danger', 'Inconsistent passwords')
                         setTimeout(() => {
-                            $('#alertBox').hide()
+                            $('#alertBox .alert').alert('close')
                         }, 5000);
                         return false
                     }
                     $.ajax({
                         type: "post",
                         url: "/register",
-                        data: {"parentChain": data.code,
-                                "userEmail":data.email ,
-                                "sysUserAccount": data.name ,
-                                "loginPassword":data.passpword },
+                        data: {
+                            "parentChain": data.code,
+                            "userEmail": data.email,
+                            "sysUserAccount": data.name,
+                            "loginPassword": data.passpword
+                        },
                         async: false,
                         success: function (req) {
-                        req=$.parseJSON(req);
-                            if (req.code!=999999) {
-                                alertBox('success',req.msg)
+                            req = $.parseJSON(req);
+                            if (req.code != 999999) {
+                                alertBox('success', req.msg)
                                 setTimeout(() => {
-                                    $('#alertBox').hide()
+                                    $('#alertBox .alert').alert('close')
                                 }, 2000);
                             } else {
-                                alertBox('warning','Registration success')
+                                alertBox('warning', 'Registration success')
                                 setTimeout(() => {
-                                    $('#alertBox').hide()
+                                    $('#alertBox .alert').alert('close')
                                     window.location.href = '/login'
                                 }, 2000);
                             }
@@ -226,26 +232,27 @@ $(function () {
                         code: event.target[1].value,
                         passpword: event.target[2].value,
                     }
-                    console.log(data)
                     $.ajax({
                         type: "post",
                         url: "/userForgetPass",
-                        data: {"username": data.email ,
-                        "emailVerifyCode":data.code ,
-                        "password": data.passpword },
+                        data: {
+                            "username": data.email,
+                            "emailVerifyCode": data.code,
+                            "password": data.passpword
+                        },
                         async: false,
                         success: function (req) {
-                        req=$.parseJSON(req);
-                            if (req.code!=999999) {
-                                alertBox('danger',req.msg)
+                            req = $.parseJSON(req);
+                            if (req.code == 999999) {
+                                alertBox('success', 'Successfully change password')
                                 setTimeout(() => {
-                                    $('#alertBox').hide()
+                                    $('#alertBox .alert').alert('close')
+                                    window.location.href = '/login'
                                 }, 2000);
                             } else {
-                                alertBox('success','Successfully change password')
+                                alertBox('danger', req.msg)
                                 setTimeout(() => {
-                                    $('#alertBox').hide()
-                                    window.location.href = '/login'
+                                    $('#alertBox .alert').alert('close')
                                 }, 2000);
                             }
                         }

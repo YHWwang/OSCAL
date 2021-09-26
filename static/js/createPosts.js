@@ -248,7 +248,7 @@ $(function () {
                         "community_content":data.community_content ,
                         "oscal_comment_category_id": data.oscal_comment_category_id
                         },
-                        async: false,
+                        async: true,
                         success: function (req) {
                           req=$.parseJSON(req);
                             if (req.code==999999) {

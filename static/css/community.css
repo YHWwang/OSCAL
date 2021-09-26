@@ -571,6 +571,14 @@ img {
 .postContent .postMain .postComments .table td{
     border: 1px solid #dee2e6;
 }
+.postContent .postMain .postComments .table{
+    width: auto;
+    margin-bottom:auto;
+}
+.postContent .postMain .postComments li {
+    list-style: inherit;
+    margin-left: 17.4px;
+}
 .postContent .postMain .shareBox {
     border-top: 1px solid #eeeeee;
     margin-top: 50px;

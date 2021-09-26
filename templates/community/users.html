@@ -93,7 +93,7 @@
                 </p>
                 <ul>
                     <li onclick="clickNav('nav-posts-tab')">
-                        <p class="number" th:text="${rows}">2</p>
+                        <p class="number" th:text="${rows}">0</p>
                         <p class="user_info">Posts</p>
                     </li>
                     <li onclick="clickNav('nav-following-tab')">
@@ -101,12 +101,12 @@
                         <p class="user_info">Following</p>
                     </li>
                     <li onclick="clickNav('nav-followers-tab')">
-                        <p class="number" th:text="${followerCount}">1</p>
+                        <p class="number" th:text="${followerCount}">0</p>
                         <p class="user_info">Followers</p>
                     </li>
                     <li>
                         <a href="/user/jumpToCoin" target="_self">
-                            <p class="number" th:text="${userInfo.oCoin}">90</p>
+                            <p class="number" th:text="${userInfo.oCoin}">0</p>
                             <p class="user_info">O Coin</p>
                         </a>
                     </li>

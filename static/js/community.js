@@ -67,13 +67,14 @@ $(function () {
     $.ajax({
       type: "post",
       url: "/user/toSign",
+      async: true,
       contentType: "application/json;charset=UTF-8",
       success: function (data) {
         data = $.parseJSON(data);
         if (data.code == 999999) {
           $('.check_login').text('Signed in today').attr('disabled', 'disabled')
         } else {
-          window.location.href = '/login'
+          // window.location.href = '/login'
         }
       }
     })
@@ -82,6 +83,11 @@ $(function () {
   })
   $('.ViewMore').click(function () {
     let index = $('.post-list ul li:last-child a').attr('value')
+    if(!index){
+      $('.content-left .ViewMore:hover').css('background', 'gray')
+      $('.toast').toast('show')
+      return false
+    }
     $.ajax({
       type: "post",
       url: "/discuss/getMoreCommunity",

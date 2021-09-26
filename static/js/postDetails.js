@@ -127,18 +127,18 @@ $(function () {
       ['view', ['codeview', 'help']]
     ]
   });
-  $('.note-editor').focusin(function(){
+  $('.note-editor').focusin(function () {
     return false
   })
-  $('.note-editor').focusout(function(){
+  $('.note-editor').focusout(function () {
     $('.note-editable').focus()
   })
   $(document).click(function (event) {
     let dom = $('.note-editor')[0]
     if (event.target != dom && !$.contains(dom, event.target)) {
-      $('.note-editable').attr('contenteditable',false)
-    }else{
-      $('.note-editable').attr('contenteditable',true)
+      $('.note-editable').attr('contenteditable', false)
+    } else {
+      $('.note-editable').attr('contenteditable', true)
     }
   })
   MessageFun = function (id) {//修改弹窗信息
@@ -248,14 +248,22 @@ $(function () {
       }
     })
   }
-  function sendComment(type, entity_id, target_id, content) {//评论和回复评论
+  function sendComment(type, entity_id, target_id, content) {//回复评论
+    // content = content.replace(/\"/g,"'");
+    // content =JSON.stringify(address).replace(/\"/g,"'"); 
     $.ajax({
       type: "post",
       url: "/comment/add",
-      dataType: 'json',
-      data: '{"entity_type":' + type + ',"comment":"' + content + '","entity_id":' + entity_id + ',"target_id":' + target_id + '}',
+      // dataType: 'json',
+      data: {
+        "entity_type": type,
+        "comment": content,
+        "entity_id": entity_id,
+        "target_id": target_id,
+      },
+      // data: '{"entity_type":' + type + ',"comment":"' + content + '","entity_id":' + entity_id + ',"target_id":' + target_id + '}',
       async: true,
-      contentType: "application/json;charset=UTF-8",
+      // contentType: "application/json;charset=UTF-8",
       success: function (req) {
         if (req.code == '999999') {
           alertBox('success', 'Comment successful')
@@ -266,20 +274,6 @@ $(function () {
         else {
           alertBox('danger', req.msg)
         }
-        //  else if (type == 2) {
-        //   if (req.code == '999999') {
-        //     alertBox('success', 'Comment successful')
-        //     $('.alertBox').show()
-        //     setTimeout(() => {
-        //        location.reload();
-        //     }, 1000);
-        //   } 
-        //   else{
-        //     alertBox('danger', req.msg)
-        //     $('.alertBox').show()
-        //   }
-        //   $('#exampleModal').modal('hide')
-        // }
       }
     })
 
@@ -294,18 +288,42 @@ $(function () {
           event.stopPropagation();
         }
         else {
+          console.log(event)
           let data = {
-            content: $('#summernote').val(),
+            // content: $('#summernote').val(),
+            content:event.target[0].value
           }
           var regex = data.content.replace(/(<([^>]+)>)/ig, '')
-          if (regex.length < 5) {
+          let len = regex.length
+          if (len < 5) {
             $('#summernoteBox .invalid-feedback').show()
             return false
           } else {
             $('#summernoteBox .invalid-feedback').hide()
           }
-          // console.log(data.content)
-          sendComment(1, addCommentsPostId, addCommentsuserId, data.content)
+          $.ajax({
+            type: "post",
+            url: "/comment/add",
+            data: {
+              "entity_type": 1,
+              "comment": data.content,
+              "entity_id": addCommentsPostId,
+              "target_id": addCommentsuserId,
+            },
+            async: true,
+            success: function (req) {
+              req=$.parseJSON(req);
+              if (req.code == 999999) {
+                alertBox('success', 'Comment successful')
+                setTimeout(() => {
+                  location.reload();
+                }, 2000);
+              }
+              else {
+                alertBox('danger', req.msg)
+              }
+            }
+          })
         }
         form.classList.add('was-validated');
 
@@ -435,7 +453,7 @@ $(function () {
             success: function (req) {
               var totalPage = req.totalPage
               totalPage <= 10 ? $('.newsPagination').hide() : ''
-                $('.postContent .comments .commentsTop span').text(`Comments ( ${totalPage} )`)
+              $('.postContent .comments .commentsTop span').text(`Comments ( ${totalPage} )`)
               renderList(req.comments)
             }
           })
