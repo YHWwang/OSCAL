@@ -11,7 +11,7 @@ $(function () {
     case 4: week = 'Thu'; break;
     case 5: week = 'Fri'; break;
     case 6: week = 'Sat'; break;
-    case 7: week = 'Sun'; break;
+    case 0: week = 'Sun'; break;
     default:
       break;
   }
@@ -74,7 +74,20 @@ $(function () {
         if (data.code == 999999) {
           $('.check_login').text('Signed in today').attr('disabled', 'disabled')
         } else {
-          // window.location.href = '/login'
+          $('.main').append(`
+          <div id="alertBox">
+          <div class="alert alert-danger  alert-dismissible fade show" role="alert">
+          ${data.msg}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          </div>
+          `)
+          setTimeout(() => {
+            $('.alert').alert('close')
+            window.location.href = '/login'
+          }, 2000);
         }
       }
     })
@@ -131,6 +144,9 @@ $(function () {
                                         <div>
                                             <p class="name">
                                             ${req.sys_user_account}
+                                            </p>
+                                            <p class="time">
+                                            ${req.community_cre}
                                             </p>
                                         </div>
                                     </div>  

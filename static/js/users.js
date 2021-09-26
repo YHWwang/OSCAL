@@ -6,7 +6,6 @@ $(function () {
         currentPage: 1
     }
     var toUserId = 0
-    var follow = 'unfollow'
     var lastPage = 0
     var sys_user_id = $('#sys_user_id').val()
     //proxy监听值的变化
@@ -92,7 +91,7 @@ $(function () {
                                     </svg>
                                     Message
                                 </button>
-                                <button type="button" class="btn btn-outline-secondary followBtn" onclick="followBtn(${i.user.id})">
+                                <button type="button" class="btn btn-outline-secondary followBtn" onclick="followBtn(${i.user.id},this)" value='unfollow'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                          fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
                                         <path
@@ -553,8 +552,10 @@ $(function () {
 
         }
     })
-    followBtn = function (id) {//关注功能
-        $('.followBtn').prop({ disabled: true })
+    followBtn = function (id,that) {//关注功能
+        var _this = that
+        $(_this).prop({ disabled: true })
+        let follow = $(_this).prop('value')
         $.ajax({
             type: "post",
             url: "/" + follow,
@@ -567,13 +568,13 @@ $(function () {
                     window.location.href = '/web/user/login/toLogin'
                 }
                 setTimeout(() => {
-                    $('.followBtn').removeAttr('disabled')
+                    $(_this).removeAttr('disabled')
                     if (follow == 'follow') {
-                        follow = 'unfollow'
+                        $(_this).prop({'value':'unfollow'})
                         $('#nav-following .userBtn .followBtn').removeClass('btn-outline-primary').addClass('btn-outline-secondary')
                         $('#nav-following .userBtn .followBtn').find('svg').show().parent().find('span').hide()
                     } else {
-                        follow = 'follow'
+                        $(_this).prop({'value':'follow'})
                         $('#nav-following .userBtn .followBtn').removeClass('btn-outline-secondary').addClass('btn-outline-primary')
                         $('#nav-following .userBtn .followBtn').find('svg').hide().parent().find('span').show()
                     }

@@ -126,7 +126,7 @@ $(function () {
                             <div class="sub-checkbox">
                             ${data.status == 0 ? `<span class="badgeMessage"></span>` : ''}
                             </div>
-                            <div class="message-contents">
+                            <div class="message-contents" onclick="messageFun('${data.fromId}','${data.fromAccount}','${data.id}',this)">
                                 <p>${data.content}
                                 </p>
                             </div>

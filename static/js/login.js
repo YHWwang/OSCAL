@@ -196,17 +196,18 @@ $(function () {
                         async: false,
                         success: function (req) {
                             req = $.parseJSON(req);
-                            if (req.code != 999999) {
-                                alertBox('success', req.msg)
-                                setTimeout(() => {
-                                    $('#alertBox .alert').alert('close')
-                                }, 2000);
-                            } else {
-                                alertBox('warning', 'Registration success')
+                            if (req.code == 999999) {
+                                alertBox('success', 'Registration success')
                                 setTimeout(() => {
                                     $('#alertBox .alert').alert('close')
                                     window.location.href = '/login'
                                 }, 2000);
+                               
+                            } else {
+                                alertBox('warning', req.msg)
+                                setTimeout(() => {
+                                    $('#alertBox .alert').alert('close')
+                                }, 2000); 
                             }
                         }
                     })
