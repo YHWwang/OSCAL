@@ -58,12 +58,12 @@ $(function () {
                         alertBox('success', req.msg)
                         setTimeout(() => {
                             $('#alertBox .alert').alert('close')
-                        }, 2000);
+                        }, 4000);
                     } else {
                         alertBox('danger', req.msg)
                         setTimeout(() => {
                             $('#alertBox .alert').alert('close')
-                        }, 2000);
+                        }, 4000);
                     }
                 },
             })
@@ -142,6 +142,9 @@ $(function () {
             async: false,
             success: function (req) {
                 req = $.parseJSON(req);
+                $('#AMain .form-control').css({
+                    'border-color': '#ced4da'
+                })
                 if (req.code == 999999) {
                     alertBox('success', 'Login successful')
                     // localStorage.setItem('communityMenu', 'Home')
@@ -149,6 +152,11 @@ $(function () {
                         window.location.href = '/discuss/community'
                     }, 2000);
                 } else {
+                    if (req.msg.includes('Password')) {
+                        $('#validationCustom02.form-control:valid').css('border-color', 'red')
+                    } else {
+                        $('#validationCustom01.form-control:valid').css('border-color', 'red')
+                    }
                     alertBox('danger', req.msg)
                     setTimeout(() => {
                         $('#alertBox .alert').alert('close')
@@ -195,6 +203,9 @@ $(function () {
                         },
                         async: false,
                         success: function (req) {
+                            $('#AMain .form-control').css({
+                                'border-color': '#ced4da'
+                            })
                             req = $.parseJSON(req);
                             if (req.code == 999999) {
                                 alertBox('success', 'Registration success')
@@ -202,12 +213,19 @@ $(function () {
                                     $('#alertBox .alert').alert('close')
                                     window.location.href = '/login'
                                 }, 2000);
-                               
+
                             } else {
+                                if (req.msg.includes('account')) {
+                                    $('#validationCustom05.form-control:valid').css('border-color', 'red')
+                                } else if (req.msg.includes('mailbox')) {
+                                    $('#validationCustom03.form-control:valid').css('border-color', 'red')
+                                } else if (req.msg.includes('code')) {
+                                    $('.form-control-lg.form-control:valid').css('border-color', 'red')
+                                }
                                 alertBox('warning', req.msg)
                                 setTimeout(() => {
                                     $('#alertBox .alert').alert('close')
-                                }, 2000); 
+                                }, 2000);
                             }
                         }
                     })
@@ -243,6 +261,9 @@ $(function () {
                         },
                         async: false,
                         success: function (req) {
+                            $('#AMain .form-control').css({
+                                'border-color': '#ced4da'
+                            })
                             req = $.parseJSON(req);
                             if (req.code == 999999) {
                                 alertBox('success', 'Successfully change password')
@@ -251,6 +272,13 @@ $(function () {
                                     window.location.href = '/login'
                                 }, 2000);
                             } else {
+                                if (req.msg.includes('account')) {
+                                    $('#validationForgotPwd01.form-control:valid').css('border-color', 'red')
+                                } else if (req.msg.includes('code')) {
+                                    $('#validationCustomforget.form-control:valid').css('border-color', 'red')
+                                } else if (req.msg.includes('password')) {
+                                    $('#validationForgotPwd02.form-control:valid').css('border-color', 'red')
+                                }
                                 alertBox('danger', req.msg)
                                 setTimeout(() => {
                                     $('#alertBox .alert').alert('close')

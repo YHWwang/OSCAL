@@ -180,7 +180,9 @@ div.border {
 #myTab {
     border: none;
 }
-
+#AMain .form-control.is-invalid,#AMain .was-validated .form-control:invalid,#AMain .form-control.is-valid, #AMain .was-validated .form-control:valid{
+    background-image:none
+}
 .loginContent .nav-tabs .nav-link h5 {
     font-family: MyriadPro Bold;
     height: 66px;

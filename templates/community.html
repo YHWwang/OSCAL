@@ -105,7 +105,7 @@
                                                 TIOWK
                                             </p>
                                             <p class="time">
-                                                <span th:text="${community.community_cre}"></span>
+                                                <span th:text="${#dates.format(community.community_cre,'yyyy-MM-dd HH:mm:ss')}" ></span>
                                             </p>
                                         </div>
                                     </div>
