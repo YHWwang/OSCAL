@@ -44,7 +44,8 @@ $(function () {
         </a>
     </div>
    `
-
+    var alertbox = `<div id="alertBox"></div>`
+    $('.main').append(alertbox);
     setTimeout(() => {
         if (GetQueryString('name')) {//o币跳转标签页
             $(`#nav-${GetQueryString('name')}-tab`).trigger('click')
@@ -60,7 +61,7 @@ $(function () {
                     url: "/followees",
                     dataType: 'json',
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -116,7 +117,7 @@ $(function () {
                     url: "/user/discuss",
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
                     dataType: 'json',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -179,7 +180,7 @@ $(function () {
                     url: "/user/like",
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
                     dataType: 'json',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -244,7 +245,7 @@ $(function () {
                     url: "/followers",
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
                     dataType: 'json',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -460,6 +461,8 @@ $(function () {
     }
 
     $('#modifyModal .modal-footer .modifyUsersNameBtn').click(() => {//提交修改用户名
+        let that = $('#modifyModal .modal-footer .modifyUsersNameBtn')
+        $(that).prop({ disabled: true })
         let name = $('#modifyModal .modal-body .modifyUsersName').val()
         if (name == '' || name == null) {
             $('#modifyModal .modal-body .invalid-feedback').show()
@@ -469,25 +472,23 @@ $(function () {
                 url: "/user/userToUpdateNick",
                 dataType: 'json',
                 data: '{"sys_user_account":"' + name + '"}',
-                async: false,
+                async: true,
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
-                    let box = `  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    ${req.msg}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>`
-                    $('.main').append(box);
                     if (req.code == 999999) {
+                        alertBox('success', req.msg)
                         setTimeout(() => {
+                            $(that).removeAttr('disabled')
+                            $('#alertBox .alert').alert('close')
                             location.reload();
                         }, 2000);
                     } else {
-                        return false
+                        alertBox('danger', req.msg)
+                        setTimeout(() => {
+                            $(that).removeAttr('disabled')
+                            $('#alertBox .alert').alert('close')
+                        }, 2000);
                     }
-                    $('div.modal-backdrop').hide()
-                    $('#modifyModal').modal('hide')
                 }
             })
         }
@@ -512,8 +513,11 @@ $(function () {
     }
     $('#modifyModal .modal-footer .submitReplayBtn').click(function () {//提交回复信息
         let val = $('#modifyModal .modal-body .submitReplay').val()
+        let that = this
+        $(that).prop({ disabled: true })
         if (val == '' || val == null) {
             $('#modifyModal .modal-body .invalid-feedback').show()
+            $(that).removeAttr('disabled')
         } else {
             $.ajax({
                 type: "post",
@@ -524,35 +528,22 @@ $(function () {
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
                     if (req.code == 0) {
-                        let box = `  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Sent successfully
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>`
-                        $('.main').append(box);
+                        alertBox('success', 'Sent successfully')
                     }
-
                     if (req.code == 'code_990000') {
                         window.location.href = '/web/user/login/toLogin'
                     }
                     setTimeout(() => {
-                        $('#modifyModal').modal('hide')
-                        $('div.modal-backdrop').hide()
-                        $('.main .alert').hide()
+                        $('#alertBox .alert').alert('close')
+                        $(that).removeAttr('disabled')
                     }, 2000);
 
-                },
-                error: function (e) {
-                    console.log(e)
-                    $('#modifyModal').modal('hide')
-                    $('div.modal-backdrop').hide()
                 }
             })
 
         }
     })
-    followBtn = function (id,that) {//关注功能
+    followBtn = function (id, that) {//关注功能
         var _this = that
         $(_this).prop({ disabled: true })
         let follow = $(_this).prop('value')
@@ -561,7 +552,7 @@ $(function () {
             url: "/" + follow,
             dataType: 'json',
             data: '{"entityId":' + id + ',"entityType":3}',
-            async: false,
+            async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
                 if (req.code == 'code_990000') {
@@ -570,11 +561,11 @@ $(function () {
                 setTimeout(() => {
                     $(_this).removeAttr('disabled')
                     if (follow == 'follow') {
-                        $(_this).prop({'value':'unfollow'})
+                        $(_this).prop({ 'value': 'unfollow' })
                         $('#nav-following .userBtn .followBtn').removeClass('btn-outline-primary').addClass('btn-outline-secondary')
                         $('#nav-following .userBtn .followBtn').find('svg').show().parent().find('span').hide()
                     } else {
-                        $(_this).prop({'value':'follow'})
+                        $(_this).prop({ 'value': 'follow' })
                         $('#nav-following .userBtn .followBtn').removeClass('btn-outline-secondary').addClass('btn-outline-primary')
                         $('#nav-following .userBtn .followBtn').find('svg').hide().parent().find('span').show()
                     }
@@ -582,7 +573,16 @@ $(function () {
             }
         })
     }
-
+    function alertBox(type, text) {
+        $('#alertBox').html(`
+        <div class="alert alert-${type}  alert-dismissible fade show" role="alert">
+        ${text}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        `)
+    }
     $('.following-right .followBtn').click(function () {
         if ($(this).hasClass('btn-outline-secondary')) {//已关注状态
             $(this).removeClass('btn-outline-secondary').addClass('btn-outline-primary')

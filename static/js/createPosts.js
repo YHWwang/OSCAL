@@ -9,7 +9,7 @@ $(function () {
     var select_one = GetQueryString('id')//获取一级
     var select_two = GetQueryString('se')//获取二级
     var select_three = GetQueryString('se2')//获取三级
-    var category_id = select_three
+    var category_id = select_three == 'se2' ? select_two : select_three
     $('#threeSection').hide().siblings('.invalid-feedback').hide()
     var dataAll = ''
     var dataAll2 = ''
@@ -69,7 +69,7 @@ $(function () {
         type: "post",
         url: "/prodcutListCategory",
         dataType: 'json',
-        async: false,
+        async: true,
         contentType: "application/json;charset=UTF-8",
         success: function (req) {
             dataAll = req.prodcutListCategory
@@ -115,7 +115,7 @@ $(function () {
         }
         $('#section').html(category_pidHtml)
         // console.log(select_two)
-        select_two == 'se'?'': $('#section').val(select_two)
+        select_two == 'se' ? '' : $('#section').val(select_two)
         $('#threeSection').val(select_three)
     }
 
@@ -125,7 +125,7 @@ $(function () {
         for (let data of Bid) {
             // console.log(data.osThirdCategory)
             if (data.osThirdCategory.length > 0) {
-                $('#threeSection').show().attr('required',true)
+                $('#threeSection').show().attr('required', true)
                 if (watchedObj2.two == data.id) {
                     for (let z of data.osThirdCategory) {//三级
                         category2_pidHtml = "<option value='' disabled selected style='display:none;'>Section</option>"
@@ -135,7 +135,7 @@ $(function () {
                     return false
                 }
             } else {
-                $('#threeSection').hide().attr('required',false).siblings('.invalid-feedback').hide()
+                $('#threeSection').hide().attr('required', false).siblings('.invalid-feedback').hide()
             }
         }
     }
@@ -157,7 +157,7 @@ $(function () {
         tabsize: 2,
         height: 462,
         toolbar: [
-            ['history', ['undo','redo']],
+            ['history', ['undo', 'redo']],
             ['style', ['style']],
             ['insert', ['emoji']],
             ['font', ['bold', 'underline', 'clear']],
@@ -175,20 +175,20 @@ $(function () {
         }
     });
 
-    $('.note-editor').focusin(function(){
+    $('.note-editor').focusin(function () {
         return false
-      })
-      $('.note-editor').focusout(function(){
+    })
+    $('.note-editor').focusout(function () {
         $('.note-editable').focus()
-      })
-      $(document).click(function (event) {
+    })
+    $(document).click(function (event) {
         let dom = $('.note-editor')[0]
         if (event.target != dom && !$.contains(dom, event.target)) {
-          $('.note-editable').attr('contenteditable',false)
-        }else{
-          $('.note-editable').attr('contenteditable',true)
+            $('.note-editable').attr('contenteditable', false)
+        } else {
+            $('.note-editable').attr('contenteditable', true)
         }
-      })
+    })
 
     //ajax上传图片
     function sendFile($summernote, file) {
@@ -214,7 +214,7 @@ $(function () {
             processData: false,
             type: 'POST',
             success: function (data) {
-              data= $.parseJSON(data);
+                data = $.parseJSON(data);
                 $('#maskLayer').hide()
                 $summernote.summernote('insertImage', data.url, function ($image) {
                     $image.attr('src', data.url);
@@ -233,25 +233,25 @@ $(function () {
                     event.stopPropagation();
                 }
                 else {
+                    $('#createPostsForm .postSubmit').prop({ disabled: true })
                     let data = {
                         community_title: $('#postTitle').val(),
                         community_content: event.currentTarget[1].value,
                         oscal_comment_category_id: category_id,
                         community_type: sort
                     }
-                    // data.community_content = JSON.stringify(data.community_content).replace(/\"/g, "'");
-                    // data.community_content = JSON.stringify(data.community_content).replace(/\\/g, "");
                     $.ajax({
                         type: "post",
                         url: "/discuss/add",
-                        data: {"community_title": data.community_title ,
-                        "community_content":data.community_content ,
-                        "oscal_comment_category_id": data.oscal_comment_category_id
+                        data: {
+                            "community_title": data.community_title,
+                            "community_content": data.community_content,
+                            "oscal_comment_category_id": data.oscal_comment_category_id
                         },
                         async: true,
                         success: function (req) {
-                          req=$.parseJSON(req);
-                            if (req.code==999999) {
+                            req = $.parseJSON(req);
+                            if (req.code == 999999) {
                                 $('#alertBox').html(`
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>Post successfully</strong>
@@ -267,6 +267,7 @@ $(function () {
                                 // $('#section').prop('selectedIndex', 0)
                                 // $('#threeSection').prop('selectedIndex', 0)
                                 setTimeout(() => {
+                                    $('#createPostsForm .postSubmit').removeAttr('disabled')
                                     location.href = '/user/communityUserPosts'
                                 }, 2000);
                             } else {
@@ -278,6 +279,9 @@ $(function () {
                                     </button>
                                 </div>
                                 `)
+                                setTimeout(() => {
+                                    $('#createPostsForm .postSubmit').removeAttr('disabled')
+                                }, 500);
                             }
                         }
                     })
@@ -293,9 +297,4 @@ $(function () {
         if (r != null) return unescape(r[2]);
         return name;
     }
-
-
-
-
-
 })

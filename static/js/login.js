@@ -51,7 +51,7 @@ $(function () {
                 url: "/sendCode/getCode",
                 dataType: 'json',
                 data: '{"email":"' + data.email + '","busType":"' + data.busType + '"}',
-                async: false,
+                async: true,
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
                     if (req.code == 999999) {
@@ -132,6 +132,8 @@ $(function () {
     }, false);
 
     function login(email, passpword) {//登录
+        let that = $('.loginSubmitBtn')
+        that.prop({ disabled: true })
         $.ajax({
             type: "post",
             url: "/login",
@@ -139,7 +141,7 @@ $(function () {
                 "username": email,
                 "password": passpword
             },
-            async: false,
+            async: true,
             success: function (req) {
                 req = $.parseJSON(req);
                 $('#AMain .form-control').css({
@@ -147,10 +149,9 @@ $(function () {
                 })
                 if (req.code == 999999) {
                     alertBox('success', 'Login successful')
-                    // localStorage.setItem('communityMenu', 'Home')
                     setTimeout(() => {
                         window.location.href = '/discuss/community'
-                    }, 2000);
+                    }, 1000);
                 } else {
                     if (req.msg.includes('Password')) {
                         $('#validationCustom02.form-control:valid').css('border-color', 'red')
@@ -158,6 +159,9 @@ $(function () {
                         $('#validationCustom01.form-control:valid').css('border-color', 'red')
                     }
                     alertBox('danger', req.msg)
+                    setTimeout(() => {
+                        that.removeAttr('disabled')
+                    }, 500);
                     setTimeout(() => {
                         $('#alertBox .alert').alert('close')
                     }, 4000);
@@ -176,6 +180,8 @@ $(function () {
                     event.stopPropagation();
                 }
                 else {
+                    let that = $('.loginSubmitBtn')
+                    that.prop({ disabled: true })
                     let data = {
                         name: event.currentTarget[0].value,
                         email: event.currentTarget[1].value,
@@ -201,7 +207,7 @@ $(function () {
                             "sysUserAccount": data.name,
                             "loginPassword": data.passpword
                         },
-                        async: false,
+                        async: true,
                         success: function (req) {
                             $('#AMain .form-control').css({
                                 'border-color': '#ced4da'
@@ -226,6 +232,9 @@ $(function () {
                                 setTimeout(() => {
                                     $('#alertBox .alert').alert('close')
                                 }, 2000);
+                                setTimeout(() => {
+                                    that.removeAttr('disabled')
+                                }, 500);
                             }
                         }
                     })
@@ -246,6 +255,8 @@ $(function () {
                     event.stopPropagation();
                 }
                 else {
+                    let that = $('.forgotPwdSubmitBtn')
+                    that.prop({ disabled: true })
                     let data = {
                         email: event.target[0].value,
                         code: event.target[1].value,
@@ -259,7 +270,7 @@ $(function () {
                             "emailVerifyCode": data.code,
                             "password": data.passpword
                         },
-                        async: false,
+                        async: true,
                         success: function (req) {
                             $('#AMain .form-control').css({
                                 'border-color': '#ced4da'
@@ -283,6 +294,9 @@ $(function () {
                                 setTimeout(() => {
                                     $('#alertBox .alert').alert('close')
                                 }, 2000);
+                                setTimeout(() => {
+                                    that.removeAttr('disabled')
+                                }, 500);
                             }
                         }
                     })

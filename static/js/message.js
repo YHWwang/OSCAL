@@ -56,13 +56,13 @@ $(function () {
         switch (tabName) {
             case 'messages':
                 type = 'letter'
-                watchedFun(1)
+                // watchedFun(1)
                 $('.messagesPagination').html(html).addClass('paginationActive');
                 clickFun()
                 break;
             case 'notifications':
                 type = 'notice'
-                watchedFun(1)
+                // watchedFun(1)
                 $('.notificationsPagination').html(html).addClass('paginationActive');
                 clickFun()
                 break;
@@ -98,7 +98,6 @@ $(function () {
     watchedObj.currentPage == lastPage ? $('.rightdiv .nextPage').hide() : $('.rightdiv .nextPage').show()
     function watchedFun(size) {
         type == 'letter' ? htmlList(size) : noticeHtml(size)
-        console.log(size)
         watchedObj.currentPage = size
         size == 1 ? $('.paginationActive .rightdiv .prePage').hide() : $('.paginationActive .rightdiv .prePage').show()
         size == lastPage ? $('.paginationActive .rightdiv .nextPage').hide() : $('.paginationActive .rightdiv .nextPage').show()
@@ -109,7 +108,7 @@ $(function () {
             url: "/letter/lists",
             dataType: 'json',
             data: '{"pageNum":"' + size + '"}',
-            async: false,
+            async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
                 totalPage = req.letterUnreadCount
@@ -179,7 +178,7 @@ $(function () {
             url: "/notice/lists",
             dataType: 'json',
             data: '{"pageNum":"' + size + '"}',
-            async: false,
+            async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
                 totalPage = req.noticeUnreadCount
@@ -242,7 +241,6 @@ $(function () {
     }
     $('#nav-messages-tab').click(function () {
         allUserId = ''
-
         htmlList(1)
     })
     $('#nav-notifications-tab').click(function () {
@@ -353,7 +351,7 @@ $(function () {
                 url: "/letter/send",
                 dataType: 'json',
                 data: '{"toUserId":"' + messageId + '","content":"' + $('#messageModal .modal-body .modalInput').val() + '"}',
-                async: false,
+                async: true,
                 contentType: "application/json;charset=UTF-8",
                 success: function (req) {
                     $('#messageModal').hide()
@@ -361,8 +359,6 @@ $(function () {
                     ReadStatusFun(modelsIds)
                 }
             })
-
         }
     })
-
 })

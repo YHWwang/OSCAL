@@ -335,6 +335,7 @@ h6 {
 .forumContent .forum-left .forumList .imgBox img {
     width: 48px;
     height: 48px;
+    object-fit: contain;
 }
 
 .forumContent .usersBox .nav {

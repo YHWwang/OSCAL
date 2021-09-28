@@ -44,7 +44,7 @@ $(function () {
                     url: "/followees",
                     dataType: 'json',
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -103,7 +103,7 @@ $(function () {
                     url: "/user/discuss",
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
                     dataType: 'json',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -166,7 +166,7 @@ $(function () {
                     url: "/user/like",
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
                     dataType: 'json',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -231,7 +231,7 @@ $(function () {
                     url: "/followers",
                     data: '{"sys_user_id":"' + sys_user_id + '","current":"' + size + '"}',
                     dataType: 'json',
-                    async: false,
+                    async: true,
                     contentType: "application/json;charset=UTF-8",
                     success: function (req) {
                         totalPage = req.totalPage
@@ -436,8 +436,6 @@ $(function () {
                     }
                     setTimeout(() => {
                         $('.submitReplayBtn').removeAttr('disabled')
-                        $('#modifyModal').modal('hide')
-                        $('div.modal-backdrop').hide()
                         $('.main .alert').hide()
                     }, 2000);
                 }

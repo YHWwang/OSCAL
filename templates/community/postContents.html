@@ -101,13 +101,13 @@
                              alt="oscal">
                     </div>
                     <div class="shareBox">
-                            <!-- <button type="button" class="btn btn-outline-secondary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                    class="bi bi-share" viewBox="0 0 16 16">
-                                    <path
-                                        d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-                                </svg>
-                                Share</button> -->
+                        <!-- <button type="button" class="btn btn-outline-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-share" viewBox="0 0 16 16">
+                                <path
+                                    d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                            </svg>
+                            Share</button> -->
                         <button type="button" class="btn btn-outline-secondary likesSvg"  th:onclick="'likesSvg('+${communityUserDetail.id}+','+${communityUserDetail.user_id}+')'">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                  class="bi bi-hand-thumbs-up active" viewBox="0 0 16 16">
@@ -131,120 +131,120 @@
                     </div>
                 </div>
 
-                    <div class="comments">
-                        <div class="commentsTop">
-                            <span>Comments ( 0 )</span>
-                        </div>
-                        <hr>
-                        <ul class="comment-list">
-                        </ul>
-                        <div class="newsPagination">
-                            <div>
-                                <div id="rightdiv">
-                                    <a href="javascript:void(0)" class="firstPage">
-                                        <span >First</span>
-                                    </a>
-                                    <a href="javascript:void(0)" class="prePage">
-                                        <span >&lt;</span>
-                                    </a>
-                                    <a href="javascript:void(0)" class="currentPage">
-                                        <span>1</span>
-                                    </a>
-                                    <a href="javascript:void(0)" class="nextPage">
-                                        <span >&gt;</span>
-                                    </a>
-                                    <a href="javascript:void(0)" class="lastPage">
-                                        <span >Last</span>
-                                    </a>
-                                </div>
+                <div class="comments">
+                    <div class="commentsTop">
+                        <span>Comments ( 0 )</span>
+                    </div>
+                    <hr>
+                    <ul class="comment-list">
+                    </ul>
+                    <div class="newsPagination">
+                        <div>
+                            <div id="rightdiv">
+                                <a href="javascript:void(0)" class="firstPage">
+                                    <span >First</span>
+                                </a>
+                                <a href="javascript:void(0)" class="prePage">
+                                    <span >&lt;</span>
+                                </a>
+                                <a href="javascript:void(0)" class="currentPage">
+                                    <span>1</span>
+                                </a>
+                                <a href="javascript:void(0)" class="nextPage">
+                                    <span >&gt;</span>
+                                </a>
+                                <a href="javascript:void(0)" class="lastPage">
+                                    <span >Last</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- ���ı��༭�� -->
-                <div class="comments_bottom" id="summernoteBox">
-                    <form id="createPostsForm" class="needs-validation-createPostsForm" novalidate>
-                        <div class="mb-3">
-                            <div class="comments_bottom">
+
+            </div>
+            <!-- ���ı��༭�� -->
+            <div class="comments_bottom" id="summernoteBox">
+                <form id="createPostsForm" class="needs-validation-createPostsForm" novalidate>
+                    <div class="mb-3">
+                        <div class="comments_bottom">
                                 <textarea id="summernote" class="summernote" pattern="[\w]{5,100000}"
-                                    required></textarea>
-                                <p class="note">5-100000 characyers</p>
-                                <div class="invalid-feedback">
-                                    Please enter 5-100000 characyers
-                                </div>
-                            </div>
-                            <div class="summernoteBtn">
-                                <button type="submit" class="btn createPostsBtn">
-                                    Submit
-                                </button>
+                                          required></textarea>
+                            <p class="note">5-100000 characyers</p>
+                            <div class="invalid-feedback">
+                                Please enter 5-100000 characyers
                             </div>
                         </div>
+                        <div class="summernoteBtn">
+                            <button type="submit" class="btn createPostsBtn">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
 
-                    </form>
+                </form>
 
-                </div>
+            </div>
 
-                <!-- ����ģ��� -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+            <!-- ����ģ��� -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="comments_reply_content_wrap">
+                                <div class="reply_content" contenteditable="true"></div>
                             </div>
-                            <div class="modal-body">
-                                <div class="comments_reply_content_wrap">
-                                    <div class="reply_content" contenteditable="true"></div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary commentsSubmit">Submit</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary commentsSubmit">Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="right">
-                <div class="usersInfo">
-                    <div class="usersBox">
-                        <div class="usersImage">
-                            <img class="user_image" id="usersImage" th:src="${userInfoMap.head_photo}"
-                                alt="usersImg">
-                        </div>
-                        <p class="usersName">
-                            <span class="usersName" th:text="${userInfoMap.sys_user_account}">test</span>
-                        </p>
-                        <div class="userBtn" th:if="${flag eq 0}">
-                            <button type="button" class="btn btn-outline-primary followBtn" th:onclick="'followBtn('+${userInfoMap.id}+')'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                    class="bi bi-person-check" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                    <path fill-rule="evenodd"
-                                        d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                                </svg>
-                                <span class="followWord">+ Follow</span>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary followMessage"
-                            th:onclick="'MessageFun('+${userInfoMap.id}+')'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                    class="bi bi-envelope" viewBox="0 0 16 16">
-                                    <path
-                                        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
-                                </svg>
-                                Message
-                            </button>
+        </div>
+        <div class="right">
+            <div class="usersInfo">
+                <div class="usersBox">
+                    <div class="usersImage">
+                        <img class="user_image" id="usersImage" th:src="${userInfoMap.head_photo}"
+                             alt="usersImg">
+                    </div>
+                    <p class="usersName">
+                        <span class="usersName" th:text="${userInfoMap.sys_user_account}">test</span>
+                    </p>
+                    <div class="userBtn" th:if="${flag eq 0}">
+                        <button type="button" class="btn btn-outline-primary followBtn" th:onclick="'followBtn('+${userInfoMap.id}+')'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                 class="bi bi-person-check" viewBox="0 0 16 16">
+                                <path
+                                    d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                <path fill-rule="evenodd"
+                                      d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                            <span class="followWord">+ Follow</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary followMessage"
+                                th:onclick="'MessageFun('+${userInfoMap.id}+')'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                 class="bi bi-envelope" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                            </svg>
+                            Message
+                        </button>
 
                         </div>
                         <ul>
                             <li>
-                                <p class="number postNum" th:text="${rows}">2</p>
+                                <p class="number postNum" th:text="${rows}">0</p>
                                 <p class="user_info">Posts</p>
                             </li>
                             <li>
@@ -252,11 +252,11 @@
                                 <p class="user_info">Following</p>
                             </li>
                             <li>
-                                <p class="number followersNum" th:text="${followerCount}">1</p>
+                                <p class="number followersNum" th:text="${followerCount}">0</p>
                                 <p class="user_info">Followers</p>
                             </li>
                             <li>
-                                <p class="number coinNum" th:text="${userInfoMap.o_coin}">90</p>
+                                <p class="number coinNum" th:text="${userInfoMap.o_coin}">0</p>
                                 <p class="user_info">O coin</p>
                             </li>
                         </ul>
@@ -345,7 +345,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p class="coin">Your O coin<span class="coinNumber">12</span></p>
+                        <p class="coin">Your O coin<span class="coinNumber">0</span></p>
                         <div class="row">
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" oninput="value = rewardInput(value)" value="1" id="rewardNum" min="1" max="10">
@@ -382,7 +382,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary submitReplayBtn">Submit</button>
-                    <input type="hidden" id="userInfoOcin" th:value="${userInfoMap.o_coin}">
+                    <input type="hidden" id="userInfoOcin" th:value="${coin}">
                     </div>
                 </div>
             </div>
@@ -407,5 +407,6 @@
 <script src="https://use.fontawesome.com/52e183519a.js"></script>
 <script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/config.js"></script>
 <script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/tam-emoji.min.js?v=1.1"></script>
+<script src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
 <script src="/js/public.js?v=1.000"></script>
-<script src="/js/postDetails.js?v=1.000"></script>
+<script async src="/js/postDetails.js?v=1.000"></script>

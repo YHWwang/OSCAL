@@ -82,21 +82,24 @@ $(function () {
     }, 500);
   })
   likesSvg = function (postID, entityUserId) {//点赞
+    $('.likesSvg').prop({ disabled: true })
     $.ajax({
       type: "post",
       url: "/like",
       dataType: 'json',
       data: '{"entityType":' + vote + ',"entityId":' + postID + ',"entityUserId":' + entityUserId + ',"postId":' + postID + '}',
-      async: false,
+      async: true,
       contentType: "application/json;charset=UTF-8",
       success: function (req) {
-        console.log(req)
         if (req.code == 'code_990000') {
           window.location.href = '/web/user/login/toLogin'
         } else {
           vote == 1 ? vote = 0 : vote = 1
           $('.likesSvg').find('.active').removeClass('active').siblings().addClass('active')
           $('.likesSvg').find('.active').hasClass('bi-hand-thumbs-up-fill') ? $('.likesSvg').addClass('act') : $('.likesSvg').removeClass('act')
+          setTimeout(() => {
+            $('.likesSvg').removeAttr('disabled')
+          }, 500);
         }
       }
     })
@@ -153,16 +156,19 @@ $(function () {
     $('#messageModal .modal-body .modalInput').addClass('submitReplay')
   }
   $('#messageModal .modal-footer .submitReplayBtn').click(function () {//提交回复信息
+    let that = this
+    $(that).prop({ disabled: true })
     let val = $('#messageModal .modal-body .submitReplay').val()
     if (val == '' || val == null) {
       $('#messageModal .modal-body .invalid-feedback').show()
+      $(that).removeAttr('disabled')
     } else {
       $.ajax({
         type: "post",
         url: "/letter/send",
         dataType: 'json',
         data: '{"toUserId":"' + toUserId + '","content":"' + val + '"}',
-        async: false,
+        async: true,
         contentType: "application/json;charset=UTF-8",
         success: function (req) {
           if (req.code == 'code_990000') {
@@ -170,10 +176,9 @@ $(function () {
           }
           alertBox('success', 'Message sent successfully')
           setTimeout(() => {
-            $('#messageModal').modal('hide')
-            $('div.modal-backdrop').hide()
-            $('.submitReplayBtn').removeAttr('disabled')
-          }, 1000);
+            $('#alertBox .alert').alert('close')
+            $(that).removeAttr('disabled')
+          }, 2000);
         }
       })
     }
@@ -190,17 +195,20 @@ $(function () {
   }
   $('#rewardModal .modal-body .coin span').text($('#userInfoOcin').val())
   $('#rewardModal .rewardBtn').click(function () {//打赏功能
+    let that = this
+    $(that).prop({ disabled: true })
     let coin = $('#userInfoOcin').val()//总数
     let val = parseInt($('#rewardNum').val())//打赏值
     if (val > coin) {
       $('#rewardModal .modal-body .invalid-feedback').show()
+      $(that).removeAttr('disabled')
     } else {
       $.ajax({
         type: "post",
         url: "/rewardCoin",
         dataType: 'json',
         data: '{"community_id":"' + community_id + '","number":"' + val + '"}',
-        async: false,
+        async: true,
         contentType: "application/json;charset=UTF-8",
         success: function (req) {
           if (req.code == 100000) {
@@ -209,12 +217,16 @@ $(function () {
           if (req.code == 999999) {
             alertBox('success', 'Reward for success')
             setTimeout(() => {
+              $(that).removeAttr('disabled')
               $('#rewardModal').modal('hide')
               $('#rewardBtn').attr('disabled', 'disabled')
-              window.location.href = '/communityUserDetail/' + community_id
+              location.reload()
             }, 500);
           } else {
             alertBox('danger', req.msg)
+            setTimeout(() => {
+              $(that).removeAttr('disabled')
+            }, 500);
           }
         }
       })
@@ -227,7 +239,7 @@ $(function () {
       url: "/" + follow,
       dataType: 'json',
       data: '{"entityId":' + entityId + ',"entityType":' + 3 + '}',
-      async: false,
+      async: true,
       contentType: "application/json;charset=UTF-8",
       success: function (req) {
         if (req.code == 'code_990000') {
@@ -249,8 +261,8 @@ $(function () {
     })
   }
   function sendComment(type, entity_id, target_id, content) {//回复评论
-    // content = content.replace(/\"/g,"'");
-    // content =JSON.stringify(address).replace(/\"/g,"'"); 
+    let that = $('#exampleModal .commentsSubmit')
+    $(that).prop({ disabled: true })
     $.ajax({
       type: "post",
       url: "/comment/add",
@@ -261,10 +273,9 @@ $(function () {
         "entity_id": entity_id,
         "target_id": target_id,
       },
-      // data: '{"entity_type":' + type + ',"comment":"' + content + '","entity_id":' + entity_id + ',"target_id":' + target_id + '}',
       async: true,
-      // contentType: "application/json;charset=UTF-8",
       success: function (req) {
+        req = $.parseJSON(req);
         if (req.code == '999999') {
           alertBox('success', 'Comment successful')
           setTimeout(() => {
@@ -273,6 +284,9 @@ $(function () {
         }
         else {
           alertBox('danger', req.msg)
+          setTimeout(() => {
+            $(that).removeAttr('disabled')
+          }, 500);
         }
       }
     })
@@ -288,10 +302,11 @@ $(function () {
           event.stopPropagation();
         }
         else {
-          console.log(event)
+          let that = $('#summernoteBox .createPostsBtn')
+          $(that).prop({ disabled: true })
           let data = {
             // content: $('#summernote').val(),
-            content:event.target[0].value
+            content: event.target[0].value
           }
           var regex = data.content.replace(/(<([^>]+)>)/ig, '')
           let len = regex.length
@@ -312,15 +327,17 @@ $(function () {
             },
             async: true,
             success: function (req) {
-              req=$.parseJSON(req);
+              req = $.parseJSON(req);
               if (req.code == 999999) {
                 alertBox('success', 'Comment successful')
                 setTimeout(() => {
                   location.reload();
+                  $(that).removeAttr('disabled')
                 }, 2000);
               }
               else {
                 alertBox('danger', req.msg)
+                $(that).removeAttr('disabled')
               }
             }
           })
@@ -373,7 +390,7 @@ $(function () {
       url: "/web/user/login/userLookThrough",
       dataType: 'json',
       data: '{"community_id":"' + community_id + '"}',
-      async: false,
+      async: true,
       contentType: "application/json;charset=UTF-8",
     })
 
@@ -382,7 +399,7 @@ $(function () {
       url: "/comment/detail",
       dataType: 'json',
       data: '{"discussPostId":"' + community_id + '","current":"' + 1 + '"}',
-      async: false,
+      async: true,
       contentType: "application/json;charset=UTF-8",
       success: function (req) {
         renderList(req.comments)
@@ -448,7 +465,7 @@ $(function () {
             url: "/comment/detail",
             dataType: 'json',
             data: '{"discussPostId":"' + community_id + '","current":"' + size + '"}',
-            async: false,
+            async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (req) {
               var totalPage = req.totalPage
