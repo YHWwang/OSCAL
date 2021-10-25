@@ -25,7 +25,7 @@ $(function () {
     var watchedObj = observe1(obj, (val) => {
         // console.log(`哈哈哈，监听到值变化为${val}了`);
     });
-
+    
     if(GetQueryString("search")!= ''){
         $('#searchTitle').val(GetQueryString("search"))
         searchList(1)
@@ -177,7 +177,7 @@ $(function () {
     function GetQueryString(name) { //url传值
         var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(regex);
-        if (r != null) return unescape(r[2]);
+        if (r != null) return decodeURI(r[2]);
         return name;
       }
 })

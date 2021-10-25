@@ -174,7 +174,12 @@ $(function () {
             }
         }
     });
-
+    $('.note-insert .note-btn').eq(1).click(function(){
+        $('.note-editable').attr('contenteditable', false)
+    })
+    $('.comments_bottom .note-popover .note-btn-group .note-btn').eq(0).click(function(){
+        $('.note-editable').attr('contenteditable', false)
+      })
     $('.note-editor').focusin(function () {
         return false
     })

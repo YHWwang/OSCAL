@@ -126,15 +126,52 @@ $(function () {
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
-      ['insert', ['link']],
+      ['insert', ['link','picture']],
       ['view', ['codeview', 'help']]
-    ]
+    ],
+    callbacks: {
+      onImageUpload: function (files) {
+          $('#maskLayer').show()
+          sendFile($('#summernote'), files[0]);
+      }
+  }
   });
+  //ajax上传图片
+  function sendFile($summernote, file) {
+    if ((file.size / 1024 / 1024) > 1) {//限制图片的文件大小
+      alertBox('warning', ' Picture cannot exceed 1M...')
+        $('#maskLayer').hide()
+        return false;
+    }
+    var formData = new FormData();
+    formData.append("file", file);
+    $.ajax({
+        url: "/uploadFile",//路径
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'POST',
+        success: function (data) {
+            data = $.parseJSON(data);
+            $('#maskLayer').hide()
+            $summernote.summernote('insertImage', data.url, function ($image) {
+                $image.attr('src', data.url);
+            });
+        }
+    });
+}
   $('.note-editor').focusin(function () {
     return false
   })
   $('.note-editor').focusout(function () {
     $('.note-editable').focus()
+  })
+  $('.note-insert .note-btn').eq(1).click(function(){
+    $('.note-editable').attr('contenteditable', false)
+  })
+  $('#summernoteBox .note-popover .note-btn-group .note-btn').eq(0).click(function(){
+    $('.note-editable').attr('contenteditable', false)
   })
   $(document).click(function (event) {
     let dom = $('.note-editor')[0]

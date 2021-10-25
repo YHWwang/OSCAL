@@ -6,7 +6,7 @@ $(function () {
 
     if (localHref.includes('showUserCommunity')) {//选中菜单
         selectMenu(1)
-    } else if (localHref.includes('toOsSystem')) {
+    } else if (localHref.includes('toOsSystem')||localHref.includes('showOsCommunity')) {
         selectMenu(2)
     }else{
         selectMenu(0)
