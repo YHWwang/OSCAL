@@ -272,9 +272,9 @@ img {
 .spesc-img-left img {
     max-width: 400px;
     width: 100%;
-    opacity: 0;
+    /* opacity: 0; */
     margin: 0 auto;
-    display: none;
+    /* display: none; */
 }
 
 .spesc-img-right {

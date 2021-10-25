@@ -17,13 +17,36 @@ $(function () {
     </style>`
         $('.spesc-img-right .spesc-img-right-ul .spesc-active .spescColor').append(color)
     }
+    var MySwiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            dynamicBullets: true,
+        },
+        autoplay: true,
+        observer: true,//解决无法初始化问题
+        observeParents: true,//解决无法初始化问题
+        on: {
+            slideChange: function () {
+                $('.spesc-img-right .spesc-img-right-ul .spesc-active .spescColor').empty()
+                $('.spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li').eq(this.activeIndex).addClass('spesc-active').siblings().removeClass('spesc-active')
+                setColor($('.spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li').eq(this.activeIndex).find('.spescColor').attr('style'))
+            },
+        },
+    });
 
     $('.spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li').click(function (e) {
         $('.spesc-img-right .spesc-img-right-ul .spesc-active .spescColor').empty()
         $(this).addClass('spesc-active').siblings().removeClass('spesc-active')
         setColor($(this).find('.spescColor').attr('style'))
         showImg($(this).attr('num'))
+        MySwiper.slideTo($(this).attr('num'))
     })
+    // $('.spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li').click(function (e) {
+    //     $('.spesc-img-right .spesc-img-right-ul .spesc-active .spescColor').empty()
+    //     $(this).addClass('spesc-active').siblings().removeClass('spesc-active')
+    //     setColor($(this).find('.spescColor').attr('style'))
+    //     showImg($(this).attr('num'))
+    // })
     function showImg(index) {//切换对应颜色图片
         $('.spesc-img-left img').eq(index).addClass('image-active').siblings().removeClass('image-active')
         var ds = $('.spesc-img-left img.image-active')

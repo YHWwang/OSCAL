@@ -12,9 +12,10 @@
     <meta name="description" content="The Entry-level Tablet King">
     <meta name="keywords" content="The Entry-level Tablet King">
     <link rel='stylesheet' type='text/css' th:href='@{/css/public.css}'>
-    <link rel='stylesheet' type='text/css' th:href='@{/css/productsdetail.css}'>
+    <link rel='stylesheet' type='text/css' th:href='@{/css/productsdetail.css?v=1.001}'>
     <link rel='stylesheet' type='text/css' th:href="@{/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/css/swiper.min.css}">
     <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
     <script async
         src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
@@ -844,9 +845,18 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                     <div class="products_spesc">
                         <div class="spesc-img-left">
-                            <img class="lazyload image-active on" data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/pad8-color1-20210817032233619.webp"
-                                alt="pad8">
-                            <img class="lazyload" data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/pad8-color2-20210817032238861.webp" alt="pad8">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="lazyload image-active on" data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/pad8-color1-20210817032233619.webp"
+                                        alt="pad8">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="lazyload" data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/pad8-color2-20210817032238861.webp" alt="pad8">
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
                         </div>
                         <div class="spesc-img-right">
                             <ul class="spesc-img-right-ul">
@@ -1004,6 +1014,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     </div>
 </body>
 <script async th:src="@{/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/lib/js/swiper.min.js}"></script>
 <script th:src="@{/js/public.js}"></script>
-<script th:src="@{/js/productsDetail.js}"></script>
+<script th:src="@{/js/productsDetail.js?v=1.001}"></script>
 </html>
