@@ -1,4 +1,5 @@
 $(function () {
+    var localHref = window.location.href
     // 临时链接
     $('.nav-content .content .show-box .rg-content .item-box').click(function () {
         if ($(this).find('.item-title').text() == 'OSCAL C20') {
@@ -9,22 +10,20 @@ $(function () {
         }
     })
 
-    if (GetQueryString("name") == 'Tablets') {
+    if (localHref.includes('/products/2')) {
         $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
             location.href = '/pad8'
         })
-    } else if (GetQueryString("name") == 'Phones') {
+    } else if (localHref.includes('/products/1')) {
         $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
             location.href = '/c20'
         })
     }
 
     // 临时链接
-
-    var localHref = window.location.href
-    if (localHref.includes('Phones')) {//选中菜单
+    if (localHref.includes('/products/1')) {//选中菜单
         selectMenu(0)
-    } else if (localHref.includes('Tablets')) {
+    } else if (localHref.includes('/products/2')) {
         selectMenu(1)
     }
     else if (localHref.includes('brand')) {
@@ -36,7 +35,7 @@ $(function () {
     else if (localHref.includes('support')) {
         selectMenu(4)
     }
-    else if (localHref.includes('contact_us')) {
+    else if (localHref.includes('contact-us')) {
         selectMenu(6)
     }
 
@@ -45,7 +44,7 @@ $(function () {
         dom.eq(number).addClass('on')
     }
     changeWindow()
-    if (window.location.href.includes('productsMenu')) {
+    if (window.location.href.includes('products')) {
         window.onresize = debounce(() => location.reload(), 500)//改变屏幕后刷新
     }
     function debounce(fn, delay) {
@@ -67,9 +66,9 @@ $(function () {
                 let Bheight = $('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').height()
                 $('.nav-content .content .show-box .rg-content .item-box').height(Bheight / 2)
                 $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').height(Bheight + 10)
-                if (GetQueryString("name") == 'Tablets') {
-                    $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').css('height', 'auto')
-                }
+                // if (localHref.includes('/products/')) {
+                //     $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').css('height', 'auto')
+                // }
             }
         }, 100);
     }
@@ -124,10 +123,4 @@ $(function () {
         };
     }
 
-    function GetQueryString(name) {
-        var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(regex);
-        if (r != null) return unescape(r[2]);
-        return null;
-    }
 })

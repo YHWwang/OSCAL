@@ -3,9 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>OSCAL-header</title>
-    <meta name="description" content="description">
-    <meta name="keywords" content="keywords">
+    <link rel="canonical" href=""/>
+     <title  th:if="${tdkMap==null}">  title </title>
+    <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
+    <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[tdk_describe]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -26,16 +31,16 @@
                     </div>
                     <div class="menu">
                         <ul >
-                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/productsMenu?id='+${product.id}+'&name='+${product.cate_name}}"  ><span th:text="${product.cate_name}">Phones</span></a></li>
+                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/products/'+${product.hover_pic}}"  ><span th:text="${product.cate_name}">Phones</span></a></li>
                             <!-- <li><a class="menu_href mhref" onclick="switchProduct('Laptops')" href="#">Laptops</a></li> -->
                            <!-- <li><a class="menu_href mhref" onclick="switchProduct('Tablets')" href="#" >Tablets</a></li>-->
                                 <!-- <li><a class="menu_href mhref" onclick="switchProduct('Accessories')" href="#">Accessories</a></li> -->
-                            <li><a class="mhref" href="/brand">Brand</a></li>
-                            <li><a class="mhref" href="/news/list">News</a></li>
-                            <li><a class="mhref" href="/support">Support</a></li>
-                            <li><a class="mhref" href="/discuss/community">Community</a></li>
+                            <li><a class="mhref" href="/brand/">Brand</a></li>
+                            <li><a class="mhref" href="/news/list/1">News</a></li>
+                            <li><a class="mhref" href="/support/">Support</a></li>
+                            <li><a class="mhref" href="/discuss/community/">Community</a></li>
                             <!-- <li><a href="#">OSCAL Store</a></li> -->
-                            <li><a href="/contact_us">Contact Us</a></li>
+                            <li><a href="/contact-us/">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -108,7 +113,7 @@
                                         <div class="lf-menu">
                                             <ul class="main-menu">
                                                 <ul class="main-menu" >
-                                                    <li><a th:href="@{'/productsDetail?id='+${product.id}+'&name='+${product.cate_name}}" target="_self" ><span th:text="All+'  '+${product.cate_name}"></span></a></li>
+                                                    <li><a th:href="@{'/products/detail/'+${product.hover_pic}}" target="_self" ><span th:text="All+'  '+${product.cate_name}"></span></a></li>
                                                 </ul>
                                             </ul>
                                         </div>
@@ -182,7 +187,7 @@
                             <li><a href="/news/1">News</a></li>
                             <li><a href="/support">Support</a></li>
                             <li><a href="/discuss/community">Community</a></li>
-                            <li><a href="/contact_us">Contact Us</a></li>
+                            <li><a href="/contact-us">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

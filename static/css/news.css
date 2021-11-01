@@ -245,37 +245,6 @@ img {
     color: #58b1ff
 }
 
-.mt-5 .pagination .page-item .page-link{
-    color: #000;
-}
-/* .newsPagination {
-    background-color: #F5F5F5;
-    display: block;
-    padding: 5vw 0 3vw 0;
-    text-align: center;
-}
-
-#rightdiv {
-    text-align: center;
-    margin-top: 10px;
-}
-
-#rightdiv a {
-    color: #000;
-}
-
-#rightdiv span {
-    display: inline-block;
-    padding: 5px 20px;
-    border: 1px solid #8b8b8b;
-    border-radius: 5px;
-}
-
-#rightdiv span:hover {
-    color: gray;
-} */
-
-
 .newsContentBox {
     background-color: white;
     width: 70%;

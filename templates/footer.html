@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>OSCAL-footer</title>
-    <meta name="description" content="description">
-    <meta name="keywords" content="keywords">
+    <title>OSCAL Footer</title>
+    <meta name="description" content="Footer Menu">
+    <meta name="keywords" content="Footer Menu">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
@@ -30,8 +30,8 @@
                     <li class="li_1">
                         <p class="title">ABOUT OSCAL</p>
                         <ul>
-                            <li><a href="/brand" target="_self">About Us</a></li>
-                            <li><a href="/news/list" target="_self">News</a></li>
+                            <li><a href="/brand/" target="_self">About Us</a></li>
+                            <li><a href="/news/list/1" target="_self">News</a></li>
                             <!-- <li><a href="#" target="_self">Blog</a></li> -->
                         </ul>
                         <div class="app-plus-icon">
@@ -42,7 +42,7 @@
                     <li class="li_1">
                         <p class="title">PRODUCTS</p>
                         <ul>
-                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/productsDetail?id='+${product.id}+'&name='+${product.cate_name}}" ><span th:text="${product.cate_name}">Phones</span></a></li>
+                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/products/detail/'+${product.hover_pic}}" ><span th:text="${product.cate_name}">Phones</span></a></li>
                        <!--     <li><a th:href="${'/products/'}+Tablets" target="_self">Tablets</a></li>-->
                             <!-- <li><a th:href="${'/products/'}+Laptops"  target="_self">Laptops</a></li> -->
                             <!-- <li><a  th:href="${'/products/'}+Accessories" target="_self">Accessories</a></li> -->
@@ -55,8 +55,8 @@
                     <li class="li_1">
                         <p class="title">SUPPORT</p>
                         <ul>
-                            <li><a href="/support" target="_self">Support Center</a></li>
-                            <li><a href="/contact_us" target="_self">Contact Us</a></li>
+                            <li><a href="/support/" target="_self">Support Center</a></li>
+                            <li><a href="/contact-us/" target="_self">Contact Us</a></li>
                         </ul>
                         <div class="app-plus-icon">
                             <span></span>
@@ -107,22 +107,22 @@
             <div class="foot-container">
                 <ul>
                     <li>
-                        <a href="/privacy" target="_parent">
+                        <a href="/privacy/" target="_parent">
                             Privacy Policy
                         </a>
                     </li>
                     <li>
-                        <a href="/terms" target="_parent">
+                        <a href="/terms/" target="_parent">
                             Terms of Use
                         </a>
                     </li>
                     <li>
-                        <a href="/legal" target="_parent">
+                        <a href="/legal/" target="_parent">
                             Legal Statement
                         </a>
                     </li>
                     <li>
-                        <a href="/intellectual" target="_parent">
+                        <a href="/intellectual/" target="_parent">
                             Intellectual Property Rights
                         </a>
                     </li>

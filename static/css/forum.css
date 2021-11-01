@@ -81,6 +81,10 @@ li {
     text-decoration: none;
 }
 
+.main p {
+    margin-bottom: 0;
+}
+
 a,
 button {
     cursor: pointer;
@@ -144,17 +148,41 @@ h6 {
 .forumContent {
     width: 1220px;
     margin: 0 auto;
-    margin-bottom: 50px;
     display: flex
 }
 
 .forumContent .forum-left {
     width: 817px;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 30px 20px;
 }
 
+.forumContent .nav-tabs {
+    border-bottom: 0;
+}
+
+.forumContent .nav-tabs .nav-link {
+    margin-right: 5%;
+    font-size: 20px;
+    border: 0;
+    color: #777474;
+}
+
+#nav-tabContent {
+    margin-top: 30px;
+    background-color: white;
+}
+
+.forumContent .nav-tabs .nav-item.show .nav-link,
+.forumContent .nav-tabs .nav-link.active {
+    color: #000;
+    font-weight: bold;
+    background-color: transparent;
+    border-bottom: #007bff 4px solid;
+}
+
 .forumContent .forum-left .forumList .title {
+    width: 100%;
     font-size: 24px;
     font-weight: 400;
     color: #111111;
@@ -162,27 +190,48 @@ h6 {
     justify-content: flex-start;
     align-items: center;
 }
-.forumContent .forum-left .forumList .title span{
-    height: 27px;
-    line-height: 27px;
+
+.forumContent .forum-left .forumList .title span {
+    padding: 0 5px;
+    font-weight: normal;
+    color: #000;
 }
+
 .forumContent .forum-left .forumList .title span img {
     vertical-align: top;
     padding-left: 5px;
 }
 
+.forumContent .forum-left .forumList .title .topIcon {
+    display: flex;
+}
+
+.forumContent .forum-left .forumList .title .titleLable {
+    position: relative;
+    margin: 0 5px;
+    display: flex;
+}
+
+.forumContent .forum-left .forumList .title .titleLable span {
+    /* display: inline-block; */
+    vertical-align: middle;
+    font-size: 14px;
+    color: white;
+    background-color: #4880F0;
+    border-radius: 3px;
+}
 
 .forumContent .forum-left .postsTit {
     max-width: 600px;
     font-size: 18px;
     color: #111111;
     overflow: hidden;
-    word-break: break-all;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    font-weight: 500;
+    font-weight: bold;
+    letter-spacing: normal;
 }
 
 .forumContent .forum-left .postsTit:hover {
@@ -219,11 +268,7 @@ h6 {
 #rightdiv span:hover {
     color: gray;
 }
-.forumContent .forum-left .title{
-    font-size: 24px;
-    font-weight: 400;
-    color: #111111;
-}
+
 .forumContent .forum-left .title sup {
     font-size: 16px;
     font-weight: 400;
@@ -245,11 +290,8 @@ h6 {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 30px 0;
+    padding: 30px 15px;
     border-bottom: 1px solid #F5F5F5;
-}
-.forumContent .forum-left .forumList ul li:hover{
-    background-color: #F5F5F5;
 }
 
 .forumContent .forum-left .forumList ul li:last-child {
@@ -261,7 +303,20 @@ h6 {
 }
 
 .forumContent .forum-left .forumList ul li .itemList {
-    margin-left: 24px;
+    width: 100%;
+}
+
+.forumContent .forum-left .forumList ul li .itemList .imageBox {
+    margin: 1vw 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.forumContent .forum-left .forumList ul li .itemList .imageBox img {
+    width: 180px;
+    height: 100%;
+    object-fit: cover;
 }
 
 .forumContent .forum-left .forumList ul li .itemList a {
@@ -273,8 +328,12 @@ h6 {
     color: #999999;
     margin-top: .5rem;
 }
-.forumContent .forum-left .forumList ul li .itemList .msg a{
-    color: #999999;
+
+.forumContent .forum-left .forumList ul li .itemList .msg .name {
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 10px;
 }
 .forumContent .forum-left .forumList ul li .itemList .msg a:hover{
     color: #007bff;
@@ -283,28 +342,19 @@ h6 {
 .forumContent .forum-left .forumList ul li .itemList .msg .number {
     position: absolute;
     right: 0;
-    bottom: 30px;
-    height: 20px;
-    line-height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    line-height: 1;
 }
 
 .forumContent .forum-left .forumList ul li .itemList .msg .number .num {
+    display: inline-block;
     position: relative;
     width: 70px;
-    height: 20px;
-    line-height: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    vertical-align: middle;
+    height: 19px;
+    line-height: 19px;
 }
 
 .forumContent .forum-left .forumList ul li .itemList .msg .number .num svg {
-    vertical-align: sub;
-    margin-bottom: 2px;
+    vertical-align: bottom;
 }
 
 .forumContent .forum-left .sort .form-control {
@@ -335,7 +385,6 @@ h6 {
 .forumContent .forum-left .forumList .imgBox img {
     width: 48px;
     height: 48px;
-    object-fit: contain;
 }
 
 .forumContent .usersBox .nav {
@@ -361,7 +410,115 @@ h6 {
     color: #4880F0
 }
 
+/* �������ҳ��--start */
+
+.forumContent.otherForumContent .forum-right {
+    padding-top: 0;
+}
+
+.otherForumContent .filter .form-control {
+    width: 200px;
+    margin-right: 20px;
+}
+
+.otherForumContent .forum-left {
+    background-color: white;
+}
+.otherForumContent .otherForumInfo{
+    padding-left: 10px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
+.otherForumContent .otherForumInfo .top,.otherForumContent .otherForumInfo .bottom {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.otherForumContent .otherForumInfo .top div {
+    padding-left: 20px;
+}
+.otherForumContent .otherForumInfo .top img{
+    width: 100px;
+    height: 100px;
+}
+.otherForumContent .otherForumInfo .top .name {
+    font-size: 36px;
+    /* font-weight: bold; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.otherForumContent .otherForumInfo .top .name span{
+    color: white;
+    font-size: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-weight: normal;
+    border-radius: 5px;
+    padding: 3px 10px;
+}
+.otherForumContent .otherForumInfo .top .name span.following{
+    background-color: #C4C4C4;
+}
+.otherForumContent .otherForumInfo .top .name span.follow{
+    background-color: #4880F0;
+}
+.otherForumContent .otherForumInfo .top .total span {
+    margin: 0 10px;
+}
+
+.otherForumContent .otherForumInfo .top .total {
+    font-size: 14px;
+    color: #8a8a8a;
+    margin-top: 10px;
+}
+
+.otherForumContent .otherForumInfo .middle {
+    position: relative;
+    margin: 50px 0 25px 0;
+    font-size: 0;
+}
+
+.otherForumContent .otherForumInfo .middle span {
+    display: inline-block;
+    margin: 0 50px 5px 0;
+    font-size: 16px;
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.otherForumContent .otherForumInfo .middle span a {
+    color: #000;
+}
+
+.otherForumContent .otherForumInfo .middle span a:hover {
+    color: #0DC0F4;
+}
+
+.otherForumContent .otherForumInfo .middle .sortBox {
+    display: inline-block;
+    width: 80%;
+}
+.otherForumContent .otherForumInfo .bottom .filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.otherForumContent .otherForumInfo .labName {
+    width: 120px;
+    vertical-align: top;
+    font-size: 16px;
+    color: #8a8a8a;
+    display: inline-block;
+    text-align: left;
+}
+
+/* �������ҳ��--end */
+
 .forumContent .forum-right {
+    padding-top: 109px;
     width: 360px;
     height: auto;
     margin-left: 20px;
@@ -393,21 +550,6 @@ h6 {
     color: #FFFFFF;
 }
 
-.forumContent .forum-right .hot_sections,.forumContent .forum-right .hot_discussion,.forumContent .forum-right .sectorBox {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: white;
-}
-
-.forumContent .forum-right .hot_sections .top_box,.forumContent .forum-right .hot_discussion .top_tit,.forumContent .forum-right .sectorBox .top_tit{
-    position: relative;
-    padding:0 0 1vw 0;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    font-size: 20px;
-    vertical-align: middle;
-    font-weight: bold;
-}
 
 .forumContent .forum-right .hot_sections .top_box .tit img {
     margin-right: 5px;
@@ -420,35 +562,12 @@ h6 {
     position: relative;
 }
 
-.forumContent .forum-right .hot_sections .bottom_box ul li {
-    width: 25%;
-    margin-bottom: 1vw;
-    text-align: center;
-    display: inline-block;
-}
-
 .forumContent .forum-right .hot_sections .bottom_box ul li img {
     width: 60px;
     height: 60px;
 }
 
-.forumContent .forum-right .hot_sections .bottom_box {
-    padding: 1vw 0;
-}
 
-.forumContent .forum-right .hot_sections .bottom_box ul li p {
-    font-size: 12px;
-    color: #333;
-    letter-spacing: 0;
-    display: block;
-    margin-top: 10px;
-    width: 90%;
-    margin: 0 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-}
 .forumContent .forum-right .hot_discussion .post_list li {
     padding: 20px 0;
     border-bottom: 1px solid #EEEEEE;
@@ -473,7 +592,8 @@ h6 {
     text-decoration: none;
 }
 
-.forumContent .forum-right .hot_discussion .post_list li .post_tit a:hover,.forumContent .forum-right .sectorBox ul li a:hover {
+.forumContent .forum-right .hot_discussion .post_list li .post_tit a:hover,
+.forumContent .forum-right .sectorBox ul li a:hover {
     color: #4880F0;
     text-decoration: none;
 }
@@ -499,10 +619,8 @@ h6 {
     margin: 0 10px 0 0;
     line-height: 1;
 }
-.forumContent .forum-right .hot_discussion .post_list li div .post_num span svg{
-    vertical-align: sub;
-}
-.forumContent .forum-right .sectorBox ul{
+
+.forumContent .forum-right .sectorBox ul {
     font-size: 0;
     position: relative;
 }

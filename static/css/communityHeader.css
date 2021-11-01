@@ -217,7 +217,101 @@ a {
 .loged {
     display: none;
 }
+.nav-dropdown-box {
+    display: none;
+    position: absolute;
+    z-index: 111;
+    background-color: rgb(255, 255, 255);
+    padding: 1vw 0 1vw 2vw;
+    border-radius: 5px;
+    border: 1px solid rgb(218, 218, 218);
+    box-shadow: 3px 3px 10px rgb(224, 218, 218);
+}
 
+.nav-dropdown-products .nav-dropdown-box {
+    width: 350px;
+}
+
+.nav-dropdown-recruit .nav-dropdown-box {
+    width: 300px;
+}
+
+.nav-dropdown-box ul {
+    font-size: 0;
+}
+
+.nav-dropdown-box div {
+    position: relative;
+}
+
+.nav-dropdown-box:before {
+    box-sizing: content-box;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: -16px;
+    left: 21px;
+    padding: 0;
+    border-bottom: 8px solid #FFFFFF;
+    border-top: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    display: block;
+    content: '';
+    z-index: 12;
+}
+
+.nav-dropdown-box:after {
+    box-sizing: content-box;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    padding: 0;
+    border-bottom: 9px solid rgb(218, 218, 218);
+    border-top: 9px solid transparent;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    display: block;
+    content: '';
+    z-index: 10
+}
+.nav-dropdown-box ul li{
+    font-size: 16px;
+    display: inline-block;
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+}
+.nav-dropdown-products .nav-dropdown-box ul li {
+    width: 33.33%;
+}
+
+.nav-dropdown-recruit .nav-dropdown-box ul li {
+    width: 100%;
+}
+
+.nav-dropdown-box ul li::after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    background-color: rgb(185, 185, 185);
+    width: 5px;
+    height: 5px;
+    left: -10px;
+}
+
+.nav-dropdown-box ul li a {
+    color: #000;
+    text-decoration: none;
+}
+
+.nav-dropdown-box ul li a:hover {
+    color: #007bff;
+}
 .communityMenu_box .login {
     position: absolute;
     right: 0;

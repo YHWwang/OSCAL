@@ -3,26 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>OSCAL-CommunityHeader</title>
-    <meta name="description" content="description">
-    <meta name="keywords" content="keywords">
+    <title>OSCAL CommunityHeader</title>
+    <meta name="description" content="Community Header">
+    <meta name="keywords" content="Community Header">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
 </head>
 
 <body class="en">
-    <div  th:fragment="communityHeader">
+    <div th:fragment="communityHeader">
         <link rel='stylesheet' type='text/css' href='/css/communityHeader.css?v=1.000'>
         <link rel='stylesheet' type='text/css' href='/css/head&foot.css?v=1.000'>
-        <link rel='stylesheet' type='text/css'
-            href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
-        <link rel="icon" href="/public/favicon.ico" mce_href="/public/favicon.ico"
-            type="image/x-icon">
+        <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+        <link rel="icon" href="/public/favicon.ico" mce_href="/public/favicon.ico" type="image/x-icon">
         <div class="header_main">
             <div class="communityMenu_box">
                 <div class="pc-header">
-                   <div class="topBox">
+                    <div class="topBox">
                         <div class="logo">
                             <a href="/" target="_parent">
                                 <img src="/img/blog-img/community_logo.png" alt="logo">
@@ -57,27 +55,33 @@
                                                 <path
                                                     d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
                                             </svg>
-                                            <span class="usersInfo" th:text="${allUnreadCount!=0 ? allUnreadCount : ''}"></span>
+                                            <span class="usersInfo"
+                                                th:text="${allUnreadCount!=0 ? allUnreadCount : ''}"></span>
                                         </a>
                                     </li>
                                     <li class="loginSvg">
                                         <a href="javascript:void(0)" target="_self">
-                                            <svg th:if="${loginUser != null}" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                fill="currentColor" class="bi  bi-person-fill" viewBox="0 0 16 16">
+                                            <svg th:if="${loginUser != null}" xmlns="http://www.w3.org/2000/svg"
+                                                width="25" height="25" fill="currentColor" class="bi  bi-person-fill"
+                                                viewBox="0 0 16 16">
                                                 <path
                                                     d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                             </svg>
-                                            <svg th:if="${loginUser== null}" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                            <svg th:if="${loginUser== null}" xmlns="http://www.w3.org/2000/svg"
+                                                width="25" height="25" fill="currentColor" class="bi bi-person"
+                                                viewBox="0 0 16 16">
                                                 <path
                                                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                                             </svg>
                                         </a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item menu-login" href="/login" th:if="${loginUser == null}">Log in</a>
-                                            <a class="dropdown-item menu-person" href="/user/profile" th:if="${loginUser != null}">User</a>
-                                            <a class="dropdown-item menu-quit" href="/logout" th:if="${loginUser != null}">Quit</a>
-                                          </div>
+                                            <a class="dropdown-item menu-login" href="/login"
+                                                th:if="${loginUser == null}">Log in</a>
+                                            <a class="dropdown-item menu-person" href="/user/profile"
+                                                th:if="${loginUser != null}">User</a>
+                                            <a class="dropdown-item menu-quit" href="/logout"
+                                                th:if="${loginUser != null}">Quit</a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -91,35 +95,71 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/showUserCommunity">Forum</a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/toOsSystem">Plate</a>
                             </li>
-                            <!--  <li class="nav-item">
-                                  <a class="nav-link" href="#">FQA</a>
-                              </li>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Download</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Product</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Recuit</a>
-                              </li>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Photo</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Circle</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Points Mall</a>
-                              </li>
-                              <li class="nav-item">
-                                  <a class="nav-link" href="#">Activity</a>
-                              </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">OS系统</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">下载</a>
+                            </li>
+                            <li class="nav-item nav-dropdown nav-dropdown-products">
+                                <a class="nav-link" href="#">产品</a>
+                                <div class="nav-dropdown-box">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <a href="#">C20</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">bv6600PRO</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Pad8</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">S60</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">S60PRO</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-dropdown nav-dropdown-recruit">
+                                <a class="nav-link" href="#">招募</a>
+                                <div class="nav-dropdown-box">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    Recruiting celebrities
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Recruitment of experience officers</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">照片和视频</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">圈子</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">积分商城</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">活动专区</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -128,7 +168,8 @@
         <script src="/lib/js/jquery-3.3.1.min.js"></script>
         <script src="/js/communityHeader.js?v=1.001"></script>
         <script src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
-        <script src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+        <script
+            src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
     </div>
 
 </body>

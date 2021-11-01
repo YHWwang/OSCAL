@@ -1,0 +1,220 @@
+@charset "utf-8";
+
+/* -- reset end -- */
+
+
+.check_day .layui-laydate-content table {
+    width: 100%;
+}
+.check_day .layui-laydate,
+.check_day .layui-laydate-main {
+    width: 100%;
+    border: 0;
+    box-shadow: none;
+}
+
+.check_day .laydate-set-ym span {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.check_day .layui-laydate-content td {
+    border-radius: 50%;
+    height: 49px;
+    font-size: 18px;
+}
+
+.check_day .layui-laydate .layui-this {
+    background-color: #00B1FF !important;
+}
+.ORank {
+    background-color: white;
+}
+.ORank .nav-tabs .nav-link{
+    border: 0;
+    color: #777474;
+}
+.ORank .nav-tabs{
+    border-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ORank .nav-tabs .nav-item.show .nav-link, .ORank .nav-tabs .nav-link.active {
+    color: #000;
+    font-weight: bold;
+    background-color: transparent;
+    border-color: transparent;
+}
+ .recommendBox .top_box,
+ .hotLabel .top_box,
+ .ORank .top_box,
+ .hot_post .top_tit {
+    position: relative;
+    padding: 1vw;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+.hotLabel .bottom_box ul{
+    font-size: 0;
+}
+ .recommendBox .top_box .tit img,.hotLabel .top_box .tit img{
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+ .recommendBox .top_box .more {
+    float: right;
+}
+
+ .recommendBox .top_box .more a {
+    color: #000;
+}
+
+ .recommendBox .bottom_box ul {
+    font-size: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.hotLabel .bottom_box ul li a{
+    letter-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: left;
+    padding: 0 5px;
+    margin-bottom: 0;
+    position: relative;
+ }
+ .recommendBox .bottom_box ul li,.hotLabel .bottom_box ul li{
+    width: 50%;
+    margin-bottom: 15px;
+    font-size: 16px;
+    display: inline-block;
+}
+ .recommendBox .bottom_box ul li a,.hotLabel .bottom_box ul li a{
+    color: #333;
+}
+.recommendBox .bottom_box ul li a:hover,.hotLabel .bottom_box ul li a:hover{
+    color: #007bff;
+}
+
+ .recommendBox .bottom_box ul li p,.hotLabel  .bottom_box ul li p{
+    letter-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: 0;
+    position: relative;
+}
+ .recommendBox .bottom_box ul li p::after{
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 4px;
+    top: 50%;
+    background-color: black;
+    border-radius: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+ .recommendBox .bottom_box,.hotLabel .bottom_box {
+    padding: 1vw;
+}
+.content-right .ORank .post_list{
+    margin: 0 1vw;
+    position: relative;
+}
+ .recommendBox .top_box .tit,
+ .hotLabel .top_box .tit,
+ .hot_post .top_tit .tit,
+ .ORank .top_box .tit {
+    font-family: Bold;
+    font-size: 20px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.content-right .ORank .post_list li{
+    padding: 1.5vw 0;
+    border-bottom: 1px solid #eee;
+}
+.content-right .ORank .post_list li:last-child {
+    border-bottom: 0;
+}
+ .check_day,
+ .recommendBox,
+ .hotLabel,
+ .hot_post {
+    margin-top: 24px;
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+    background: #fff;
+}
+ .check_day .yeat_month {
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 22px;
+    color: #000;
+    letter-spacing: 0;
+    border-bottom: 1px solid #eee;
+}
+
+ .check_day .day {
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+ .check_day .day .date {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    padding-top: 25px;
+}
+
+ .check_day .day .week {
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.check_day .day .check_login {
+    margin-top: 20px;
+    border: 1px solid #000;
+    border-radius: 24px;
+    max-width: 302px;
+    width: 90%;
+    height: 48px;
+    font-size: 20px;
+    color: #000;
+    letter-spacing: 0;
+    background: #fff;
+    cursor: pointer;
+}
+
+ .check_day .day .check_login:disabled {
+    opacity: .2;
+}
+
+ .check_day .day .check_num {
+    font-size: 14px;
+    color: #777474;
+    letter-spacing: 0;
+    margin-top: 13px;
+    padding-bottom: 10px;
+}
+ @media screen and (max-width: 800px) {
+   
+} 

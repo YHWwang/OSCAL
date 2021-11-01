@@ -3,9 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>OSCAL-header</title>
-    <meta name="description" content="description">
-    <meta name="keywords" content="keywords">
+    <link rel="canonical" href=""/>
+    <title  th:if="${tdkMap==null}">  title </title>
+    <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
+    <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[tdk_describe]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
@@ -28,7 +33,7 @@
                 <div class="show-box">
                     <div class="lf-menu">
                         <ul class="main-menu">
-                            <li><a  th:href="@{'/productsDetail?id='+${id}+'&name='+${name}}"   target="_self"><span th:text="All+'  '+${name}"></span></a></li>
+                            <li><a  th:href="@{'/products/detail/'+${categoryRoute}}"   target="_self"><span th:text="All+'  '+${name}"></span></a></li>
                             <!-- <li class="child-menu"><a href="#" target="_self">S Series</a></li>
                          <li class="child-menu"><a href="#" target="_self">C Series</a></li>
                          -->
@@ -39,14 +44,14 @@
                             <ul class="lf-box area-box" >
                                 <li class="box-lv1 item-box" >
                                     <div class="img-box">
-                                        <a href="#" target="_self">
+                                        <a href="" target="_self">
                                             <img class="item-img lazyload" th:data-src="${imgCategory}" alt="Oscal">
                                         </a>
                                     </div>
 
                                 </li>
                                 <li class="box-lv1 item-box" th:each="product:${prodcutDetailList}">
-                                    <a href="#" target="_self">
+                                    <a href="" target="_self">
                                         <div class="img-box right_img ${proName == 'Phones' ? 'mobileImg' : ''}">
                                             <img class="item-img lazyload" th:data-src="${product.image}" alt="Oscal">
                                         </div>

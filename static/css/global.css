@@ -113,8 +113,15 @@ footer .company-info li {
 	padding: 20px 0;
 	padding-bottom: 200px;
 }
-
+.main .container .link{
+	background: #133285;
+	color: #ffffff;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+}
 .main .container {
+	text-align: center;
 	background: #fff;
 	margin-top: 100px !important;
 	padding: 20px;

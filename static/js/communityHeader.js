@@ -42,6 +42,11 @@ $(function () {
     $(".searchInput").blur(function () {
         $('.searchIconBox .searchInput').removeClass('active')
     });
-
+    $('.nav-dropdown').hover(function () {
+        $(this).find('.nav-dropdown-box').show()
+    },
+    function () {
+        $(this).find('.nav-dropdown-box').hide()
+    })
 
 })

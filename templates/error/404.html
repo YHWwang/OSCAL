@@ -3,32 +3,41 @@
 
 <head>
 	<meta charset="utf-8">
+	<link rel="canonical" href="" />
+	<title>Page Not Found | OSCAL</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" type="shortcut icon" th:href="@{/img/favicon.ico}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
-	<title>Echo - 404</title>
 </head>
-<body>
-<div class="nk-container">
-	<!-- 头部 -->
-	<!--<header class="bg-dark sticky-top" th:replace="index::header"></header>-->
-	<div id="header" th:include="header :: myHeader"></div>
-	<!-- 内容 -->
-	<div class="main">
-		<div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
-			<img th:src="@{/img/404.png}" >
-		</div>
-	</div>
 
-	<!-- 尾部 -->
-	<!--<footer class="bg-dark" th:replace="index::footer"></footer>-->
-	<div id="footer" th:include="footer :: myFooter">	</div>
-</div>
-</div>
-<script th:src="@{/js/jquery-3.1.0.min.js}"></script>
-<script th:src="@{/js/popper.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/global.js}"></script>
+<body>
+	<div class="nk-container">
+		<!-- 头部 -->
+		<!--<header class="bg-dark sticky-top" th:replace="index::header"></header>-->
+		<div id="header" th:include="header :: myHeader"></div>
+		<!-- 内容 -->
+		<div class="main">
+			<div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
+				<img th:src="@{/img/404.png}">
+				<p>Sorry.the page you are looking for could not be found</p>
+				<p style="margin: 20px;">
+					<a class="link" href="/" >Refresh to Oscal's home page</a>
+				</p>
+			</div>
+		</div>
+
+		<!-- 尾部 -->
+		<!--<footer class="bg-dark" th:replace="index::footer"></footer>-->
+		<div id="footer" th:include="footer :: myFooter"> </div>
+	</div>
+	</div>
+	<script th:src="@{/js/jquery-3.1.0.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/global.js}"></script>
 </body>
+
 </html>

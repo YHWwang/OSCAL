@@ -6,7 +6,12 @@
     font-weight: normal;
     font-style: normal;
 }
-
+@font-face {
+    font-family: Bold;
+    src: url('../font/MyriadPro-Bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
 /* -- reset -- */
 html,
 body,
@@ -730,16 +735,6 @@ img {
     justify-content: space-around;
 }
 
-.postContent .right .hot_post {
-    margin-top: 25px !important;
-    text-align: left;
-}
-
-.postContent .right .hot_post ul {
-    display: block;
-    margin-top: 0;
-}
-
 .usersInfo p {
     margin-bottom: 0;
 }
@@ -823,6 +818,9 @@ img {
     width: 100%;
     height: 100%;
 }
+.swiper-container .swiper-pagination-bullet-active{
+    background: white;
+}
 .swiper-container .swiper-button-next {
     background-image: url('/img/swiper-next-icon.png');
     right: 5%;
@@ -830,7 +828,9 @@ img {
     background-size: 2.5vw 2.5vw;
     height: 2.5vw;
 }
-
+.swiper-container.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+    margin: 0 10px;
+}
 .swiper-container .swiper-button-prev {
     background-image: url('/img/swiper-prev-icon.png');
     left: 5%;
@@ -843,7 +843,10 @@ img {
     position: relative;
 }
 .content-right .top_image div:nth-child(2){
-    margin-top: 5%;
+    margin-top: 2.8%;
+}
+.content-right .top_image div:nth-child(3){
+    display: none;
 }
 .content-right .top_image span {
     font-size: 18px;
@@ -851,7 +854,8 @@ img {
     width: 100%;
     height: 35px;
     line-height: 35px;
-    background: rgba(0, 0, 0, 0.22);
+    background-image: linear-gradient(rgba(212, 212, 212, 0), rgba(0,0,0,.8));
+    /* background: rgba(0, 0, 0, 0.22); */
     position: absolute;
     bottom: 0;
     padding: 0 13px;
@@ -889,7 +893,7 @@ img {
     padding: 5px 15px;
     cursor: pointer;
     border: 1px solid #000;
-    border-radius: 0;
+    border-radius: 3px;
 }
 
 .post-list li .post-main {
@@ -910,11 +914,12 @@ img {
 }
 
 .post-list li .post-main .left .tit a {
-    font-size: 16px;
+    font-family: Bold;
+    font-size: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     color: #000;
     letter-spacing: 0;
@@ -926,7 +931,7 @@ img {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-size: 14px;
     color: #646464 !important;
@@ -962,21 +967,66 @@ img {
     color: #9d9d9d;
     letter-spacing: 0;
 }
+#nav-tabContent .tab-pane .rankList {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+}
 
+#nav-tabContent .tab-pane .rankList .user {
+    padding-left: 10px;
+}
+
+#nav-tabContent .tab-pane .rankList .user .user-name {
+    font-size: 16px;
+    color: #000;
+}
+
+#nav-tabContent .tab-pane .rankList .user .user-coin {
+    color: #777474;
+    font-size: 12px;
+}
+
+#nav-tabContent .tab-pane .rankList .rankNum {
+    position: absolute;
+    font-weight: bold;
+    font-size: 18px;
+    right: 5%;
+    font-style: italic;
+}
+
+.rankMore {
+    text-align: center;
+    padding-bottom: 2vw;
+
+}
+
+.rankMore svg:hover {
+    transition: all 1s;
+    transform: translateY(15px);
+}
+
+.rankMore svg {
+    cursor: pointer;
+}
 .post-list li .user-info .user-left div {
     padding-left: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .post-list li .user-info .user-left .name {
     font-size: 14px;
     color: #242728;
-    line-height: 20px;
+    font-weight: bold;
 }
 
 .post-list li .user-info .user-left .time {
     font-size: 12px;
     color: #9d9d9d;
-    line-height: 20px;
+    padding-left: 20px;
 }
 
 .post-list li .user-info .user-left .name span {
@@ -1012,9 +1062,7 @@ img {
 }
 
 .post-list li .post-main .left .tit a:hover,
-.post-list li .post-main .left .msg a:hover,
-.content-right .hot_post .post_list .post_tit a:hover,
-.postContent .right .hot_post .post_list .post_tit a:hover {
+.post-list li .post-main .left .msg a:hover{
     color: #00a5ee !important;
 }
 
@@ -1047,7 +1095,7 @@ img {
 }
 
 .content-right .createPost {
-    margin: 0 0 24px 0;
+    margin: 16px 0 24px 0;
 }
 
 .content-right .createPost a span {
@@ -1104,10 +1152,7 @@ img {
 
 }
 
-.content-right .check_day,
-.content-right .hot_sections,
-.content-right .hot_post,
-.postContent .right .hot_post {
+.content-right .check_day {
     position: relative;
     width: 100%;
     margin-top: 0;
@@ -1169,151 +1214,6 @@ img {
     letter-spacing: 0;
     margin-top: 13px;
     padding-bottom: 10px;
-}
-
-.content-right .hot_sections .top_box,
-.content-right .hot_post .top_tit,
-.postContent .right .hot_post .top_tit {
-    position: relative;
-    padding: 1vw;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-}
-
-.content-right .hot_sections .top_box .tit,
-.content-right .hot_post .top_tit .tit,
-.postContent .right .hot_post .top_tit .tit {
-    font-size: 20px;
-    vertical-align: middle;
-    font-weight: bold;
-}
-
-.content-right .hot_sections .top_box .tit img {
-    margin-right: 5px;
-    margin-bottom: 3px;
-}
-
-.content-right .hot_sections .top_box .more {
-    float: right;
-}
-
-.content-right .hot_sections .top_box .more a {
-    color: #000;
-}
-
-.content-right .hot_sections .bottom_box ul {
-    font-size: 0;
-    margin-bottom: 0;
-    position: relative;
-}
-
-.content-right .hot_sections .bottom_box ul li {
-    width: 25%;
-    margin-bottom: 1vw;
-    text-align: center;
-    display: inline-block;
-}
-
-.content-right .hot_sections .bottom_box ul li img {
-    width: 60px;
-    height: 60px;
-}
-
-.content-right .hot_sections .bottom_box {
-    padding: 1vw;
-}
-
-.content-right .hot_sections .bottom_box ul li p {
-    font-size: 12px;
-    color: #333;
-    letter-spacing: 0;
-    display: block;
-    margin-top: 10px;
-    width: 90%;
-    margin: 0 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-}
-
-.content-right .hot_post .top_tit img,
-.postContent .right .hot_post .top_tit img {
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-
-.content-right .hot_post .post_list,
-.postContent .right .hot_post .post_list {
-    margin: 0 1vw;
-    position: relative;
-}
-
-.content-right .hot_post .post_list li,
-.postContent .right .hot_post .post_list li {
-    padding: 1.5vw 0;
-    border-bottom: 1px solid #eee;
-}
-
-.content-right .hot_post .post_list .post_tit,
-.postContent .right .hot_post .post_list .post_tit {
-    font-size: 14px;
-    display: block;
-    margin-bottom: 11px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    letter-spacing: 0;
-}
-
-.content-right .hot_post .post_list .post_tit a,
-.postContent .right .hot_post .post_list .post_tit a {
-    color: #000;
-}
-
-.content-right .hot_post .post_list .user_name,
-.postContent .right .hot_post .post_list .user_name {
-    font-size: 16px;
-    color: #9f9f9f;
-    letter-spacing: 0;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 160px;
-    width: 50%;
-}
-.content-right .hot_post .post_list .post_num svg{
-    vertical-align: sub;
-    }
-.content-right .hot_post .post_list .post_num,
-.postContent .right .hot_post .post_list .post_num {
-    text-align: right;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    color: #9d9d9d;
-    letter-spacing: 0;
-    text-align: left;
-    line-height: 24px;
-}
-
-.content-right .hot_post .post_list .post_num .browse_num,
-.content-right .hot_post .post_list .post_num .reply_num,
-.postContent .right .hot_post .post_list .post_num .reply_num,
-.postContent .right .hot_post .post_list .post_num .browse_num {
-    margin-left: 5px;
-    display: inline-block;
-    width: 40px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    vertical-align: middle;
 }
 
 .community_bottom {
@@ -1512,17 +1412,6 @@ img {
 }
 
 @media screen and (max-width:1000px)and (min-width:800px) {
-
-    .content-right .hot_post .post_list .user_name,
-    .postContent .right .hot_post .post_list .user_name {
-        width: 40%;
-    }
-
-    .content-right .hot_post .post_list .post_num .browse_num,
-    .postContent .right .hot_post .post_list .post_num .browse_num {
-        width: 30px;
-    }
-
     .post-list li .user-info .user-right {
         width: 40%;
     }

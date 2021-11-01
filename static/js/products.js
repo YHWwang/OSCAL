@@ -1,44 +1,36 @@
 $(function () {
-    // 临时链接
-    $('.products-lists ul li').click(function(){
-      console.log($(this).find('.products-name').text())
-      if($(this).find('.products-name').text() == 'OSCAL C20'){
-         location.href = '/c20'
-      }
-      if($(this).find('.products-name').text() == 'OSCAL Pad 8'){
-          location.href = '/pad8'
-       }
+  var localHref = window.location.href
+
+  // 临时链接
+  $('.products-lists ul li').click(function () {
+    console.log($(this).find('.products-name').text())
+    if ($(this).find('.products-name').text() == 'OSCAL C20') {
+      location.href = '/c20'
+    }
+    if ($(this).find('.products-name').text() == 'OSCAL Pad 8') {
+      location.href = '/pad8'
+    }
   })
   // 临时链接
 
   var flag_sort = true
-  function GetQueryString(name) { //url传值
-    var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(regex);
-    if (r != null) return unescape(r[2]);
-    return name;
-  }
+
   let dom = ''
   $('.products-lists ul li .product-img .on').each(function () { // 图片未加载时显示加载中图片
     dom = $(this)
     imgLoad(dom, function () {
-      console.log(dom.parents('.product-img'))
       $('.product-img').removeClass('on')
     })
   })
 
-  // console.log(GetQueryString("name"))
-  if (GetQueryString("name")) {
-    switch (GetQueryString("name")) {
-      case 'Phones': selectTab(0); break;
-      // case 'Laptops': selectTab(1); break;
-      case 'Tablets': { selectTab(1); }; break;
-      // case 'Accessories': selectTab(3); break;
-    }
-  }
-  else {
+  if (localHref.includes('/products/detail/1')) {//选中菜单
+    selectTab(0)
+  } else if (localHref.includes('/products/detail/2')) {
+    selectTab(1)
+  } else {
     selectTab(0)
   }
+
   function selectTab(index) { // 根据url的值显示对于的产品块
     $('.productsBox .products-sort .products-tabs .item-tags').eq(index).addClass('active')
     // data = $('.productsBox .products-sort .products-tabs a')

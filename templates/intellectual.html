@@ -3,15 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="canonical" href=""/>
+     <title  th:if="${tdkMap==null}">  title </title>
+    <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
+    <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[tdk_describe]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>OSCAL</title>
-    <meta name="description" content="Intellectual Property Rights">
-    <meta name="keywords" content="Intellectual">
     <link rel='stylesheet' type='text/css' th:href='@{/css/public.css?v=1.000}'>
-
     <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
     <script async
         src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
