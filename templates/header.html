@@ -31,12 +31,12 @@
                     </div>
                     <div class="menu">
                         <ul >
-                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/products/'+${product.hover_pic}}"  ><span th:text="${product.cate_name}">Phones</span></a></li>
+                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/products/'+${product.hover_pic}+'/'}"  ><span th:text="${product.cate_name}">Phones</span></a></li>
                             <!-- <li><a class="menu_href mhref" onclick="switchProduct('Laptops')" href="#">Laptops</a></li> -->
                            <!-- <li><a class="menu_href mhref" onclick="switchProduct('Tablets')" href="#" >Tablets</a></li>-->
                                 <!-- <li><a class="menu_href mhref" onclick="switchProduct('Accessories')" href="#">Accessories</a></li> -->
                             <li><a class="mhref" href="/brand/">Brand</a></li>
-                            <li><a class="mhref" href="/news/list/1">News</a></li>
+                            <li><a class="mhref" href="/news/list/1/">News</a></li>
                             <li><a class="mhref" href="/support/">Support</a></li>
                             <li><a class="mhref" href="/discuss/community/">Community</a></li>
                             <!-- <li><a href="#">OSCAL Store</a></li> -->

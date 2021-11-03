@@ -40,6 +40,8 @@
                     <a class="nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab"
                        onclick="navMain('comments')" aria-controls="nav-comments" aria-selected="false">Comments
                         <span th:text="'('+${commentNum} +')'"></span></a>
+                    <a class="nav-link" id="nav-plate-tab" onclick="navMain('plate')" data-toggle="tab"
+                        href="#nav-plate" role="tab" aria-controls="nav-plate" aria-selected="false">板块 <span th:text="'('+${commentNum} +')'"></span></a>
                     <input type="hidden" th:value="${userInfo.id}" id="sys_user_id">
                     <input type="hidden" th:value="${totalPage}" id="totalPage">
                 </div>
@@ -74,6 +76,51 @@
                     <ul>
                     </ul>
                     <div class="Pagination commentsPagination">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-plate" role="tabpanel" aria-labelledby="nav-plate-tab">
+                    <div class="plateBox">
+                        <ul>
+                            <li>
+                                <div class="plate-item">
+                                    <input type="checkbox" class="form-check-input">
+                                    <span class="plateName">招募</span>
+                                    <div class="plateDel">
+                                        <span>删除</span>
+                                    </div>
+                                </div>
+                                <p class="plateTime">11-06-2021 03:24:17</p>
+                            </li>
+                            <li>
+                                <div class="plate-item">
+                                    <input type="checkbox" class="form-check-input">
+                                    <span class="plateName">招募</span>
+                                    <div class="plateDel">
+                                        <span>删除</span>
+                                    </div>
+                                </div>
+                                <p class="plateTime">11-06-2021 03:24:17</p>
+                            </li>
+                            <li>
+                                <div class="plate-item">
+                                    <input type="checkbox" class="form-check-input">
+                                    <span class="plateName">招募</span>
+                                    <div class="plateDel">
+                                        <span>删除</span>
+                                    </div>
+                                </div>
+                                <p class="plateTime">11-06-2021 03:24:17</p>
+                            </li>
+                        </ul>
+                        <div class="plateBottom">
+                            <input type="checkbox" class="form-check-input" id='allCheck'>
+                            <label class="form-check-label" for="allCheck">
+                                全选
+                            </label>
+                            <p>删除选定的板块</p>
+                        </div>
+                        <div class="Pagination platePagination">
+                        </div>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@
                         <p class="title">ABOUT OSCAL</p>
                         <ul>
                             <li><a href="/brand/" target="_self">About Us</a></li>
-                            <li><a href="/news/list/1" target="_self">News</a></li>
+                            <li><a href="/news/list/1/" target="_self">News</a></li>
                             <!-- <li><a href="#" target="_self">Blog</a></li> -->
                         </ul>
                         <div class="app-plus-icon">
@@ -42,7 +42,7 @@
                     <li class="li_1">
                         <p class="title">PRODUCTS</p>
                         <ul>
-                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/products/detail/'+${product.hover_pic}}" ><span th:text="${product.cate_name}">Phones</span></a></li>
+                            <li th:each="product:${prodcutList}"><a class="menu_href mhref" th:href="@{'/products/detail/'+${product.hover_pic}+'/'}" ><span th:text="${product.cate_name}">Phones</span></a></li>
                        <!--     <li><a th:href="${'/products/'}+Tablets" target="_self">Tablets</a></li>-->
                             <!-- <li><a th:href="${'/products/'}+Laptops"  target="_self">Laptops</a></li> -->
                             <!-- <li><a  th:href="${'/products/'}+Accessories" target="_self">Accessories</a></li> -->

@@ -1,29 +1,30 @@
 $(function () {
     var localHref = window.location.href
+    
     // 临时链接
     $('.nav-content .content .show-box .rg-content .item-box').click(function () {
         if ($(this).find('.item-title').text() == 'OSCAL C20') {
-            location.href = '/c20'
+            window.location.href = '/c20'
         }
         if ($(this).find('.item-title').text() == 'OSCAL Pad 8') {
-            location.href = '/pad8'
+            window.location.href = '/pad8'
         }
     })
-
-    if (localHref.includes('/products/2')) {
-        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
-            location.href = '/pad8'
-        })
-    } else if (localHref.includes('/products/1')) {
+    changeWindow()
+    if (localHref.includes('phones')) {
         $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
             location.href = '/c20'
         })
+    } else if (localHref.includes('tablets')) {
+        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
+            location.href = '/pad8'
+        })
     }
-
     // 临时链接
-    if (localHref.includes('/products/1')) {//选中菜单
+
+    if (localHref.includes('/products/phones/')) {//选中菜单
         selectMenu(0)
-    } else if (localHref.includes('/products/2')) {
+    } else if (localHref.includes('/products/tablets/')) {
         selectMenu(1)
     }
     else if (localHref.includes('brand')) {
@@ -42,35 +43,6 @@ $(function () {
     function selectMenu(number) {
         let dom = $('.menu_box .pc-header .menu ul li a')
         dom.eq(number).addClass('on')
-    }
-    changeWindow()
-    if (window.location.href.includes('products')) {
-        window.onresize = debounce(() => location.reload(), 500)//改变屏幕后刷新
-    }
-    function debounce(fn, delay) {
-        let timer = null
-        return () => {
-            if (timer) {
-                clearTimeout(timer)
-            }
-            let arg = arguments
-            timer = setTimeout(() => {
-                fn.apply(this, arg)
-            }, delay)
-        }
-    }
-    function changeWindow() {
-        let setHeight = setInterval(() => {
-            if ($('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').hasClass('lazyloaded')) {
-                window.clearInterval(setHeight)
-                let Bheight = $('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').height()
-                $('.nav-content .content .show-box .rg-content .item-box').height(Bheight / 2)
-                $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').height(Bheight + 10)
-                // if (localHref.includes('/products/')) {
-                //     $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').css('height', 'auto')
-                // }
-            }
-        }, 100);
     }
     VideoWith()
 
@@ -102,9 +74,6 @@ $(function () {
     })
 
     $('.menu_box .pc-header .menu ul li').click(function () {//菜单点击记录当前页面
-        // if ($(this).find('a').text() == 'Community') {
-        //     localStorage.setItem('communityMenu', 'Home')
-        // }
         $('.menu_box .pc-header .menu ul li .mhref').removeClass('on')
         $(this).find('a').addClass('on')
     })
@@ -122,5 +91,14 @@ $(function () {
             });
         };
     }
-
+    function changeWindow() {
+        let setHeight = setInterval(() => {
+            if ($('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').hasClass('lazyloaded')) {
+                window.clearInterval(setHeight)
+                let Bheight = $('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').height()
+                $('.nav-content .content .show-box .rg-content .item-box').height(Bheight / 2)
+                $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').height(Bheight + 10)
+            }
+        }, 100);
+    }
 })

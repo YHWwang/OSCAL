@@ -251,6 +251,61 @@ h6 {
     height: 42px;
     font-size: 16px;
 }
+#nav-plate li {
+    position: relative;
+    margin: 30px 40px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#nav-plate .plateBottom {
+    position: relative;
+    margin: 30px 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#nav-plate .plateBottom p {
+    cursor: pointer;
+    margin-left: 50px;
+    margin-bottom: 0;
+    text-decoration: underline;
+}
+
+#nav-plate .plateDel {
+    position: absolute;
+    top: 50%;
+    font-size: 14px;
+    right: 0;
+    transform: translateY(-50%);
+    color: #4880F0;
+    cursor: pointer;
+}
+
+.plateBox .form-check-input {
+    margin-left: 0;
+    margin-right: 10px;
+    position: relative;
+    margin-top: 0;
+}
+
+#nav-plate .plate-item {
+    position: relative;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#nav-plate .plate-item .plateName {
+    font-weight: bold;
+}
+
+#nav-plate .plateTime {
+    color: #c5c5c5;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
 
 .mainContent .usersInfo .usersBox {
     width: 360px;
@@ -396,7 +451,7 @@ h6 {
 #nav-likes ul li,
 #nav-posts ul li,
 #nav-comments ul li {
-    padding: 30px 0 50px 0;
+    padding: 30px 0 20px 0;
     border-bottom: 1px solid #EEEEEE;
 }
 
@@ -470,7 +525,6 @@ h6 {
     padding: 30px 0;
 }
 #nav-comments .myCommentsBox p {
-    margin-bottom: 30px;
     word-wrap:break-word;
     padding: 20px;
     background: #F6F7F7;

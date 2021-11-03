@@ -15,29 +15,18 @@ $(function () {
             _this.attr('data-src', src);
         })
     }
-    $("#contactForm").submit(function (e) {
-        let data = $('#contactSubmit').val()
-        e.preventDefault();
-        let email = JSON.stringify(data)
-        var reg = /^(\w|\.|\-)+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
-        if (email == null || email == '""') {
-            alert('Please enter your email address!')
-            return false
-        } else if (reg.test(data)) {
-            // $.ajax({
-            //     type: "POST",
-            //     url: "",
-            //     dataType: 'json',
-            //     async: false,
-            //     contentType: "application/json;charset=UTF-8",
-            //     data: data,
-            //     success: function (res) {
-            //         alert('success')
-            //     }
-            // })
-            alert('success')
-        }
-    });
+    // $("#contactForm").submit(function (e) {
+    //     let data = $('#contactSubmit').val()
+    //     e.preventDefault();
+    //     let email = JSON.stringify(data)
+    //     var reg = /^(\w|\.|\-)+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
+    //     if (email == null || email == '""') {
+    //         alert('Please enter your email address!')
+    //         return false
+    //     } else if (reg.test(data)) {
+    //         alert('success')
+    //     }
+    // });
 
     $(window).scroll(function () {
         var winp = $(document).scrollTop();

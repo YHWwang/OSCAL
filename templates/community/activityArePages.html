@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="" />
+    <title th:if="${tdkMap==null}"> OSCAL Community Activity </title>
+    <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
+    <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[tdk_describe]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel='stylesheet' type='text/css' href='/css/activityArea.css'>
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/lib/Summernote/summernote-lite.min.css">
+    <link rel='stylesheet' type='text/css' href='/lib/Summernote/summernote-emoji-master/tam-emoji/css/emoji.css'>
+</head>
+
+<body class="en">
+    <div id="header" th:include="header :: myHeader">
+    </div>
+    <div id="AMain" class="main">
+        <div class="activityAreaPages">
+            <div class="activityAreaPagesBox">
+                <div class="activityAreaPages-top">
+                    <div class="activityAreaPages-logo">
+                        <!-- 活动头像 -->
+                        <img src="/OSCAL/oscal-test/static/img/blog-img/qapost.png" alt="">
+                    </div>
+                    <!-- 活动名称 -->
+                    <p class="activityAreaPages-tit">Oscal社区官网</p>
+                    <div class="activityAreaPages-info">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-clock" viewBox="0 0 16 18">
+                                <path
+                                    d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                            </svg>
+                            <!-- 活动距离现在多久 -->
+                            <label class="browse_num">一小时前</label>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-eye" viewBox="0 0 16 18">
+                                <path
+                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                <path
+                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                            </svg>
+                            <!-- 活动浏览量 -->
+                            <label class="browse_num">334</label>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chat-dots" viewBox="0 0 16 20">
+                                <path
+                                    d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                <path
+                                    d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
+                            </svg>
+                            <!-- 活动评论量 -->
+                            <label class="reply_num">336</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- 活动内容 -->
+                <div class="activityAreaPages-html">
+                    富文本编辑器
+                </div>
+                <div class="activityAreaPages-bottom">
+                    <!-- 活动点赞数 -->
+                    <button type="button" class="btn btn-outline-secondary likesSvg">
+                        <svg t="1635408155606" class="icon" viewBox="0 0 1071 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="2029" width="21" height="21">
+                            <path
+                                d="M1041.441824 418.173769C1017.545784 379.457987 976.978907 357.655147 934.856203 355.990951 932.672662 355.651924 930.455865 355.426732 928.182457 355.426732L681.491077 355.156994C698.221007 307.082112 707.361417 255.423948 707.361417 201.600472 707.361417 166.693164 703.416492 132.726219 696.177769 100.007732L695.526642 100.09187C682.3613 42.777911 631.382524 0 570.359886 0 499.341382 0 441.78117 57.86828 441.78117 129.246872 441.78117 133.195164 442.028573 137.076641 442.364598 140.942034 438.548914 278.142407 331.614976 389.360269 196.661604 399.069528L196.661604 399.904721 49.99039 400.248696C48.21671 400.029691 46.431955 399.882449 44.609042 399.882449 20.192356 399.882449 0.39757 419.774863 0.39757 444.313419L0 977.678089C0 1002.211696 19.782477 1022.104111 44.199165 1022.104111 46.59566 1022.104111 48.930613 1021.861596 51.223717 1021.494111L214.393457 1021.562164C216.553627 1021.888817 218.732259 1022.104111 220.969974 1022.104111 223.210149 1022.104111 225.381396 1021.888817 227.525566 1021.56835L840.966989 1021.82695 840.966989 1022.092974C864.997185 1022.137518 889.32402 1015.639107 911.109115 1001.722954 931.788904 988.498463 947.345814 970.345723 957.569383 949.811138 960.374515 945.715604 962.586401 941.106583 963.928028 936.029854L1059.429687 512.279478C1060.754092 507.254717 1061.113516 502.206443 1060.720858 497.29428 1062.705021 470.461729 1056.644245 442.797699 1041.441824 418.173769L1041.441824 418.173769ZM265.44116 938.490887 177.048986 938.469853 177.38132 494.580834C177.38132 494.580834 231.384331 494.238097 265.862117 483.495673L265.44116 938.490887 265.44116 938.490887Z"
+                                p-id="2030" fill="#bfbfbf"></path>
+                        </svg>
+                        Like
+                    </button>
+                    <!-- 活动点赞量 -->
+                    Likes: <span>8990</span>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="commentsTop">
+                    <span>Comments ( 2 )</span>
+                    <!-- 评论数量 -->
+                </div>
+                <ul>
+                    <li>
+                        <div class="comments_user_item">
+                            <div class="comments_users">
+                                <span class="comments_user_img">
+                                    <img src="/OSCAL/oscal-test/static/img/blog-img/user_1.jpg" alt="users">
+                                    <!-- 用户头像 -->
+                                </span>
+                                <div class="comments_user_info">
+                                    <p class="user_name">Ella</p>
+                                    <!-- 用户名字 -->
+                                    <p class="user_grade">
+                                        29-05-2021 18:20:06
+                                        <!-- 评论时间 -->
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="comments_content">
+                                <p class="comments_content_info">
+                                    Very helpful, thank you
+                                </p>
+                                <!-- 评论内容 -->
+                            </div>
+                            <div class="comments_btn">
+                                <span class="likeIcon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                        <path
+                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                    </svg>
+                                    <span class="number">2</span>
+                                    <!-- 喜欢数 -->
+                                </span>
+                                <span class="commentsIcon commomModal" value='Ella'>
+                                    <!-- value值为用户的名称,id为评论编号 -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-chat-square-dots" viewBox="0 0 16 16">
+                                        <path
+                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                        <path
+                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <span class="number">1</span>
+                                    <!-- 评论图片入口 -->
+                                </span>
+                            </div>
+                            <div class="comments_reply">
+                                <ul>
+                                    <li>
+                                        <div class="comments_reply_item">
+                                            <div class="comments_reply_users">
+                                                <span class="comments_user_img phoneHide">
+                                                    <img src="/OSCAL/oscal-test/static/img/blog-img/user_1.jpg"
+                                                        alt="users">
+                                                </span>
+                                                <div class="comments_reply_name">
+                                                    <p>
+                                                        <span class="reply_user users">MohitK</span>
+                                                        <!-- 评论用户名 -->
+                                                        <span>reply to</span>
+                                                        <span class="reply_user author">Ella</span>
+                                                        <!-- 评论人名称 -->
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="comments_reply_content">
+                                                <p>Glad you liked it!! :) Glad you liked it!! :) Glad you liked
+                                                    it!!
+                                                    :) Glad you liked it!! :) Glad you liked it!! </p>
+                                                <!-- 评论内容 -->
+                                            </div>
+                                            <div class="comments_reply_icon phoneHide">
+                                                <span class="comments_reply_icon_flag commomModal"
+                                                    value='MohitK'>
+                                                    <!-- value值为用户的名称,id为编号 -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                        height="16" fill="currentColor"
+                                                        class="bi bi-chat-square-dots" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                                        <path
+                                                            d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                                    </svg>
+                                                </span>
+                                                <span class="comments_reply_datetime">
+                                                    29-05-2021 21:58:06
+                                                    <!-- 评论时间 -->
+                                                </span>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                    </li>
+                </ul>
+                <div class="newsPagination">
+                    <div>
+                        <div id="rightdiv">
+                            <a href="javascript:void(0)" class="firstPage">
+                                <span>First</span>
+                            </a>
+                            <a href="javascript:void(0)" class="prePage">
+                                <span>&lt;</span>
+                            </a>
+                            <a href="javascript:void(0)" class="currentPage">
+                                <span>1</span>
+                            </a>
+                            <a href="javascript:void(0)" class="nextPage">
+                                <span>&gt;</span>
+                            </a>
+                            <a href="javascript:void(0)" class="lastPage">
+                                <span>Last</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="comments_bottom" id="summernoteBox">
+                    <form id="createPostsForm" class="needs-validation-createPostsForm" novalidate>
+                        <div class="mb-3">
+                            <div class="comments_bottom">
+                                <textarea id="summernote" class="summernote" pattern="[\w]{5,100000}"
+                                    required></textarea>
+                                <p class="note">5-100000 characyers</p>
+                                <div class="invalid-feedback">
+                                    Please enter 5-100000 characyers
+                                </div>
+                            </div>
+                            <div class="summernoteBtn">
+                                <button type="submit" class="btn createPostsBtn">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+    
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+        <div id="footer" th:include="footer :: myFooter">
+        </div>
+    </div>
+</body>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/js/activityArea.js"></script>
+<script src="/lib/Summernote/summernote-lite.min.js"></script>
+<script src="https://use.fontawesome.com/52e183519a.js"></script>
+<script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/config.js"></script>
+<script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/tam-emoji.min.js?v=1.1"></script>
+<script async src="lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script async
+    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+
+</html>

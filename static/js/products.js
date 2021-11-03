@@ -23,9 +23,9 @@ $(function () {
     })
   })
 
-  if (localHref.includes('/products/detail/1')) {//选中菜单
+  if (localHref.includes('phones')) {//选中菜单
     selectTab(0)
-  } else if (localHref.includes('/products/detail/2')) {
+  } else if (localHref.includes('tablets')) {
     selectTab(1)
   } else {
     selectTab(0)

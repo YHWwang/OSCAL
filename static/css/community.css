@@ -523,17 +523,24 @@ img {
     background-color: white;
     padding: 20px 30px;
 }
-
+.postContent .postMain .topBox .titBox .tit{
+    text-align: left;
+    font-size: 24px; 
+    font-weight: bold;
+}
+.postContent .postMain .topBox .titBox .lab{
+    font-weight: normal;
+    color: rgb(92, 92, 92);
+}
 .postContent .postMain .icon {
     color: #646464;
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 14px;
     height: 20px;
     line-height: 20px;
-}
-
-.postContent .postMain .icon .data {
-    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .postContent .postMain .icon span:not(:nth-child(1)) {
@@ -581,7 +588,6 @@ img {
     overflow-y: hidden;
     margin-top: 20px;
     padding: 20px;
-    background-color: rgb(242, 242, 242);
 }
 .postContent .postMain .postComments img{
     max-width: 100%;
@@ -725,10 +731,9 @@ img {
     text-align: center;
     position: relative;
     margin-left: 20px;
-
 }
 
-.usersInfo ul {
+.usersInfo .usersBox ul {
     margin-top: 30px;
     display: flex;
     align-items: center;
@@ -859,6 +864,7 @@ img {
     position: absolute;
     bottom: 0;
     padding: 0 13px;
+    word-break: keep-all;
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;

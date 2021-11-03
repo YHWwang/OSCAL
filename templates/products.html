@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href=""/>
+    <link rel="canonical" th:href="${'https://www.oscal.hk/products/detail/'}+${categoryRoute}"/>
     <title  th:if="${tdkMap==null}">  title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
@@ -23,6 +23,27 @@
     <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
     <script async
         src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+        <script>
+        var jsonData = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "OSCAL",
+              "item": "https://www.oscal.hk"
+            }, {
+              "@type": "ListItem",
+              "position": 2,
+              "name":"[[${categoryRoute}]]" ,
+              "item":"https://www.oscal.hk/products/detail/[[${categoryRoute}]]"
+            }]
+          }
+          var script =  document.createElement('script')
+          script.type = 'application/ld+json'
+          script.text = JSON.stringify(jsonData)
+          $('head').append(script)
+          </script>
 </head>
 
 <body class="en">
@@ -43,11 +64,12 @@
             <div class="productsBox">
                 <div class="products-sort">
                     <div class="products-tabs">
-                        <a th:each="product:${prodcutList}" th:href="@{'/products/detail/'+${categoryRoute}}" class="item-tags" ><span th:text="${product.cate_name}">Phones</span></a>
+                    <a th:each="product:${prodcutList}" th:href="@{'/products/detail/'+${product.hover_pic}+'/'}" class="item-tags" ><span th:text="${product.cate_name}">Phones</span></a>
                     <!--    &lt;!&ndash; <a href="javascript:;" class="item-tags"><span>Laptops</span></a> &ndash;&gt;
                         <a href="javascript:;" class="item-tags"><span>Tablets</span></a>-->
                         <!-- <a href="javascript:;" class="item-tags"><span>Accessories</span></a> -->
                     </div>
+                <input type="hidden" id="hover_pic" th:valuetype="${categoryRoute}">
                     <div class="products-filters">
                        <input type="hidden" id="cateName" th:value="${name}"/>
                         <a href="javascript:;" class="reset">
@@ -106,7 +128,7 @@
                 <ul>
                     <li id="list-1" class="item-list" th:each="product:${prodcutDetailList}">
                         <div class="product-img">
-                            <a href="#" target="_blank" th:title="${product.store_name}">
+                            <a href="#" target="_self" th:title="${product.store_name}">
                                 <img class="big-img on lazyload" th:data-src="${product.image}"
                                     alt="oscal">
                                     <!-- <img class="big-img lazyload" data-src="../static/img/products/c20_black.png"
@@ -126,7 +148,7 @@
                         </p>
                         <div class="buy">
                             <button type="button" class="btn btn-outline-light">
-                                <a  target="_blank" href="#">
+                                <a  target="_self" href="#">
                                     <span>Find Out More</span>
                                 </a>
                             </button>
@@ -150,6 +172,14 @@
                         d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
                 </svg>
             </span>
+        </div>
+        <div class="breadcrumbBox">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page" th:text="${categoryRoute}"></li>
+                </ol>
+            </nav>
         </div>
     </div>
     <div id="footer" th:include="footer :: myFooter">

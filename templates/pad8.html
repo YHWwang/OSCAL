@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href=""/>
+    <link rel="canonical" href="https://www.oscal.hk/pad8/"/>
     <title  th:if="${tdkMap==null}">  title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
@@ -41,6 +41,27 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       return false;
     }
     </script>
+    <script type="application/ld+json">{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OSCAL",
+          "item": "https://www.oscal.hk"
+        }, {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tablets",
+          "item": "https://www.oscal.hk/products/detail/2"
+        }, {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "pad8",
+          "item": "https://www.oscal.hk/pad8"
+        }]
+      }
+      </script>
 </head>
 
 <body class="en">
@@ -1012,6 +1033,15 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                         d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
                 </svg>
             </span>
+        </div>
+        <div class="breadcrumbBox">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/detail/2">Tablets</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Pad8</li>
+                </ol>
+            </nav>
         </div>
     </div>
     <div id="footer" th:include="footer :: myFooter">

@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href=""/>
-    <title  th:if="${tdkMap==null}">  title </title>
+    <link rel="canonical" href="" />
+    <title th:if="${tdkMap==null}"> title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
     <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
@@ -12,98 +12,123 @@
     <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel='stylesheet' type='text/css' href='/css/osPages.css?v=1.000'>
-    <link rel="stylesheet" href="/lib/layuiCascader/layui/css/layui.css">
-    <link rel='stylesheet' type='text/css'
-        href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' href='/css/forum.css'>
+    <link rel='stylesheet' type='text/css' href='/css/communityPublic.css'>
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
 </head>
 
 <body class="en">
     <div th:include="communityHeader :: communityHeader">
     </div>
     <div id="AMain" class="main">
-        <div class="OSContent">
-            <div class="osSys-left">
-                <p class="osTitle">
-                    <span class="type"  th:text=" '【'+${name}+'】'">[General]</span><span class="sp total" th:text="'Total posts :'+${countPosts}">Total posts : 148</span><span class="sp des">Description: xxxxxx</span>
-                </p>
-                <hr>
-                <div class="sort">
-                    <cascader id="category"></cascader>
-                    <input id="faID" hidden  th:value="${id}" th:name="${name}">
+        <!-- 获取服务器时间 -->
+        <input type="hidden" id="nowTime" th:value="${nowTime}">
+        <div class="forumContent otherForumContent">
+            <div class="forum-left">
+                <div class="otherForumInfo">
+                    <div class="top">
+                        <!-- 板块头像 -->
+                        <img src="/img/blog-img/qapost.png" alt="">
+                        <div>
+                            <p class="name">
+                                <!-- 板块名称和是否收藏 -->
+                                <span class="type" th:text="${name}">General</span>
+                                <span class="following">Following</span>
+                                <span class="follow">+ Follow</span>
+                            </p>
+                            <p class="total">
+                                主题: <span>3909</span>
+                                今天: <span>10</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="middle">
+                        <!-- 板块类型 -->
+                        <div class="labName">
+                            Type:
+                        </div>
+                        <div class="sortBox">
+                            <span><a href="">全部</a></span>
+                            <span class="sortList"><a href="">普通问题(399)</a></span>
+                            <span class="sortList"><a href="">普通问题(399)</a></span>
+                            <span class="sortList"><a href="">普通问题(399)</a></span>
+                            <span class="sortList"><a href="">普通问题(399)</a></span>
+                            <span class="sortList"><a href="">普通问题(399)</a></span>
+                            <span class="sortList"><a href="">普通问题(399)</a></span>
+                            <span class="sortList"><a href="">普通问题(399)</a></span>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <!-- 板块筛选条件 -->
+                        <div class="labName">
+                            Filter:
+                        </div>
+                        <div class="filter">
+                            <select id="filterTime" class="form-control form-control-sm">
+                                <option label="All the time" value="1"></option>
+                                <option label="1天" value="2"></option>
+                                <option label="2天" value="3"></option>
+                                <option label="1周" value="4"></option>
+                                <option label="一个月" value="5"></option>
+                                <option label="三个月" value="6"></option>
+                            </select>
+                            <select id="filterSort" class="form-control form-control-sm">
+                                <option label="按最新回复排序" value="1"></option>
+                                <option label="按浏览次数排序" value="2"></option>
+                                <option label="按回复数量排序" value="3"></option>
+                                <option label="按最新帖子排序" value="4"></option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="osSysList">
-                    <ul>
-                        <li th:each="userCommunity:${userCommunityList}">
-                            <div class="imgBox">
-                                <img th:src="${userCommunity.category_pic}" alt="oscal">
-                            </div>
-                            <div class="itemList">
-                                <a th:href="${'/communityUserDetail/'}+${userCommunity.id}" target="_self">
-                                    <div class="title">
-                                        <p class="postsTit"
-                                           th:text="${userCommunity.community_title}" >OSCAL Empowers More People To Enjoy A Healthy
-                                            LifeTo Enjoy A Healthy LifeTo Enjoy A Healthy LifeTo Enjoy A Healthy Life
-                                        </p>
-                                    </div>
+                <div class="forumList">
+                    <div class="forumList">
+                        <ul>
+                            <li>
+                                <div class="itemList">
+                                    <!-- 帖子编号 -->
+                                    <a href="#" target="_self">
+                                        <div class="title">
+                                            <!-- 置顶帖子置顶图标 -->
+                                            <div class="topIcon">
+                                                <svg t="1635319336151" class="icon" viewBox="0 0 1024 1024"
+                                                    version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1203"
+                                                    width="25" height="25">
+                                                    <path
+                                                        d="M719.984 680.563c-20.436 0-38.611-8.925-51.498-22.668l-87.032-95.687v286.624c0 37.853-31.018 68.509-69.258 68.509-38.239 0-69.262-30.656-69.262-68.509V562.208l-87.249 95.495c-12.66 13.932-30.83 22.856-51.271 22.856-38.244 0-69.262-30.684-69.262-68.512 0-17.615 6.916-33.513 17.764-45.823l208-228.2c12.665-13.9 30.835-22.839 51.28-22.839 20.441 0 38.612 8.939 51.493 22.689l207.57 228.514c11.061 12.146 17.987 28.044 17.987 45.666 0 37.821-31.028 68.509-69.262 68.509z m-12.297-436.889H318.489c-38.235 0-69.263-30.681-69.263-68.519 0-37.828 31.028-68.494 69.263-68.494h389.198c38.234 0 69.262 30.666 69.262 68.494 0 37.838-31.028 68.519-69.262 68.519z"
+                                                        fill="#00BDF0" p-id="1204"></path>
+                                                </svg>
+                                            </div>
+                                            <!-- postType帖子种类（new,hot,普通） -->
+                                            <p class="postsTit" postType='new'>
+                                                <!-- 帖子类型 -->
+                                                <span class="type lab">[ 测评 ]</span>
+                                                <!-- 帖子标题 -->
+                                                <span>OSCAL Empowers More People To
+                                                    Enjoy A Healthy Life</span>
+                                            </p>
+                                            <p class="titleLable">
+                                                <!-- 帖子种类（Excellent，Pretty） -->
+                                                <span class="lab">Excellent</span>
+                                            </p>
+                                        </div>
+                                        <div class="imageBox">
+                                            <!-- 帖子展示的封面图0-4张 -->
+                                            <img class="lazyload" data-src="/img/blog-img/community-tab9.jpg" alt="OSCAl">
+                                            <img class="lazyload" data-src="/img/blog-img/community-tab9.jpg" alt="OSCAl">
+                                            <img class="lazyload" data-src="/img/blog-img/community-tab9.jpg" alt="OSCAl">
+                                            <img class="lazyload" data-src="/img/blog-img/community-tab9.jpg" alt="OSCAl">
+                                        </div>
+                                    </a>
                                     <p class="msg">
-                                        <span class="type" th:text="${name}">[OSCAL-C20]</span>
-                                        <span class="name"  th:text="${userCommunity.sys_user_account}"
-                                              th:if="${not #strings.isEmpty(userCommunity.sys_user_account)}"> Gemma</span>
-                                        <!-- <span class="lastReply" th:text="${userCommunity.comment_cre}" th:if="${not #strings.isEmpty(userCommunity.comment_cre)}"> </span> -->
-                                        <span class="number">
-                                            <span class="num browse">
-
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
-                                                    </path>
-                                                    <path
-                                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
-                                                    </path>
-                                                </svg>
-                                                <span class="browse_num" th:text="${userCommunity.community_num}">334</span>
-                                            </span>
-                                            <span class="num reply">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-hand-thumbs-up"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
-                                                </svg>
-                                                <span class="reply_num"
-                                                    th:text="${userCommunity.community_like}">336</span>
-                                            </span>
-                                            <span class="num">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                                                    <path
-                                                        d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
-                                                </svg>
-                                                <span class="browse_num" th:text="${userCommunity.community_comment}"></span>
-                                            </span>
-                                        </span>
-                                    </p>
-                                </a>
-                            </div>
-                        </li>
-                        <!-- <li>
-                            <div class="imgBox">
-                                <img src="/OSCAL/oscal-test/static/img/loginLogo.png" alt="oscal">
-                            </div>
-                            <div class="itemList">
-                                <a href="#" target="_blank">
-                                    <div class="title">
-                                        <p class="postsTit" postType='2'>OSCAL Empowers More People To Enjoy A Healthy
-                                            LifeTo Enjoy A Healthy LifeTo Enjoy A Healthy LifeTo Enjoy A Healthy Life
-                                        </p>
-                                    </div>
-                                    <p class="msg">
-                                        <span class="type">[OSCAL-C20]</span>
-                                        <span class="name"> Gemma</span>
+                                        <a href="#" target="_self">
+                                            <!-- 帖子用户头像 -->
+                                            <img src="/img/blog-img/user_1.jpg" alt="oscal">
+                                            <!-- 帖子用户姓名 -->
+                                            <span class="name">Gemma</span>
+                                        </a>
+                                        <!-- 帖子发布时间 -->
+                                        <span class="time">22-04-2020 14:32:59</span>
                                         <span class="number">
                                             <span class="num browse">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -115,6 +140,7 @@
                                                         d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
                                                     </path>
                                                 </svg>
+                                                <!-- 帖子浏览数 -->
                                                 <span class="browse_num">334</span>
                                             </span>
                                             <span class="num reply">
@@ -127,59 +153,15 @@
                                                         d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
                                                     </path>
                                                 </svg>
+                                                <!-- 帖子评论数 -->
                                                 <span class="reply_num">336</span>
                                             </span>
                                         </span>
                                     </p>
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <img src="/OSCAL/oscal-test/static/img/loginLogo.png" alt="oscal">
-                            </div>
-                            <div class="itemList">
-                                <a href="#" target="_blank">
-                                    <div class="title">
-                                        <p class="postsTit" postType='1'>OSCAL Empowers More People To Enjoy A Healthy
-                                            LifeTo Enjoy A Healthy LifeTo Enjoy A Healthy LifeTo Enjoy A Healthy Life
-                                        </p>
-                                    </div>
-                                    <p class="msg">
-                                        <span class="type">[OSCAL-C20]</span>
-                                        <span class="name"> Gemma</span>
-                                      
-                                        <span class="number">
-                                            <span class="num browse">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z">
-                                                    </path>
-                                                    <path
-                                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z">
-                                                    </path>
-                                                </svg>
-                                                <span class="browse_num">334</span>
-                                            </span>
-                                            <span class="num reply">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z">
-                                                    </path>
-                                                    <path
-                                                        d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z">
-                                                    </path>
-                                                </svg>
-                                                <span class="reply_num">336</span>
-                                            </span>
-                                        </span>
-                                    </p>
-                                </a>
-                            </div>
-                        </li>-->
-                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="newsPagination">
                     <div>
@@ -205,9 +187,9 @@
                     </div>
                 </div>
             </div>
-            <div class="osSys-right">
+            <div class="forum-right">
                 <div class="newBtn">
-                    <a  href="javascript:void(0)" target="_self">
+                    <a href="javascript:void(0)" target="_self">
                         <div class="createPost">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -222,121 +204,83 @@
                         </div>
                     </a>
                 </div>
-                <div class="hot_discussion">
-                    <div class="top_tit">
-                        <span class="tit">
-                            <svg xmlns="http://www.w3.org/2000/svg" style="color: #F75100;" width="20" height="20"
-                                fill="currentColor" class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zM8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z" />
-                            </svg>
-                            HOT discussion
-                        </span>
+                <div class="check_day">
+                    <div class="yeat_month">
+                        <span class="month">May</span>
+                        <span class="year">2021</span>
                     </div>
-                    <div class="post_list">
-                        <ul>
-                            <li th:each="hotCommentList:${hotCommentList}">
-                                <p class="post_tit">
-                                    <a th:href="${'/communityUserDetail/'}+${hotCommentList.id}" target="_self">
-                                        <span th:text="${hotCommentList.community_title}"> OSCAL Empowers More People To
-                                            Enjoy A Life about human</span>
-
-                                    </a>
-                                </p>
-                                <div>
-                                    <span class="user_name" th:text="${hotCommentList.sys_user_account}">Admin
-                                        009</span>
-                                    <span class="post_num">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                                <path
-                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-                                            </svg>
-                                            <span class="browse_num"
-                                                th:text="${hotCommentList.community_num}">123334</span>
-                                        </span>
-                                        <span>
-                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-chat-right-dots"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
-                                                <path
-                                                    d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                            </svg>-->
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
-                                            </svg>
-                                            <span class="reply_num"
-                                                th:text="${hotCommentList.community_like}">331236</span>
-                                        </span>
-                                    </span>
-                                </div>
-                            </li>
-                            <!-- <li>
-                                <p class="post_tit">
-                                    <a href="#" target="_blank">
-                                        OSCAL Empowers More People To Enjoy A Life about human
-                                    </a>
-                                </p>
-                                <div>
-                                    <span class="user_name">Admin 009</span>
-                                    <span class="post_num">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                                <path
-                                                    d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-                                            </svg>
-                                            <span class="browse_num">123334</span>
-                                        </span>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-chat-right-dots"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
-                                                <path
-                                                    d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                            </svg>
-                                            <span class="reply_num">331236</span>
-                                        </span>
-                                    </span>
-                                </div>
-                            </li>-->
-                        </ul>
+                    <div class="day">
+                        <p class="date">13</p>
+                        <p class="week">THU</p>
+                        <button type="button" class="btn check_login">
+                            Sign in to earn O coin
+                        </button>
+                        <p class="check_num">
+                            Click to view O coin collection rules
+                        </p>
                     </div>
                 </div>
-                <div class="sectorBox">
-                    <div class="top_tit">
+                <div class="recommendBox">
+                    <div class="hot_top">
+                        <div class="top_box">
+                            <span class="tit">
+                                <img src="/img/sections.png" alt="oscal">
+                                Sector Recommendation
+                            </span>
+                        </div>
+                        <div class="bottom_box">
+                            <ul>
+                                <!-- 板块推荐板块 -->
+                                <li>
+                                    <p class="product_name">
+                                        <a href="#" target="_self" title='技巧和窍门'>
+                                            技巧和窍门
+                                        </a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="product_name">
+                                        <a href="#" target="_self" title='系统和下载系统和下载系统和下载'>
+                                            系统和下载系统和下载系统和下载
+                                        </a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="product_name">
+                                        <a href="#" target="_self" title='壁纸'>
+                                            壁纸
+                                        </a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotLabel">
+                    <div class="top_box">
                         <span class="tit">
-                            Sector Recommendation
+                            <img src="/img/Hotpost.png" alt="oscal">
+                            Hot Label
                         </span>
                     </div>
-                    <ul>
-                        <li th:each="prodcut:${prodcutListCategory}"><a
-                                th:href="${'/getUserPageCommunityList/'}+${prodcut.id}+'/'+1" target="_self"> <span
-                                    th:text="${prodcut.category_cate_name}">C20series</span></a></li>
-                    </ul>
+                    <div class="bottom_box">
+                        <ul>
+                            <!-- 热门标签板块 -->
+                            <li><a href="#" title="Photo and Video" target="_self">[Photo and Video]</a></li>
+                            <li><a href="#" title="Evaluation" target="_self">[Evaluation]</a></li>
+                            <li><a href="#" title="Hometown scenery" target="_self">[Hometown scenery]</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
-
-
         <div id="footer" th:include="footer :: myFooter">
         </div>
     </div>
 </body>
 <script src="/lib/js/jquery-3.3.1.min.js"></script>
-<script src="/js/osPages.js?v=1.000"></script>
-<script src="/lib/layuiCascader/layui/layui.all.js"></script>
+<script src="/js/forum.js?v=1.000"></script>
 <script async src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
 <script async
     src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>

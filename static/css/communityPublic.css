@@ -140,6 +140,7 @@
  .ORank .top_box .tit {
     font-family: Bold;
     font-size: 20px;
+    text-align: left;
     vertical-align: middle;
     font-weight: bold;
 }

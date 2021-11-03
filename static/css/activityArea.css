@@ -213,8 +213,10 @@ h6 {
 }
 .activityAreaPages{
     width: 1024px;
-    background-color: white;
     margin: 0 auto;
+}
+.activityAreaPagesBox{
+    background-color: white;
     margin-bottom: 50px;
     padding: 2vw 0;
 }

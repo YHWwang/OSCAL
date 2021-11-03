@@ -31,7 +31,7 @@ $(function () {
               </li>`
           element.oscalFaqDetailList.forEach((ele, index) => {
             faq_list += `<li>
-              <a href="/faqs/${ele.id}" target="_blank">
+              <a href="/faqs/${ele.id}/" target="_self">
                   <p>
                 ${index + 1}.${ele.faqDetailTitle}
                   </p>
@@ -51,7 +51,7 @@ $(function () {
           </li>`
           element.oscalFaqDetailList.forEach((ele, index) => {
             preSale_list += `<li>
-          <a href="/faqs/${ele.id}" target="_blank">
+          <a href="/faqs/${ele.id}/" target="_self">
               <p>
             ${index + 1}.${ele.faqDetailTitle}
               </p>
@@ -71,7 +71,7 @@ $(function () {
           </li>`
           element.oscalFaqDetailList.forEach((ele, index) => {
             afterSale_list += `<li>
-          <a href="/faqs/${ele.id}" target="_blank">
+          <a href="/faqs/${ele.id}/" target="_self">
               <p>
             ${index + 1}.${ele.faqDetailTitle}
               </p>

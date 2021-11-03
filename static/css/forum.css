@@ -191,15 +191,10 @@ h6 {
     align-items: center;
 }
 
-.forumContent .forum-left .forumList .title span {
+.forumContent .forum-left .forumList .title .lab {
     padding: 0 5px;
     font-weight: normal;
     color: #000;
-}
-
-.forumContent .forum-left .forumList .title span img {
-    vertical-align: top;
-    padding-left: 5px;
 }
 
 .forumContent .forum-left .forumList .title .topIcon {
@@ -213,7 +208,7 @@ h6 {
 }
 
 .forumContent .forum-left .forumList .title .titleLable span {
-    /* display: inline-block; */
+    padding: 0 5px;
     vertical-align: middle;
     font-size: 14px;
     color: white;
@@ -309,7 +304,7 @@ h6 {
 .forumContent .forum-left .forumList ul li .itemList .imageBox {
     margin: 1vw 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -317,6 +312,7 @@ h6 {
     width: 180px;
     height: 100%;
     object-fit: cover;
+    margin-right: 5px;
 }
 
 .forumContent .forum-left .forumList ul li .itemList a {
@@ -423,6 +419,7 @@ h6 {
 
 .otherForumContent .forum-left {
     background-color: white;
+    margin-bottom: 50px;
 }
 .otherForumContent .otherForumInfo{
     padding-left: 10px;
@@ -443,8 +440,6 @@ h6 {
     height: 100px;
 }
 .otherForumContent .otherForumInfo .top .name {
-    font-size: 36px;
-    /* font-weight: bold; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -457,6 +452,12 @@ h6 {
     font-weight: normal;
     border-radius: 5px;
     padding: 3px 10px;
+}
+.otherForumContent .otherForumInfo .top .name span.type{
+    color: #000;
+    font-size: 32px;
+    margin-left: 0;
+    padding: 0;
 }
 .otherForumContent .otherForumInfo .top .name span.following{
     background-color: #C4C4C4;

@@ -5,244 +5,234 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href=""/>
-      <title  th:if="${tdkMap==null}">  title </title>
+    <link rel="canonical" href="" />
+    <title th:if="${tdkMap==null}"> title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
     <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
     <meta name="description" content="" th:if="${tdkMap==null || tdkMap[tdk_describe]==''}">
     <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel='stylesheet' type='text/css' href='/css/community.css?v=1.001'>
-    <link rel='stylesheet' type='text/css' href='/css/public.css?v=1.000'>
+    <link rel='stylesheet' type='text/css' href='/css/communityPublic.css?v=1.000'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/lib/Summernote/summernote-lite.min.css">
     <link rel='stylesheet' type='text/css' href='/lib/Summernote/summernote-emoji-master/tam-emoji/css/emoji.css'>
 </head>
 
 <body class="en">
-<div th:include="communityHeader :: communityHeader">
-</div>
-<div id="AMain" class="main">
-    <div class="postContent">
-        <div class="left">
-            <div class="navsMenu">
-                <p><a href="/discuss/community">Home</a> > <span class="tit" th:text=" '['+${communityUserDetail.category_cate_name}+']'" >xxx</span></p>
-                <input type="hidden" id="likeStatus" th:value="${likeStatus}">
-                <input type="hidden" id="hasFollowed" th:value="${hasFollowed}">
-            </div>
-            <div class="postMain">
-                <div class="topBox">
-                    <div class="titBox">
-                        <p class="tit" style="text-align: left;font-size: 24px; font-weight: bold;" th:text="${communityUserDetail.community_title}">
-                            6 Reasons Why You'll Love Tab 9
-                        </p>
-                        <div class="icon">
-                            <!-- <span class="data"  th:text="${#dates.format(communityUserDetail.community_cre,'yyyy-MM-dd HH:mm:ss')}">2021-06-18 11:20:30</span>-->
-                            <span class="data"  th:text="${communityUserDetail.community_cre}">2021-06-18 11:20:30</span>
-                            <span class="pageviews" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-eye" viewBox="0 0 16 16">
-                                        <path
-                                            d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                        <path
-                                            d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-                                    </svg><span th:text="${communityUserDetail.community_num}">1</span></span>
-                            <span class="likes" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
-                                    </svg>
-                                   <span th:text="${likeCount}">1</span>
-                                </span>
-                            <span class="commentsIcon" >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-chat-dots" viewBox="0 0 16 16">
-                                        <path
-                                            d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                                        <path
-                                            d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
-                                    </svg><span th:text="${communityUserDetail.community_comment}">1</span> </span>
+    <div th:include="communityHeader :: communityHeader">
+    </div>
+    <div id="AMain" class="main">
+        <div class="postContent">
+            <div class="left">
+                <div class="navsMenu">
+                    <p><a href="/discuss/community">Home</a> > <span class="tit"
+                            th:text=" '['+${communityUserDetail.category_cate_name}+']'">xxx</span></p>
+                    <input type="hidden" id="likeStatus" th:value="${likeStatus}">
+                    <input type="hidden" id="hasFollowed" th:value="${hasFollowed}">
+                </div>
+                <div class="postMain">
+                    <div class="topBox">
+                        <div class="titBox">
+                            <p class="tit">
+                                <span class="lab">[招募红人]</span>
+                                <span th:text="${communityUserDetail.community_title}">6 Reasons Why You'll Love Tab
+                                    9</span>
+                            </p>
+                            <div class="icon">
+                                <span class="data" th:text="${communityUserDetail.community_cre}">2021-06-18 11:20:30</span>
+                                <div>
+                                    <span class="pageviews">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                            <path
+                                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                                            <path
+                                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                                        </svg><span th:text="${communityUserDetail.community_num}">1</span></span>
+                                    <span class="likes">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
+                                        </svg>
+                                        <span th:text="${likeCount}">1</span>
+                                    </span>
+                                    <span class="commentsIcon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                            <path
+                                                d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
+                                        </svg><span th:text="${communityUserDetail.community_comment}">1</span> </span>
+                                </div>
+                            </div>
                         </div>
-                        <!-- <div class="lastReply">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                class="bi bi-chat-right-text" viewBox="0 0 16 16">
-                                <path
-                                    d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
-                                <path
-                                    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                            </svg>
-                            <p th:text="'Last reply:'+${communityUserDetail.sys_user_account}+'  '+${#dates.format(communityUserDetail.community_cre,'yyyy-MM-dd HH:mm:ss')}" th:if="${communityUserDetail.sys_user_account}!=null"> Honorfans1623921160358 18-06-2021 13:34:10</p>
-                            <p th:text="Last reply:" th:if="${communityUserDetail.sys_user_account}==null"> Honorfans1623921160358 18-06-2021 13:34:10</p>
-
-                        </div> -->
-                    </div>
-                    <div class="postComments" th:utext="${communityUserDetail.community_content}">
-                        <p class="msg" style="margin: 2vw 0;font-size: 22px">
-                            Hi guys,
-                        </p>
-                        <p class="msg" style="margin: 1vw 0;">
-                            The main purpose of a tablet for me is to spend one or two hours a day on the
-                            entertainment
-                            like
-                            listening music, playing games, watching movies or reading novels and most tablets cover
-                            the
-                            needs.
-                            I am more picky about the price and the design when choosing a tablet, for which I
-                            select
-                            the Tab 9,
-                            expecting less from its performance. However, it quickly gets me from all aspects.
-                        </p>
-                        <p class="msg" style="text-align: left; font-weight: bold;margin: 1vw 0;">
-                            1.Sleek Design
-                        </p>
-                        <img class="big-img lazyload" src="/img/blog-img/20210519/1.png"
-                             alt="oscal">
-                    </div>
-                    <div class="shareBox">
-                        <!-- <button type="button" class="btn btn-outline-secondary">
+                        <div class="postComments" th:utext="${communityUserDetail.community_content}">
+                            <p class="msg" style="margin: 2vw 0;font-size: 22px">
+                                Hi guys,
+                            </p>
+                            <p class="msg" style="margin: 1vw 0;">
+                                The main purpose of a tablet for me is to spend one or two hours a day on the
+                                entertainment
+                                like
+                                listening music, playing games, watching movies or reading novels and most tablets cover
+                                the
+                                needs.
+                                I am more picky about the price and the design when choosing a tablet, for which I
+                                select
+                                the Tab 9,
+                                expecting less from its performance. However, it quickly gets me from all aspects.
+                            </p>
+                            <p class="msg" style="text-align: left; font-weight: bold;margin: 1vw 0;">
+                                1.Sleek Design
+                            </p>
+                            <img class="big-img lazyload" src="/img/blog-img/20210519/1.png" alt="oscal">
+                        </div>
+                        <div class="shareBox">
+                            <!-- <button type="button" class="btn btn-outline-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                 class="bi bi-share" viewBox="0 0 16 16">
                                 <path
                                     d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
                             </svg>
                             Share</button> -->
-                        <button type="button" class="btn btn-outline-secondary likesSvg"  th:onclick="'likesSvg('+${communityUserDetail.id}+','+${communityUserDetail.user_id}+')'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                 class="bi bi-hand-thumbs-up active" viewBox="0 0 16 16">
-                                <path
-                                    d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                 class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
-                            </svg>
-                            Like</button>
-                        <button type="button" class="btn btn-outline-secondary" id="rewardBtn" data-toggle='modal'
+                            <button type="button" class="btn btn-outline-secondary likesSvg"
+                                th:onclick="'likesSvg('+${communityUserDetail.id}+','+${communityUserDetail.user_id}+')'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-hand-thumbs-up active" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                                </svg>
+                                Like</button>
+                            <button type="button" class="btn btn-outline-secondary" id="rewardBtn" data-toggle='modal'
                                 data-target='#rewardModal'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                 class="bi bi-currency-exchange" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z" />
-                            </svg>
-                            Reward</button>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-currency-exchange" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 5a5.002 5.002 0 0 0 4.027 4.905 6.46 6.46 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05c0-.046 0-.093.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.46 3.46 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98c-.003.046-.003.097-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5zm16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0zm-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787H8.25zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674l.077.018z" />
+                                </svg>
+                                Reward</button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="comments">
-                    <div class="commentsTop">
-                        <span>Comments ( 0 )</span>
-                    </div>
-                    <hr>
-                    <ul class="comment-list">
-                    </ul>
-                    <div class="newsPagination">
-                        <div>
-                            <div id="rightdiv">
-                                <a href="javascript:void(0)" class="firstPage">
-                                    <span >First</span>
-                                </a>
-                                <a href="javascript:void(0)" class="prePage">
-                                    <span >&lt;</span>
-                                </a>
-                                <a href="javascript:void(0)" class="currentPage">
-                                    <span>1</span>
-                                </a>
-                                <a href="javascript:void(0)" class="nextPage">
-                                    <span >&gt;</span>
-                                </a>
-                                <a href="javascript:void(0)" class="lastPage">
-                                    <span >Last</span>
-                                </a>
+                    <div class="comments">
+                        <div class="commentsTop">
+                            <span>Comments ( 0 )</span>
+                        </div>
+                        <hr>
+                        <ul class="comment-list">
+                        </ul>
+                        <div class="newsPagination">
+                            <div>
+                                <div id="rightdiv">
+                                    <a href="javascript:void(0)" class="firstPage">
+                                        <span>First</span>
+                                    </a>
+                                    <a href="javascript:void(0)" class="prePage">
+                                        <span>&lt;</span>
+                                    </a>
+                                    <a href="javascript:void(0)" class="currentPage">
+                                        <span>1</span>
+                                    </a>
+                                    <a href="javascript:void(0)" class="nextPage">
+                                        <span>&gt;</span>
+                                    </a>
+                                    <a href="javascript:void(0)" class="lastPage">
+                                        <span>Last</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-            <!-- ���ı��༭�� -->
-            <div class="comments_bottom" id="summernoteBox">
-                <form id="createPostsForm" class="needs-validation-createPostsForm" novalidate>
-                    <div class="mb-3">
-                        <div class="comments_bottom">
+                </div>
+                <!-- ���ı��༭�� -->
+                <div class="comments_bottom" id="summernoteBox">
+                    <form id="createPostsForm" class="needs-validation-createPostsForm" novalidate>
+                        <div class="mb-3">
+                            <div class="comments_bottom">
                                 <textarea id="summernote" class="summernote" pattern="[\w]{5,100000}"
-                                          required></textarea>
-                            <p class="note">5-100000 characyers</p>
-                            <div class="invalid-feedback">
-                                Please enter 5-100000 characyers
+                                    required></textarea>
+                                <p class="note">5-100000 characyers</p>
+                                <div class="invalid-feedback">
+                                    Please enter 5-100000 characyers
+                                </div>
+                            </div>
+                            <div class="summernoteBtn">
+                                <button type="submit" class="btn createPostsBtn">
+                                    Submit
+                                </button>
                             </div>
                         </div>
-                        <div class="summernoteBtn">
-                            <button type="submit" class="btn createPostsBtn">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
+                    </form>
+                </div>
 
-                </form>
-
-            </div>
-
-            <!-- ����ģ��� -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                            </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="comments_reply_content_wrap">
-                                <div class="reply_content" contenteditable="true"></div>
+                <!-- ����ģ��� -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary commentsSubmit">Submit</button>
+                            <div class="modal-body">
+                                <div class="comments_reply_content_wrap">
+                                    <div class="reply_content" contenteditable="true"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary commentsSubmit">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="right">
-            <div class="usersInfo">
-                <div class="usersBox">
-                    <div class="usersImage">
-                        <img class="user_image" id="usersImage" th:src="${userInfoMap.head_photo}"
-                             alt="usersImg">
-                    </div>
-                    <p class="usersName">
-                        <span class="usersName" th:text="${userInfoMap.sys_user_account}">test</span>
-                    </p>
-                    <div class="userBtn" th:if="${flag eq 0}">
-                        <button type="button" class="btn btn-outline-primary followBtn" th:onclick="'followBtn('+${userInfoMap.id}+')'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                 class="bi bi-person-check" viewBox="0 0 16 16">
-                                <path
-                                    d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                <path fill-rule="evenodd"
-                                      d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                            </svg>
-                            <span class="followWord">+ Follow</span>
-                        </button>
-                        <button type="button" class="btn btn-outline-primary followMessage"
+            <div class="right">
+                <div class="usersInfo">
+                    <div class="usersBox">
+                        <div class="usersImage">
+                            <img class="user_image" id="usersImage" th:src="${userInfoMap.head_photo}" alt="usersImg">
+                        </div>
+                        <p class="usersName">
+                            <span class="usersName" th:text="${userInfoMap.sys_user_account}">test</span>
+                        </p>
+                        <div class="userBtn" th:if="${flag eq 0}">
+                            <button type="button" class="btn btn-outline-primary followBtn"
+                                th:onclick="'followBtn('+${userInfoMap.id}+')'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-person-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                                    <path fill-rule="evenodd"
+                                        d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                </svg>
+                                <span class="followWord">+ Follow</span>
+                            </button>
+                            <button type="button" class="btn btn-outline-primary followMessage"
                                 th:onclick="'MessageFun('+${userInfoMap.id}+')'">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                 class="bi bi-envelope" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
-                            </svg>
-                            Message
-                        </button>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+                                </svg>
+                                Message
+                            </button>
 
                         </div>
                         <ul>
@@ -272,7 +262,6 @@
                             <path
                                 d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
                         </svg>
-
                         <span>
                             Reply Post
                         </span>
@@ -291,48 +280,58 @@
                             </span>
                         </div>
                     </a>
-                    <div class="hot_post">
-                        <div class="top_tit">
+                    <div class="recommendBox">
+                        <div class="hot_top">
+                            <div class="top_box">
+                                <span class="tit">
+                                    <img src="/OSCAL/oscal-test/static/img/sections.png" alt="oscal">
+                                    Sector Recommendation
+                                </span>
+                            </div>
+                            <div class="bottom_box">
+                                <ul>
+                                    <!-- 板块推荐板块 -->
+                                    <li>
+                                        <p class="product_name">
+                                            <a href="#" target="_self" title='技巧和窍门'>
+                                                技巧和窍门
+                                            </a>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="product_name">
+                                            <a href="#" target="_self" title='系统和下载系统和下载系统和下载'>
+                                                系统和下载系统和下载系统和下载
+                                            </a>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="product_name">
+                                            <a href="#" target="_self" title='壁纸'>
+                                                壁纸
+                                            </a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hotLabel">
+                        <div class="top_box">
                             <span class="tit">
-                                <img class="lazyload" src="/img/Hotpost.png" alt="oscal">
-                                Hot Posts
+                                <img src="/OSCAL/oscal-test/static/img/Hotpost.png" alt="oscal">
+                                Hot Label
                             </span>
                         </div>
-                        <div class="post_list">
+                        <div class="bottom_box">
                             <ul>
-                                <li th:each="hotCommentList:${hotCommentList}">
-                                    <p class="post_tit">
-                                        <a th:href="${'/communityUserDetail/'}+${hotCommentList.id}" target="_blank">
-                                            <span th:text="${hotCommentList.community_title}"> [OSCAl Tab9] 6 Reasons Why You'll Love OSCAL Tab 9</span>
-                                        </a>
-                                    </p>
-                                    <div>
-                                        <span class="user_name" th:text="${hotCommentList.sys_user_account}">Global_OSCAL</span>
-                                        <span class="post_num">
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
-                                                    <path
-                                                        d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-                                                </svg>
-                                                <span class="browse_num" th:text="${hotCommentList.community_num}">334</span>
-                                            </span>
-                                            <span>
-                                               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                    class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z" />
-                                    </svg>
-                                                <span class="reply_num" th:text="${hotCommentList.community_like}">336</span>
-                                            </span>
-                                        </span>
-                                    </div>
-                                </li>
-
+                                <!-- 热门标签板块 -->
+                                <li><a href="#" title="Photo and Video" target="_self">[Photo and Video]</a></li>
+                                <li><a href="#" title="Evaluation" target="_self">[Evaluation]</a></li>
+                                <li><a href="#" title="Hometown scenery" target="_self">[Hometown scenery]</a></li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -351,8 +350,9 @@
                         <p class="coin">Your O coin<span class="coinNumber">0</span></p>
                         <div class="row">
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" oninput="value = rewardInput(value)" value="1" id="rewardNum" min="1" max="10">
-                               
+                                <input type="number" class="form-control" oninput="value = rewardInput(value)" value="1"
+                                    id="rewardNum" min="1" max="10">
+
                             </div>
                             <label for="rewardNum" class="col-sm-3 col-form-label">1 ~ 10</label>
                         </div>
@@ -390,7 +390,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary submitReplayBtn">Submit</button>
-                    <input type="hidden" id="userInfoOcin" th:value="${coin}">
+                        <input type="hidden" id="userInfoOcin" th:value="${coin}">
                     </div>
                 </div>
             </div>

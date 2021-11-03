@@ -168,7 +168,25 @@ a {
     vertical-align: middle;
     position: relative;
 }
-
+.breadcrumbBox{
+    position: absolute;
+    z-index: 111;
+    left: 14%;
+    bottom: -50px;
+}
+.breadcrumbBox a{
+    color: white;
+}
+.breadcrumbBox a:hover{
+    color: white;
+}
+.breadcrumb{
+    background-color:transparent !important;
+    padding:0 !important
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">" !important;
+}
 .menu_box .logo a {
     position: absolute;
     top: 50%;
@@ -693,7 +711,9 @@ a {
         width: 30px;
         height: 30px;
     }
-
+    .breadcrumbBox{
+        left: 3.5%;
+    }
     .foot-list .ul_1 {
         padding-left: 5%;
     }
@@ -707,6 +727,13 @@ a {
 }
 
 @media screen and (max-width: 800px) {
+    .breadcrumbBox {
+        left: 5%;
+    }
+    .breadcrumbBox a {
+        color: black;
+    }
+
     .foot-icon ul {
         padding-top: 4vw;
     }
@@ -729,7 +756,7 @@ a {
     .footer_main,
     .footerBox {
         background-color: white;
-        padding-top: 3vw;
+        padding-top: 10vw;
     }
 
     .foot-icon ul li {

@@ -113,6 +113,7 @@ $(function () {
     $('#exampleModalLabel').text('Reply ' + $(this).attr('value'))
     commentsData.sys_user_account = $(this).attr('value')
   })
+  
   document.emojiSource = '/lib/Summernote/summernote-emoji-master/tam-emoji/img'
   $('#summernote').summernote({//富文本编辑
     placeholder: '',

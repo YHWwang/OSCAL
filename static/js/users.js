@@ -349,6 +349,10 @@ $(function () {
                                 `
                         }
                         $(`#${name} ul`).html(html)
+                        let domLen = $('#nav-comments').find('.myCommentsBox').length
+                        for (let i = 0; i < domLen; i++) {
+                            $('#nav-comments').find('.myCommentsBox').eq(i).html($('#nav-comments').find('.myCommentsBox p').eq(i).text())
+                        }
                     }
                 })
                 break;
@@ -367,6 +371,19 @@ $(function () {
         var time = YY + MM + DD + " " + hh + mm + ss
         return time
     }
+
+    $('#allCheck').click(function () { // 全选/全不选
+        let len = $('.plate-item .form-check-input').length
+        if ($(this)[0].checked) {
+            for (let i = 0; i < len; i++) {
+                $('.plate-item .form-check-input')[i].checked = true;
+            }
+        } else {
+            for (let i = 0; i < len; i++) {
+                $('.plate-item .form-check-input')[i].checked = false;
+            }
+        }
+    })
 
     navMain = function (tabName) { // 点击标签页
         $('.Pagination').removeClass('paginationActive')
