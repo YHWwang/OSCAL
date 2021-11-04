@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="canonical" href="${'https://www.oscal.hk/buy/'}+@{${categoryRoute}+'/'}"/>
     <title  th:if="${tdkMap==null}">  title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
@@ -12,7 +13,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-
 </head>
 
 <body class="en">
@@ -32,10 +32,7 @@
         <div class="show-box">
             <div class="lf-menu">
                 <ul class="main-menu">
-                    <li><a  th:href="@{'/products/detail/'+${categoryRoute}+'/'}"   target="_self"><span th:text="All+'  '+${name}"></span></a></li>
-                    <!-- <li class="child-menu"><a href="#" target="_self">S Series</a></li>
-                     <li class="child-menu"><a href="#" target="_self">C Series</a></li>
-                     -->
+                    <li><a  th:href="@{'/buydetail/'+${categoryRoute}+'/'}"   target="_self"><span th:text="All+'  '+${name}"></span></a></li>
                 </ul>
             </div>
             <div class="rg-content">
@@ -64,21 +61,9 @@
             </div>
         </div>
     </div>
-    <script src="lib/js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="/lib/js/jquery-3.3.1.min.js"></script> -->
     <script>
-        if (window.location.href.includes('products')) {
-            window.onresize = debounce(() => changeWindow(), 500)//改变屏幕后刷新
-        }
-        function changeWindow() {
-        let setHeight = setInterval(() => {
-            if ($('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').hasClass('lazyloaded')) {
-                window.clearInterval(setHeight)
-                let Bheight = $('.nav-content .content .show-box .rg-content .item-box:nth-child(1) .item-img').height()
-                $('.nav-content .content .show-box .rg-content .item-box').height(Bheight / 2)
-                $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').height(Bheight + 10)
-            }
-        }, 100);
-    }
+        window.onresize = debounce(() => location.reload(), 500)//改变屏幕后刷新
         function debounce(fn, delay) {
             let timer = null
             return () => {
