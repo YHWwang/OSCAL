@@ -6,7 +6,7 @@ $(function () {
   //   }
   // }, 10);
 
-  var swiper = new Swiper('.swiper-container', {
+  var swiper = new Swiper('.swiper-container', {//轮播图
     loop: true,
     autoplay: true,
     effect: "fade",
@@ -27,7 +27,7 @@ $(function () {
   //    }
   //  }
   
-  $('.ViewMore').click(function () {
+  $('.ViewMore').click(function () {//加载更多
     let index = $('.post-list ul li:last-child a').attr('value')
     if(!index){
       $('.content-left .ViewMore:hover').css('background', 'gray')

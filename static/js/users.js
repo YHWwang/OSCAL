@@ -424,6 +424,10 @@ $(function () {
         }
     }
 
+    $('#nav-plate li .plateDel').click(function(){
+        
+    })
+
     $('.usersInfo .user_image').attr({
         'data-toggle': "modal",
         'data-target': "#updateImageModal",

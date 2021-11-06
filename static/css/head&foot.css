@@ -170,7 +170,7 @@ a {
 }
 .breadcrumbBox{
     position: absolute;
-    z-index: 111;
+    z-index: 1;
     left: 14%;
     bottom: -50px;
 }

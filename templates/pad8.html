@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://www.oscal.hk/pad8/"/>
+    <link rel="canonical" href="https://www.oscal.hk/pad8"/>
     <title  th:if="${tdkMap==null}">  title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
@@ -53,7 +53,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           "@type": "ListItem",
           "position": 2,
           "name": "Tablets",
-          "item": "https://www.oscal.hk/buydetail/tablets/"
+          "item": "https://www.oscal.hk/buy/tablets/"
         }, {
           "@type": "ListItem",
           "position": 3,
@@ -1038,7 +1038,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">OSCAL</a></li>
-                    <li class="breadcrumb-item"><a href="/buydetail/tablets/">Tablets</a></li>
+                    <li class="breadcrumb-item"><a href="/buy/tablets/">Tablets</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Pad8</li>
                 </ol>
             </nav>
