@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://www.oscal.hk/" />
+    <link rel="canonical" href="https://www.oscal.hk" />
     <title th:if="${tdkMap==null}"> title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
@@ -14,6 +14,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content="R7HOc1XOOOOSc0m9EL0fR2v_Z1ck2DYiGh9Gi_eopvg" />
     <link rel='stylesheet' type='text/css' th:href="@{/css/common.css?v=1.001}">
     <link rel='stylesheet' type='text/css' th:href="@{/css/public.css?v=1.000}">
     <link rel="stylesheet" type="text/css" th:href="@{/lib/css/swiper.min.css}">

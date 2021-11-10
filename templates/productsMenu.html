@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="canonical" th:href="${'https://www.oscal.hk/buydetail/'}+${categoryRoute}+'/'"/>
-    <title  th:if="${tdkMap==null}">  title </title>
-    <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
-    <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
-    <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
-    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[tdk_describe]==''}">
-    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
+    <title  th:if="${tdkMap[category_title]==null || tdkMap[category_title]==''}" >  title </title>
+    <title th:text="${tdkMap[category_title]}" th:if="${tdkMap[category_title]!=''}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[category_des]}" th:if="${tdkMap[category_des]!='' && tdkMap[category_des]!= null}">
+    <meta name="keywords" th:attr="content=${tdkMap[category_keywords]}" th:if="${tdkMap[category_keywords]!='' && tdkMap[category_keywords]!= null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[category_des]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[category_keywords]==''}">
     <meta name="robots" content="noindex, nofollow">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -33,7 +33,7 @@
         <div class="show-box">
             <div class="lf-menu">
                 <ul class="main-menu">
-                    <li><a  th:href="@{'/buy/'+${categoryRoute}+'/'}"   target="_self"><span th:text="All+'  '+${name}"></span></a></li>
+                    <li><a th:href="@{'/buy/'+${categoryRoute}+'/'}" target="_self"><span th:text="All+'  '+${name}"></span></a></li>
                 </ul>
             </div>
             <div class="rg-content">
@@ -41,14 +41,14 @@
                     <ul class="lf-box area-box">
                         <li class="box-lv1 item-box">
                             <div class="img-box">
-                                <a href="" target="_blank">
+                                <a th:href="${categoryRoute == 'phones' ? '/c20': '/pad8'} " target="_self">
                                     <img class="item-img lazyload" th:data-src="${imgCategory}" alt="Oscal">
                                 </a>
                             </div>
 
                             </li>
                             <li class="box-lv1 item-box" th:each="product:${prodcutDetailList}">
-                                <a href="" target="_blank">
+                                <a th:href="${product.soure_link}" target="_self">
                                     <div class="img-box right_img ${proName == 'Phones' ? 'mobileImg' : ''}">
                                         <img class="item-img lazyload" th:data-src="${product.image}" alt="Oscal">
                                     </div>

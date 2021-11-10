@@ -2,14 +2,7 @@ $(function () {
     var localHref = window.location.href
 
     // 临时链接
-    $('.nav-content .content .show-box .rg-content .item-box').click(function () {
-        if ($(this).find('.item-title').text() == 'OSCAL C20') {
-            window.location.href = '/c20'
-        }
-        if ($(this).find('.item-title').text() == 'OSCAL Pad 8') {
-            window.location.href = '/pad8'
-        }
-    })
+
     $('.app-header .app-nav-content .item-box').click(function () {
         if ($(this).find('.item-title').text() == 'OSCAL C20') {
             window.location.href = '/c20'
@@ -29,15 +22,6 @@ $(function () {
             })
         }
     })
-    if (localHref.includes('phones')) {
-        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
-            location.href = '/c20'
-        })
-    } else if (localHref.includes('tablets')) {
-        $('.nav-content .content .show-box .rg-content .item-box:nth-child(1)').click(function () {
-            location.href = '/pad8'
-        })
-    }
     // 临时链接
 
     changeWindow()

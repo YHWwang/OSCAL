@@ -1,18 +1,6 @@
 $(function () {
   var localHref = window.location.href
 
-  // 临时链接
-  $('.products-lists ul li').click(function () {
-    console.log($(this).find('.products-name').text())
-    if ($(this).find('.products-name').text() == 'OSCAL C20') {
-      location.href = '/c20'
-    }
-    if ($(this).find('.products-name').text() == 'OSCAL Pad 8') {
-      location.href = '/pad8'
-    }
-  })
-  // 临时链接
-
   var flag_sort = true
 
   let dom = ''

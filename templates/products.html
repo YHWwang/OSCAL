@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="canonical" th:href="'https://www.oscal.hk/buy/'+${categoryRoute}+'/'"/>
-    <title  th:if="${tdkMap==null}">  title </title>
-    <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
-    <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
-    <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
-    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[tdk_describe]==''}">
-    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[tdk_keywords]==''}">
+    <title  th:if="${tdkMap[category_title]==null || tdkMap[category_title]==''}" >  title </title>
+    <title th:text="${tdkMap[category_title]}" th:if="${tdkMap[category_title]!=''}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[category_des]}" th:if="${tdkMap[category_des]!='' && tdkMap[category_des]!= null}">
+    <meta name="keywords" th:attr="content=${tdkMap[category_keywords]}" th:if="${tdkMap[category_keywords]!='' && tdkMap[category_keywords]!= null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[category_des]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[category_keywords]==''}">
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel='stylesheet' type='text/css' th:href='@{/css/products.css?v=1.000}'>
@@ -19,11 +19,11 @@
     <link rel='stylesheet' type='text/css' th:href="@{/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="preload" as="image"
-    th:href="@{/img/loading.gif}" />
+          th:href="@{/img/loading.gif}" />
     <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
     <script async
-        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
-        <script>
+            src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+    <script>
         var jsonData = {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -47,145 +47,146 @@
 </head>
 
 <body class="en">
-    <div id="header" th:include="header :: myHeader">
-        <!-- <div class="head_svg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                class="bi bi-menu-button-wide" viewBox="0 0 16 16">
-                <path
-                    d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5v-2zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-13z" />
-                <path
-                    d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
-            </svg>
-        </div> -->
+<div id="header" th:include="header :: myHeader">
+    <!-- <div class="head_svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+            class="bi bi-menu-button-wide" viewBox="0 0 16 16">
+            <path
+                d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v2A1.5 1.5 0 0 1 14.5 5h-13A1.5 1.5 0 0 1 0 3.5v-2zM1.5 1a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-13z" />
+            <path
+                d="M2 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm10.823.323-.396-.396A.25.25 0 0 1 12.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+        </svg>
+    </div> -->
 
-    </div>
-    <div id="AMain" class="main">
-        <div class="mainContent">
-            <div class="productsBox">
-                <div class="products-sort">
-                    <div class="products-tabs">
+</div>
+<div id="AMain" class="main">
+    <div class="mainContent">
+        <div class="productsBox">
+            <div class="products-sort">
+                <div class="products-tabs">
                     <a th:each="product:${prodcutList}" th:href="@{'/buy/'+${product.hover_pic}+'/'}" class="item-tags" ><span th:text="${product.cate_name}">Phones</span></a>
                     <!--    &lt;!&ndash; <a href="javascript:;" class="item-tags"><span>Laptops</span></a> &ndash;&gt;
                         <a href="javascript:;" class="item-tags"><span>Tablets</span></a>-->
-                        <!-- <a href="javascript:;" class="item-tags"><span>Accessories</span></a> -->
-                    </div>
+                    <!-- <a href="javascript:;" class="item-tags"><span>Accessories</span></a> -->
+                </div>
                 <input type="hidden" id="hover_pic" th:valuetype="${categoryRoute}">
-                    <div class="products-filters">
-                       <input type="hidden" id="cateName" th:value="${name}"/>
-                        <a href="javascript:;" class="reset">
-                            Reset
-                        </a>
-                        <div class="filter-btn btn btn-primary" data-toggle="collapse" href="#collapseExample"
-                            role="button" aria-expanded="true" aria-controls="collapseExample">
-                            <p class="text">
-                                Filters
-                            </p>
-                            <div class="filter-close-btn">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
+                <div class="products-filters">
+                    <input type="hidden" id="cateName" th:value="${name}"/>
+                    <a href="javascript:;" class="reset">
+                        Reset
+                    </a>
+                    <div class="filter-btn btn btn-primary" data-toggle="collapse" href="#collapseExample"
+                         role="button" aria-expanded="true" aria-controls="collapseExample">
+                        <p class="text">
+                            Filters
+                        </p>
+                        <div class="filter-close-btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    <div class="line"></div>
-                    <h2>
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <div class="line"></div>
+                <h2>
                         <span>
                             You can select more than one tag at the same time
                         </span>
-                    </h2>
-                    <div class="filters-cate">
-                        <li>
-                            <div class="cate-tit">Series</div>
-                            <div class="cate-box">
-                                <span>S Series</span>
-                                <span>C Series</span>
-                                <span>S Seerierierierieriries</span>
-                                <span>C Seerierierieriries</span>
-                                <span>S Seerierierierieriries</span>
-                                <span>C Seerierierieriries</span>
-                                <span>S Seerierierierieriries</span>
-                                <span>C Seerierierieriries</span>
-                                <span>S Seerierierierieriries</span>
-                                <span>C Seerierierieriries</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="cate-tit">Screen Size</div>
-                            <div class="cate-box">
-                                <span>S Series</span>
-                                <span>C Series</span>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-
-            </div>
-            <div class="products-lists">
-                <ul>
-                    <li id="list-1" class="item-list" th:each="product:${prodcutDetailList}">
-                        <div class="product-img">
-                            <a href="#" target="_self" th:title="${product.store_name}">
-                                <img class="big-img on lazyload" th:data-src="${product.image}"
-                                    alt="oscal">
-                                    <!-- <img class="big-img lazyload" data-src="../static/img/products/c20_black.png"
-                                    alt="oscal"> -->
-                            </a>
-                        </div>
-                        <div class="product-color">
-                            <div class="on">
-                                <span style="background:#000"></span>
-                            </div>
-                            <!-- <div>
-                                <span style="background:#199E94"></span>
-                            </div> -->
-                        </div>
-                        <p class="products-name" th:title="${product.store_name}" th:text="${product.store_name}">
-                            OSCAL C20
-                        </p>
-                        <div class="buy">
-                            <button type="button" class="btn btn-outline-light">
-                                <a  target="_self" href="#">
-                                    <span>Find Out More</span>
-                                </a>
-                            </button>
-                            <!-- <button type="button" class="btn btn-outline-light">
-                                <a href="#" target="_blank">
-                                    <span>Shop Now</span>
-                                </a>
-                            </button> -->
+                </h2>
+                <div class="filters-cate">
+                    <li>
+                        <div class="cate-tit">Series</div>
+                        <div class="cate-box">
+                            <span>S Series</span>
+                            <span>C Series</span>
+                            <span>S Seerierierierieriries</span>
+                            <span>C Seerierierieriries</span>
+                            <span>S Seerierierierieriries</span>
+                            <span>C Seerierierieriries</span>
+                            <span>S Seerierierierieriries</span>
+                            <span>C Seerierierieriries</span>
+                            <span>S Seerierierierieriries</span>
+                            <span>C Seerierierieriries</span>
                         </div>
                     </li>
-
-                </ul>
+                    <li>
+                        <div class="cate-tit">Screen Size</div>
+                        <div class="cate-box">
+                            <span>S Series</span>
+                            <span>C Series</span>
+                        </div>
+                    </li>
+                </div>
             </div>
-        </div>
 
-        <div class="go-top">
+        </div>
+        <div class="products-lists">
+            <ul>
+                <li id="list-1" class="item-list" th:each="product:${prodcutDetailList}">
+                    <div class="product-img">
+                        <a th:href="${product.soure_link}" target="_self" th:title="${product.store_name}">
+                            <img class="big-img on lazyload" th:data-src="${product.image}"
+                                 alt="oscal">
+                        </a>
+                    </div>
+                    <div class="product-color">
+                        <div class="on">
+                            <span style="background:#000"></span>
+                        </div>
+                        <!-- <div>
+                            <span style="background:#199E94"></span>
+                        </div> -->
+                    </div>
+                    <p class="products-name" th:title="${product.store_name}" th:text="${product.store_name}">
+                        OSCAL C20
+                    </p>
+                    <div class="buy">
+                        <button type="button" th:if="${product.soure_link != ''}" class="btn btn-outline-light">
+                            <a target="_self" th:href="${product.soure_link}">
+                                <span>Find Out More</span>
+                            </a>
+                        </button>
+                        <button type="button" th:if="${product.soure_link == ''}" class="btn btn-outline-light">
+                            <span>Stay tuned</span>
+                        </button>
+                        <!-- <button type="button" class="btn btn-outline-light">
+                            <a href="#" target="_blank">
+                                <span>Shop Now</span>
+                            </a>
+                        </button> -->
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="go-top">
             <span class="top-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                    class="bi bi-chevron-up" viewBox="0 0 16 16">
+                     class="bi bi-chevron-up" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
-                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+                          d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
                 </svg>
             </span>
-        </div>
-        <div class="breadcrumbBox">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">OSCAL</a></li>
+    </div>
+    <div class="breadcrumbBox">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">OSCAL</a></li>
                 <li class="breadcrumb-item active" aria-current="page" th:text="${categoryRoute}"></li>
-                </ol>
-            </nav>
-        </div>
+            </ol>
+        </nav>
     </div>
-    <div id="footer" th:include="footer :: myFooter">
-    </div>
+</div>
+<div id="footer" th:include="footer :: myFooter">
+</div>
 </body>
 <script async th:src="@{/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/public.js?v=1.000}"></script>
-<script th:src="@{/js/products.js?v=1.000}"></script>
+<script th:src="@{/js/public.js?v=1.001}"></script>
+<script th:src="@{/js/products.js?v=1.001}"></script>
 </html>
