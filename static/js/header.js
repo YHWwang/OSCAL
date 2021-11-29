@@ -2,32 +2,23 @@ $(function () {
     var localHref = window.location.href
 
     // 临时链接
-
-    $('.app-header .app-nav-content .item-box').click(function () {
-        if ($(this).find('.item-title').text() == 'OSCAL C20') {
-            window.location.href = '/c20'
-        }
-        if ($(this).find('.item-title').text() == 'OSCAL Pad 8') {
-            window.location.href = '/pad8'
-        }
-    })
     $('.app-header .menu ul li').click(function () {
         if ($(this).find(' a:first span').text() == 'Phones') {
-            $(this).find('a').click(function () {
+            $(this).find('.box-lv1 .img-box').click(function () {
                 location.href = '/c20'
             })
         } else {
-            $(this).find('a').click(function () {
+            $(this).find('.box-lv1 .img-box').click(function () {
                 location.href = '/pad8'
             })
         }
     })
-    // 临时链接
+// 临时链接
 
     changeWindow()
-    if (localHref.includes('/products/phones/')) {//选中菜单
+    if (localHref.includes('/buydetail/phones/')) {//选中菜单
         selectMenu(0)
-    } else if (localHref.includes('/products/tablets/')) {
+    } else if (localHref.includes('/buydetail/tablets/')) {
         selectMenu(1)
     }
     else if (localHref.includes('brand')) {
