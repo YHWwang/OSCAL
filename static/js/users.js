@@ -356,34 +356,44 @@ $(function () {
                     }
                 })
                 break;
+            case 'nav-plate':
+                $.ajax({
+                    type: "post",
+                    url: "/followSectionName",
+                    data: '{"current":"' + size + '"}',
+                    dataType: 'json',
+                    async: true,
+                    contentType: "application/json;charset=UTF-8",
+                    success: function (req) {
+                        totalPage = req.totalPage
+                        totalPage > 10 ? '' : $('.paginationActive').hide()
+                        lastPage = Math.ceil(totalPage / pageSize)
+                        let html = ''
+                        for (let item of req.user) {
+                            html += `
+                            <li>
+                            <div class="plate-item">
+                                <input type="checkbox" class="form-check-input">
+                                <span class="plateName">${item.sectionName}</span>
+                                <div class="plateDel">
+                                    <span>Delete</span>
+                                </div>
+                            </div>
+                            <p class="plateTime">${formatDate(item.sectionTime)}</p>
+                        </li>
+                                    `
+                        }
+                        $(`#${name} ul`).html(html)
+                        $('.plateDel').click(function () {
+                            plateDel($(this).siblings('.plateName').text())
+                        })
+                    }
+                })
+                break;
             default:
                 break;
         }
     }
-    function formatDate(date) {
-        var date = new Date(date);
-        var YY = date.getFullYear() + '-';
-        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
-        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
-        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
-        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
-        var time = YY + MM + DD + " " + hh + mm + ss
-        return time
-    }
-
-    $('#allCheck').click(function () { // 全选/全不选
-        let len = $('.plate-item .form-check-input').length
-        if ($(this)[0].checked) {
-            for (let i = 0; i < len; i++) {
-                $('.plate-item .form-check-input')[i].checked = true;
-            }
-        } else {
-            for (let i = 0; i < len; i++) {
-                $('.plate-item .form-check-input')[i].checked = false;
-            }
-        }
-    })
 
     navMain = function (tabName) { // 点击标签页
         $('.Pagination').removeClass('paginationActive')
@@ -419,15 +429,53 @@ $(function () {
                 index = 'nav-comments'
                 clickFun()
                 break;
+            case 'plate':
+                $('.platePagination').html(paginationHtml).addClass('paginationActive');
+                getTabData(1, 'nav-plate')
+                index = 'nav-plate'
+                clickFun()
+                break;
             default:
                 break;
         }
+    }                   
+   
+    function plateDel(str){
+        $.ajax({
+            type: "get",
+            url: "/sectionUnFollow/"+str,
+            dataType: 'json',
+            async: true,
+            contentType: "application/json;charset=UTF-8",
+            success: function (data) {
+                getTabData(1, 'nav-plate')
+            }
+        })
     }
-
-    $('#nav-plate li .plateDel').click(function(){
-        
+    $('.plateBottom p').click(function(){
+        let str = ''
+        // let len = $('#nav-plate li').length
+        let len = $('.plate-item .form-check-input').length
+        for (let i = 0; i < len; i++) {
+            if($('.plate-item .form-check-input')[i].checked){
+                str+=$('.plateBox li').eq(i).find('.plateName').text()+','
+            }
+        }
+        str = str.substring(0,str.length-1)
+        plateDel(str)
     })
-
+    $('#allCheck').click(function () { // 全选/全不选
+        let len = $('.plate-item .form-check-input').length
+        if ($(this)[0].checked) {
+            for (let i = 0; i < len; i++) {
+                $('.plate-item .form-check-input')[i].checked = true;
+            }
+        } else {
+            for (let i = 0; i < len; i++) {
+                $('.plate-item .form-check-input')[i].checked = false;
+            }
+        }
+    })
     $('.usersInfo .user_image').attr({
         'data-toggle': "modal",
         'data-target': "#updateImageModal",
@@ -671,6 +719,17 @@ $(function () {
         })
     }
 
+    function formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        var time = YY + MM + DD + " " + hh + mm + ss
+        return time
+    }
     // 获取地址栏用户id
     function GetQueryString(name) {
         var regex = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

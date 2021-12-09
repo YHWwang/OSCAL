@@ -1,4 +1,5 @@
 $(function () {
+  var rankAllHtml = ''
   // let domtimer = setInterval(() => {
   //   if ($('.swiper-slide.swiper-slide-active a img').hasClass('lazyloaded')) {
   //     $('.communityBox .content-right .top_image').css('height', $('.swiper-container').height())
@@ -17,19 +18,102 @@ $(function () {
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
-  },
+    },
   });
 
-  //  var imgBox = $('.content-right .top_image div')
-  //  for (let index in imgBox) {
-  //    if (index > 1) {
-  //      imgBox.eq(index).hide()
-  //    }
-  //  }
-  
+  rankTop(1)
+  $('#nav-home-tab').click(() => {
+    rankTop(1, '#nav-home')
+  })
+  $('#nav-profile-tab').click(() => {
+    rankTop(2, '#nav-profile')
+  })
+  $('#nav-Total-tab').click(() => {
+    rankTop(3, '#nav-Total')
+  })
+  function rankTop(id, dom = '#nav-home') {
+    $.ajax({
+      type: "post",
+      url: "/discuss/getUserRank",
+      data: '{"rankType":"' + id + '"}',
+      dataType: 'json',
+      async: true,
+      contentType: "application/json;charset=UTF-8",
+      success: function (data) {
+        rankAllHtml = ''
+        $(`${dom}`).find('.post_list ul').html('')
+        let itemHtml = ''
+        let itemData = data.rankList
+        if (itemData.length) {
+          let index = 1
+          for (let i of itemData) {
+            if (index < 4) {
+              itemHtml += `
+              <li>
+              <div class="rankList">
+                  <img src="${i.head_photo}" alt="oscal">
+                  <div class="user">
+                      <p class="user-name">${i.number}</p>
+                      <p class="user-coin"><span>${i.sys_user_account}</span> O coin</p>
+                  </div>
+                  <div class="rankNum">
+                      <p>${index++}</p>
+                  </div>
+              </div>
+          </li>
+              `
+            } else {
+              rankAllHtml += `
+              <li>
+              <div class="rankList">
+                  <img src="${i.head_photo}" alt="oscal">
+                  <div class="user">
+                      <p class="user-name">${i.number}</p>
+                      <p class="user-coin"><span>${i.sys_user_account}</span> O coin</p>
+                  </div>
+                  <div class="rankNum">
+                      <p>${index++}</p>
+                  </div>
+              </div>
+          </li>
+              `
+            }
+          }
+        } else {
+          itemHtml = `
+          <li>
+            <p class='rankNoData'>No Data</p>
+          </li>
+          `
+          $(`${dom}`).find('.rankMore svg').hide()
+        }
+
+        $(`${dom}`).find('.post_list ul').html(itemHtml)
+        $('#nav-tabContent .active .rankMore svg').show()
+      }
+    })
+  }
+  rankMore = function (dom) {
+    $(`${dom}`).find('.post_list ul').append(rankAllHtml)
+    if ($(`${dom}`).find('.post_list li').length > 3) {
+      $(`${dom}`).find('.rankMore svg').hide()
+    } else {
+      $(`${dom}`).find('.rankMore svg').show()
+    }
+
+
+  }
+
+  var imgBox = $('.content-right .top_image div')
+  for (let index in imgBox) {
+    if (index > 1) {
+      imgBox.eq(index).hide()
+    }
+  }
+
   $('.ViewMore').click(function () {//加载更多
     let index = $('.post-list ul li:last-child a').attr('value')
-    if(!index){
+    if (!index) {
       $('.content-left .ViewMore:hover').css('background', 'gray')
       $('.toast').toast('show')
       return false

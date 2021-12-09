@@ -2,6 +2,35 @@
 
 /* -- reset end -- */
 
+.go-top {
+    position: fixed;
+    display: none;
+    top: calc(95vh - 50px);
+    bottom: 38px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 111;
+}
+
+.go-top .top-icon {
+    display: inline-block;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    color: #000;
+    text-align: center;
+    box-shadow: 0 5px 5px 0 rgb(0 0 0 / 23%);
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.go-top .top-icon svg {
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
+}
 
 .check_day .layui-laydate-content table {
     width: 100%;
@@ -127,6 +156,25 @@
     left: 0;
     transform: translateY(-50%);
 }
+.pagination .page-item.disabled{
+    display: none;
+}
+.alertBox {
+    position: fixed;
+    left: 50%;
+    z-index: 11;
+    width: 600px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.pagination .page-link{
+    color: #000;
+    font-size: 20px;
+    margin: 10px 3px;
+    padding: 5px 20px;
+    border:1px solid #8b8b8b;
+    border-radius: 5px;
+}
  .recommendBox .bottom_box,.hotLabel .bottom_box {
     padding: 1vw;
 }
@@ -157,6 +205,7 @@
  .hot_post {
     margin-top: 24px;
     position: relative;
+    text-align: left;
     width: 100%;
     margin-bottom: 24px;
     background: #fff;
@@ -213,6 +262,7 @@
     font-size: 14px;
     color: #777474;
     letter-spacing: 0;
+    cursor: pointer;
     margin-top: 13px;
     padding-bottom: 10px;
 }

@@ -3,14 +3,14 @@ $(function () {
     var localHref = window.location.href
     var userInfoDom = $('.communityMenu_box .login .loginIcon ul li .usersInfo')
     var M1 = $('.communityMenu_box .login .loginIcon ul li.loginSvg')
-
-    if (localHref.includes('showUserCommunity')) {//选中菜单
-        selectMenu(1)
-    } else if (localHref.includes('toOsSystem')||localHref.includes('showOsCommunity')) {
-        selectMenu(2)
-    }else{
+    if(localHref.includes('/home')){
         selectMenu(0)
-    }
+    }else if (localHref.includes('/forum')) {
+        selectMenu(1)
+    } else if (localHref.includes('/144')) {//选中菜单
+        selectMenu(2)
+    } 
+  
     function selectMenu(number) {
         let dom = $('.header_main .pc-header .menuBox .nav li')
         dom.eq(number).addClass('active')

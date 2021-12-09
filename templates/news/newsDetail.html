@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="canonical"th:href="${'https://www.oscal.hk/newsdetail/'}+${newsId}" />
-    <title  th:if="${newsDetail.newsTdkTitle==''}">  title </title>
+       <title  th:if="${newsDetail.newsTdkTitle==''}">  title </title>
     <title th:text="${newsDetail.newsTdkTitle}" th:if="${newsDetail.newsTdkTitle!=''}">OSCAL-header</title>
     <meta name="description" th:attr="content=${newsDetail.newsTdkDes}" th:if="${newsDetail.newsTdkDes!=''}">
     <meta name="keywords" th:attr="content=${newsDetail.newsTdkKeywords}" th:if="${newsDetail.newsTdkKeywords!=''}">
@@ -34,7 +34,7 @@
                   "@type": "ListItem",
                   "position": 2,
                   "name": "News",
-                  "item": "https://www.oscal.hk/news/1/"
+                  "item": "https://www.oscal.hk/news/list/1/"
                 }, {
                   "@type": "ListItem",
                   "position": 3,
@@ -122,7 +122,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">OSCAL</a></li>
-                <li class="breadcrumb-item"><a href="/news/1/">News</a></li>
+                <li class="breadcrumb-item"><a href="/news/1">News</a></li>
                 <li class="breadcrumb-item active" aria-current="page" th:text="${newsDetail.newsTitle}">新闻标题</li>
             </ol>
         </nav>

@@ -30,7 +30,7 @@
         <div class="postContent">
             <div class="left">
                 <div class="navsMenu">
-                    <p><a href="/discuss/community">Home</a> > <span class="tit"
+                    <p><a href="/discuss/home">Home</a> > <span class="tit"
                             th:text=" '['+${communityUserDetail.category_cate_name}+']'">xxx</span></p>
                     <input type="hidden" id="likeStatus" th:value="${likeStatus}">
                     <input type="hidden" id="hasFollowed" th:value="${hasFollowed}">
@@ -39,7 +39,7 @@
                     <div class="topBox">
                         <div class="titBox">
                             <p class="tit">
-                                <span class="lab">[招募红人]</span>
+                                [<span class="lab" th:text="${communityUserDetail.category_cate_name}">招募红人</span>]
                                 <span th:text="${communityUserDetail.community_title}">6 Reasons Why You'll Love Tab
                                     9</span>
                             </p>
@@ -284,34 +284,21 @@
                         <div class="hot_top">
                             <div class="top_box">
                                 <span class="tit">
-                                    <img src="/OSCAL/oscal-test/static/img/sections.png" alt="oscal">
+                                    <img src="/img/sections.png" alt="oscal">
                                     Sector Recommendation
                                 </span>
                             </div>
                             <div class="bottom_box">
-                                <ul>
+                                <ul >
                                     <!-- 板块推荐板块 -->
-                                    <li>
+                                    <li th:each="categoryRecommond:${categoryRecommondList}">
                                         <p class="product_name">
-                                            <a href="#" target="_self" title='技巧和窍门'>
-                                                技巧和窍门
+                                            <a th:href="'/discuss/'+${categoryRecommond.id}+'/1/'" target="_self" title='OSCAL C20'>
+                                                <span th:text="${categoryRecommond.category_cate_name}"> </span>
                                             </a>
                                         </p>
                                     </li>
-                                    <li>
-                                        <p class="product_name">
-                                            <a href="#" target="_self" title='系统和下载系统和下载系统和下载'>
-                                                系统和下载系统和下载系统和下载
-                                            </a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="product_name">
-                                            <a href="#" target="_self" title='壁纸'>
-                                                壁纸
-                                            </a>
-                                        </p>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -319,16 +306,17 @@
                     <div class="hotLabel">
                         <div class="top_box">
                             <span class="tit">
-                                <img src="/OSCAL/oscal-test/static/img/Hotpost.png" alt="oscal">
+                                <img src="/img/Hotpost.png" alt="oscal">
                                 Hot Label
                             </span>
                         </div>
                         <div class="bottom_box">
                             <ul>
-                                <!-- 热门标签板块 -->
-                                <li><a href="#" title="Photo and Video" target="_self">[Photo and Video]</a></li>
-                                <li><a href="#" title="Evaluation" target="_self">[Evaluation]</a></li>
-                                <li><a href="#" title="Hometown scenery" target="_self">[Hometown scenery]</a></li>
+                                <li th:each="community:${communityHotList}"><a th:href="'/discuss/'+${community.id}+'/1/'" title="Photo and Video" target="_self">
+
+                                    <span th:text=" '【'+${community.category_cate_name}+'】'"> </span>
+                                </a>
+                                </li>
                             </ul>
                         </div>
 

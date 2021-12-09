@@ -150,7 +150,7 @@ $(function () {
                 if (req.code == 999999) {
                     alertBox('success', 'Login successful')
                     setTimeout(() => {
-                        window.location.href = '/discuss/community'
+                        window.location.href = '/discuss/home'
                     }, 1000);
                 } else {
                     if (req.msg.includes('Password')) {

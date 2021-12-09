@@ -170,9 +170,21 @@ h6 {
 
 #nav-tabContent {
     margin-top: 30px;
+    padding-bottom: 30px;
     background-color: white;
+    position: relative;
 }
-
+#nav-tabContent .switchIframe{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    background-color: rgb(255 255 255 / 95%);
+}
+#nav-tabContent .switchIframe .d-flex{
+    margin-top: 30vh;
+}
 .forumContent .nav-tabs .nav-item.show .nav-link,
 .forumContent .nav-tabs .nav-link.active {
     color: #000;
@@ -193,7 +205,7 @@ h6 {
 
 .forumContent .forum-left .forumList .title .lab {
     padding: 0 5px;
-    font-weight: normal;
+    font-weight: 500;
     color: #000;
 }
 
@@ -299,12 +311,13 @@ h6 {
 
 .forumContent .forum-left .forumList ul li .itemList {
     width: 100%;
+    position: relative;
 }
 
 .forumContent .forum-left .forumList ul li .itemList .imageBox {
     margin: 1vw 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -312,7 +325,6 @@ h6 {
     width: 180px;
     height: 100%;
     object-fit: cover;
-    margin-right: 5px;
 }
 
 .forumContent .forum-left .forumList ul li .itemList a {
@@ -323,6 +335,12 @@ h6 {
     font-size: 14px;
     color: #999999;
     margin-top: .5rem;
+}
+.forumContent .forum-left .forumList ul li .itemList .msg a img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .forumContent .forum-left .forumList ul li .itemList .msg .name {
@@ -344,7 +362,7 @@ h6 {
 .forumContent .forum-left .forumList ul li .itemList .msg .number .num {
     display: inline-block;
     position: relative;
-    width: 70px;
+    min-width: 50px;
     height: 19px;
     line-height: 19px;
 }
@@ -481,10 +499,11 @@ h6 {
     font-size: 0;
 }
 
-.otherForumContent .otherForumInfo .middle span {
+.otherForumContent .otherForumInfo .middle .sortList {
     display: inline-block;
     margin: 0 50px 5px 0;
     font-size: 16px;
+    font-weight: 500;
     word-break: break-all;
     white-space: nowrap;
 }
