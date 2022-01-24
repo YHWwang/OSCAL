@@ -1,7 +1,12 @@
 $(function () {
 
     var localHref = window.location.href
-
+    var postId = 0
+    var filterObj = {
+        lastIndex: 0,
+        current: 0,
+        id: 0
+    }
     if (localHref.includes('forum/2/')) {
         selectMenu(1)
     } else if (localHref.includes('forum/3/')) {
@@ -13,12 +18,12 @@ $(function () {
         let dom = $('#nav-tab .nav-link')
         dom.eq(number).addClass('active').siblings().removeClass('active')
     }
-    $('.follow').click( ()=>{//关注板块
+    $('.follow').click(() => {//关注板块
         let name = $('.follow').siblings('.type').text()
         $.ajax({
             type: "post",
             url: "/sectionFollow",
-            data: '{"categoryName":"' + name +'"}',
+            data: '{"categoryName":"' + name + '"}',
             dataType: 'json',
             async: true,
             contentType: "application/json;charset=UTF-8",
@@ -28,11 +33,12 @@ $(function () {
             }
         })
     })
-    $('.following').click( ()=>{//取消关注板块
+
+    $('.following').click(() => {//取消关注板块
         let name = $('.following').siblings('.type').text()
         $.ajax({
             type: "get",
-            url: "/sectionUnFollow/"+name,
+            url: "/sectionUnFollow/" + name,
             dataType: 'json',
             async: true,
             contentType: "application/json;charset=UTF-8",
@@ -43,18 +49,23 @@ $(function () {
         })
     })
 
-    $('.filterSearchBtn').click(() => {//点击筛选按钮
+    forgetUrl()
+    function forgetUrl() { // 格式化url获取数据
         let url = localHref
         let lastIndex = url.lastIndexOf('/')
-        let obj = {
+        filterObj = {
             lastIndex,
             current: url.slice(lastIndex - 1, lastIndex),//当前页码
             id: url.slice(url.lastIndexOf('/', url.lastIndexOf('/', lastIndex - 1) - 1) + 1, url.lastIndexOf('/', lastIndex - 1))//分类帖子id
         }
+        postId = filterObj.id
+    }
+
+    $('.filterSearchBtn').click(() => {//点击筛选按钮
         $.ajax({
             type: "post",
             url: "/discuss/getDiscussByTypeAndTime",
-            data: '{"categoryId":' + obj.id + ',"discussDay":' + $('#filterTime').val() + ',"busType":"' + $('#filterSort').val() + '","current":' + obj.current + '}',
+            data: '{"categoryId":' + filterObj.id + ',"discussDay":' + $('#filterTime').val() + ',"busType":"' + $('#filterSort').val() + '","current":' + filterObj.current + '}',
             dataType: 'json',
             async: true,
             contentType: "application/json;charset=UTF-8",
@@ -62,7 +73,6 @@ $(function () {
                 // data = $.parseJSON(data);
                 console.log(data)
                 let html = ''
-             
                 for (let item of data.discussMoreList) {
                     // let imgBox = ''
                     // for (let img of item.community_img) {
@@ -155,6 +165,11 @@ $(function () {
                 checkList()
             }
         })
+    })
+
+    $('.otherForumContent .forum-right .newBtn').click(() => {//页面跳转到创建帖子页面自动选中对应类型
+        console.log(postId)
+        window.location.href = '/discuss/jumpNewPost?postId='+postId
     })
 
     $('#nav-home-tab').click(() => {

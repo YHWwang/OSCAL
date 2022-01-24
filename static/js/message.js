@@ -102,6 +102,120 @@ $(function () {
         size == 1 ? $('.paginationActive .rightdiv .prePage').hide() : $('.paginationActive .rightdiv .prePage').show()
         size == lastPage ? $('.paginationActive .rightdiv .nextPage').hide() : $('.paginationActive .rightdiv .nextPage').show()
     }
+
+    // 聊天窗口---START
+    function sendMsg(evt) {//发送消息
+        let html2 = ''
+        if (1) {//本人发的
+            html2 = `
+            <li class='people2'>
+                <div class='userMsg'>${evt.data}</div>
+                <img class='userImg' src="/img/blog-img/user_2.jpg" alt="">
+            </li>
+        `
+        } else {//别人发的
+            html2 = `
+       <li class='people1'>
+                <img class='userImg' src="/img/blog-img/user_2.jpg" alt="">
+                <div class='userMsg'>${evt.data}</div>
+            </li>
+       `
+        }
+        $('.wechatBoxMid ul').append(html2)
+        $('#summernote').val("")
+        $('.note-editable').text("")
+    }
+    function summernoteFn() {
+        document.emojiSource = '/lib/Summernote/summernote-emoji-master/tam-emoji/img'
+        $('#summernote').summernote({//富文本编辑
+            height: 85,
+            disableDragAndDrop: true,
+            shortcuts: false,
+            toolbar: [
+                ['insert', ['emoji']],
+                ['insert', ['picture']]
+            ],
+            callbacks: {
+                onImageUpload: function (files) {
+                    $('#maskLayer').show()
+                    sendFile($summernote, files[0]);
+                }
+            }
+        });
+        $('.note-editor').focusout(function () {
+            $('.note-editable').focus()
+        })
+        $(document).click(function (event) {
+            let dom = $('.note-editor')[0]
+            if (event.target != dom && !$.contains(dom, event.target)) {
+                $('.note-editable').attr('contenteditable', false)
+            } else {
+                $('.note-editable').attr('contenteditable', true)
+            }
+        })
+    }
+    //聊天窗口上传图片
+    function sendFile($summernote, file) {
+        var size = files[0].size;
+        if ((size / 1024 / 1024) > 5) {
+            alert("Picture cannot exceed 5M...");
+            return false;
+        }
+        var formData = new FormData();
+        formData.append("file", file);
+        $.ajax({
+            url: "/uploadFile",//路径
+            data: formData,
+            cache: false,
+            contentType: false,
+            tabDisable: false,
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                $('#maskLayer').hide()
+                $summernote.summernote('insertImage', data, function ($image) {
+                    $image.attr('src', data);
+                });
+            }
+        });
+    }
+
+    $('.wechatList li').click(function () {//聊天列表点击
+        let html = `
+    <div class="wechatBoxTop">
+                            <p>name</p>
+                            <p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                            </p>
+                        </div>
+                        <div class="wechatBoxMid" id="wechatBoxMid">
+                            <ul></ul>
+                        </div>
+                        <div class="wechatBoxBot">
+                            <div class="comments_bottom">
+                                <textarea id="summernote" class="summernote" pattern="[\w]{5,100000}"
+                                    required></textarea>
+                            </div>
+                            <div class="wechatSend">
+                                <button type="button" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+    `
+        $('.wechatBox').html(html)
+        summernoteFn()
+        $(this).addClass('active')
+        $(this).siblings().removeClass('active')
+        // initSocket() // 获取历史记录
+        $('.wechatBoxBot .wechatSend button').click(function () {
+            $('.wechatBoxMid').scrollTop($('.wechatBoxMid ul')[0].scrollHeight)//滚动到最下面
+        })
+    })
+    // 聊天窗口---END
+
     function htmlList(size) {
         $.ajax({//信息标签页
             type: "post",
@@ -172,7 +286,7 @@ $(function () {
             }
         })
     }
-    function noticeHtml(size){
+    function noticeHtml(size) {
         $.ajax({//通知标签页
             type: "post",
             url: "/notice/lists",

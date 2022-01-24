@@ -36,7 +36,7 @@
                                 <!-- 已关注状态 -->
                                 <span class="following">Following</span>
                                 <!-- 未关注状态 -->
-                                <span class="follow">+ Follow</span>
+                            <span class="follow" th:if="${isFollowedSection ==false}">+ Follow</span>
                             </p>
                             <p class="total">
                                 主题: <span th:text="${categoryCount[totalNum]}"> 3909</span>

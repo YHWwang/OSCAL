@@ -256,6 +256,64 @@ h6 {
     border-bottom: 0;
     border-top: 0
 }
+.upload-msg{
+    color: #646464;
+}
+.upload-coverImage button {
+    margin: 20px;
+    font-size: 18px;
+    width: 180px;
+    height: 50px;
+    border: 1px solid #B2B2B2;
+    border-radius: 25px;
+}
+
+#updateImageModal .modal-dialog {
+    max-width: 600px;
+}
+
+.uploadCoverBox,
+.upload-coverImage-list ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 10px 0;
+}
+
+.upload-coverImage-list ul img {
+    width: 200px;
+    border-radius: 3px;
+}
+
+.upload-coverImage-list ul li {
+    box-shadow: 5px 5px 5px #dadada;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    position: relative;
+    transition: all ease-in-out .5s;
+}
+
+.upload-coverImage-remove {
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    z-index: 11;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.upload-coverImage-cover {
+    border-radius: 3px;
+    background-color: rgba(2, 2, 2, .5);
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
 
 .createPostBox .modal-footer {
     justify-content: center;

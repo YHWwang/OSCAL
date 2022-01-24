@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href=""/>
-    <title  th:if="${tdkMap==null}">  title </title>
+    <link rel="canonical" href="" />
+    <title th:if="${tdkMap==null}"> title </title>
     <title th:text="${tdkMap[tdk_title]}" th:if="${tdkMap!=null}">OSCAL-header</title>
     <meta name="description" th:attr="content=${tdkMap[tdk_describe]}" th:if="${tdkMap!=null}">
     <meta name="keywords" th:attr="content=${tdkMap[tdk_keywords]}" th:if="${tdkMap!=null}">
@@ -13,6 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel='stylesheet' type='text/css' href='/css/message.css?v=1.000'>
+    <link rel="stylesheet" href="/lib/Summernote/summernote-lite.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css">
+    <link rel='stylesheet' type='text/css' href='/lib/Summernote/summernote-emoji-master/tam-emoji/css/emoji.css'>
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-fileinput-master/css/fileinput.min.css">
 </head>
 
 <body class="en">
@@ -21,11 +26,10 @@
     <div id="AMain" class="main">
         <div class="mainContent">
             <div class="usersBox">
-                <nav>
+                <nav id="myNav-1">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-                        <a class="nav-link active" id="nav-messages-tab" onclick="navMain('messages')" data-toggle="tab" href="#nav-messages"
-                            role="tab" aria-controls="nav-messages" aria-selected="true">Messages
+                        <a class="nav-link active" id="nav-messages-tab" onclick="navMain('messages')" data-toggle="tab"
+                            href="#nav-messages" role="tab" aria-controls="nav-messages" aria-selected="true">Messages
                         </a>
                         <span class="total messages-total"></span>
                         <a class="nav-link" id="nav-notifications-tab" onclick="navMain('notifications')"
@@ -57,21 +61,115 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-messages" role="tabpanel"
                         aria-labelledby="nav-messages-tab">
-                        <ul class="item">
-                        </ul>
-                        <div class="Pagination messagesPagination paginationActive">
+                        <div class="wechart">
+                            <div class="wechatList">
+                                <ul>
+                                    <li>
+                                        <img src="/img/blog-img/user_2.jpg" alt="">
+                                        <div class="wechatUser">
+                                            <p class="wechatName">name</p>
+                                            <p class="wechatMsg">
+                                                dasdasdasdasdasddasdasdasdasdasddasdasdasdasdasddasdasdasdasdasddasdasdasdasdasddasdasdasdasdasddasdasdasdasdasd
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="wechatBox">
+                            </div>
                         </div>
                     </div>
-                   <div class="tab-pane fade show active" id="nav-notifications" role="tabpanel"
-                    aria-labelledby="nav-notifications-tab">
-                    <ul class="item">
-                    </ul>
-                    <div class="Pagination notificationsPagination">
+                    <div class="tab-pane fade" id="nav-notifications" role="tabpanel"
+                        aria-labelledby="nav-notifications-tab">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab"
+                                    aria-controls="nav-all" aria-selected="true">全部</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="nav-official-tab" data-toggle="tab" href="#nav-official"
+                                    role="tab" aria-controls="nav-official" aria-selected="false">官网</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="nav-like-tab" data-toggle="tab" href="#nav-like" role="tab"
+                                    aria-controls="nav-like" aria-selected="false">喜欢</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="nav-reply-tab" data-toggle="tab" href="#nav-reply" role="tab"
+                                    aria-controls="nav-reply" aria-selected="false">回复</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="nav-focus-tab" data-toggle="tab" href="#nav-focus" role="tab"
+                                    aria-controls="nav-focus" aria-selected="false">关注</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="nav-favorites-tab" data-toggle="tab" href="#nav-favorites"
+                                    role="tab" aria-controls="nav-favorites" aria-selected="false">收藏夹</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="nav-all" role="tabpanel"
+                                aria-labelledby="nav-all-tab">
+                                <ul class="item">
+                                    <li>
+                                        <div class="notifications-left">
+                                            <img src="/OSCAL/oscal-test/static/img/blog-img/user_1.jpg" alt="users">
+                                            <div class="usersMessage">
+                                                <p>
+                                                    <span>Aniket_Kumar000</span>
+                                                    喜欢你的帖子
+                                                    <span class="postTit">hello world im fa</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="notifications-left">
+                                            <img src="/OSCAL/oscal-test/static/img/blog-img/user_1.jpg" alt="users">
+                                            <div class="usersMessage">
+                                                <p>
+                                                    <span>Aniket_Kumar000</span>
+                                                    喜欢你的帖子
+                                                    <span class="postTit">帖子名称帖子名称帖子名称帖子名称</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="nav-official" role="tabpanel"
+                                aria-labelledby="nav-official-tab">
+                                <ul class="item">
+                                    <li>
+                                        <div class="notifications-left">
+                                            <img src="/OSCAL/oscal-test/static/img/blog-img/user_1.jpg" alt="users">
+                                            <div class="usersMessage">
+                                                <p>
+                                                    <span>Aniket_Kumar000</span>
+                                                    喜欢你的帖子
+                                                    <span class="postTit">帖子名称</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" id="nav-like" role="tabpanel" aria-labelledby="nav-like-tab">..3.
+                            </div>
+                            <div class="tab-pane fade" id="nav-reply" role="tabpanel" aria-labelledby="nav-reply-tab">
+                                .4..</div>
+                            <div class="tab-pane fade" id="nav-focus" role="tabpanel" aria-labelledby="nav-focus-tab">
+                                ..5.</div>
+                            <div class="tab-pane fade" id="nav-favorites" role="tabpanel"
+                                aria-labelledby="nav-favorites-tab">.6..</div>
+                        </div>
+                        <!-- <div class="Pagination notificationsPagination">
+                        </div> -->
                     </div>
                 </div>
-                </div>
             </div>
-            <div class="usersInfo">
+            <!-- <div class="usersInfo">
                 <div class="usersBox">
                     <div class="usersImage">
                         <img class="user_image" id="usersImage" data-toggle="modal" data-target="#updateImageModal"
@@ -114,7 +212,7 @@
                         </span>
                     </div>
                 </a>
-            </div>
+            </div> -->
         </div>
 
         <!-- Modal -->
@@ -143,6 +241,13 @@
         </div>
 
 </body>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap-fileinput-master/js/fileinput.min.js"></script>
+<script src="https://use.fontawesome.com/52e183519a.js"></script>
+<script src="/lib/Summernote/summernote-lite.min.js"></script>
+<script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/config.js"></script>
+<script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/tam-emoji.min.js?v=1.1"></script>
 <script async src="/js/message.js?v=1.000"></script>
 <script async
     src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>

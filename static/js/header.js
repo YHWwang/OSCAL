@@ -13,8 +13,7 @@ $(function () {
             })
         }
     })
-// 临时链接
-
+    // 临时链接
     changeWindow()
     if (localHref.includes('/buydetail/phones/')) {//选中菜单
         selectMenu(0)
@@ -42,6 +41,7 @@ $(function () {
 
     $('.app-header .menu-icon').click(function () {
         $(this).toggleClass('clicked')
+        $(this).hasClass('clicked') ? $('body').css('overflow', 'hidden') : $('body').css('overflow', 'auto')
         $('.app-header .menu').toggleClass('active')
     })
     $('.menu_box .app-header .menu ul li.has-child').click(function () { //移动端点击产品的显示与隐藏

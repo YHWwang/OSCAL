@@ -16,7 +16,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel='stylesheet' type='text/css' href='/css/createPosts.css?v=1.002'>
     <link rel="stylesheet" href="/lib/Summernote/summernote-lite.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.min.css">
     <link rel='stylesheet' type='text/css' href='/lib/Summernote/summernote-emoji-master/tam-emoji/css/emoji.css'>
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' href="/lib/bootstrap-fileinput-master/css/fileinput.min.css">
 </head>
 
 <body class="en">
@@ -25,7 +28,7 @@
     <div id="AMain" class="main">
         <div class="mainContent">
             <div class="navsMenu">
-                <p><a href="/discuss/home">Home</a> > Create a new post</p>
+                <p><a href="/home">Home</a> > Create a new post</p>
             </div>
             <div class="createPostBox">
                 <form id="createPostsForm" class="needs-validation-createPostsForm" novalidate>
@@ -65,14 +68,14 @@
                     <div class="mb-3">
                         <div class="selectBox">
                             <div class="row">
-                                <div class="col-sm">
+                                <div class="col-sm-4">
                                     <select class="form-control custom-select" id="category" required>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
                                 </div>
-                                <div class="col-sm">
+                                <div class="col-sm-4">
                                     <select class="form-control custom-select" id="section" required>
                                         <option value='' disabled selected style='display:none;'>Section</option>
                                     </select>
@@ -80,16 +83,38 @@
                                         Please select
                                     </div>
                                 </div>
-                                <div class="col-sm">
+                                <!-- <div class="col-sm">
                                     <select class="form-control custom-select" id="threeSection">
                                         <option value='' disabled selected style='display:none;'>Section</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Please select
                                     </div>
+                                </div> -->
                                 </div>
                             </div>
                         </div>
+                    <div class="mb-3">
+                        <div class="uploadCoverBox">
+                            <div class="upload-coverImage">
+                                <button type="button" class="btn btn-outline-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                        class="bi bi-arrow-bar-up" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z" />
+                                    </svg>
+                                    Upload Pictures
+                                </button>
+                            </div>
+                            <div class="upload-coverImage-list">
+                                <ul>
+                                    <!-- <li removeIndex='1'>
+                                        <img src="/OSCAL/oscal-test/static/img/blog-img/community-tab9.jpg" alt="">
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="upload-msg">Pictures Only Support: jpg, gif, png, webp, jpeg</p>
                     </div>
                     <div class="postBtn">
                         <button type="button" class="btn postCancel" data-toggle="modal"
@@ -97,6 +122,24 @@
                         <button type="submit btn btn-light" class="btn postSubmit">Submit</button>
                     </div>
                 </form>
+
+                <!-- 上传图片Modal -->
+                <div class="modal fade" id="updateImageModal" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel2">Image</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input id="input-id" name='file' multiple type="file" class="file" data-preview-file-type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Modal -->
                 <div class="modal fade" id="postCancelModel" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -113,7 +156,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                <a href="/discuss/home" target="_self"><button type="button"
+                                <a href="/home" target="_self"><button type="button"
                                         class="btn btn-primary">OK</button></a>
                             </div>
                         </div>
@@ -135,8 +178,12 @@
 </body>
 
 </html>
+<script src="/lib/js/jquery-3.3.1.min.js"></script>
+<script src="/js/createPosts.js?v=1.002"></script>
+<script src="/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap-fileinput-master/js/fileinput.min.js"></script>
 <script src="https://use.fontawesome.com/52e183519a.js"></script>
 <script src="/lib/Summernote/summernote-lite.min.js"></script>
 <script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/config.js"></script>
 <script src="/lib/Summernote/summernote-emoji-master/tam-emoji/js/tam-emoji.min.js?v=1.1"></script>
-<script src="/js/createPosts.js?v=1.002"></script>
+

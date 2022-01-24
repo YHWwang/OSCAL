@@ -1,70 +1,13 @@
 $(function () {
-    var categoryHtml = "<option value='' disabled selected style='display:none;'>category</option>"
-    var category_pidHtml = "<option value='' disabled selected style='display:none;'>Section</option>"
-    var obj = {
-        category: 1,
-        two: 1
-    }
-    var category2_pidHtml = "<option value='' disabled selected style='display:none;'>Section</option>"
-    var select_one = GetQueryString('id')//获取一级
-    var select_two = GetQueryString('se')//获取二级
-    var select_three = GetQueryString('se2')//获取三级
-    var category_id = select_three == 'se2' ? select_two : select_three
-    $('#threeSection').hide().siblings('.invalid-feedback').hide()
     var dataAll = ''
-    var dataAll2 = ''
-    var flag = true
-    var flag_2 = true
-    //proxy监听值的变化
-    var observe1 = (object, onChange) => {
-        const handler = {
-            get(target, property, receiver) {
-                try {
-                    return new Proxy(target[property], handler);
-                } catch (err) {
-                    return Reflect.get(target, property, receiver);
-                }
-            },
-            set(target, key, value, receiver) {
-                onChange(value);
-                return Reflect.set(target, key, value, receiver);
-            }
-        };
-        return new Proxy(object, handler);
-    };
-    var observe2 = (object, onChange) => {
-        const handler = {
-            get(target, property, receiver) {
-                try {
-                    return new Proxy(target[property], handler);
-                } catch (err) {
-                    return Reflect.get(target, property, receiver);
-                }
-            },
-            set(target, key, value, receiver) {
-                onChange(value);
-                return Reflect.set(target, key, value, receiver);
-            }
-        };
-        return new Proxy(object, handler);
-    };
-    var watchedObj = observe1(obj, (val) => {
-        // console.log(`一级监听到值变化为${val}了`);
-        if (flag) {
-            flag = false
-            sectionFun1()
-        }
-    });
-    var watchedObj2 = observe2(obj, (val) => {
-        // console.log(`二级监听到值变化为${val}了`);
-        if (flag_2) {
-            flag_2 = false
-            sectionFun2()
-        }
-    });
-    let dom = $('.createPostBox .sort .item') //选择帖子的类型
+    var dom = $('.createPostBox .sort .item') //选择帖子的类型
     var sort = 0
-
+    var url_opstId = GetQueryString('postId') == 'postId' ? 0 : GetQueryString('postId')
+    var category_id = url_opstId
+    var postSelect = {
+        one: 0,
+        two: 0
+    }
     $.ajax({//渲染一级标签
         type: "post",
         url: "/prodcutListCategory",
@@ -73,72 +16,110 @@ $(function () {
         contentType: "application/json;charset=UTF-8",
         success: function (req) {
             dataAll = req.prodcutListCategory
-            for (let i of req.prodcutListCategory) {
-                if (i.category_pid == 0) {
-                    categoryHtml += `<option value='${i.id}'>${i.category_cate_name}</option>`
+            let categoryHtml = "<option value='' disabled selected style='display:none;'>category</option>"
+            for (let i of dataAll) {
+                i.id == url_opstId ? postSelect.one = i.id : ''
+                for (let j of i.sonList) {//二级
+                    if (j.id == url_opstId) {//判断postId是否在二级菜单里
+                        postSelect = {
+                            one: j.category_pid,
+                            two: j.id
+                        }
+                    }
                 }
+                sectionFun1()
+                categoryHtml += `<option value='${i.id}' ${i.id == postSelect.one ? 'selected' : ''} >${i.category_cate_name}</option>`
             }
-
             $('#category').html(categoryHtml)
-            select_one == 'id' ? '' : $('#category').val(select_one)
-            watchedObj.category = select_one
         }
-    })
-    $('#category').off('change').change(function () {//一级标签改变重新渲染二级标签
-        select_one = $(this).val()
-        category_id = $(this).val()
-        sectionFun1()
-    })
-    $('#section').off('change').change(function () {//二级标签改变重新渲染三级标签
-        // console.log($(this).val())
-        select_two = $(this).val()
-        category_id = select_two
-        if (category_id == 'se') {
-            category_id = $(this).val()
-        }
-        sectionFun2()
     })
     function sectionFun1() {//渲染二级标签
-        watchedObj.category = select_one
-        category_pidHtml = "<option value='' disabled selected style='display:none;'>Section</option>"
+        let category_pidHtml = "<option value='' disabled selected style='display:none;'>Section</option>"
         for (let id of dataAll) {
-            if (watchedObj.category == id.id) {
-                if (id.sonList.length > 0) {
-                    $('#section').show()
-                    for (let j of id.sonList) {//二级
-                        category_pidHtml += `<option value='${j.id}'>${j.category_cate_name}</option>`
-                    }
-                    dataAll2 = id.sonList
-                    sectionFun2()
+            if (id.id == postSelect.one && id.sonList.length > 0) {
+                for (let j of id.sonList) {//二级
+                    category_pidHtml += `<option value='${j.id}' ${j.id == postSelect.two ? 'selected' : ''} >${j.category_cate_name}</option>`
                 }
             }
         }
         $('#section').html(category_pidHtml)
-        // console.log(select_two)
-        select_two == 'se' ? '' : $('#section').val(select_two)
-        $('#threeSection').val(select_three)
     }
+    $('#category').off('change').change(function () {//一级标签改变重新渲染二级标签
+        category_id = $(this).val()
+        postSelect.one = category_id
+        sectionFun1()
+    })
+    $('#section').off('change').change(function () {//二级标签改变重新渲染三级标签
+        category_id = $(this).val()
+    })
 
-    function sectionFun2() {//渲染三级标签
-        watchedObj2.two = select_two
-        var Bid = dataAll2
-        for (let data of Bid) {
-            // console.log(data.osThirdCategory)
-            if (data.osThirdCategory.length > 0) {
-                $('#threeSection').show().attr('required', true)
-                if (watchedObj2.two == data.id) {
-                    for (let z of data.osThirdCategory) {//三级
-                        category2_pidHtml = "<option value='' disabled selected style='display:none;'>Section</option>"
-                        category2_pidHtml += `<option value='${z.id}'>${z.category_cate_name}</option>`
-                    }
-                    $('#threeSection').html(category2_pidHtml)
-                    return false
-                }
-            } else {
-                $('#threeSection').hide().attr('required', false).siblings('.invalid-feedback').hide()
-            }
+
+    // 手动上传图片--start--
+    var cover = `
+    <div class="upload-coverImage-remove">Remove</div>
+    <div class="upload-coverImage-cover"></div>
+    `
+    $('.upload-coverImage-list ul li').hover(function () {
+        $(this).append(cover)
+    }, function () {
+        $('.upload-coverImage-remove').remove()
+        $('.upload-coverImage-cover').remove()
+    })
+    $('.upload-coverImage-list ul li').click(function () {
+        $(this).remove()//清除节点和上传图片的数组
+        console.log($(this).attr('removeIndex'))
+    })
+
+    $('.upload-coverImage').attr({
+        'data-toggle': "modal",
+        'data-target': "#updateImageModal",
+    })
+
+    var FileInput = function () {
+        var oFile = new Object();
+
+        //初始化fileinput控件（第一次初始化）
+        oFile.Init = function (ctrlName, uploadUrl) {
+            var control = $('#' + ctrlName);
+
+            //初始化上传控件的样式
+            control.fileinput({
+                language: 'en', //设置语言
+                uploadUrl: uploadUrl, //上传的地址
+                allowedFileExtensions: ['jpg', 'gif', 'png', 'webp', 'jpeg'],//接收的文件后缀
+                uploadAsync: false, //默认异步上传，这里如果不是异步上传，多个图片一次性提交到后台，只发一次请求，如果为异步上传，每张图片都会发一次请求，多次请求
+                showUpload: true, //是否显示上传按钮
+                showRemove: true, //显示移除按钮
+                showPreview: true, //是否显示预览
+                showCaption: false,//是否显示标题
+                browseClass: "btn btn-primary", //按钮样式
+                maxFileSize: 1000,
+                maxFileCount: 4, //允许同时上传的最大文件个数
+                enctype: 'multipart/form-data',
+                validateInitialCount: true,
+                msgSizeTooLarge: 'File "{name}" ({size} KB) exceeds maximum allowed upload size of {maxSize} KB. Please retry your upload!',
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                msgFilesTooMany: "The number of files selected for upload ({n}) exceeds the maximum allowed value {m}!",
+            })
+
+            //导入文件上传完成之后的事件
+            $("#input-id").on("filebatchuploadsuccess", function (event, data, previewId, index) {
+                // var data = data.response;
+                // var last = data.lastIndexOf("Upload");
+                // EmImg = data.substring(last + 7);
+               console.log(data.response.url)
+                $("#updateImageModal").modal('hide');
+                $('div.modal-backdrop').hide();
+                // 得到的返回地址在渲染到html中
+                // $('.upload-coverImage-list ul').html()
+            });
         }
-    }
+        return oFile;
+    };
+    var oFileInput = new FileInput();
+    oFileInput.Init("input-id", "/uploadFile");   // **注意：这里是导入地址写好你的控制器  和方法名**
+    // --end--
+
 
     postSort = function (index) {//顶部选择的帖子类型
         $(dom).eq(index).addClass('active').find('img:nth-child(' + (index + 1) + ')').show().siblings('img').hide().parent().siblings().removeClass('active').find('img:nth-child(' + (index + 1) + ')').show().siblings('img').hide()
@@ -174,12 +155,12 @@ $(function () {
             }
         }
     });
-    $('.note-insert .note-btn').eq(1).click(function(){
+    $('.note-insert .note-btn').eq(1).click(function () {
         $('.note-editable').attr('contenteditable', false)
     })
-    $('.comments_bottom .note-popover .note-btn-group .note-btn').eq(0).click(function(){
+    $('.comments_bottom .note-popover .note-btn-group .note-btn').eq(0).click(function () {
         $('.note-editable').attr('contenteditable', false)
-      })
+    })
     $('.note-editor').focusin(function () {
         return false
     })

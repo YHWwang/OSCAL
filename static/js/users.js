@@ -369,7 +369,7 @@ $(function () {
                         totalPage > 10 ? '' : $('.paginationActive').hide()
                         lastPage = Math.ceil(totalPage / pageSize)
                         let html = ''
-                        for (let item of req.user) {
+                        for (let item of req.section) {
                             html += `
                             <li>
                             <div class="plate-item">

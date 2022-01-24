@@ -41,7 +41,7 @@
                        onclick="navMain('comments')" aria-controls="nav-comments" aria-selected="false">Comments
                         <span th:text="'('+${commentNum} +')'"></span></a>
                     <a class="nav-link" id="nav-plate-tab" onclick="navMain('plate')" data-toggle="tab"
-                        href="#nav-plate" role="tab" aria-controls="nav-plate" aria-selected="false">板块 <span th:text="'('+${commentNum} +')'"></span></a>
+                        href="#nav-plate" role="tab" aria-controls="nav-plate" aria-selected="false">板块 <span th:text="'('+${followSectionCount} +')'"></span></a>
                     <input type="hidden" th:value="${userInfo.id}" id="sys_user_id">
                     <input type="hidden" th:value="${totalPage}" id="totalPage">
                 </div>

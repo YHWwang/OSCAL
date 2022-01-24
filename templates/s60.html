@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://www.oscal.hk/s60" />
+    <title th:if="${tdkMap[seo_title]==null || tdkMap[seo_title]==''}"> title </title>
+    <title th:text="${tdkMap[seo_title]}" th:if="${tdkMap[seo_title]!=''}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[product_represent]}"
+        th:if="${tdkMap[product_represent]!='' && tdkMap[product_represent]!= null}">
+    <meta name="keywords" th:attr="content=${tdkMap[seo_keywords]}"
+        th:if="${tdkMap[seo_keywords]!='' && tdkMap[seo_keywords]!= null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[product_represent]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[seo_keywords]==''}">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel='stylesheet' type='text/css' th:href='@{/css/public.css}'>
+    <link rel='stylesheet' type='text/css' th:href='@{/css/productsdetail.css?v=1.001}'>
+    <link rel='stylesheet' type='text/css' th:href="@{/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/css/swiper.min.css}">
+    <script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
+    <script async
+        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+
+    <script type="application/ld+json">{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OSCAL",
+          "item": "https://www.oscal.hk"
+        }, {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Phone",
+          "item": "https://www.oscal.hk/buy/phones/"
+        }, {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "S60",
+          "item": "https://www.oscal.hk/s60"
+        }]
+      }
+      </script>
+</head>
+
+<body class="en">
+    <div id="header" th:include="header :: myHeader">
+    </div>
+    <div id="AMain" class="main">
+        <div class="productsMenuBox">
+            <div class="productsMenuBox-bg">
+                <div class="productsName">OSCAL-<span class="productsName-name">S60</span></div>
+                <div class="products-rightBox">
+                    <ul class="nav" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                                role="tab" aria-controls="pills-home" aria-selected="true">OVERVIEW</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                role="tab" aria-controls="pills-profile" aria-selected="false">SPECS</a>
+                        </li>
+                    </ul>
+                    <div class="products-buyBtn">
+                        <a href="https://store.blackview.hk/products/oscal-s60-5-7-inch-ip68-waterproof-4g-rugged-smartphone"
+                            target="_blank">
+                            <span>BUY NOW</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="productContent">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <link rel="stylesheet"
+                        href="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/oscal-s60-20211220071552801.css">
+                    <script
+                        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/jquery-3.3.1.min-20201130021002922.js"></script>
+                    <script
+                        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+                    <div id="S60">
+                        <section class="sect1">
+                            <img class="big-img change-src"
+                                data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect1-1-phone.webp"
+                                data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect1-1.webp" alt="">
+                            <div class="sect1-txt">
+                                <div class="p1 bv-init">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/sect1_oscal-20211129063539442.webp"
+                                        alt=""><span class="name">S60</span>
+                                </div>
+                                <div class="slogan bv-init delay-1">Budget Rugged Phone King</div>
+                            </div>
+                        </section>
+                        <section class="sect2">
+                            <ul class="bv-flex">
+                                <li class="bv-init">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-1.webp" alt="">
+                                    <p>IP68&IP69K&MIL-STD-810G</p>
+                                </li>
+                                <li class="bv-init">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-2.webp" alt="">
+                                    <p>5.7-inch</p>
+                                </li>
+                                <li class="bv-init">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-3.webp" alt="">
+                                    <p>3GB+16GB MediaTek A22</p>
+                                </li>
+                                <li class="bv-init">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-4.webp" alt="">
+                                    <p>Underwater Mode</p>
+                                </li>
+                                <li class="bv-init delay-1">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-5.webp" alt="">
+                                    <p>5MP+8MP Camera</p>
+                                </li>
+                                <li class="bv-init delay-1">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-6.webp" alt="">
+                                    <p>4980mAh</p>
+                                </li>
+                                <li class="bv-init delay-1">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-7.webp" alt="">
+                                    <p>Android 11 Doke OS 2.1</p>
+                                </li>
+                                <li class="bv-init delay-1">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect2-8.webp" alt="">
+                                    <p>GPS+GLONASS+Beidou+Galileo</p>
+                                </li>
+                            </ul>
+                        </section>
+                        <section class="sect3">
+                            <div class="common-txt">
+                                <p class="bv-font-title bv-init">Rugged & Tough</p>
+                                <p class="bv-font-txt bv-init">Invincible from inside out</p>
+                                <p class="bv-font-small-txt p1 bv-init  delay-1">Constructed from durable TPU and
+                                    reinforced polycarbonate with 10% Glass Fibers material and treated with various
+                                    durability tests, S60, with a robust structure, can well protect itself from daily
+                                    rough uses. Have peace of mind whether on construction sites or outdoors.</p>
+                                <p class="bv-font-small-txt bv-init  delay-1">
+                                    *Solid unibody to reduce risks of falling apart
+                                </p>
+                            </div>
+                            <div class="img-box">
+                                <img class="big-img change-src"
+                                    data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-1-phone.webp"
+                                    data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-1.webp" alt="">
+                            </div>
+                            <ul class="bv-flex">
+                                <li>
+                                    <img class="big-img change-src"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-2.webp"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-2-phone.webp"
+                                        alt="">
+                                    <p class="bv-font-small-txt">
+                                        *High-strength Panda glass for scratch and crack resistance
+                                    </p>
+                                </li>
+                                <li class="middle">
+                                    <img class="big-img change-src"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-3.webp"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-3-phone.webp"
+                                        alt="">
+                                    <p class="bv-font-small-txt">
+                                        *Thickened jagged corners to buffer shocks and crashes
+                                    </p>
+                                </li>
+                                <li>
+                                    <img class="big-img change-src"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-4.webp"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-4-phone.webp"
+                                        alt="">
+                                    <p class="bv-font-small-txt">
+                                        *Double-shot molding process for slip and drop resistance
+                                    </p>
+                                </li>
+                            </ul>
+                            <div class="img-box-1">
+                                <img class="big-img" src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect3-5.webp"
+                                    alt="">
+                            </div>
+                        </section>
+                        <section class="sect4">
+                            <div class="common-txt">
+                                <p class="bv-font-title bv-init">IP68 & IP69K & MIL-STD-810G</p>
+                                <p class="bv-font-txt bv-init">Survive from Any Challenges</p>
+                                <p class="bv-font-small-txt bv-init">
+                                    The solid build that cannot be compared by most delicate and fragile mainstream
+                                    smartphones makes it exceptionally resistant to damage caused by falls, water
+                                    immersion, shock and impact.
+                                </p>
+                            </div>
+                            <div class="sect4-list bv-flex">
+                                <div class="left">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-4.webp" alt="">
+                                    <p class="bv-font-txt">Waterproof</p>
+                                    <p class="p1">
+                                        Waterproof up to 1.5m deep for 30mins <br>
+                                        Oil & coffee splash resistant
+                                    </p>
+                                </div>
+                                <div class="right right1"><img class="change-src"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-1.webp"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-1-phone.webp"
+                                        alt=""></div>
+                            </div>
+                            <div class="sect4-list bv-flex">
+                                <div class="left">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-5.webp" alt="">
+                                    <p class="bv-font-txt">Dustproof</p>
+                                    <p class="p1">
+                                        Fully dustproof
+                                    </p>
+                                </div>
+                                <div class="right right2"><img class="change-src"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-2.webp"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-2-phone.webp">
+                                </div>
+                            </div>
+                            <div class="sect4-list bv-flex">
+                                <div class="left">
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-6.webp" alt="">
+                                    <p class="bv-font-txt">
+                                        Drop-proof
+                                    </p>
+                                    <p class="p1">
+                                        *Drop-proof up to 1.5m height
+                                    </p>
+                                </div>
+                                <div class="right right3"><img class="change-src"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-3.webp"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect4-3-phone.webp"
+                                        alt=""></div>
+                            </div>
+
+
+                        </section>
+                        <section class="sect5">
+                            <div class="common-txt">
+                                <p class="bv-font-title bv-init">4980mAh Battery</p>
+                                <p class="bv-font-txt bv-init">Power Lasts Longer</p>
+                                <p class="bv-font-small-txt bv-init">
+                                    Charge less and extend longer. The large 4980mAh battery with built-in smart battery
+                                    management effectively avoids running out of juice in the middle of enjoyment even
+                                    for heavy uses.
+                                </p>
+                            </div>
+                            <img class="big-img change-src"
+                                data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect5-1.webp"
+                                data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect5-1-phone.webp" alt="">
+                            <div class="sect5-txt">
+                                <div class="list bv-flex">
+                                    <div class="item item-1">
+                                        <p class="p1">7hrs</p>
+                                        <p class="p2">Game</p>
+                                    </div>
+                                    <div class="item">
+                                        <p class="p1">8hrs</p>
+                                        <p class="p2">HD video</p>
+                                    </div>
+                                    <div class="item">
+                                        <p class="p1">11.5hrs</p>
+                                        <p class="p2">Web</p>
+                                    </div>
+                                    <div class="item">
+                                        <p class="p1">24hrs</p>
+                                        <p class="p2">Calling</p>
+                                    </div>
+                                    <div class="item bv-pc">
+                                        <p class="p1">28hrs </p>
+                                        <p class="p2">Music</p>
+                                    </div>
+                                    <div class="item item-2">
+                                        <p class="p1">288hrs</p>
+                                        <p class="p2">Standby</p>
+                                    </div>
+
+                                </div>
+                                <p class="p3 bv-font-small-txt">
+                                    *The battery data is tested by OSCAL Laboratory.
+                                </p>
+
+                            </div>
+                        </section>
+                        <section class="sect6">
+                            <div class="title-box bv-flex">
+                                <div class="left bv-pc"></div>
+                                <div class="middle bv-font-title bv-init">Everyday Companion You can Rely on</div>
+                                <div class="left bv-pc"></div>
+                            </div>
+                            <img class="big-img change-src"
+                                data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect6-1.webp"
+                                data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect6-1-phone.webp" alt="">
+                        </section>
+                        <section class="sect7">
+                            <img class="big-img bv-pc"
+                                src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect7-1.webp" alt="">
+                            <div class="common-txt bv-phone">
+                                <p class="bv-font-title bv-init">5.7" HD+ Display</p>
+                                <p class="bv-font-txt bv-init">Rugged to Resist, Clear to View</p>
+                                <p class="bv-font-small-txt bv-init">
+                                    Make every frame clear and vivid on the large 5.7" HD+ display. On the exterior,
+                                    it's covered with high-strength Panda glass to avoid daily screen scratches or
+                                    breaks. Always get the pleasing and spellbinding visuals.
+                                </p>
+                            </div>
+                            <div class="sect7-txt bv-flex">
+                                <div class="left">
+                                    <img class="change-src"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect7-2.webp"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect7-2-phone.webp"
+                                        alt="">
+                                </div>
+                                <div class="right">
+                                    <div class="common-txt bv-init">
+                                        <p class="bv-font-title bv-pc">5.7" HD+ Display</p>
+                                        <p class="bv-font-txt bv-pc">Rugged to Resist, Clear to View</p>
+                                        <p class="bv-font-small-txt bv-pc">
+                                            Make every frame clear and vivid on the large 5.7" HD+ display. On the
+                                            exterior, it's covered with high-strength Panda glass to avoid daily screen
+                                            scratches or breaks. Always get the pleasing and spellbinding visuals.
+                                        </p>
+                                        <div class="item bv-init">
+
+                                            <span class="bv-font-title">5.7" </span>
+                                            <span>Screen</span>
+                                        </div>
+                                        <br>
+                                        <div class="item bv-init">
+                                            <span class="bv-font-title">720*1440 </span>
+                                            <span>Resolution</span>
+                                        </div>
+                                        <br>
+                                        <div class="item bv-init">
+                                            <span class="bv-font-title">77.6% </span>
+                                            <span>Screen-to-body Ratio</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="sect8">
+                            <img class="big-img change-src"
+                                data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect8-1-phone.webp"
+                                data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect8-1.webp" alt="">
+
+                            <div class="common-txt">
+                                <p class="bv-font-title bv-init">Quad-core MediaTek Helio A22</p>
+                                <p class="bv-font-txt bv-init">Smooth & Responsive to Multitask</p>
+                                <p class="bv-font-small-txt bv-init">
+                                    Powered by a quad-core CPU coupled with 3GB RAM and 16GB internal storage,<br> it's
+                                    easy to execute your demands with enough efficiency and fluidity.
+                                </p>
+                            </div>
+
+                            <div class="sect8-txt-1">
+                                <div class="item">
+                                    <span class="bv-font-title span1">3GB</span> <br>
+                                    <span class="bv-font-title span2">RAM</span>
+                                </div>
+                                <div class="item middle">
+                                    <span class="bv-font-title span1">16GB</span> <br>
+                                    <span class="bv-font-title span2">ROM</span>
+                                </div>
+                                <div class="item">
+                                    <span class="bv-font-title span1">Up to 128GB</span> <br>
+                                    <span class="bv-font-title span2">Expandable Storage</span>
+                                </div>
+
+                            </div>
+                        </section>
+                        <section class="sect9">
+                            <img class="big-img change-src"
+                                data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect9-1-phone.webp"
+                                data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect9-1.webp" alt="">
+                            <div class="common-txt">
+                                <p class="bv-font-title bv-init">Underwater Mode</p>
+                                <p class="bv-font-txt bv-init">Capture the Beauty on Land or in Water</p>
+                                <p class="bv-font-small-txt bv-init">
+                                    With the Underwater mode available, make awesome snaps for the splendid scenes or
+                                    other wonderful life moments anywhere.
+                                </p>
+                            </div>
+                        </section>
+                        <section class="sect10">
+                            <div class="sect10-item">
+                                <div class="sect10-list sect10-list-1">
+                                    <img class="change-src"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect10-1-phone.webp"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect10-1.webp">
+                                    <p class="bv-font-title">5MP Front Camera</p>
+                                </div>
+                                <div class="sect10-list sect10-list-2">
+                                    <img class="change-src"
+                                        data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect10-2-phone.webp"
+                                        data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect10-2.webp">
+                                    <p class="bv-font-title">8MP Rear Camera</p>
+                                </div>
+                            </div>
+                            <div class="img-box bv-phone"><img
+                                    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect10-3-phone.webp" alt="">
+                            </div>
+                            <div class="img-box bv-phone"><img
+                                    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect10-4-phone.webp" alt="">
+                            </div>
+
+                        </section>
+                        <section class="sect11">
+                            <div class="common-txt">
+                                <p class="bv-font-title bv-init">GPS & GLONASS & Beidou & Galileo</p>
+                                <p class="bv-font-txt bv-init">Always Find Your Way</p>
+                                <p class="bv-font-small-txt bv-init">
+                                    Coordinating 4 navigation satellite systems together, S60 is capable of providing
+                                    more reliable and accurate positioning to help never lose the way especially in
+                                    outdoor explorations.
+                                </p>
+                                <ul class="bv-flex ul-pc">
+                                    <li>
+                                        <div class="left"><img
+                                                src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-2.webp"
+                                                alt=""></div>
+                                        <div class="right">GPS</div>
+                                    </li>
+                                    <li>
+                                        <div class="left"><img
+                                                src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-3.webp"
+                                                alt=""></div>
+                                        <div class="right">Galileo</div>
+                                    </li>
+                                    <li>
+                                        <div class="left"><img
+                                                src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-4.webp"
+                                                alt=""></div>
+                                        <div class="right">Glonass</div>
+                                    </li>
+                                    <li>
+                                        <div class="left"><img
+                                                src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-5.webp"
+                                                alt=""></div>
+                                        <div class="right">Beidou</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <img class="big-img change-src"
+                                data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-1.webp"
+                                data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-1-phone.webp" alt="">
+                            <ul class="bv-flex ul-phone">
+                                <li>
+                                    <div class="left"><img
+                                            src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-2.webp" alt="">
+                                    </div>
+                                    <div class="right">GPS</div>
+                                </li>
+                                <li>
+                                    <div class="left"><img
+                                            src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-3.webp" alt="">
+                                    </div>
+                                    <div class="right">Galileo</div>
+                                </li>
+                                <li>
+                                    <div class="left"><img
+                                            src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-4.webp" alt="">
+                                    </div>
+                                    <div class="right">Glonass</div>
+                                </li>
+                                <li>
+                                    <div class="left"><img
+                                            src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect11-5.webp" alt="">
+                                    </div>
+                                    <div class="right">Beidou</div>
+                                </li>
+                            </ul>
+
+                        </section>
+                        <section class="sect12">
+                            <div class="common-txt">
+                                <p class="bv-font-title bv-init">Doke OS 2.1</p>
+                                <p class="bv-font-txt bv-init">Based on Android 11, Intuitive & Smooth</p>
+                                <p class="bv-font-small-txt bv-init">
+                                    S60 combines the developed Doke OS 2.1 and Android 11 OS to boost interaction
+                                    smoothness and efficiency.
+                                </p>
+                            </div>
+                            <ul class="bv-flex ul-pc">
+                                <li>
+                                    <p class="bv-font-title p1">Dual Artistic Themes</p>
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect12-1.webp" alt="">
+                                    <p class="p2">Both are designed with exquisite wallpapers and app icons for
+                                        aesthetics and intuitiveness. </p>
+                                </li>
+                                <li>
+                                    <p class="bv-font-title p1">System Manager</p>
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect12-2.webp" alt="">
+                                    <p class="p2">Get better and smarter all-in-one control such as over the battery and
+                                        app management.</p>
+                                </li>
+                                <li>
+                                    <p class="bv-font-title p1">Cold Room</p>
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect12-3.webp" alt="">
+                                    <p class="p2">One click to put rogue apps in the Freezer and stop their stealthy
+                                        background running.</p>
+                                </li>
+                            </ul>
+                            <ul class="bv-flex ul-pc">
+                                <li>
+                                    <p class="bv-font-title p1">Clone Phone</p>
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect12-4.webp" alt="">
+                                    <p class="p2">
+                                        Safely transfer all the data from old to new device even without Wi-Fi or mobile
+                                        data.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="bv-font-title p1 p3">Screenshot/Long Screenshot</p>
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect12-5.webp" alt="">
+                                    <p class="p2">For important messages, make a screenshot or long screenshot and edit
+                                        it easily. </p>
+                                </li>
+                                <li>
+                                    <p class="bv-font-title p1">Split View</p>
+                                    <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect12-6.webp" alt="">
+                                    <p class="p2">Support a multi-window view and help multitask effectively and
+                                        productively. </p>
+                                </li>
+                            </ul>
+                            <div class="img-box bv-phone">
+                                <img src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect12-1-phone.webp" alt="">
+                            </div>
+                        </section>
+                        <section class="sect13">
+                            <img class="big-img" src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect13-1.webp"
+                                alt="">
+                        </section>
+                        <section class="sect14">
+                            <div class="sect14-item">
+                                <img class="change-src"
+                                    data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/s60-sect14-1-20211129034528591.webp"
+                                    data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect14-1-phone.webp"
+                                    alt="">
+                                <p class="bv-font-title p1">Oasis Green</p>
+                            </div>
+                            <div class="sect14-item">
+                                <img class="change-src"
+                                    data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/s60-sect14-2-20211129034534516.webp"
+                                    data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect14-2-phone.webp"
+                                    alt="">
+                                <p class="bv-font-title p2">Flame Orange</p>
+                            </div>
+                            <div class="sect14-item">
+                                <img class="change-src"
+                                    data-pc="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/s60-sect14-3-2021112903454173.webp"
+                                    data-phone="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect14-3-phone.webp"
+                                    alt="">
+                                <p class="bv-font-title p3">Eclipse Black</p>
+                            </div>
+                        </section>
+                        <section class="sect15">
+                            <img class="big-img" src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/s60/sect15-1.webp"
+                                alt="">
+                        </section>
+                    </div>
+                    <script
+                        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/oscal-s60-20211213035331799.js"></script>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="products_spesc">
+                        <div class="spesc-img-left">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="lazyload image-active on"
+                                            data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/s60-color1-2021122008522631.jpg"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="lazyload"
+                                            data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/s60-color2-20211220085231563.jpg"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="lazyload"
+                                            data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/s60-color3-20211220085237188.jpg"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <div class="spesc-img-right">
+                            <ul class="spesc-img-right-ul">
+                                <li class="spesc-img-right-ul-li spesc-active" num='0'>
+                                    <div class="spescColor"
+                                        style="background: linear-gradient(90deg, #333333 10%, #333333c5 27%, #333333 46%, #333333 73%, #333333 99%);">
+                                    </div>
+                                    <p class="spescColorName">Eclipse Black</p>
+                                </li>
+                                <li class="spesc-img-right-ul-li " num='1'>
+                                    <div class="spescColor"
+                                        style="background: linear-gradient(90deg, #31DC1C 10%, #32dc1ca9 27%, #31DC1C 46%, #31DC1C 73%, #31DC1C 99%);">
+                                    </div>
+                                    <p class="spescColorName">Oasis Green</p>
+                                </li>
+                                <li class="spesc-img-right-ul-li " num='2'>
+                                    <div class="spescColor"
+                                        style="background: linear-gradient(90deg, #FF5429 10%, #ff542980 27%, #FF5429 46%, #FF5429 73%, #FF5429 99%);">
+                                    </div>
+                                    <p class="spescColorName">Flame Orange</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="oscal-spescBoxBg">
+                        <div class="oscal-specification-table">
+                            <table>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Model</p>
+                                    </td>
+                                    <td>
+                                        <p>S60</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Colors</p>
+                                    </td>
+                                    <td>
+                                        <p>Black/Green/Orange</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Dimension</p>
+                                    </td>
+                                    <td>
+                                        <p>161.7*78.5*14mm</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Weight</p>
+                                    </td>
+                                    <td>
+                                        <p>255g</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>OS</p>
+                                    </td>
+                                    <td>
+                                        <p>Doke OS 2.1 (Android 11)</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Display</p>
+                                    </td>
+                                    <td>
+                                        <p>5.7-inch 720*1440 HD+ IPS</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>CPU</p>
+                                    </td>
+                                    <td>
+                                        <p>Quad-core MediaTek Helio A22, 2.0GHz</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>RAM & ROM</p>
+                                    </td>
+                                    <td>
+                                        <p>3GB RAM + 16GB ROM</p>
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Max TF Card Storage</p>
+                                    </td>
+                                    <td>
+                                        <p>128GB</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Battery Capacity</p>
+                                    </td>
+                                    <td>
+                                        <p>4980mAh</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Front Camera</p>
+                                    </td>
+                                    <td>
+                                        <p>5MP</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Rear Camera</p>
+                                    </td>
+                                    <td>
+                                        <p>Sony® IMX355 8MP </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Navigation </p>
+                                    </td>
+                                    <td>
+                                        <p>GPS+GLONASS+Beidou+Galileo</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Wi-Fi & Bluetooth </p>
+                                    </td>
+                                    <td>
+                                        <p>802.11/b/g/n;  BT 4.2</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Network Connectivity </p>
+                                    </td>
+                                    <td>
+                                        <p>GSM spec: B2/B3/B5/B8 <br>
+                                            WCDMA spec: B1/B2/B4/B5/B8<br>
+                                            TDD spec: B40<br>
+                                            FDD spec: B1/B3/B7/B8/B20 </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="go-top">
+            <span class="top-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+                </svg>
+            </span>
+        </div>
+        <div class="breadcrumbBox">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">OSCAL</a></li>
+                    <li class="breadcrumb-item"><a href="/buy/phones/">Phones</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">S60</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div id="footer" th:include="footer :: myFooter">
+    </div>
+</body>
+<script async th:src="@{/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/lib/js/swiper.min.js}"></script>
+<script th:src="@{/js/public.js}"></script>
+<script th:src="@{/js/productsDetail.js?v=1.001}"></script>
+
+</html>
