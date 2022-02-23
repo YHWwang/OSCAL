@@ -5,7 +5,7 @@ $(function () {
     $('.app-header .menu ul li').click(function () {
         if ($(this).find(' a:first span').text() == 'Phones') {
             $(this).find('.box-lv1 .img-box').click(function () {
-                location.href = '/c20'
+                location.href = '/s60pro'
             })
         } else {
             $(this).find('.box-lv1 .img-box').click(function () {
