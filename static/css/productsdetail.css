@@ -336,7 +336,20 @@ img {
 /* end */
 
 @media screen and (max-width: 800px) {
-
+    .spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li .spescColor{
+        width: 35px;
+        height: 35px;
+    }
+    .spesc-img-right .spesc-img-right-ul .spesc-active .spescColor::after{
+        width: 55px !important;
+        height: 55px !important;
+    }
+    .spesc-img-right .spesc-img-right-ul .spesc-img-right-ul-li .spescColorName{
+        font-size: 4vw;
+    }
+    .spesc-img-right{
+        margin-top: 5vw;
+    }
     .productsMenuBox-bg,
     #pills-profile .products_spesc,
     .oscal-specification-table {
@@ -362,7 +375,9 @@ img {
     .productsMenuBox .productsName {
         font-size: 3vw;
     }
-
+    .swiper-slide{
+        text-align: center;
+    }
     .spesc-img-left img {
         max-width: 250px;
         height: 320px;

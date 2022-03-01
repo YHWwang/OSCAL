@@ -425,10 +425,12 @@ img {
 }
 
 .products-lists ul li .product-color {
+    display: none;
+    /* 20220228，暂时移除颜色，待开发切换颜色功能 */
+        /* display: flex; */
     text-align: center;
     margin: 20px 0 10px 0;
     height: 23px;
-    display: flex;
     justify-content: center;
     align-items: center;
 }

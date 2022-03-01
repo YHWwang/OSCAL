@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://www.oscal.hk/c60" />
+    <title th:if="${tdkMap[seo_title]==null || tdkMap[seo_title]==''}"> title </title>
+    <title th:text="${tdkMap[seo_title]}" th:if="${tdkMap[seo_title]!=''}">OSCAL-header</title>
+    <meta name="description" th:attr="content=${tdkMap[product_represent]}"
+        th:if="${tdkMap[product_represent]!='' && tdkMap[product_represent]!= null}">
+    <meta name="keywords" th:attr="content=${tdkMap[seo_keywords]}"
+        th:if="${tdkMap[seo_keywords]!='' && tdkMap[seo_keywords]!= null}">
+    <meta name="description" content="" th:if="${tdkMap==null || tdkMap[product_represent]==''}">
+    <meta name="keywords" content="" th:if="${tdkMap==null || tdkMap[seo_keywords]==''}">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel='stylesheet' type='text/css' th:href='@{/css/public.css}'>
+    <link rel='stylesheet' type='text/css' th:href='@{/css/productsdetail.css?v=1.001}'>
+    <link rel='stylesheet' type='text/css' th:href="@{/lib/bootstrap-4.6.0-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/lib/css/swiper.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+    <script type="application/ld+json">{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "OSCAL",
+          "item": "https://www.oscal.hk"
+        }, {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Phone",
+          "item": "https://www.oscal.hk/buy/phones/"
+        }, {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "C60",
+          "item": "https://www.oscal.hk/c60"
+        }]
+      }
+      </script>
+</head>
+
+<body class="en">
+    <div id="header" th:include="header :: myHeader">
+    </div>
+    <div id="AMain" class="main">
+        <div class="productsMenuBox">
+            <div class="productsMenuBox-bg">
+                <div class="productsName">OSCAL-<span class="productsName-name">C60</span></div>
+                <div class="products-rightBox">
+                    <ul class="nav" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
+                                role="tab" aria-controls="pills-home" aria-selected="true">OVERVIEW</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                role="tab" aria-controls="pills-profile" aria-selected="false">SPECS</a>
+                        </li>
+                    </ul>
+                    <!-- <div class="products-buyBtn">
+                        <a href="https://store.blackview.hk/products/oscal-c60" target="_blank">
+                            <span>BUY NOW</span>
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="productContent">
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <link rel="stylesheet"
+                        href="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/c60-20220228084730247.css">
+                    <div id="c60">
+                        
+                        <div class="sect1 se">
+                            <div class="box">
+                                <div class="tit transHide">
+                                    <img class="big-img lazyload"
+                                        data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect1-2.webp"
+                                        alt=""> <span>C60</span>
+                                </div>
+                                <p class="msg transHide">
+                                    Endless Pursuit of Simplicity
+                                </p>
+                            </div>
+                            <div class="box-2">
+                                <img class="big-img  pho_img lazyload"
+                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect1-1.webp"
+                                    data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect1-1-app.webp"
+                                    alt="">
+                            </div>
+                            <img class="big-img pho_img lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect1-bg.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect1-bg-app.webp"
+                                alt="">
+                        </div>
+                        <div class="sect2 se">
+                            <div class="box">
+                                <ul class="item-ul transHide">
+                                    <li class="item-li">
+                                        <div class="sclac-box">
+                                            <div class="word">
+                                                <p class="word-tit">
+                                                    13 MP Rear Camera
+                                                </p>
+                                            </div>
+                                            <img class="big-img pho_img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-1.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-1-app.webp"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                    <li class="item-li">
+                                        <ul>
+                                            <li>
+                                                <div class="sclac-box">
+                                                    <div class="word">
+                                                        <p class="word-tit">
+                                                            Let There Be Light
+                                                        </p>
+                                                    </div>
+                                                    <img class="big-img  pho_img lazyload"
+                                                        data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-2.webp"
+                                                        data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-2-app.webp"
+                                                        alt="">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="sclac-box">
+                                                    <div class="word">
+                                                        <p class="word-tit">
+                                                            6.528-inch <br>
+                                                            Waterdrop Screen
+                                                        </p>
+                                                    </div>
+                                                    <img class="big-img pho_img  lazyload"
+                                                        data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-3.webp"
+                                                        data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-3-app.webp"
+                                                        alt="">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="sclac-box">
+                                                    <div class="word">
+                                                        <p class="word-tit">
+                                                            4GB RAM +32GB ROM
+                                                        </p>
+                                                    </div>
+                                                    <img class="big-img pho_img  lazyload"
+                                                        data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-4.webp"
+                                                        data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-4-app.webp"
+                                                        alt="">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="item-li">
+                                        <div class="sclac-box">
+                                            <div class="word">
+                                                <p class="word-tit">
+                                                    4780mAh Battery
+                                                </p>
+                                            </div>
+                                            <img class="big-img pho_img  lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-5.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect2-5-app.webp"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sect3 se">
+                            <div class="box">
+                                <p class="tit transHide">Let There Be Light</p>
+                                <p class="msg transHide">Inspired by the magnificent scene where beams of light shine
+                                    through a forest
+                                    in the
+                                    early morning, OSCAL C60’s finish brings a fantastic feast of rays to brighten your
+                                    day. With a
+                                    sophisticated paint-spraying process, C60’s coating shines its best for the
+                                    hand-picked soft colors
+                                    from the palette.</p>
+                                <ul class="transHide">
+                                    <li>
+                                        <div>
+                                            <img class="big-img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-icon-1.webp"
+                                                alt="">
+                                            <p>9.2mm</p>
+                                            <span>Thin</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <img class="big-img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-icon-2.webp"
+                                                alt="">
+                                            <p>196g</p>
+                                            <span>Light</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box-2">
+                                <ul>
+                                    <li>
+                                        <div class="pricture">
+                                            <img class="big-img pho_img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-2.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-2-app.webp"
+                                                alt="">
+                                        </div>
+                                        <img class="big-img bg pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-1.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-1-app.webp"
+                                            alt="">
+                                    </li>
+                                    <li>
+                                        <div class="pricture">
+                                            <img class="big-img pho_img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-4.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-4-app.webp"
+                                                alt="">
+                                        </div>
+                                        <img class="big-img bg pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-3.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-3-app.webp"
+                                            alt="">
+                                    </li>
+                                    <li>
+                                        <div class="pricture">
+                                            <img class="big-img pho_img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-6.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-6-app.webp"
+                                                alt="">
+                                        </div>
+                                        <img class="big-img bg pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-5.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-5-app.webp"
+                                            alt="">
+                                    </li>
+                                    <li>
+                                        <div class="pricture">
+                                            <img class="big-img pho_img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-8.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-8-app.webp"
+                                                alt="">
+                                        </div>
+                                        <img class="big-img bg pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-7.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect3-7-app.webp"
+                                            alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sect4 se">
+                            <div class="box">
+                                <p class="tit transHide">
+                                    Take Pleasure in <br>
+                                    a Wider Stage</p>
+                                <p class="msg transHide"> Thanks to the OSCAL C60’s dewdrop notch design and
+                                    super-narrow bezel, the
+                                    6.52-inch
+                                    display pushes beauty to the edge and get your view expanded as much as possible. Up
+                                    to 720*1600
+                                    resolution and 4.0×10<sup>6</sup> nit brightness make every image or frame on the
+                                    screen burst into
+                                    life, rendering all
+                                    color gamut purer and more pleasant to the eyes.</p>
+                                <img class="big-img transHide pho_img lazyload"
+                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect4-1.webp"
+                                    data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect4-1-app.webp"
+                                    alt="">
+                            </div>
+                            <img class="big-img pho_img lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect4-bg.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect4-bg-app.webp"
+                                alt="">
+                        </div>
+                        <div class="sect5 se">
+                            <div class="box">
+                                <p class="tit transHide">
+                                    Snap Away to Seize the
+                                    <br>
+                                    Present and the Past
+                                </p>
+                                <p class="msg transHide"> The 13 MP rear camera of OSCAL C60 always powers you up to
+                                    shoot an iconic
+                                    landmark at a
+                                    distance or luscious food up-close, capturing every nuance with great texture and
+                                    clarity. </p>
+                            </div>
+                            <img class="big-img pho_img bg lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect5-1.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect5-1-app.webp"
+                                alt="">
+                            <img class="big-img pho_img lazyload" style="z-index: 11111;"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect5-bg.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect5-bg-app.webp"
+                                alt="">
+                        </div>
+                        <div class="sect6 se">
+                            <div class="box box-1">
+                                <div class="transHide">
+                                    <p class="tit ">
+                                        Autofocus
+                                    </p>
+                                    <p class="msg">
+                                        With Autofocus working as fast as 1 second per time, you are allowed to take a
+                                        snapshot with
+                                        OSCAL
+                                        C60 of a thrilling moment when an athlete crosses the finish line or a dappled
+                                        deer running
+                                        across a
+                                        forest jauntily.
+                                    </p>
+                                    <img class="big-img img1 lazyload"
+                                        data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-2.webp"
+                                        alt="">
+                                    <img class="big-img img2 lazyload"
+                                        data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-3.webp"
+                                        alt="">
+                                    <img class="big-img pho_img bg lazyload"
+                                        data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-1.webp"
+                                        data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-1-app.webp"
+                                        alt="">
+                                </div>
+                            </div>
+                            <div class="box box-2">
+                                <ul class="transHide">
+                                    <li>
+                                        <div class="pricture-box">
+                                            <p>Before</p>
+                                            <img class="big-img pho_img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-4.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-4-app.webp"
+                                                alt="">
+                                        </div>
+                                        <div class="pricture-box">
+                                            <p>After</p>
+                                            <img class="big-img pho_img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-5.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-5-app.webp"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="word">
+                                            <img class="big-img lazyload"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-6.webp"
+                                                alt="">
+                                            <p class="tit">
+                                                Beauty Filter
+                                            </p>
+                                            <p class="msg">
+                                                Get an enchanting selfie or arresting groupfies without sweat as the
+                                                beauty filter can
+                                                easily refine your skin tone and contour by bringing out the best
+                                                features of your face.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box box-3">
+                                <ul class="transHide">
+                                    <li>
+                                        <img class="big-img pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-8.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-8-app.webp"
+                                            alt="">
+                                    </li>
+                                    <li>
+                                        <img class="big-img pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-7.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect6-7-app.webp"
+                                            alt="">
+                                        <div class="word">
+                                            <p class="tit">
+                                                Monochrome Mode
+                                            </p>
+                                            <p class="msg">
+                                                Monochrome mode empowers your journey for exploring the boundless
+                                                possibilities of
+                                                deeper black and white.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="sect7 se">
+                            <div class="box">
+                                <p class="tit transHide">
+                                    Run Faster than a Beast
+                                </p>
+                                <p class="msg transHide">
+                                    Working in concert with quad-core cortex-A53, the mighty MediaTek Helio A22
+                                    leverages 12nm process
+                                    technology to unleash a new realm of high-efficiency and high-performance. The
+                                    top-notch PowerVR
+                                    GE8300 GPU is streets ahead when it comes to graphic processing and massive
+                                    data-analyzing, pushing
+                                    AI computing to a new level.
+                                </p>
+                                <ul class="transHide">
+                                    <li>
+                                        <div class="word">
+                                            <p class="word-tit">RAM</p>
+                                            <p class="word-msg">4GB</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="word">
+                                            <p class="word-tit">ROM</p>
+                                            <p class="word-msg">32GB</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="word">
+                                            <p class="word-tit">Expandable Storage</p>
+                                            <p class="word-msg">1TB</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="note c60-pc transHide">
+                                eMMC 5.1 consumes much less power than its precursors, making OSCAL C60 more
+                                power-efficient and
+                                allowing you to charge less and spend more. 1TB expandable storage support renders fun
+                                in tremendous
+                                videos, music or images possible.
+                            </p>
+                            <img class="big-img pho_img lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect7-bg.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect7-bg-app.webp"
+                                alt="">
+                        </div>
+                        <div class="sect8 se">
+                            <div class="box">
+                                <p class="tit transHide">
+                                    Hang Around<br class="c60-pc">
+                                    with It Longer
+                                </p>
+                                <p class="msg transHide">
+                                    Owing to AI power-saving algorithm, OSCAL C60 removes the obstacle of lacking juice
+                                    when you are
+                                    watching the most exhilarating past of a show or fighting against the last enemy to
+                                    win the game by
+                                    providing a 4780mAh battery, large enough to be in company with you day-in or
+                                    day-out.
+                                </p>
+                            </div>
+                            <img class="big-img pho_img img1 lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect8-1.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect8-1-app.webp"
+                                alt="">
+                            <img class="big-img pho_img lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect8-bg.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect8-bg-app.webp"
+                                alt="">
+                        </div>
+                        <div class="sect9 se">
+                            <div class="box box-1">
+                                <ul class="transHide">
+                                    <li>
+                                        <div class="word">
+                                            <p class="tit">
+                                                Find Your Way <br>
+                                                Wherever You Go
+                                            </p>
+                                            <p class="msg">
+                                                Traveling alone without a tour guide is easier than ever if you have an
+                                                OSCAL C60 which
+                                                is packed with often-used 3-in-1 navigation support that includes GPS,
+                                                GLONASS, BEIDOU
+                                                and Galileo. Go visit an unfamiliar city or a remote village at will
+                                                without worries of
+                                                getting lost.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img class="big-img pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect9-1.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect9-1-app.webp"
+                                            alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box box-2">
+                                <ul class="transHide">
+                                    <li>
+                                        <img class="big-img pho_img lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect9-2.webp"
+                                            data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect9-2-app.webp"
+                                            alt="">
+                                    </li>
+                                    <li>
+                                        <div class="word">
+                                            <p class="tit">
+                                                Go Wireless <br class="c60-pc">
+                                                As You Please
+                                            </p>
+                                            <p class="msg">
+                                                C60 not only provides wireless fun with 4G LTE, but also doubles it with
+                                                dual SIM slots.
+                                                You can insert two SIMs into OSCAL C60 with a TF card simultaneously to
+                                                increase the
+                                                potential to be pleased whenever or wherever.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sect10 se">
+                            <div class="box">
+                                <p class="tit transHide">
+                                    Latest Doke OS 2.1 <br>
+                                    Based on Android 11.0
+                                </p>
+                            </div>
+                            <img class="big-img pho_img lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect10-bg.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect10-bg-app.webp"
+                                alt="">
+                        </div>
+                        <div class="sect11 se">
+                            <div class="box box-1">
+                                <ul class="item-ul transHide">
+                                    <li class="item-li">
+                                        <div class="word">
+                                            <p class="tit">
+                                                Game Mode
+                                            </p>
+                                            <p class="msg">
+                                                Add your game to Game Mode to either block all the interruption with a
+                                                single tap so
+                                                that you can indulge yourself in adrenalin-filled games or choose to
+                                                prevent a few
+                                                factors that stop you from immersive joy.
+                                            </p>
+                                            <img class="lazyload c60-pc"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-1.webp"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                    <li class="item-li">
+                                        <ul>
+                                            <li>
+                                                <img class="big-img pho_img lazyload"
+                                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-2.webp"
+                                                    data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-2-app.webp"
+                                                    alt="">
+                                            </li>
+                                            <li>
+                                                <img class="big-img lazyload"
+                                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-3.webp"
+                                                    alt="">
+                                                <img class="big-img lazyload"
+                                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-4.webp"
+                                                    alt="">
+                                            </li>
+                                            <li>
+                                                <img class="big-img lazyload"
+                                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-5.webp"
+                                                    alt="">
+                                                <img class="big-img lazyload"
+                                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-6.webp"
+                                                    alt="">
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="box box-2">
+                                <ul class="item-ul transHide">
+                                    <li class="item-li">
+                                        <div class="word">
+                                            <p class="tit">
+                                                Overall Gaussian Blur
+                                            </p>
+                                            <p class="msg">
+                                                By separating the background from the interface you need to focus on,
+                                                overall Gaussian
+                                                Blur makes your everyday interaction with OSCAL C60 more intelligent,
+                                                hence boosting
+                                                productivity greatly.
+                                            </p>
+                                            <img class="lazyload pho_img"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-7.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-7-app.webp"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                    <li class="item-li">
+                                        <div class="word">
+                                            <p class="tit">
+                                                One Hand
+                                            </p>
+                                            <p class="msg">
+                                                Large as C60’s screen is, One Hand makes it easy to operate OSCAL C60
+                                                with a single hand
+                                                by minimizing the interface at your comfort.
+                                            </p>
+                                            <img class="lazyload pho_img"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-8.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-8-app.webp"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                    <li class="item-li">
+                                        <div class="word">
+                                            <div>
+                                                <p class="tit">
+                                                    Split View
+                                                </p>
+                                                <p class="msg">
+                                                    C60 pushes multi-task on smartphones to a new level. Thanks to Split
+                                                    View support,
+                                                    OSCAL
+                                                    C60 allows you to discuss a show with your friends while watching it
+                                                    or to open two
+                                                    apps
+                                                    side by side without compromise.
+                                                </p>
+                                            </div>
+                                            <img class="lazyload pho_img"
+                                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-9.webp"
+                                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect11-9-app.webp"
+                                                alt="">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sect12 se">
+                            <div class="box">
+                                <div class="word">
+                                    <p class="tit transHide">
+                                        Recognize Your Face Instantly
+                                    </p>
+                                    <p class="msg transHide">
+                                        Access OSCAL C60 in a wink without the hassle of entering a password or the
+                                        worry of password
+                                        leak.
+                                        C60 with Face Unlock can offer you a higher level of privacy, keeping your data
+                                        intact and
+                                        exclusive.
+                                    </p>
+                                </div>
+                                <img class="big-img lazyload"
+                                    data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect12-1.webp"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="sect13 se">
+                            <div class="box">
+                                <ul class="item-ul">
+                                    <li class="item-li">
+                                        <img class="big-img img1 lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect13-1.webp"
+                                            alt="">
+                                        <img class="big-img  lazyload"
+                                            data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect13-2.webp"
+                                            alt="">
+                                    </li>
+                                    <li class="item-li">
+                                        <p class="tit">
+                                            Specification
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <div class="left">
+                                                    Model
+                                                </div>
+                                                <div class="right">
+                                                    C60
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+                                                    Color
+                                                </div>
+                                                <div class="right">
+                                                    Meteorite Black, Navy Blue, Taro Purple and Komodo Island
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    Dimension
+                                                </div>
+                                                <div class="right">
+                                                    164.75*76.7*9.2mm
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    Weight
+                                                </div>
+                                                <div class="right">
+                                                    196g
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    OS
+                                                </div>
+                                                <div class="right">
+                                                    Doke OS 2.1
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    Display
+                                                </div>
+                                                <div class="right">
+                                                    6.528-inch, 720*1600 ,HD+
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    CPU
+                                                </div>
+                                                <div class="right">
+                                                    MediaTek Helio A22
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    RAM & ROM
+                                                </div>
+                                                <div class="right">
+                                                    4GB RAM + 32GB ROM
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    Battery
+                                                </div>
+                                                <div class="right">
+                                                    4780mAh
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    Cameras
+                                                </div>
+                                                <div class="right">
+                                                    5MP Front Camera + 13MP Rear Camera
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    Navigation
+                                                </div>
+                                                <div class="right">
+                                                    GPS, GLONASS,BEIDOU,Galileo
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+
+                                                    Network Connectivity
+                                                </div>
+                                                <div class="right">
+                                                    GSM spec: 850/900/1800/1900 (B2/B3/B5/B8) <br>
+                                                    WCDMA: B1/B8<br>
+                                                    TDD: B40 <br>
+                                                    FDD: /B1/B3/B7/B8/B20
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="left">
+                                                    Card Slots
+                                                </div>
+                                                <div class="right">
+                                                    Three (for Two SIMs & One TF Card)
+
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <img class="big-img pho_img lazyload"
+                                data-src="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect14.webp"
+                                data-phone="https://s3-blackview-hk.s3.eu-west-1.amazonaws.com/yshop/c60_img/sect14-app.webp"
+                                alt="">
+                        </div>
+                    </div>
+                    <script
+                        src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/c60-20220228054914619.js"></script>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <div class="products_spesc">
+                        <div class="spesc-img-left">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img class="lazyload image-active on"
+                                            data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/c60-color-1-20220228070404745.png"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="lazyload"
+                                            data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/c60-color-2-20220228070412861.png"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="lazyload"
+                                            data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/c60-color-3-20220228070419180.png"
+                                            alt="">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img class="lazyload"
+                                            data-src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/pic/c60-color-4-20220228070424848.png"
+                                            alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <div class="spesc-img-right">
+                            <ul class="spesc-img-right-ul">
+                                <li class="spesc-img-right-ul-li spesc-active" num='0'>
+                                    <div class="spescColor"
+                                        style="background: linear-gradient(90deg, #2C2D30 10%, #2c2d30b4 27%, #2C2D30 46%, #2C2D30 73%, #2C2D30 99%);">
+                                    </div>
+                                    <p class="spescColorName">Meteorite Black</p>
+                                </li>
+                                <li class="spesc-img-right-ul-li " num='1'>
+                                    <div class="spescColor"
+                                        style="background: linear-gradient(90deg, #254B67 10%, #254c67bb 27%, #254B67 46%, #254B67 73%, #254B67 99%);">
+                                    </div>
+                                    <p class="spescColorName">Navy Blue</p>
+                                </li>
+                                <li class="spesc-img-right-ul-li " num='2'>
+                                    <div class="spescColor"
+                                        style="background: linear-gradient(90deg, #A6B1D0 10%, #a6b1d0c9 27%, #A6B1D0 46%, #A6B1D0 73%, #A6B1D0 99%);">
+                                    </div>
+                                    <p class="spescColorName">Taro Purple</p>
+                                </li>
+                                <li class="spesc-img-right-ul-li " num='3'>
+                                    <div class="spescColor"
+                                        style="background: linear-gradient(90deg, #2CB8E7 10%, #2cb8e7d0 27%, #2CB8E7 46%, #2CB8E7 73%, #2CB8E7 99%);">
+                                    </div>
+                                    <p class="spescColorName">Komodo Island</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="oscal-spescBoxBg">
+                        <div class="oscal-specification-table">
+                            <table>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Model</p>
+                                    </td>
+                                    <td>
+                                        <p>C60</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Color</p>
+                                    </td>
+                                    <td>
+                                        <p> Meteorite Black, Navy Blue, Taro Purple and Komodo Island</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Dimension</p>
+                                    </td>
+                                    <td>
+                                        <p> 164.75*76.7*9.2mm</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Weight</p>
+                                    </td>
+                                    <td>
+                                        <p>196g</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>OS</p>
+                                    </td>
+                                    <td>
+                                        <p>Doke OS 2.1</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Display</p>
+                                    </td>
+                                    <td>
+                                        <p>6.528-inch, 720*1600 ,HD+</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>CPU</p>
+                                    </td>
+                                    <td>
+                                        <p>MediaTek Helio A22</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>RAM & ROM</p>
+                                    </td>
+                                    <td>
+                                        <p>4GB RAM + 32GB ROM</p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Battery</p>
+                                    </td>
+                                    <td>
+                                        <p>4780mAh</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Cameras</p>
+                                    </td>
+                                    <td>
+                                        <p>5MP Front Camera + 13MP Rear Camera</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Navigation</p>
+                                    </td>
+                                    <td>
+                                        <p> GPS, GLONASS,BEIDOU,Galileo</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Network Connectivity</p>
+                                    </td>
+                                    <td>
+                                        <p> GSM spec: 850/900/1800/1900 (B2/B3/B5/B8) <br>
+                                            WCDMA: B1/B8<br>
+                                            TDD: B40 <br>
+                                            FDD: /B1/B3/B7/B8/B20 </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="oscal-specification-table-tit">
+                                        <p>Card Slots </p>
+                                    </td>
+                                    <td>
+                                        <p>Three (for Two SIMs & One TF Card)</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="go-top">
+            <span class="top-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+                </svg>
+            </span>
+        </div>
+        <div class="breadcrumbBox">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">OSCAL</a></li>
+                    <li class="breadcrumb-item"><a href="/buy/phones/">Phones</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">C60</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div id="footer" th:include="footer :: myFooter">
+    </div>
+</body>
+
+<script th:src="@{/lib/js/jquery-3.3.1.min.js}"></script>
+<script async
+    src="https://d2kbvjszk9d5ln.cloudfront.net/yshop/upload/other/lazysizes.min-20201204070627489.js"></script>
+<script async th:src="@{/lib/bootstrap-4.6.0-dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/public.js}"></script>
+<script th:src="@{/lib/js/swiper.min.js}"></script>
+<script th:src="@{/js/productsDetail.js?v=1.001}"></script>
+
+</html>

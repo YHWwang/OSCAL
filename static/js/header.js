@@ -1,6 +1,7 @@
 $(function () {
     var localHref = window.location.href
-
+    $('.nav-content .content .show-box .rg-content .item-box:nth-child(2)').remove()
+    // 20220228
     // 临时链接
     $('.app-header .menu ul li').click(function () {
         if ($(this).find(' a:first span').text() == 'Phones') {
