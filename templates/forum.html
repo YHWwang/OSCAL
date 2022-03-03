@@ -62,12 +62,11 @@
                                                     <span>Excellent</span>
                                                 </p>
                                             </div>
-                                            <div class="imageBox">
-                                                <img src="/img/blog-img/community-tab9.jpg" alt="">
-                                                <img src="/img/blog-img/community-tab9.jpg" alt="">
-                                                <img src="/img/blog-img/community-tab9.jpg" alt="">
-                                                <img src="/img/blog-img/community-tab9.jpg" alt="">
-                                            </div>
+                                 			<div class="imageBox">
+	                                            <!-- 帖子展示的封面图0-4张 -->
+	                                            <img class="lazyload" th:each="coverUrl : ${#strings.listSplit(community.community_cover_urls, ',')}" th:data-src="${coverUrl}"
+	                                                alt="OSCAl">
+                                        	</div>
                                         </a>
                                         <p class="msg">
                                             <a th:href="'/web/user/login/toUserOthersCenter/'+${community.user_id}" target="_self">

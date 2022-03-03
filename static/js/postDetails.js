@@ -11,6 +11,7 @@ $(function () {
   var hasFollowed = $('#hasFollowed').val()
   getParenthesesStr($('.likesSvg').attr('onclick'))
   detailFun()
+
   function getParenthesesStr(text) {
     let result = ''
     let regex = /\((.+?)\)/g;
@@ -113,7 +114,7 @@ $(function () {
     $('#exampleModalLabel').text('Reply ' + $(this).attr('value'))
     commentsData.sys_user_account = $(this).attr('value')
   })
-  
+
   document.emojiSource = '/lib/Summernote/summernote-emoji-master/tam-emoji/img'
   $('#summernote').summernote({//富文本编辑
     placeholder: '',
@@ -127,51 +128,51 @@ $(function () {
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
-      ['insert', ['link','picture']],
+      ['insert', ['link']],
       ['view', ['codeview', 'help']]
     ],
     callbacks: {
       onImageUpload: function (files) {
-          $('#maskLayer').show()
-          sendFile($('#summernote'), files[0]);
+        $('#maskLayer').show()
+        sendFile($('#summernote'), files[0]);
       }
-  }
+    }
   });
   //ajax上传图片
   function sendFile($summernote, file) {
     if ((file.size / 1024 / 1024) > 1) {//限制图片的文件大小
       alertBox('warning', ' Picture cannot exceed 1M...')
-        $('#maskLayer').hide()
-        return false;
+      $('#maskLayer').hide()
+      return false;
     }
     var formData = new FormData();
     formData.append("file", file);
     $.ajax({
-        url: "/uploadFile",//路径
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        type: 'POST',
-        success: function (data) {
-            data = $.parseJSON(data);
-            $('#maskLayer').hide()
-            $summernote.summernote('insertImage', data.url, function ($image) {
-                $image.attr('src', data.url);
-            });
-        }
+      url: "/uploadFile",//路径
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'POST',
+      success: function (data) {
+        data = $.parseJSON(data);
+        $('#maskLayer').hide()
+        $summernote.summernote('insertImage', data.url, function ($image) {
+          $image.attr('src', data.url);
+        });
+      }
     });
-}
+  }
   $('.note-editor').focusin(function () {
     return false
   })
   $('.note-editor').focusout(function () {
     $('.note-editable').focus()
   })
-  $('.note-insert .note-btn').eq(1).click(function(){
+  $('.note-insert .note-btn').eq(1).click(function () {
     $('.note-editable').attr('contenteditable', false)
   })
-  $('#summernoteBox .note-popover .note-btn-group .note-btn').eq(0).click(function(){
+  $('#summernoteBox .note-popover .note-btn-group .note-btn').eq(0).click(function () {
     $('.note-editable').attr('contenteditable', false)
   })
   $(document).click(function (event) {
@@ -331,6 +332,7 @@ $(function () {
 
   }
   window.addEventListener('load', function () { //创建评论验证
+
     var forms = document.getElementsByClassName('needs-validation-createPostsForm');
     var validation = Array.prototype.filter.call(forms, function (form) {
       form.addEventListener('submit', function (event) {
@@ -342,6 +344,7 @@ $(function () {
         else {
           let that = $('#summernoteBox .createPostsBtn')
           $(that).prop({ disabled: true })
+
           let data = {
             // content: $('#summernote').val(),
             content: event.target[0].value
@@ -350,6 +353,9 @@ $(function () {
           let len = regex.length
           if (len < 5) {
             $('#summernoteBox .invalid-feedback').show()
+            setTimeout(() => {
+              $(that).prop({ disabled: false })
+            }, 500);
             return false
           } else {
             $('#summernoteBox .invalid-feedback').hide()
@@ -368,14 +374,13 @@ $(function () {
               req = $.parseJSON(req);
               if (req.code == 999999) {
                 alertBox('success', 'Comment successful')
+                $(that).prop({ disabled: true })
                 setTimeout(() => {
                   location.reload();
-                  $(that).removeAttr('disabled')
                 }, 2000);
               }
               else {
                 alertBox('danger', req.msg)
-                $(that).removeAttr('disabled')
               }
             }
           })
@@ -384,6 +389,7 @@ $(function () {
 
       }, false);
     });
+
   }, false);
 
   replyComment = function (entity_id, target_id) {//提交回复评论
@@ -488,7 +494,6 @@ $(function () {
           })
         }
         $('#rightdiv .prePage').hide()
-        // console.log(lastPage,watchedObj.currentPage)
         watchedObj.currentPage == lastPage ? $('#rightdiv .nextPage').hide() : $('#rightdiv .nextPage').show()
         function watchedFun(size) {
           htmlList(size)

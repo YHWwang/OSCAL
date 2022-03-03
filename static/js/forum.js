@@ -7,6 +7,55 @@ $(function () {
         current: 0,
         id: 0
     }
+    // 分页Start------
+    var pageSize = 3
+    var totalPage = 0
+    var lastPage = 0
+    var obj = {
+        currentPage: 1
+    }
+    var observe1 = (object, onChange) => {
+        const handler = {
+            get(target, property, receiver) {
+                try {
+                    return new Proxy(target[property], handler);
+                } catch (err) {
+                    return Reflect.get(target, property, receiver);
+                }
+            },
+            set(target, key, value, receiver) {
+                onChange(value);
+                return Reflect.set(target, key, value, receiver);
+            }
+        };
+        return new Proxy(object, handler);
+    };
+    var watchedObj = observe1(obj, (val) => {
+        // console.log(`哈哈哈，监听到值变化为${val}了`);
+    });
+    function watchedFun(size) {
+        watchedObj.currentPage = size
+        filterData()
+    }
+    let dom = $('.newsPagination #rightdiv .currentPage span')
+    $('.newsPagination #rightdiv .firstPage').click(() => {//第一页
+        watchedFun(1)
+        dom.text(watchedObj.currentPage)
+    })
+    $('.newsPagination #rightdiv .lastPage').click(() => {//最后一页
+        watchedFun(lastPage)
+        dom.text(watchedObj.currentPage)
+    })
+    $('.newsPagination #rightdiv .prePage').click(() => {//上一页
+        watchedFun(watchedObj.currentPage > 1 ? watchedObj.currentPage - 1 : 1)
+        dom.text(watchedObj.currentPage)
+    })
+    $('.newsPagination #rightdiv .nextPage').click(() => {//下一页
+        watchedFun(watchedObj.currentPage < lastPage ? watchedObj.currentPage + 1 : lastPage)
+        dom.text(watchedObj.currentPage)
+    })
+    // 分页End------
+
     if (localHref.includes('forum/2/')) {
         selectMenu(1)
     } else if (localHref.includes('forum/3/')) {
@@ -18,6 +67,7 @@ $(function () {
         let dom = $('#nav-tab .nav-link')
         dom.eq(number).addClass('active').siblings().removeClass('active')
     }
+
     $('.follow').click(() => {//关注板块
         let name = $('.follow').siblings('.type').text()
         $.ajax({
@@ -28,8 +78,7 @@ $(function () {
             async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (data) {
-                $('.following').show()
-                $('.follow').hide()
+                location.reload();
             }
         })
     })
@@ -43,8 +92,7 @@ $(function () {
             async: true,
             contentType: "application/json;charset=UTF-8",
             success: function (data) {
-                $('.following').hide()
-                $('.follow').show()
+                location.reload()
             }
         })
     })
@@ -62,22 +110,32 @@ $(function () {
     }
 
     $('.filterSearchBtn').click(() => {//点击筛选按钮
+        watchedObj.currentPage = 1
+        $('.mt-5').remove()
+        $('.newsPagination').show()
+        filterData()
+    })
+    function filterData() {
         $.ajax({
             type: "post",
             url: "/discuss/getDiscussByTypeAndTime",
-            data: '{"categoryId":' + filterObj.id + ',"discussDay":' + $('#filterTime').val() + ',"busType":"' + $('#filterSort').val() + '","current":' + filterObj.current + '}',
+            data: '{"categoryId":' + filterObj.id + ',"discussDay":' + $('#filterTime').val() + ',"busType":"' + $('#filterSort').val() + '","current":' + watchedObj.currentPage + '}',
             dataType: 'json',
             async: true,
             contentType: "application/json;charset=UTF-8",
-            success: function (data) {
-                // data = $.parseJSON(data);
-                console.log(data)
+            success: function (res) {
+                let data = res;
                 let html = ''
+
                 for (let item of data.discussMoreList) {
-                    // let imgBox = ''
-                    // for (let img of item.community_img) {
-                    //     imgBox += `<img class="lazyload" data-src="${img}" alt="OSCAl">`
-                    // }
+                    let imgBox = ''
+                    if (item.community_cover_urls) {
+                        let coverUrl = item.community_cover_urls.split(",")
+                        for (let img of coverUrl) {
+                            imgBox += `<img class="lazyload" data-src="${img}" alt="">`
+                        }
+                    }
+
                     html += `
                 <li>
                 <div class="itemList">
@@ -108,7 +166,7 @@ $(function () {
                         </div>
                         <div class="imageBox">
                             <!-- 帖子展示的封面图0-4张 -->
-                           <img class="lazyload" data-src="${item.community_img}" alt="OSCAl">
+                        ${imgBox}
                         </div>
                     </a>
                     <p class="msg">
@@ -162,14 +220,18 @@ $(function () {
                 `
                 }
                 $('.forumContent .forum-left .forumList ul').html(html)
+                watchedObj.currentPage == 1 ? $('#rightdiv .prePage').hide() : $('#rightdiv .prePage').show()
+                watchedObj.currentPage == lastPage ? $('#rightdiv .nextPage').hide() : $('#rightdiv .nextPage').show()
+                totalPage = data.totalPage
+                lastPage = Math.ceil(totalPage / pageSize)
+                totalPage <= 3 ? $('.newsPagination').hide() : ''
+                $('#rightdiv .currentPage span').text(watchedObj.currentPage)
                 checkList()
             }
         })
-    })
-
+    }
     $('.otherForumContent .forum-right .newBtn').click(() => {//页面跳转到创建帖子页面自动选中对应类型
-        console.log(postId)
-        window.location.href = '/discuss/jumpNewPost?postId='+postId
+        window.location.href = '/discuss/jumpNewPost?postId=' + postId
     })
 
     $('#nav-home-tab').click(() => {
@@ -184,6 +246,7 @@ $(function () {
         addIframe()
         window.location.href = '/discuss/forum/3/1'
     })
+
     function addIframe() {//切换帖子类型出现遮布层
         let iframe = `
         <div class="switchIframe">

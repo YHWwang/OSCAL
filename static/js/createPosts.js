@@ -8,6 +8,8 @@ $(function () {
         one: 0,
         two: 0
     }
+    var communityCoverUrls = ''
+    var uploadPictureIndex = 1
     $.ajax({//渲染一级标签
         type: "post",
         url: "/prodcutListCategory",
@@ -94,7 +96,7 @@ $(function () {
                 showCaption: false,//是否显示标题
                 browseClass: "btn btn-primary", //按钮样式
                 maxFileSize: 1000,
-                maxFileCount: 4, //允许同时上传的最大文件个数
+                maxFileCount: 1, //允许同时上传的最大文件个数
                 enctype: 'multipart/form-data',
                 validateInitialCount: true,
                 msgSizeTooLarge: 'File "{name}" ({size} KB) exceeds maximum allowed upload size of {maxSize} KB. Please retry your upload!',
@@ -107,11 +109,17 @@ $(function () {
                 // var data = data.response;
                 // var last = data.lastIndexOf("Upload");
                 // EmImg = data.substring(last + 7);
-               console.log(data.response.url)
+                communityCoverUrls = '"' + communityCoverUrls + data.response.url + ',"'
+                console.log(communityCoverUrls);
                 $("#updateImageModal").modal('hide');
                 $('div.modal-backdrop').hide();
                 // 得到的返回地址在渲染到html中
-                // $('.upload-coverImage-list ul').html()
+                $('.upload-coverImage-list ul').append(`
+                    <li removeIndex='${uploadPictureIndex}'>
+                        <img src="${data.response.url}" alt="">
+                    </li>
+                `)
+                uploadPictureIndex++
             });
         }
         return oFile;
@@ -224,15 +232,18 @@ $(function () {
                         community_title: $('#postTitle').val(),
                         community_content: event.currentTarget[1].value,
                         oscal_comment_category_id: category_id,
-                        community_type: sort
+                        community_type: sort,
+                        communityCoverUrls: communityCoverUrls
                     }
+                    data.communityCoverUrls = data.communityCoverUrls.slice(0, data.communityCoverUrls.lastIndexOf(','))+'"'
                     $.ajax({
                         type: "post",
                         url: "/discuss/add",
                         data: {
                             "community_title": data.community_title,
                             "community_content": data.community_content,
-                            "oscal_comment_category_id": data.oscal_comment_category_id
+                            "oscal_comment_category_id": data.oscal_comment_category_id,
+                            "communityCoverUrls": data.communityCoverUrls
                         },
                         async: true,
                         success: function (req) {

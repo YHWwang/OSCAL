@@ -250,7 +250,7 @@ h6 {
 }
 
 .newsPagination {
-    display: block;
+    display: none;
     padding: 5vw 0 3vw 0;
     text-align: center;
 }
@@ -260,6 +260,9 @@ h6 {
     margin-top: 10px;
 }
 
+#rightdiv .prePage{
+    /* display: none; */
+}
 #rightdiv a {
     color: #000;
     text-decoration: none;
@@ -317,7 +320,7 @@ h6 {
 .forumContent .forum-left .forumList ul li .itemList .imageBox {
     margin: 1vw 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
